@@ -1,0 +1,16 @@
+@import './menu.css';
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: #444;
+  color: #fffce1;
+  font-family: 'Raleway', Arial, sans-serif;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+}
