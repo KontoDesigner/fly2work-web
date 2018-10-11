@@ -1,0 +1,14 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" },
+  "people": [
+    {"id":1, "name":"Manuel Jesus", "status":"new", "startdate":"2019-04-01", "confirmeddate":""},
+    {"id":2, "name":"Maria Fesus", "status":"new", "startdate":"2018-10-01", "confirmeddate":""},
+    {"id":3, "name":"Oscar de la Hojja", "status":"new", "startdate":"2018-10-01", "confirmeddate":""}
+  ]
+}

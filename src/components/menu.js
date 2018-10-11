@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Menu = props => {
   return (
     <div id="elastic">
-      <ReactBurgerMenu isOpen={true} noOverlay={true} elastic pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
+      <ReactBurgerMenu isOpen={props.isMenuOpen} noOverlay={true} elastic pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" className="logo-tui" viewBox="0 0 136 60">
             <path
@@ -16,19 +16,19 @@ const Menu = props => {
         </div>
 
         <Link className="menu-item" to="/new">
-          New
+          New <span className="text-danger">({props.count.new})</span>
         </Link>
         <Link className="menu-item" to="/submitted">
-          Submitted
+          Submitted <span className="text-danger">({props.count.submitted})</span>
         </Link>
         <Link className="menu-item" to="/pending">
-          Pending
+          Pending <span className="text-danger">({props.count.pending})</span>
         </Link>
         <Link className="menu-item" to="/confirmed">
-          Confirmed
+          Confirmed <span className="text-danger">({props.count.confirmed})</span>
         </Link>
         <Link className="menu-item" to="/overview">
-          Overview
+          Overview <span className="text-danger">({props.count.overview})</span>
         </Link>
       </ReactBurgerMenu>
     </div>

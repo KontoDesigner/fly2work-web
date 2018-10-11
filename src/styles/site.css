@@ -1,2 +1,7 @@
+/* NPM */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* CUSTOM */
 @import './misc.css';
 @import './menu.css';
+@import './listGroup.css';
