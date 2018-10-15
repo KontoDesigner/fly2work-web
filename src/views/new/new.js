@@ -7,8 +7,12 @@ class New extends Component {
     super(props)
 
     this.state = {
-      staffs: [],
+      staffs: []
     }
+  }
+
+  async componentWillMount() {
+    document.title = 'New'
   }
 
   async componentDidMount() {
@@ -18,9 +22,10 @@ class New extends Component {
   }
 
   handleClick(id) {
-    const win = window.open(`/new/${id}`, '_blank')
+    this.props.history.push(`/new/${id}`)
 
-    win.focus()
+    //const win = window.open(`/new/${id}`, '_blank')
+    //win.focus()
   }
 
   render() {
@@ -28,7 +33,7 @@ class New extends Component {
       <div>
         <ListGroup>
           {this.state.staffs.map(i => (
-            <ListGroupItem tag="a" href="#" onClick={() => this.handleClick(i.id)} key={i.name}>
+            <ListGroupItem onClick={() => this.handleClick(i.id)} key={i.name}>
               {i.name}
             </ListGroupItem>
           ))}

@@ -1,24 +1,22 @@
 import axios from 'axios'
-// import download from 'downloadjs'
-// import { toastr } from 'react-redux-toastr'
-// import * as Logger from './logger'
-// import Config from './config'
+import config from './config'
+import { toast } from 'react-toastify'
 
-export async function get(url) {
+export async function get(url, useBaseUrl = true) {
   try {
-    // const baseUrl = useBaseUrl === true ? Config.api : ''
+    const baseUrl = useBaseUrl === true ? config.api : ''
 
-    // Logger.trace(`[GET] ${baseUrl + url}`, 'RestClient')
+    console.log(`[GET] ${baseUrl + url}`)
 
-    const response = await axios.get(url)
+    const response = await axios.get(baseUrl + url)
 
-    // Logger.trace(`[RESPONSE] ${JSON.stringify(response.data as T)}`, 'RestClient')
+    console.log(`[RESPONSE] ${JSON.stringify(response.data)}`)
 
     return response.data
   } catch (err) {
-    //     toastr.error('', `An unexpected error has occured: ${err}.`)
+    console.log('Error GET', err)
 
-    //     Logger.error('Error GET', 'RestClient', err)
+    toast.error(`An unexpected error has occured: ${err}.`)
 
     throw new Error(err)
   }
@@ -79,30 +77,6 @@ export async function get(url) {
 //         toastr.error('', `An unexpected error has occured: ${err}.`)
 
 //         Logger.error('Error DELETE', 'RestClient', err)
-
-//         throw new Error(err)
-//     }
-// }
-
-// export async function down(url, data, fileName) {
-//     try {
-//         const baseUrl = useBaseUrl === true ? Config.api : ''
-
-//         Logger.trace(`[DOWNLOAD] ${baseUrl + url} ${JSON.stringify(data)}`, 'RestClient')
-
-//         const response = await axios({
-//             url: baseUrl + url,
-//             method: 'GET',
-//             responseType: 'blob'
-//         })
-
-//         Logger.trace(`[RESPONSE] ${JSON.stringify(response)}`, 'RestClient')
-
-//         return download(response.data, fileName)
-//     } catch (err) {
-//         toastr.error('', `An unexpected error has occured: ${err}.`)
-
-//         Logger.error('Error DOWNLOAD', 'RestClient', err)
 
 //         throw new Error(err)
 //     }

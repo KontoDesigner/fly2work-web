@@ -1,7 +1,9 @@
 /* NPM */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~react-toastify/dist/ReactToastify.css';
 
 /* CUSTOM */
 @import './misc.css';
 @import './menu.css';
 @import './listGroup.css';
+@import './label.css';

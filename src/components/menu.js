@@ -1,11 +1,16 @@
 import React from 'react'
-import { elastic as ReactBurgerMenu } from 'react-burger-menu'
+import { push as ReactBurgerMenu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 
 const Menu = props => {
   return (
-    <div id="elastic">
-      <ReactBurgerMenu isOpen={props.isMenuOpen} noOverlay={true} elastic pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
+    <div id="push">
+      <ReactBurgerMenu
+        onStateChange={state => props.handleIsMenuOpen(state)}
+        isOpen={props.isMenuOpen}
+        noOverlay={true}
+        pageWrapId={'page-wrap'}
+        outerContainerId={'outer-container'}>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" className="logo-tui" viewBox="0 0 136 60">
             <path

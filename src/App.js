@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, withRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './infrastructure/routes'
 import Loader from './components/loader'
 import Menu from './components/menu'
 import * as StaffService from './services/staffService'
+import { ToastContainer } from 'react-toastify'
 import './styles/site.css'
 
 class App extends Component {
@@ -12,20 +13,17 @@ class App extends Component {
 
     this.state = {
       loaded: false,
-      count: {},
+      isMenuOpen: true,
+      count: {}
     }
   }
 
   async componentWillMount() {
-    const _this = this
+    document.title = 'CTX'
 
-    return Promise.all([await StaffService.getCount()]).then(function(res) {
-      _this.setState({ loaded: true, count: res[0] })
-    })
-  }
+    const count = await StaffService.getCount()
 
-  matchRuleShort(str, rule) {
-    return new RegExp('^' + rule.split('*').join('.*') + '$').test(str)
+    this.setState({ count, loaded: true })
   }
 
   getCount = async () => {
@@ -34,26 +32,23 @@ class App extends Component {
     this.setState({ count })
   }
 
-  render() {
-    const MenuWithRouter = withRouter(props => {
-      //Menu should ber hidden as default with this condition
-      if (!this.matchRuleShort(props.location.pathname, '/new/*')) {
-        return <Menu count={this.state.count} isMenuOpen={true} />
-      } else {
-        return <Menu count={this.state.count} isMenuOpen={false} />
-      }
-    })
+  handleIsMenuOpen = state => {
+    this.setState({ isMenuOpen: state.isOpen })
+  }
 
+  render() {
     return (
       <Router>
-        <div>
+        <div style={{ height: '100%' }}>
+          <ToastContainer />
+
           <Loader />
 
           {this.state.loaded && (
             <div id="outer-container" style={{ height: '100%' }}>
-              <MenuWithRouter />
+              <Menu handleIsMenuOpen={this.handleIsMenuOpen} isMenuOpen={this.state.isMenuOpen} count={this.state.count} />
 
-              <main id="page-wrap">
+              <main id="page-wrap" style={{ marginRight: this.state.isMenuOpen === true ? '300px' : '' }}>
                 <div className="App">
                   <Routes />
                 </div>
