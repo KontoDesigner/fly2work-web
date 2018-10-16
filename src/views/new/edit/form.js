@@ -7,7 +7,7 @@ import { Row, Col, FormGroup, Button } from 'reactstrap'
 const EditUserDialog = props => {
   return (
     <div>
-      <h1>{props.staff.name}</h1>
+      <h2>{props.staff.name}</h2>
 
       <Formik
         initialValues={props.staff}
@@ -96,9 +96,11 @@ const EditUserDialog = props => {
                   <ErrorMessage name="typeOfFlight" component="div" />
                 </FormGroup>
               </Col>
+            </Row>
 
+            <Row className="divider-up">
               <Col xs="12">
-                <Button type="submit" color="success" disabled={isSubmitting}>
+                <Button className="btn btn-primary" type="submit" color="success" disabled={isSubmitting}>
                   Submit
                 </Button>
               </Col>

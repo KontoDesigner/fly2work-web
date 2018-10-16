@@ -1,5 +1,11 @@
 import * as restClient from '../infrastructure/restClient'
 
+export async function updateStaff(staff) {
+  const res = await restClient.post('people', staff)
+
+  return res
+}
+
 export async function getStaff(id) {
   const staff = await restClient.get(`people/${id}`)
 

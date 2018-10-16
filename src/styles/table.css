@@ -1,0 +1,13 @@
+table {
+    text-align: initial;
+    font-size:2rem;
+}
+
+.tui-text-content tr:nth-child(even)
+{
+    background: #fff;
+}
+
+.tui-text-content tr:nth-child(odd) {
+    background: #f3f0ec;
+}

@@ -22,25 +22,25 @@ export async function get(url, useBaseUrl = true) {
   }
 }
 
-// export async function post(url, data) {
-//     try {
-//         const baseUrl = useBaseUrl === true ? Config.api : ''
+export async function post(url, data, useBaseUrl = true) {
+  try {
+    const baseUrl = useBaseUrl === true ? config.api : ''
 
-//         Logger.trace(`[POST] ${baseUrl + url} ${JSON.stringify(data)}`, 'RestClient')
+    console.log(`[POST] ${baseUrl + url} ${JSON.stringify(data)}`)
 
-//         const response = await axios.post(baseUrl + url, data)
+    const response = await axios.post(baseUrl + url, data)
 
-//         Logger.trace(`[RESPONSE] ${JSON.stringify(response.data as T)}`, 'RestClient')
+    console.log(`[RESPONSE] ${JSON.stringify(response.data)}`)
 
-//         return response.data
-//     } catch (err) {
-//         toastr.error('', `An unexpected error has occured: ${err}.`)
+    return response.data
+  } catch (err) {
+    toast.error('', `An unexpected error has occured: ${err}.`)
 
-//         Logger.error('Error POST', 'RestClient', err)
+    console.log('Error POST', err)
 
-//         throw new Error(err)
-//     }
-// }
+    throw new Error(err)
+  }
+}
 
 // export async function put(url, data) {
 //     try {

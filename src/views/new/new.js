@@ -23,21 +23,29 @@ class New extends Component {
 
   handleClick(id) {
     this.props.history.push(`/new/${id}`)
-
-    //const win = window.open(`/new/${id}`, '_blank')
-    //win.focus()
   }
 
   render() {
     return (
       <div>
-        <ListGroup>
-          {this.state.staffs.map(i => (
-            <ListGroupItem onClick={() => this.handleClick(i.id)} key={i.name}>
-              {i.name}
-            </ListGroupItem>
-          ))}
-        </ListGroup>
+        <h2>New</h2>
+
+        <div className="tui-text-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.staffs.map(staff => (
+                <tr onClick={() => this.handleClick(staff.id)} key={staff.id}>
+                  <td className="link">{staff.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }
