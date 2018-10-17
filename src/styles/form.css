@@ -13,7 +13,7 @@ textarea.form-control
     border-radius:3px;
 }
 
-.form-group > .checkbox-label
+.form-item > .checkbox-label
 {
     cursor:pointer;
     line-height: 48px;
@@ -47,4 +47,18 @@ input[type=checkbox]
 .gender input[type=radio]
 {
     margin-top:10px;
+    cursor:pointer;
+}
+
+.message
+{
+    color: #fff!important;
+    background: #bc373b;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.9rem;
+    margin-top: 5px;
+    border: 1px solid #781619;
+    margin-bottom:15px;
 }

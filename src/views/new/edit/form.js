@@ -5,7 +5,27 @@ import DatePicker from '../../../components/datePicker'
 import Checkbox from '../../../components/checkbox'
 import MultiSelect from '../../../components/multiSelect'
 import Gender from '../../../components/gender'
-import { Row, Col, FormGroup, Button } from 'reactstrap'
+import { Row, Col, Button } from 'reactstrap'
+import * as Yup from 'yup'
+
+const validationSchema = Yup.object().shape({
+    id: Yup.string().required('Field is required'),
+    name: Yup.string().required('Field is required'),
+    dateOfBirth: Yup.string().required('Field is required'),
+    sourceMarket: Yup.string().required('Field is required'),
+    season: Yup.string().required('Field is required'),
+    dateOfFlight: Yup.string().required('Field is required'),
+    statusOfFlight: Yup.string().required('Field is required'),
+    // hotelNeeded,
+    role: Yup.string().required('Field is required'),
+    destination: Yup.string().required('Field is required'),
+    // gender,
+    phone: Yup.string().required('Field is required'),
+    departureAirport: Yup.string().required('Field is required'),
+    arrivalAirport: Yup.string().required('Field is required'),
+    typeOfFlight: Yup.string().required('Field is required'),
+    comment: Yup.string().max(200, 'Max 200 characters')
+})
 
 const EditUserDialog = props => {
     return (
@@ -14,6 +34,7 @@ const EditUserDialog = props => {
 
             <Formik
                 initialValues={props.staff}
+                validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
                     props.handleStaff(values)
                 }}
@@ -21,137 +42,135 @@ const EditUserDialog = props => {
                     <Form>
                         <Row>
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="id">Id</label>
                                     <Field className="form-control" type="text" name="id" />
-                                    <ErrorMessage name="id" component="div" />
-                                </FormGroup>
+                                    <ErrorMessage className="message" name="id" component="div" />
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="name">Name</label>
                                     <Field className="form-control" type="text" name="name" />
-                                    <ErrorMessage name="name" component="div" />
-                                </FormGroup>
+                                    <ErrorMessage className="message" name="name" component="div" />
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="dateOfBirth">Date Of Birth</label>
                                     <Field name={'dateOfBirth'} component={DatePicker} />
-                                    <ErrorMessage name="dateOfBirth" component="div" />
-                                </FormGroup>
+                                    {errors.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="sourceMarket">Source Market</label>
                                     <Field name={'sourceMarket'} component={Select} options={props.sourceMarkets} />
-                                    <ErrorMessage name="sourceMarket" component="div" />
-                                </FormGroup>
+                                    {errors.sourceMarket && <div className="message">{errors.sourceMarket}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="season">Season</label>
                                     <Field name={'season'} component={Select} options={props.seasons} />
-                                    <ErrorMessage name="season" component="div" />
-                                </FormGroup>
+                                    {errors.season && <div className="message">{errors.season}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="dateOfFlight">Date Of Flight</label>
                                     <Field name={'dateOfFlight'} component={DatePicker} />
-                                    <ErrorMessage name="dateOfFlight" component="div" />
-                                </FormGroup>
+                                    {errors.dateOfFlight && <div className="message">{errors.dateOfFlight}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="statusOfFlight">Status Of The Flight</label>
                                     <Field name={'statusOfFlight'} component={Select} options={props.flightStatuses} />
-                                    <ErrorMessage name="statusOfFlight" component="div" />
-                                </FormGroup>
+                                    {errors.statusOfFlight && <div className="message">{errors.statusOfFlight}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="hotelNeeded">Hotel Needed</label>
                                     <Field name={'hotelNeeded'} component={Checkbox} />
-                                    <ErrorMessage name="hotelNeeded" component="div" />
-                                </FormGroup>
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="role">Role</label>
                                     <Field name={'role'} component={Select} options={props.roles} />
-                                    <ErrorMessage name="role" component="div" />
-                                </FormGroup>
+                                    {errors.role && <div className="message">{errors.role}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="destination">Destination</label>
                                     <Field name={'destination'} component={Select} options={props.destinations} />
-                                    <ErrorMessage name="destination" component="div" />
-                                </FormGroup>
+                                    {errors.destination && <div className="message">{errors.destination}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <Field name={'gender'} component={Gender} />
-                                    <ErrorMessage name="gender" component="div" />
-                                </FormGroup>
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="phone">Phone</label>
                                     <Field className="form-control" type="text" name="phone" />
-                                    <ErrorMessage name="phone" component="div" />
-                                </FormGroup>
+                                    <ErrorMessage className="message" name="phone" component="div" />
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="departureAirport">Departure Airport</label>
                                     <Field name={'departureAirport'} component={MultiSelect} options={props.airports} />
-                                    <ErrorMessage name="departureAirport" component="div" />
-                                </FormGroup>
+                                    {errors.departureAirport && <div className="message">{errors.departureAirport}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="arrivalAirport">Arrival Airport</label>
                                     <Field name={'arrivalAirport'} component={MultiSelect} options={props.airports} />
-                                    <ErrorMessage name="arrivalAirport" component="div" />
-                                </FormGroup>
+                                    {errors.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
+                                </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="typeOfFlight">Type Of Flight</label>
                                     <Field name={'typeOfFlight'} component={Select} options={props.flights} />
-                                    <ErrorMessage name="typeOfFlight" component="div" />
-                                </FormGroup>
+                                    {errors.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
+                                </div>
                             </Col>
                         </Row>
 
                         <Row>
                             <Col xl="12" lg="612" md="12" sm="12" xs="12">
-                                <FormGroup>
+                                <div className="form-item">
                                     <label htmlFor="comment">Comment</label>
                                     <Field className="form-control" component="textarea" rows="5" name="comment" />
-                                    <ErrorMessage name="comment" component="div" />
-                                </FormGroup>
+                                    <ErrorMessage className="message" name="comment" component="div" />
+                                </div>
                             </Col>
                         </Row>
 
                         <Row className="divider-up">
-                            <Col xs="12">
+                            <Col xl="12" lg="612" md="12" sm="12" xs="12">
                                 <Button className="btn btn-primary" type="submit" color="success" disabled={isSubmitting}>
                                     Submit
                                 </Button>

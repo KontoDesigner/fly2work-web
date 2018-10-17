@@ -4,6 +4,7 @@
 
 /* CUSTOM */
 @import './misc.css';
+@import './loader.css';
 @import './menu.css';
 @import './listGroup.css';
 @import './label.css';

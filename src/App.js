@@ -8,57 +8,57 @@ import { ToastContainer } from 'react-toastify'
 import './styles/site.css'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      loaded: false,
-      isMenuOpen: true,
-      count: {}
+        this.state = {
+            loaded: false,
+            isMenuOpen: true,
+            count: {}
+        }
     }
-  }
 
-  async componentWillMount() {
-    document.title = 'CTX'
+    async componentWillMount() {
+        document.title = 'CTX'
 
-    const count = await StaffService.getCount()
+        const count = await StaffService.getCount()
 
-    this.setState({ count, loaded: true })
-  }
+        this.setState({ count, loaded: true })
+    }
 
-  getCount = async () => {
-    const count = await StaffService.getCount()
+    getCount = async () => {
+        const count = await StaffService.getCount()
 
-    this.setState({ count })
-  }
+        this.setState({ count })
+    }
 
-  handleIsMenuOpen = state => {
-    this.setState({ isMenuOpen: state.isOpen })
-  }
+    handleIsMenuOpen = state => {
+        this.setState({ isMenuOpen: state.isOpen })
+    }
 
-  render() {
-    return (
-      <Router>
-        <div style={{ height: '100%' }}>
-          <ToastContainer />
+    render() {
+        return (
+            <Router>
+                <div style={{ height: '100%' }}>
+                    <ToastContainer />
 
-          <Loader />
+                    <Loader />
 
-          {this.state.loaded && (
-            <div id="outer-container" style={{ height: '100%' }}>
-              <Menu handleIsMenuOpen={this.handleIsMenuOpen} isMenuOpen={this.state.isMenuOpen} count={this.state.count} />
+                    {this.state.loaded && (
+                        <div id="outer-container" style={{ height: '100%' }}>
+                            <Menu handleIsMenuOpen={this.handleIsMenuOpen} isMenuOpen={this.state.isMenuOpen} count={this.state.count} />
 
-              <main id="page-wrap" style={{ marginRight: this.state.isMenuOpen === true ? '300px' : '' }}>
-                <div className="App">
-                  <Routes />
+                            <main id="page-wrap" style={{ marginRight: this.state.isMenuOpen === true ? '300px' : '' }}>
+                                <div className="App">
+                                    <Routes />
+                                </div>
+                            </main>
+                        </div>
+                    )}
                 </div>
-              </main>
-            </div>
-          )}
-        </div>
-      </Router>
-    )
-  }
+            </Router>
+        )
+    }
 }
 
 export default App
