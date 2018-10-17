@@ -1,5 +1,6 @@
 /* NPM */
 @import '~react-toastify/dist/ReactToastify.css';
+@import './datepicker.css';
 
 /* CUSTOM */
 @import './misc.css';
@@ -10,3 +11,5 @@
 @import './title.css';
 @import './span.css';
 @import './table.css';
+@import './form.css';
+@import './datepicker-custom.css';

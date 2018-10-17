@@ -1,0 +1,35 @@
+.rdtPicker
+{
+    width:100%;
+    border-color: #ccc;
+    padding:0px;
+    margin-top: 5px;
+    padding-bottom: 15px;
+}
+
+.rdtDays th
+{
+    font-weight:500;
+}
+
+.rdtPicker th
+{
+    font-weight:500;
+}
+
+.rdtPicker table th, .rdtPicker table td
+{
+    border:0px;
+    padding:0px;
+}
+
+.sub-table-content .rdtPicker table tr th
+{
+    background: #fff;
+}
+
+.rdtOpen .rdtPicker
+{
+    position:static;
+    border-radius:3px;
+}
