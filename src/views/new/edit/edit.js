@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as StaffService from '../../../services/staffService'
 import * as GeographyService from '../../../services/geographySerive'
+import * as AppService from '../../../services/appService'
 import EditUserDialog from './form'
 
 class Edit extends Component {
@@ -10,6 +11,7 @@ class Edit extends Component {
         const {
             match: { params }
         } = props
+
         const id = parseInt(params.id)
 
         this.state = {
@@ -17,6 +19,11 @@ class Edit extends Component {
             staff: null,
             flights: [],
             airports: [],
+            sourceMarkets: [],
+            seasons: [],
+            flightStatuses: [],
+            roles: [],
+            destinations: [],
             loaded: false
         }
     }
@@ -32,9 +39,9 @@ class Edit extends Component {
         const destinations = await GeographyService.getDestinations()
 
         if (staff) {
-            document.title = `New - ${staff.name}`
+            AppService.setTitle(`New - ${staff.name}`)
         } else {
-            document.title = `Staff not found`
+            AppService.setTitle('Staff not found')
         }
 
         this.setState({ staff, flights, airports, sourceMarkets, seasons, flightStatuses, roles, destinations, loaded: true })
@@ -48,7 +55,7 @@ class Edit extends Component {
 
     render() {
         if (!this.state.loaded) {
-            return <div>Loading...</div>
+            return ''
         }
 
         return this.state.staff ? (

@@ -19,8 +19,6 @@ export async function get(url, useBaseUrl = true) {
         toast.error(`An unexpected error has occured: ${err}.`)
 
         throw new Error(err)
-    } finally {
-        console.log()
     }
 }
 
@@ -36,52 +34,10 @@ export async function post(url, data, useBaseUrl = true) {
 
         return response.data
     } catch (err) {
-        toast.error('', `An unexpected error has occured: ${err}.`)
-
         console.log('Error POST', err)
 
+        toast.error('', `An unexpected error has occured: ${err}.`)
+
         throw new Error(err)
-    } finally {
-        console.log()
     }
 }
-
-// export async function put(url, data) {
-//     try {
-//         const baseUrl = useBaseUrl === true ? Config.api : ''
-
-//         Logger.trace(`[PUT] ${baseUrl + url} ${JSON.stringify(data)}`, 'RestClient')
-
-//         const response = await axios.put(baseUrl + url, data)
-
-//         Logger.trace(`[RESPONSE] ${JSON.stringify(response.data as T)}`, 'RestClient')
-
-//         return response.data
-//     } catch (err) {
-//         toastr.error('', `An unexpected error has occured: ${err}.`)
-
-//         Logger.error('Error PUT', 'RestClient', err)
-
-//         throw new Error(err)
-//     }
-// }
-
-// export async function del(url, data) {
-//     try {
-//         const baseUrl = useBaseUrl === true ? Config.api : ''
-
-//         Logger.trace(`[DELETE] ${baseUrl + url} ${JSON.stringify(data)}`, 'RestClient')
-
-//         const response = await axios.delete(baseUrl + url, data)
-
-//         Logger.trace(`[RESPONSE] ${JSON.stringify(response.data as T)}`, 'RestClient')
-
-//         return response.data
-//     } catch (err) {
-//         toastr.error('', `An unexpected error has occured: ${err}.`)
-
-//         Logger.error('Error DELETE', 'RestClient', err)
-
-//         throw new Error(err)
-//     }
-// }

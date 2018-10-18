@@ -5,6 +5,7 @@ import Loader from './components/loader'
 import Menu from './components/menu'
 import * as StaffService from './services/staffService'
 import { ToastContainer } from 'react-toastify'
+import * as AppService from './services/appService'
 import './styles/site.css'
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
     }
 
     async componentWillMount() {
-        document.title = 'CTX'
+        AppService.setTitle()
 
         const count = await StaffService.getCount()
 
