@@ -1,7 +1,7 @@
 import Datetime from 'react-datetime'
 import React from 'react'
 
-const DatePicker = ({ field, form }) => {
+const DatePicker = ({ field, form, setFieldTouched }) => {
     const onChange = date => {
         //Picker
         if (date._d) {
@@ -11,6 +11,8 @@ const DatePicker = ({ field, form }) => {
         //Manual
         if (!date._d) {
             form.setFieldValue(field.name, date)
+
+            setFieldTouched(field.name, ' ')
         }
     }
 
@@ -23,6 +25,7 @@ const DatePicker = ({ field, form }) => {
             closeOnSelect
             utc={true}
             inputProps={{ placeholder: 'YYYY-MM-DD' }}
+            onBlur={() => setFieldTouched(field.name, ' ')}
         />
     )
 }

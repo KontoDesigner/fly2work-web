@@ -37,7 +37,7 @@ export async function getRoles() {
 }
 
 export async function getDestinations() {
-    const roles = await restClient.get('roles')
+    const destinations = await restClient.get('destinations')
 
-    return roles
+    return destinations
 }

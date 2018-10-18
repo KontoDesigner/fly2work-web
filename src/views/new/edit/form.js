@@ -9,22 +9,68 @@ import { Row, Col, Button } from 'reactstrap'
 import * as Yup from 'yup'
 
 const validationSchema = Yup.object().shape({
-    id: Yup.string().required('Field is required'),
-    name: Yup.string().required('Field is required'),
-    dateOfBirth: Yup.string().required('Field is required'),
-    sourceMarket: Yup.string().required('Field is required'),
-    season: Yup.string().required('Field is required'),
-    dateOfFlight: Yup.string().required('Field is required'),
-    statusOfFlight: Yup.string().required('Field is required'),
     // hotelNeeded,
-    role: Yup.string().required('Field is required'),
-    destination: Yup.string().required('Field is required'),
     // gender,
-    phone: Yup.string().required('Field is required'),
-    departureAirport: Yup.string().required('Field is required'),
-    arrivalAirport: Yup.string().required('Field is required'),
-    typeOfFlight: Yup.string().required('Field is required'),
-    comment: Yup.string().max(200, 'Max 200 characters')
+    id: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    name: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    dateOfBirth: Yup.date()
+        .typeError('Value must be a datetime')
+        .nullable(true)
+        .required('Field is required'),
+    sourceMarket: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    season: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    dateOfFlight: Yup.date()
+        .typeError('Value must be a datetime')
+        .nullable(true)
+        .required('Field is required'),
+    statusOfFlight: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    role: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    destination: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    phone: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    departureAirport: Yup.array()
+        .min(1, 'Minimum 1 airport')
+        .max(3, 'Maximum 3 airports')
+        .of(
+            Yup.object().shape({
+                label: Yup.string().required(),
+                value: Yup.string().required()
+            })
+        )
+        .required('Field is required')
+        .nullable(true),
+    arrivalAirport: Yup.array()
+        .min(1, 'Minimum 1 airport')
+        .max(3, 'Maximum 3 airports')
+        .of(
+            Yup.object().shape({
+                label: Yup.string().required(),
+                value: Yup.string().required()
+            })
+        )
+        .required('Field is required')
+        .nullable(true),
+    typeOfFlight: Yup.string()
+        .nullable(true)
+        .required('Field is required'),
+    comment: Yup.string()
+        .nullable(true)
+        .max(200, 'Max 200 characters')
 })
 
 const EditUserDialog = props => {
@@ -38,7 +84,7 @@ const EditUserDialog = props => {
                 onSubmit={(values, actions) => {
                     props.handleStaff(values)
                 }}
-                render={({ errors, touched, isSubmitting }) => (
+                render={({ errors, touched, isSubmitting, setFieldTouched }) => (
                     <Form>
                         <Row>
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
@@ -60,40 +106,45 @@ const EditUserDialog = props => {
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="dateOfBirth">Date Of Birth</label>
-                                    <Field name={'dateOfBirth'} component={DatePicker} />
-                                    {errors.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
+                                    <Field name={'dateOfBirth'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                    {errors.dateOfBirth && touched.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="sourceMarket">Source Market</label>
-                                    <Field name={'sourceMarket'} component={Select} options={props.sourceMarkets} />
-                                    {errors.sourceMarket && <div className="message">{errors.sourceMarket}</div>}
+                                    <Field name={'sourceMarket'} component={Select} options={props.sourceMarkets} setFieldTouched={setFieldTouched} />
+                                    {errors.sourceMarket && touched.sourceMarket && <div className="message">{errors.sourceMarket}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="season">Season</label>
-                                    <Field name={'season'} component={Select} options={props.seasons} />
-                                    {errors.season && <div className="message">{errors.season}</div>}
+                                    <label htmlFor="season">Season {touched.season}</label>
+                                    <Field name={'season'} component={Select} options={props.seasons} setFieldTouched={setFieldTouched} />
+                                    {errors.season && touched.season && <div className="message">{errors.season}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="dateOfFlight">Date Of Flight</label>
-                                    <Field name={'dateOfFlight'} component={DatePicker} />
-                                    {errors.dateOfFlight && <div className="message">{errors.dateOfFlight}</div>}
+                                    <Field name={'dateOfFlight'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                    {errors.dateOfFlight && touched.dateOfFlight && <div className="message">{errors.dateOfFlight}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="statusOfFlight">Status Of The Flight</label>
-                                    <Field name={'statusOfFlight'} component={Select} options={props.flightStatuses} />
-                                    {errors.statusOfFlight && <div className="message">{errors.statusOfFlight}</div>}
+                                    <Field
+                                        name={'statusOfFlight'}
+                                        component={Select}
+                                        options={props.flightStatuses}
+                                        setFieldTouched={setFieldTouched}
+                                    />
+                                    {errors.statusOfFlight && touched.statusOfFlight && <div className="message">{errors.statusOfFlight}</div>}
                                 </div>
                             </Col>
 
@@ -107,16 +158,16 @@ const EditUserDialog = props => {
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="role">Role</label>
-                                    <Field name={'role'} component={Select} options={props.roles} />
-                                    {errors.role && <div className="message">{errors.role}</div>}
+                                    <Field name={'role'} component={Select} options={props.roles} setFieldTouched={setFieldTouched} />
+                                    {errors.role && touched.role && <div className="message">{errors.role}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="destination">Destination</label>
-                                    <Field name={'destination'} component={Select} options={props.destinations} />
-                                    {errors.destination && <div className="message">{errors.destination}</div>}
+                                    <Field name={'destination'} component={Select} options={props.destinations} setFieldTouched={setFieldTouched} />
+                                    {errors.destination && touched.destination && <div className="message">{errors.destination}</div>}
                                 </div>
                             </Col>
 
@@ -137,24 +188,34 @@ const EditUserDialog = props => {
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="departureAirport">Departure Airport</label>
-                                    <Field name={'departureAirport'} component={MultiSelect} options={props.airports} />
-                                    {errors.departureAirport && <div className="message">{errors.departureAirport}</div>}
+                                    <Field
+                                        name={'departureAirport'}
+                                        component={MultiSelect}
+                                        options={props.airports}
+                                        setFieldTouched={setFieldTouched}
+                                    />
+                                    {errors.departureAirport && touched.departureAirport && <div className="message">{errors.departureAirport}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="arrivalAirport">Arrival Airport</label>
-                                    <Field name={'arrivalAirport'} component={MultiSelect} options={props.airports} />
-                                    {errors.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
+                                    <Field
+                                        name={'arrivalAirport'}
+                                        component={MultiSelect}
+                                        options={props.airports}
+                                        setFieldTouched={setFieldTouched}
+                                    />
+                                    {errors.arrivalAirport && touched.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="typeOfFlight">Type Of Flight</label>
-                                    <Field name={'typeOfFlight'} component={Select} options={props.flights} />
-                                    {errors.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
+                                    <Field name={'typeOfFlight'} component={Select} options={props.flights} setFieldTouched={setFieldTouched} />
+                                    {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
                                 </div>
                             </Col>
                         </Row>

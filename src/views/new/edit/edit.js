@@ -61,7 +61,7 @@ class Edit extends Component {
                 seasons={this.state.seasons}
                 flightStatuses={this.state.flightStatuses}
                 roles={this.state.roles}
-                daestinations={this.state.destinations}
+                destinations={this.state.destinations}
             />
         ) : (
             <div>Staff not found</div>
