@@ -1,22 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
-import * as StaffService from '../../services/staffService'
 
 class New extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            staffs: []
-        }
-    }
-
     async componentDidMount() {
         AppService.setTitle('New')
 
-        const staffs = await StaffService.getNew()
-
-        this.setState({ staffs })
+        this.props.newActions.getStaffs()
     }
 
     handleClick(id) {
@@ -36,7 +28,7 @@ class New extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.staffs.map(staff => (
+                            {this.props.staffs.map(staff => (
                                 <tr onClick={() => this.handleClick(staff.id)} key={staff.id}>
                                     <td className="link">{staff.name}</td>
                                 </tr>
@@ -49,4 +41,19 @@ class New extends Component {
     }
 }
 
-export default New
+function mapStateToProps(state) {
+    return {
+        staffs: state.new.staffs
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        newActions: bindActionCreators(newActions, dispatch)
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(New)

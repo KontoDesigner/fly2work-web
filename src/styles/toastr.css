@@ -1,0 +1,32 @@
+.redux-toastr .toastr .rrt-left-container
+{
+	display:none;
+}
+
+.redux-toastr .toastr .rrt-middle-container
+{
+	margin-left:0;
+	width:100%!important;
+    padding: 10px 10px;	
+}
+
+.close-toastr
+{
+	display:none;
+}
+
+.rrt-title
+{
+	font-weight:500!important;
+    margin-bottom:0px!important;
+}
+
+.redux-toastr .toastr .rrt-middle-container .rrt-title
+{
+	font-family: 'Roboto', sans-serif!important;
+}
+
+.redux-toastr .toastr .rrt-middle-container .rrt-text
+{
+	font-family: 'Roboto', sans-serif!important;
+}

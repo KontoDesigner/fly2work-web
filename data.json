@@ -2,6 +2,13 @@
   "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
   "profile": { "name": "typicode" },
+  "staffCount": {
+    "new": 1,
+    "submitted": 2,
+    "pending": 3,
+    "confirmed": 4,
+    "overview": 5
+  },
   "flights": [
     { "value": "Holiday", "label": "Holiday" },
     { "value": "End of season", "label": "End of season" },

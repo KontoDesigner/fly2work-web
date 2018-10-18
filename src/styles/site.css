@@ -1,5 +1,5 @@
 /* NPM */
-@import '~react-toastify/dist/ReactToastify.css';
+@import '~react-redux-toastr/lib/css/react-redux-toastr.min.css';
 @import './datepicker.css';
 
 /* CUSTOM */
@@ -14,3 +14,4 @@
 @import './table.css';
 @import './form.css';
 @import './datepicker-custom.css';
+@import './toastr.css';

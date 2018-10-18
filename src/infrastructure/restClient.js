@@ -1,6 +1,6 @@
 import axios from 'axios'
 import config from './config'
-import { toast } from 'react-toastify'
+import { toastr } from 'react-redux-toastr'
 
 export async function get(url, useBaseUrl = true) {
     try {
@@ -16,7 +16,7 @@ export async function get(url, useBaseUrl = true) {
     } catch (err) {
         console.log('Error GET', err)
 
-        toast.error(`An unexpected error has occured: ${err}.`)
+        toastr.error('Error', `An unexpected error has occured: ${err}.`)
 
         throw new Error(err)
     }
@@ -36,7 +36,7 @@ export async function post(url, data, useBaseUrl = true) {
     } catch (err) {
         console.log('Error POST', err)
 
-        toast.error('', `An unexpected error has occured: ${err}.`)
+        toastr.error('Error', `An unexpected error has occured: ${err}.`)
 
         throw new Error(err)
     }

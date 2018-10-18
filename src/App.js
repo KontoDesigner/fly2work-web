@@ -3,9 +3,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './infrastructure/routes'
 import Loader from './components/loader'
 import Menu from './components/menu'
-import * as StaffService from './services/staffService'
-import { ToastContainer } from 'react-toastify'
 import * as AppService from './services/appService'
+import ReduxToastr from 'react-redux-toastr'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as geographyActions from './actions/geographyActions'
+import * as menuActions from './actions/menuActions'
 import './styles/site.css'
 
 class App extends Component {
@@ -13,41 +16,48 @@ class App extends Component {
         super(props)
 
         this.state = {
-            loaded: false,
-            isMenuOpen: true,
-            count: {}
+            loaded: false
         }
     }
 
     async componentWillMount() {
         AppService.setTitle()
 
-        const count = await StaffService.getCount()
+        const _this = this
 
-        this.setState({ count, loaded: true })
-    }
-
-    getCount = async () => {
-        const count = await StaffService.getCount()
-
-        this.setState({ count })
-    }
-
-    handleIsMenuOpen = state => {
-        this.setState({ isMenuOpen: state.isOpen })
+        return Promise.all([
+            this.props.geographyActions.getFlights(),
+            this.props.geographyActions.getAirports(),
+            this.props.geographyActions.getSourceMarkets(),
+            this.props.geographyActions.getSeasons(),
+            this.props.geographyActions.getFlightStatuses(),
+            this.props.geographyActions.getRoles(),
+            this.props.geographyActions.getDestinations(),
+            this.props.menuActions.getStaffCount()
+        ]).then(function() {
+            _this.setState({ loaded: true })
+        })
     }
 
     render() {
         return (
             <Router>
                 <div style={{ height: '100%' }}>
-                    <ToastContainer />
+                    <ReduxToastr
+                        timeOut={5000}
+                        newestOnTop={false}
+                        preventDuplicates={false}
+                        position="bottom-right"
+                        transitionIn="fadeIn"
+                        transitionOut="fadeOut"
+                        progressBar
+                    />
 
-                    <Loader />
+                    <Loader ajaxCallsInProgress={this.props.ajaxCallsInProgress} />
 
                     {this.state.loaded && (
                         <div id="outer-container" style={{ height: '100%' }}>
-                            <Menu handleIsMenuOpen={this.handleIsMenuOpen} isMenuOpen={this.state.isMenuOpen} count={this.state.count} />
+                            <Menu isOpen={this.props.isOpen} handleIsOpen={this.props.menuActions.handleIsOpen} staffCount={this.props.staffCount} />
 
                             <main id="page-wrap" style={{ marginRight: this.state.isMenuOpen === true ? '300px' : '' }}>
                                 <div className="App">
@@ -62,4 +72,22 @@ class App extends Component {
     }
 }
 
-export default App
+function mapStateToProps(state) {
+    return {
+        isOpen: state.menu.isOpen,
+        staffCount: state.menu.staffCount,
+        ajaxCallsInProgress: state.ajaxCallsInProgress
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        geographyActions: bindActionCreators(geographyActions, dispatch),
+        menuActions: bindActionCreators(menuActions, dispatch)
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App)

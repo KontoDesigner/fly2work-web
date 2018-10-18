@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import * as StaffService from '../../../services/staffService'
-import * as GeographyService from '../../../services/geographySerive'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import * as AppService from '../../../services/appService'
 import EditUserDialog from './form'
+import * as RestClient from '../../../infrastructure/restClient'
+import * as ajaxStatusActions from '../../../actions/ajaxStatusActions'
 
 class Edit extends Component {
     constructor(props) {
@@ -17,26 +19,16 @@ class Edit extends Component {
         this.state = {
             id: id,
             staff: null,
-            flights: [],
-            airports: [],
-            sourceMarkets: [],
-            seasons: [],
-            flightStatuses: [],
-            roles: [],
-            destinations: [],
             loaded: false
         }
     }
 
     async componentWillMount() {
-        const staff = await StaffService.getStaff(this.state.id)
-        const flights = await GeographyService.getFlights()
-        const airports = await GeographyService.getAirports()
-        const sourceMarkets = await GeographyService.getSourceMarkets()
-        const seasons = await GeographyService.getSeasons()
-        const flightStatuses = await GeographyService.getFlightStatuses()
-        const roles = await GeographyService.getRoles()
-        const destinations = await GeographyService.getDestinations()
+        this.props.ajaxStatusActions.beginAjaxCall()
+
+        const staff = await RestClient.get(`people/${this.state.id}`)
+
+        this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
             AppService.setTitle(`New - ${staff.name}`)
@@ -44,7 +36,7 @@ class Edit extends Component {
             AppService.setTitle('Staff not found')
         }
 
-        this.setState({ staff, flights, airports, sourceMarkets, seasons, flightStatuses, roles, destinations, loaded: true })
+        this.setState({ staff, loaded: true })
     }
 
     handleStaff = staff => {
@@ -62,13 +54,13 @@ class Edit extends Component {
             <EditUserDialog
                 staff={this.state.staff}
                 handleStaff={this.handleStaff}
-                flights={this.state.flights}
-                airports={this.state.airports}
-                sourceMarkets={this.state.sourceMarkets}
-                seasons={this.state.seasons}
-                flightStatuses={this.state.flightStatuses}
-                roles={this.state.roles}
-                destinations={this.state.destinations}
+                flights={this.props.flights}
+                airports={this.props.airports}
+                sourceMarkets={this.props.sourceMarkets}
+                seasons={this.props.seasons}
+                flightStatuses={this.props.flightStatuses}
+                roles={this.props.roles}
+                destinations={this.props.destinations}
             />
         ) : (
             <div>Staff not found</div>
@@ -76,4 +68,25 @@ class Edit extends Component {
     }
 }
 
-export default Edit
+function mapStateToProps(state) {
+    return {
+        flights: state.geography.flights,
+        airports: state.geography.airports,
+        sourceMarkets: state.geography.sourceMarkets,
+        seasons: state.geography.seasons,
+        flightStatuses: state.geography.flightStatuses,
+        roles: state.geography.roles,
+        destinations: state.geography.destinations
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch)
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Edit)

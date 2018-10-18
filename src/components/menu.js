@@ -7,34 +7,34 @@ const Menu = props => {
     return (
         <div id="push">
             <ReactBurgerMenu
-                onStateChange={state => props.handleIsMenuOpen(state)}
-                isOpen={props.isMenuOpen}
+                isOpen={props.isOpen}
+                onStateChange={state => props.handleIsOpen(state.isOpen)}
                 noOverlay={true}
                 pageWrapId={'page-wrap'}
                 outerContainerId={'outer-container'}>
                 <h1>{config.name}</h1>
 
                 <Link className="menu-item" to="/new">
-                    New <span className="text-danger">({props.count.new})</span>
+                    New <span className="text-danger">({props.staffCount.new})</span>
                 </Link>
 
                 <Link className="menu-item" to="/submitted">
-                    Submitted <span className="text-danger">({props.count.submitted})</span>
+                    Submitted <span className="text-danger">({props.staffCount.submitted})</span>
                 </Link>
 
                 <Link className="menu-item" to="/pending">
-                    Pending <span className="text-danger">({props.count.pending})</span>
+                    Pending <span className="text-danger">({props.staffCount.pending})</span>
                 </Link>
 
                 <Link className="menu-item" to="/confirmed">
-                    Confirmed <span className="text-danger">({props.count.confirmed})</span>
+                    Confirmed <span className="text-danger">({props.staffCount.confirmed})</span>
                 </Link>
 
                 <Link className="menu-item" to="/overview">
-                    Overview <span className="text-danger">({props.count.overview})</span>
+                    Overview <span className="text-danger">({props.staffCount.overview})</span>
                 </Link>
 
-                <div onClick={() => props.handleIsMenuOpen({ isOpen: false })}>
+                <div onClick={() => props.handleIsOpen(false)}>
                     <span className="text-danger">Close</span>
                 </div>
             </ReactBurgerMenu>

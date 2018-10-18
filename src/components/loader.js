@@ -1,8 +1,8 @@
 import React from 'react'
 
-const loader = () => {
+const loader = props => {
     return (
-        0 > 0 && (
+        props.ajaxCallsInProgress > 0 && (
             <div>
                 <div className="disabler" />
                 <div className="scene">
