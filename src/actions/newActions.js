@@ -1,5 +1,5 @@
 import { ActionTypes as types } from '../constants/newConstants'
-import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions'
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 
 export function getStaffsSuccess(staffs) {
@@ -17,6 +17,22 @@ export function getStaffs() {
             const staffs = await RestClient.get(`people`)
 
             dispatch(getStaffsSuccess(staffs))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function insertStaff(staff) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            await RestClient.post(`http://localhost:5000/staff`, staff, false)
+
+            dispatch(endAjaxCall())
         } catch (error) {
             dispatch(ajaxCallError(error))
 

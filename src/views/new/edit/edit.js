@@ -5,6 +5,7 @@ import * as AppService from '../../../services/appService'
 import EditUserDialog from './form'
 import * as RestClient from '../../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../../actions/ajaxStatusActions'
+import * as newActions from '../../../actions/newActions'
 
 class Edit extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class Edit extends Component {
     handleStaff = staff => {
         this.setState({ staff })
 
-        console.log(staff)
+        this.props.newActions.insertStaff(staff)
     }
 
     render() {
@@ -82,7 +83,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch)
+        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch),
+        newActions: bindActionCreators(newActions, dispatch)
     }
 }
 

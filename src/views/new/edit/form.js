@@ -6,72 +6,7 @@ import Checkbox from '../../../components/checkbox'
 import MultiSelect from '../../../components/multiSelect'
 import Gender from '../../../components/gender'
 import { Row, Col, Button } from 'reactstrap'
-import * as Yup from 'yup'
-
-const validationSchema = Yup.object().shape({
-    // hotelNeeded,
-    // gender,
-    id: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    name: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    dateOfBirth: Yup.date()
-        .typeError('Value must be a datetime')
-        .nullable(true)
-        .required('Field is required'),
-    sourceMarket: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    season: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    dateOfFlight: Yup.date()
-        .typeError('Value must be a datetime')
-        .nullable(true)
-        .required('Field is required'),
-    statusOfFlight: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    role: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    destination: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    phone: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    departureAirport: Yup.array()
-        .min(1, 'Minimum 1 airport')
-        .max(3, 'Maximum 3 airports')
-        .of(
-            Yup.object().shape({
-                label: Yup.string().required(),
-                value: Yup.string().required()
-            })
-        )
-        .required('Field is required')
-        .nullable(true),
-    arrivalAirport: Yup.array()
-        .min(1, 'Minimum 1 airport')
-        .max(3, 'Maximum 3 airports')
-        .of(
-            Yup.object().shape({
-                label: Yup.string().required(),
-                value: Yup.string().required()
-            })
-        )
-        .required('Field is required')
-        .nullable(true),
-    typeOfFlight: Yup.string()
-        .nullable(true)
-        .required('Field is required'),
-    comment: Yup.string()
-        .nullable(true)
-        .max(200, 'Max 200 characters')
-})
+import formValidation from './formValidation'
 
 const EditUserDialog = props => {
     return (
@@ -80,7 +15,7 @@ const EditUserDialog = props => {
 
             <Formik
                 initialValues={props.staff}
-                validationSchema={validationSchema}
+                formValidation={formValidation}
                 onSubmit={(values, actions) => {
                     props.handleStaff(values)
                 }}
