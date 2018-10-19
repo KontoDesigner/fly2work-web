@@ -1,17 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Filter from './filter'
+import Table from './table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
 
 class New extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            search: ''
+        }
+    }
+
     async componentDidMount() {
         AppService.setTitle('New')
 
         this.props.newActions.getStaffs()
     }
 
-    handleClick(id) {
+    handleSearch = event => {
+        this.setState({ search: event.target.value })
+    }
+
+    handleClick = id => {
         this.props.history.push(`/new/${id}`)
     }
 
@@ -20,22 +34,9 @@ class New extends Component {
             <div>
                 <h2>New</h2>
 
-                <div className="tui-text-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.staffs.map(staff => (
-                                <tr onClick={() => this.handleClick(staff.id)} key={staff.id}>
-                                    <td className="link">{staff.name}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                <Filter search={this.state.search} handleSearch={this.handleSearch} />
+
+                <Table staffs={this.props.staffs} handleClick={this.handleClick} />
             </div>
         )
     }

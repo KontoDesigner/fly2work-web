@@ -59,7 +59,7 @@ class App extends Component {
                         <div id="outer-container" style={{ height: '100%' }}>
                             <Menu isOpen={this.props.isOpen} handleIsOpen={this.props.menuActions.handleIsOpen} staffCount={this.props.staffCount} />
 
-                            <main id="page-wrap" style={{ marginRight: this.state.isMenuOpen === true ? '300px' : '' }}>
+                            <main className={this.props.isOpen ? 'page-wrap-open' : ''} id="page-wrap">
                                 <div className="App">
                                     <Routes />
                                 </div>

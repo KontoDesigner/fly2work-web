@@ -24,6 +24,23 @@ body {
   margin-top: 3rem;
 }
 
+.page-wrap-open
+{
+  margin-right:300px;
+}
+
+.placeholder-white::placeholder {
+  color: #fff;
+}
+
+.placeholder-white:-ms-input-placeholder {
+  color: #fff;
+}
+
+.placeholder-white::-ms-input-placeholder {
+  color: #fff;
+}
+
 @media only screen and (min-width: 992px) {
   .logo-tui {
     height: 60px;
