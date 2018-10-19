@@ -6,7 +6,7 @@ import Checkbox from '../../../components/checkbox'
 import MultiSelect from '../../../components/multiSelect'
 import Gender from '../../../components/gender'
 import { Row, Col, Button } from 'reactstrap'
-import formValidation from './formValidation'
+import validation from './validation'
 
 const EditUserDialog = props => {
     return (
@@ -15,7 +15,7 @@ const EditUserDialog = props => {
 
             <Formik
                 initialValues={props.staff}
-                formValidation={formValidation}
+                validationSchema={validation}
                 onSubmit={(values, actions) => {
                     props.handleStaff(values)
                 }}

@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const formValidation = Yup.object().shape({
+const validation = Yup.object().shape({
     // hotelNeeded,
     // gender,
     id: Yup.string()
@@ -65,4 +65,4 @@ const formValidation = Yup.object().shape({
         .max(200, 'Comment must contain a total 200 characters')
 })
 
-export default formValidation
+export default validation
