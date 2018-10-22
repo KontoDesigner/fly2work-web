@@ -1,7 +1,7 @@
 import React from 'react'
 import CreatableSelect from 'react-select/lib/Creatable'
 
-const Creatable = ({ field, form, setFieldTouched }) => {
+const Creatable = ({ field, form, setFieldTouched, noOptionsMessage }) => {
     const value = field.value
         ? field.value.map(function(item) {
               return { value: item, label: item }
@@ -23,6 +23,7 @@ const Creatable = ({ field, form, setFieldTouched }) => {
             value={value}
             onChange={option => onChange(option)}
             onBlur={() => setFieldTouched(field.name, ' ')}
+            noOptionsMessage={() => noOptionsMessage}
         />
     )
 }

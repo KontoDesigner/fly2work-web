@@ -31,7 +31,7 @@ export function insertStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.post(`http://localhost:5000/staff`, staff, false)
+            const res = await RestClient.post(`http://localhost:5000/new`, staff, false)
 
             if (res && res.ok === true) {
                 console.log('Staff has been saved')

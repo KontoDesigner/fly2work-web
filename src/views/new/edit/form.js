@@ -112,14 +112,24 @@ const EditUserDialog = props => {
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="departureAirport">Departure Airport</label>
-                                    <Field name={'departureAirport'} component={Creatable} setFieldTouched={setFieldTouched} />
+                                    <Field
+                                        name={'departureAirport'}
+                                        component={Creatable}
+                                        setFieldTouched={setFieldTouched}
+                                        noOptionsMessage="Type to create..."
+                                    />
                                     {errors.departureAirport && touched.departureAirport && <div className="message">{errors.departureAirport}</div>}
                                 </div>
                             </Col>
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="arrivalAirport">Arrival Airport</label>
-                                    <Field name={'arrivalAirport'} component={Creatable} setFieldTouched={setFieldTouched} />
+                                    <Field
+                                        name={'arrivalAirport'}
+                                        component={Creatable}
+                                        setFieldTouched={setFieldTouched}
+                                        noOptionsMessage="Type to create..."
+                                    />
                                     {errors.arrivalAirport && touched.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
                                 </div>
                             </Col>
