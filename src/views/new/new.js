@@ -5,15 +5,23 @@ import Filter from './filter'
 import Table from './table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
+import lodash from 'lodash'
 
 class New extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            search: ''
+            search: '',
+            criteria: ''
         }
     }
+
+    handleCriteria = () => {
+        this.setState({ criteria: this.state.search })
+    }
+
+    debouncedGetData = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
         AppService.setTitle('New')
@@ -23,6 +31,8 @@ class New extends Component {
 
     handleSearch = event => {
         this.setState({ search: event.target.value })
+
+        this.debouncedGetData()
     }
 
     handleClick = id => {
@@ -36,7 +46,7 @@ class New extends Component {
 
                 <Filter search={this.state.search} handleSearch={this.handleSearch} />
 
-                <Table staffs={this.props.staffs} handleClick={this.handleClick} />
+                <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} />
             </div>
         )
     }
