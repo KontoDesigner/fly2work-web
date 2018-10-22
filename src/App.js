@@ -27,7 +27,6 @@ class App extends Component {
 
         return Promise.all([
             this.props.geographyActions.getFlights(),
-            this.props.geographyActions.getAirports(),
             this.props.geographyActions.getSourceMarkets(),
             this.props.geographyActions.getSeasons(),
             this.props.geographyActions.getFlightStatuses(),

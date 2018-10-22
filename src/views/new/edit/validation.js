@@ -35,28 +35,28 @@ const validation = Yup.object().shape({
     phone: Yup.string()
         .nullable(true)
         .required('Phone is required'),
-    departureAirport: Yup.array()
-        .min(1, 'Min 1 departure airport')
-        .max(3, 'Max 3 departure airports')
-        .of(
-            Yup.object().shape({
-                label: Yup.string().required(),
-                value: Yup.string().required()
-            })
-        )
-        .required('Departure airport is required')
-        .nullable(true),
-    arrivalAirport: Yup.array()
-        .min(1, 'Min 1 arrival airport')
-        .max(3, 'Max 3 arrival airports')
-        .of(
-            Yup.object().shape({
-                label: Yup.string().required(),
-                value: Yup.string().required()
-            })
-        )
-        .required('Arrival airport is required')
-        .nullable(true),
+    // departureAirport: Yup.array()
+    //     .min(1, 'Min 1 departure airport')
+    //     .max(3, 'Max 3 departure airports')
+    //     .of(
+    //         Yup.object().shape({
+    //             label: Yup.string().required(),
+    //             value: Yup.string().required()
+    //         })
+    //     )
+    //     .required('Departure airport is required')
+    //     .nullable(true),
+    // arrivalAirport: Yup.array()
+    //     .min(1, 'Min 1 arrival airport')
+    //     .max(3, 'Max 3 arrival airports')
+    //     .of(
+    //         Yup.object().shape({
+    //             label: Yup.string().required(),
+    //             value: Yup.string().required()
+    //         })
+    //     )
+    //     .required('Arrival airport is required')
+    //     .nullable(true),
     typeOfFlight: Yup.string()
         .nullable(true)
         .required('Type of flight is required'),

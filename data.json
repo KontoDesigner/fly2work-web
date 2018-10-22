@@ -15,12 +15,6 @@
     { "value": "Start of season", "label": "Start of season" },
     { "value": "Other", "label": "Other" }
   ],
-  "airports": [ 
-    { "value": "Holiday", "label": "Holiday" },
-    { "value": "End of season", "label": "End of season" },
-    { "value": "Start of season", "label": "Start of season" },
-    { "value": "Other", "label": "Other" }
-  ],
   "sourceMarkets": [
     {"value": "tuise", "label": "tuise"},
     {"value": "tuifi", "label": "tuifi"}

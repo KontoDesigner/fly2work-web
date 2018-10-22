@@ -25,29 +25,6 @@ export function getFlights() {
     }
 }
 
-export function getAirportsSuccess(airports) {
-    return {
-        type: types.GET_AIRPORTS_SUCCESS,
-        data: { airports }
-    }
-}
-
-export function getAirports() {
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const airports = await RestClient.get(`airports`)
-
-            dispatch(getAirportsSuccess(airports))
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
 export function getSourceMarketsSuccess(sourceMarkets) {
     return {
         type: types.GET_SOURCEMARKETS_SUCCESS,

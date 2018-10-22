@@ -41,6 +41,8 @@ class Edit extends Component {
     }
 
     handleStaff = staff => {
+        console.log(staff)
+
         this.setState({ staff })
 
         this.props.newActions.insertStaff(staff)
@@ -56,7 +58,6 @@ class Edit extends Component {
                 staff={this.state.staff}
                 handleStaff={this.handleStaff}
                 flights={this.props.flights}
-                airports={this.props.airports}
                 sourceMarkets={this.props.sourceMarkets}
                 seasons={this.props.seasons}
                 flightStatuses={this.props.flightStatuses}
@@ -72,7 +73,6 @@ class Edit extends Component {
 function mapStateToProps(state) {
     return {
         flights: state.geography.flights,
-        airports: state.geography.airports,
         sourceMarkets: state.geography.sourceMarkets,
         seasons: state.geography.seasons,
         flightStatuses: state.geography.flightStatuses,

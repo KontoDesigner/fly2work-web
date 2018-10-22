@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import Select from '../../../components/select'
 import DatePicker from '../../../components/datePicker'
 import Checkbox from '../../../components/checkbox'
-import MultiSelect from '../../../components/multiSelect'
+import Creatable from '../../../components/creatable'
 import Gender from '../../../components/gender'
 import { Row, Col, Button } from 'reactstrap'
 import validation from './validation'
@@ -19,7 +19,7 @@ const EditUserDialog = props => {
                 onSubmit={(values, actions) => {
                     props.handleStaff(values)
                 }}
-                render={({ errors, touched, isSubmitting, setFieldTouched }) => (
+                render={({ values, errors, touched, isSubmitting, setFieldTouched }) => (
                     <Form>
                         <Row>
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
@@ -123,12 +123,7 @@ const EditUserDialog = props => {
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="departureAirport">Departure Airport</label>
-                                    <Field
-                                        name={'departureAirport'}
-                                        component={MultiSelect}
-                                        options={props.airports}
-                                        setFieldTouched={setFieldTouched}
-                                    />
+                                    <Field name={'departureAirport'} component={Creatable} setFieldTouched={setFieldTouched} />
                                     {errors.departureAirport && touched.departureAirport && <div className="message">{errors.departureAirport}</div>}
                                 </div>
                             </Col>
@@ -136,12 +131,7 @@ const EditUserDialog = props => {
                             <Col xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="arrivalAirport">Arrival Airport</label>
-                                    <Field
-                                        name={'arrivalAirport'}
-                                        component={MultiSelect}
-                                        options={props.airports}
-                                        setFieldTouched={setFieldTouched}
-                                    />
+                                    <Field name={'arrivalAirport'} component={Creatable} setFieldTouched={setFieldTouched} />
                                     {errors.arrivalAirport && touched.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
                                 </div>
                             </Col>
