@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Filter from './filter'
+import Search from './search'
 import Table from './table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
@@ -44,7 +44,7 @@ class New extends Component {
             <div>
                 <h2>New</h2>
 
-                <Filter search={this.state.search} handleSearch={this.handleSearch} />
+                <Search search={this.state.search} handleSearch={this.handleSearch} />
 
                 <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} />
             </div>

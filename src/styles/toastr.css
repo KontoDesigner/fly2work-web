@@ -1,32 +1,47 @@
-.redux-toastr .toastr .rrt-left-container
-{
-	display:none;
+.redux-toastr .toastr .rrt-left-container {
+    display: none;
 }
 
-.redux-toastr .toastr .rrt-middle-container
-{
+.redux-toastr .toastr .rrt-middle-container {
+    margin-left: 0;
+    width: 100% !important;
+    padding: 10px 10px;
+}
+
+.close-toastr {
+    display: none;
+}
+
+.rrt-title {
+    font-weight: 500 !important;
+    margin-bottom: 0px !important;
+}
+
+.redux-toastr .toastr .rrt-middle-container .rrt-title {
+    font-family: "Tui Type Light","Calibri","Droid Sans","Arial","sans-serif" !important;
+}
+
+.redux-toastr .toastr .rrt-middle-container .rrt-text {
+    font-family: "Tui Type Light","Calibri","Droid Sans","Arial","sans-serif" !important;
+}
+
+.redux-toastr .top-center,
+.redux-toastr .bottom-center {
+    width: 100%;
+    margin-left: 0;
+}
+
+.redux-toastr .toastr .rrt-middle-container {
+	text-align: center;
+}
+
+.redux-toastr .toastr .rrt-middle-container .rrt-text {
+    font-weight: 800;
+	font-size: 2em;
 	margin-left:0;
-	width:100%!important;
-    padding: 10px 10px;	
 }
 
-.close-toastr
+.redux-toastr .top-center, .redux-toastr .bottom-center
 {
-	display:none;
-}
-
-.rrt-title
-{
-	font-weight:500!important;
-    margin-bottom:0px!important;
-}
-
-.redux-toastr .toastr .rrt-middle-container .rrt-title
-{
-	font-family: 'Roboto', sans-serif!important;
-}
-
-.redux-toastr .toastr .rrt-middle-container .rrt-text
-{
-	font-family: 'Roboto', sans-serif!important;
+	left:0;
 }

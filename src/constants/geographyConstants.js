@@ -9,3 +9,10 @@ export var ActionTypes = keyMirror({
     GET_ROLES_SUCCESS: null,
     GET_DESTINATIONS_SUCCESS: null
 })
+
+export var Statuses = [
+    { label: 'Submitted', value: 'Submitted' },
+    { label: 'Pending', value: 'Pending' },
+    { label: 'Confirmed', value: 'Confirmed' },
+    { label: 'Overview', value: 'Overview' }
+]

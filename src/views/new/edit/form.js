@@ -143,9 +143,21 @@ const EditUserDialog = props => {
                                     {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
                                 </div>
                             </Col>
-                        </Row>
 
-                        <Row>
+                            <Col xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="status">Status</label>
+                                    <Field
+                                        name={'status'}
+                                        component={Select}
+                                        options={props.statuses}
+                                        setFieldTouched={setFieldTouched}
+                                        defaultValue={props.statuses[0]}
+                                    />
+                                    {errors.status && touched.status && <div className="message">{errors.status}</div>}
+                                </div>
+                            </Col>
+
                             <Col xl="12" lg="612" md="12" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="comment">Comment</label>

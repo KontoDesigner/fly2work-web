@@ -15,7 +15,7 @@ const styles = {
         placeholder: '#fff',
         outline: 'none',
         border: '0',
-        borderRadius: '3px'
+        borderRadius: '0'
     }
 }
 

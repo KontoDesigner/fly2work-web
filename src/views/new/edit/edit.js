@@ -63,6 +63,7 @@ class Edit extends Component {
                 flightStatuses={this.props.flightStatuses}
                 roles={this.props.roles}
                 destinations={this.props.destinations}
+                statuses={this.props.statuses}
             />
         ) : (
             <div>Staff not found</div>
@@ -77,7 +78,8 @@ function mapStateToProps(state) {
         seasons: state.geography.seasons,
         flightStatuses: state.geography.flightStatuses,
         roles: state.geography.roles,
-        destinations: state.geography.destinations
+        destinations: state.geography.destinations,
+        statuses: state.geography.statuses
     }
 }
 
