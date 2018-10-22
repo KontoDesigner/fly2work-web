@@ -41,8 +41,6 @@ class Edit extends Component {
     }
 
     handleStaff = staff => {
-        console.log(staff)
-
         this.setState({ staff })
 
         this.props.newActions.insertStaff(staff)

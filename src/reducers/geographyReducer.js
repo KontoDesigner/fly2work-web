@@ -1,4 +1,4 @@
-import { ActionTypes as types, Statuses as statuses } from '../constants/geographyConstants'
+import { ActionTypes as types, GetStatuses as getStatuses } from '../constants/geographyConstants'
 
 var defaultState = {
     flights: null,
@@ -8,7 +8,7 @@ var defaultState = {
     flightStatuses: null,
     roles: null,
     destinations: null,
-    statuses: statuses
+    statuses: getStatuses()
 }
 
 export default function geographyReducer(state = defaultState, action) {

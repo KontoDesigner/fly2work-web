@@ -16,7 +16,7 @@ export async function get(url, useBaseUrl = true) {
     } catch (err) {
         console.log('Error GET', err)
 
-        toastr.error('Error', `An unexpected error has occured: ${err}.`)
+        toastr.error('', `An unexpected error has occured: ${err}.`)
 
         throw new Error(err)
     }
@@ -36,7 +36,7 @@ export async function post(url, data, useBaseUrl = true) {
     } catch (err) {
         console.log('Error POST', err)
 
-        toastr.error('Error', `An unexpected error has occured: ${err}.`)
+        toastr.error('', `An unexpected error has occured: ${err}.`)
 
         throw new Error(err)
     }

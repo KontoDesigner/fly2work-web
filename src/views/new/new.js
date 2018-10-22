@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Search from './search'
-import Table from './table'
+import Search from '../../components/search'
+import Table from '../../components/table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
 import lodash from 'lodash'
@@ -21,7 +21,7 @@ class New extends Component {
         this.setState({ criteria: this.state.search })
     }
 
-    debouncedGetData = lodash.debounce(this.handleCriteria, 750)
+    debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
         AppService.setTitle('New')
@@ -32,7 +32,7 @@ class New extends Component {
     handleSearch = event => {
         this.setState({ search: event.target.value })
 
-        this.debouncedGetData()
+        this.debouncedHandleCriteria()
     }
 
     handleClick = id => {

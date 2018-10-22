@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const validation = Yup.object().shape({
+const formValidation = Yup.object().shape({
     // hotelNeeded,
     // gender,
     id: Yup.string()
@@ -54,4 +54,4 @@ const validation = Yup.object().shape({
     status: Yup.string().required('Status is required')
 })
 
-export default validation
+export default formValidation
