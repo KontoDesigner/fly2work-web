@@ -3,6 +3,7 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 import { Statuses as statuses } from '../constants/geographyConstants'
+import { getStaffCount } from '../actions/menuActions'
 
 export function getStaffsSuccess(staffs) {
     return {
@@ -16,7 +17,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`staff/${statuses.Confirmed}`)
+            const staffs = await RestClient.get(`staff/getbystatus/${statuses.New.value}`)
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {
@@ -27,7 +28,7 @@ export function getStaffs() {
     }
 }
 
-export function insertStaff(staff) {
+export function updateStaff(staff) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
@@ -35,13 +36,15 @@ export function insertStaff(staff) {
             const res = await RestClient.post('new', staff)
 
             if (res && res.ok === true) {
-                console.log('Staff has been saved')
+                console.log('Staff has been updated')
 
-                toastr.success('', 'Staff has been saved', res)
+                toastr.success('', 'Staff has been updated', res)
+
+                dispatch(getStaffCount())
             } else {
-                console.log('Could not save staff', res)
+                console.log('Could not update staff', res)
 
-                toastr.error('', 'Could not save staff')
+                toastr.error('', 'Could not update staff')
             }
 
             dispatch(endAjaxCall())

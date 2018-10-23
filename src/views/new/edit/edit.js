@@ -6,6 +6,7 @@ import EditUserDialog from './form'
 import * as RestClient from '../../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../../actions/ajaxStatusActions'
 import * as newActions from '../../../actions/newActions'
+import { Statuses as statuses } from '../../../constants/geographyConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -27,12 +28,14 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`people/${this.state.id}`)
+        const staff = await RestClient.get(`staff/${statuses.New.value}/${this.state.id}`)
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
             AppService.setTitle(`New - ${staff.name}`)
+
+            staff.status = null
         } else {
             AppService.setTitle('Staff not found')
         }
@@ -43,7 +46,9 @@ class Edit extends Component {
     handleStaff = staff => {
         this.setState({ staff })
 
-        this.props.newActions.insertStaff(staff)
+        this.props.newActions.updateStaff(staff)
+
+        this.props.newActions.getStaffs()
     }
 
     render() {
@@ -52,19 +57,23 @@ class Edit extends Component {
         }
 
         return this.state.staff ? (
-            <EditUserDialog
-                staff={this.state.staff}
-                handleStaff={this.handleStaff}
-                flights={this.props.flights}
-                sourceMarkets={this.props.sourceMarkets}
-                seasons={this.props.seasons}
-                flightStatuses={this.props.flightStatuses}
-                roles={this.props.roles}
-                destinations={this.props.destinations}
-                statuses={this.props.statuses}
-            />
+            <div>
+                <h2>{this.state.staff.name}</h2>
+
+                <EditUserDialog
+                    staff={this.state.staff}
+                    handleStaff={this.handleStaff}
+                    flights={this.props.flights}
+                    sourceMarkets={this.props.sourceMarkets}
+                    seasons={this.props.seasons}
+                    flightStatuses={this.props.flightStatuses}
+                    roles={this.props.roles}
+                    destinations={this.props.destinations}
+                    statuses={this.props.statuses}
+                />
+            </div>
         ) : (
-            <div>Staff not found</div>
+            <h2>Staff not found</h2>
         )
     }
 }

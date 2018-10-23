@@ -11,6 +11,7 @@ export var ActionTypes = keyMirror({
 })
 
 export var Statuses = {
+    New: { label: 'New', value: 'New' },
     Submitted: { label: 'Submitted', value: 'Submitted' },
     Pending: { label: 'Pending', value: 'Pending' },
     Confirmed: { label: 'Confirmed', value: 'Confirmed' },
