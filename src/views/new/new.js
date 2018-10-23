@@ -26,7 +26,7 @@ class New extends Component {
     async componentDidMount() {
         AppService.setTitle('New')
 
-        this.props.newActions.getStaffs()
+        // this.props.newActions.getStaffs()
     }
 
     handleSearch = event => {

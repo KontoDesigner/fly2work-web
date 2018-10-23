@@ -21,7 +21,7 @@ export function getStaffCount() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffCount = await RestClient.get(`staffCount`)
+            const staffCount = await RestClient.get('staff/count')
 
             dispatch(getStaffCountSuccess(staffCount))
         } catch (error) {

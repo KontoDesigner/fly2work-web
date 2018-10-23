@@ -2,6 +2,8 @@ import { ActionTypes as types } from '../constants/geographyConstants'
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 
+const BASE = 'geography'
+
 export function getFlightsSuccess(flights) {
     return {
         type: types.GET_FLIGHTS_SUCCESS,
@@ -14,7 +16,7 @@ export function getFlights() {
         dispatch(beginAjaxCall())
 
         try {
-            const flights = await RestClient.get(`flights`)
+            const flights = await RestClient.get(`${BASE}/flights`)
 
             dispatch(getFlightsSuccess(flights))
         } catch (error) {
@@ -37,7 +39,7 @@ export function getSourceMarkets() {
         dispatch(beginAjaxCall())
 
         try {
-            const sourceMarkets = await RestClient.get(`sourceMarkets`)
+            const sourceMarkets = await RestClient.get(`${BASE}/sourceMarkets`)
 
             dispatch(getSourceMarketsSuccess(sourceMarkets))
         } catch (error) {
@@ -60,7 +62,7 @@ export function getSeasons() {
         dispatch(beginAjaxCall())
 
         try {
-            const seasons = await RestClient.get(`seasons`)
+            const seasons = await RestClient.get(`${BASE}/seasons`)
 
             dispatch(getSeasonsSuccess(seasons))
         } catch (error) {
@@ -83,7 +85,7 @@ export function getFlightStatuses() {
         dispatch(beginAjaxCall())
 
         try {
-            const flightStatuses = await RestClient.get(`flightStatuses`)
+            const flightStatuses = await RestClient.get(`${BASE}/flightStatuses`)
 
             dispatch(getFlightStatusesSuccess(flightStatuses))
         } catch (error) {
@@ -106,7 +108,7 @@ export function getRoles() {
         dispatch(beginAjaxCall())
 
         try {
-            const roles = await RestClient.get(`roles`)
+            const roles = await RestClient.get(`${BASE}/roles`)
 
             dispatch(getRolesSuccess(roles))
         } catch (error) {
@@ -129,7 +131,7 @@ export function getDestinations() {
         dispatch(beginAjaxCall())
 
         try {
-            const destinations = await RestClient.get(`destinations`)
+            const destinations = await RestClient.get(`${BASE}/destinations`)
 
             dispatch(getDestinationsSuccess(destinations))
         } catch (error) {

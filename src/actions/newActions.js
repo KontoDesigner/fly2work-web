@@ -2,6 +2,7 @@ import { ActionTypes as types } from '../constants/newConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
+import { Statuses as statuses } from '../constants/geographyConstants'
 
 export function getStaffsSuccess(staffs) {
     return {
@@ -15,7 +16,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`people`)
+            const staffs = await RestClient.get(`staff/${statuses.Confirmed}`)
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {
@@ -31,7 +32,7 @@ export function insertStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.post(`http://localhost:5000/new`, staff, false)
+            const res = await RestClient.post('new', staff)
 
             if (res && res.ok === true) {
                 console.log('Staff has been saved')
