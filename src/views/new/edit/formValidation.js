@@ -2,7 +2,6 @@ import * as Yup from 'yup'
 
 const formValidation = Yup.object().shape({
     // hotelNeeded,
-    // gender,
     id: Yup.string()
         .nullable(true)
         .required('Id is required'),
@@ -59,7 +58,13 @@ const formValidation = Yup.object().shape({
         .max(200, 'Comment must contain a total 200 characters'),
     status: Yup.string()
         .nullable()
-        .required('Status is required')
+        .required('Status is required'),
+    gender: Yup.string()
+        .nullable(true)
+        .required('Gender is required'),
+    hotelNeeded: Yup.boolean()
+        .nullable(true)
+        .required('Hotel needed is required')
 })
 
 export default formValidation

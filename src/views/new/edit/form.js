@@ -71,6 +71,7 @@ const EditUserDialog = props => {
                             <div className="form-item">
                                 <label htmlFor="hotelNeeded">Hotel Needed</label>
                                 <Field name={'hotelNeeded'} component={Checkbox} />
+                                {errors.hotelNeeded && touched.hotelNeeded && <div className="message">{errors.hotelNeeded}</div>}
                             </div>
                         </Col>
 
@@ -109,6 +110,7 @@ const EditUserDialog = props => {
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className="form-item">
                                 <Field name={'gender'} component={Gender} />
+                                {errors.gender && touched.gender && <div className="message">{errors.gender}</div>}
                             </div>
                         </Col>
 

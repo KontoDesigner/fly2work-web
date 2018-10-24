@@ -17,7 +17,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`staff/getbystatus/${statuses.New.value}`)
+            const staffs = await RestClient.get(`staff/${statuses.New.value}`)
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {
