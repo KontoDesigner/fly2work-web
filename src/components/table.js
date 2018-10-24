@@ -23,6 +23,8 @@ const Table = props => {
                             <tr>
                                 <th>Name</th>
                                 <th>Destination</th>
+                                <th>Source Market</th>
+                                <th>Date Of Flight</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +32,8 @@ const Table = props => {
                                 <tr onClick={() => props.handleClick(staff.id)} key={staff.id}>
                                     <td className="link">{staff.name}</td>
                                     <td className="link">{staff.destination}</td>
+                                    <td className="link">{staff.sourceMarket}</td>
+                                    <td className="link">{staff.dateOfFlight}</td>
                                 </tr>
                             ))}
                         </tbody>

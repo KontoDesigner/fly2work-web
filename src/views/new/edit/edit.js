@@ -16,10 +16,8 @@ class Edit extends Component {
             match: { params }
         } = props
 
-        const id = parseInt(params.id)
-
         this.state = {
-            id: id,
+            id: params.id,
             staff: null,
             loaded: false
         }
