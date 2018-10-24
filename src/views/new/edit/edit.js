@@ -26,7 +26,7 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/${statuses.New.value}/${this.state.id}`)
+        const staff = await RestClient.get(`staff/${statuses.New}/${this.state.id}`)
 
         this.props.ajaxStatusActions.endAjaxCall()
 
@@ -84,7 +84,10 @@ function mapStateToProps(state) {
         flightStatuses: state.geography.flightStatuses,
         roles: state.geography.roles,
         destinations: state.geography.destinations,
-        statuses: state.geography.statuses
+        statuses: state.geography.statuses.map(s => ({
+            value: s,
+            label: s
+        }))
     }
 }
 

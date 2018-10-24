@@ -17,7 +17,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`staff/${statuses.New.value}`)
+            const staffs = await RestClient.get(`staff/${statuses.New}`)
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {
@@ -33,7 +33,7 @@ export function updateStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.post(statuses.New.value, staff)
+            const res = await RestClient.post(statuses.New, staff)
 
             if (res && res.ok === true) {
                 console.log('Staff has been updated')

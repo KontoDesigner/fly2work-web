@@ -10,13 +10,13 @@ export var ActionTypes = keyMirror({
     GET_DESTINATIONS_SUCCESS: null
 })
 
-export var Statuses = {
-    New: { label: 'New', value: 'New' },
-    Submitted: { label: 'Submitted', value: 'Submitted' },
-    Pending: { label: 'Pending', value: 'Pending' },
-    Confirmed: { label: 'Confirmed', value: 'Confirmed' },
-    Overview: { label: 'Overview', value: 'Overview' }
-}
+export var Statuses = keyMirror({
+    New: null,
+    Submitted: null,
+    Pending: null,
+    Confirmed: null,
+    Overview: null
+})
 
 export var GetStatuses = () => {
     return [Statuses.Submitted, Statuses.Pending, Statuses.Confirmed, Statuses.Overview]

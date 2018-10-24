@@ -159,13 +159,7 @@ const EditUserDialog = props => {
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className="form-item">
                                 <label htmlFor="status">Status</label>
-                                <Field
-                                    name={'status'}
-                                    component={Select}
-                                    options={props.statuses}
-                                    setFieldTouched={setFieldTouched}
-                                    // defaultValue={statuses.Submitted}
-                                />
+                                <Field name={'status'} component={Select} options={props.statuses} setFieldTouched={setFieldTouched} />
                                 {errors.status && touched.status && <div className="message">{errors.status}</div>}
                             </div>
                         </Col>
