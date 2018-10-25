@@ -6,6 +6,7 @@ import Table from '../../components/table'
 import * as overviewActions from '../../actions/overviewActions'
 import * as AppService from '../../services/appService'
 import lodash from 'lodash'
+import { Statuses as statuses } from '../../constants/geographyConstants'
 
 class Overview extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Overview extends Component {
     debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
-        AppService.setTitle('Overview')
+        AppService.setTitle(statuses.Overview)
 
         this.props.overviewActions.getStaffs()
     }

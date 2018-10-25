@@ -6,6 +6,7 @@ import Table from '../../components/table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
 import lodash from 'lodash'
+import { Statuses as statuses } from '../../constants/geographyConstants'
 
 class New extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class New extends Component {
     debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
-        AppService.setTitle('New')
+        AppService.setTitle(statuses.New)
 
         this.props.newActions.getStaffs()
     }

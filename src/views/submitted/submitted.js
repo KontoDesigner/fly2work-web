@@ -6,6 +6,7 @@ import Table from '../../components/table'
 import * as submittedActions from '../../actions/submittedActions'
 import * as AppService from '../../services/appService'
 import lodash from 'lodash'
+import { Statuses as statuses } from '../../constants/geographyConstants'
 
 class Submitted extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Submitted extends Component {
     debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
-        AppService.setTitle('Submitted')
+        AppService.setTitle(statuses.Submitted)
 
         this.props.submittedActions.getStaffs()
     }

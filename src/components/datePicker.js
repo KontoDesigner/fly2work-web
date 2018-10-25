@@ -2,7 +2,7 @@ import Datetime from 'react-datetime'
 import React from 'react'
 import moment from 'moment'
 
-const DatePicker = ({ field, form, setFieldTouched }) => {
+const DatePicker = ({ field, form, setFieldTouched, disabled }) => {
     const onChange = date => {
         //Picker
         if (date._d) {
@@ -28,7 +28,7 @@ const DatePicker = ({ field, form, setFieldTouched }) => {
             dateFormat="YYYY-MM-DD"
             closeOnSelect
             utc={true}
-            inputProps={{ placeholder: 'YYYY-MM-DD' }}
+            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: disabled }}
             onBlur={() => setFieldTouched(field.name, ' ')}
         />
     )

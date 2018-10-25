@@ -1,7 +1,6 @@
 import { ActionTypes as types } from '../constants/overviewConstants'
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
-import { Statuses as statuses } from '../constants/geographyConstants'
 
 export function getStaffsSuccess(staffs) {
     return {
@@ -15,7 +14,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`staff/${statuses.Overview}`)
+            const staffs = await RestClient.get('staff')
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {

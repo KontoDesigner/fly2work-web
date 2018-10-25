@@ -6,6 +6,7 @@ import Table from '../../components/table'
 import * as confirmedActions from '../../actions/confirmedActions'
 import * as AppService from '../../services/appService'
 import lodash from 'lodash'
+import { Statuses as statuses } from '../../constants/geographyConstants'
 
 class Confirmed extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Confirmed extends Component {
     debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
-        AppService.setTitle('Confirmed')
+        AppService.setTitle(statuses.Confirmed)
 
         this.props.confirmedActions.getStaffs()
     }

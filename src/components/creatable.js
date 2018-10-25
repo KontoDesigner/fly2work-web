@@ -1,7 +1,7 @@
 import React from 'react'
 import CreatableSelect from 'react-select/lib/Creatable'
 
-const Creatable = ({ field, form, setFieldTouched, noOptionsMessage }) => {
+const Creatable = ({ field, form, setFieldTouched, noOptionsMessage, disabled }) => {
     const value = field.value
         ? field.value.map(function(item) {
               return { value: item, label: item }
@@ -18,6 +18,7 @@ const Creatable = ({ field, form, setFieldTouched, noOptionsMessage }) => {
 
     return (
         <CreatableSelect
+            isDisabled={disabled}
             isMulti
             name={field.name}
             value={value}

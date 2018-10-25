@@ -6,6 +6,7 @@ import Table from '../../components/table'
 import * as pendingActions from '../../actions/pendingActions'
 import * as AppService from '../../services/appService'
 import lodash from 'lodash'
+import { Statuses as statuses } from '../../constants/geographyConstants'
 
 class Pending extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Pending extends Component {
     debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
 
     async componentDidMount() {
-        AppService.setTitle('Pending')
+        AppService.setTitle(statuses.Pending)
 
         this.props.pendingActions.getStaffs()
     }

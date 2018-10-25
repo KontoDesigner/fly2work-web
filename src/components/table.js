@@ -9,7 +9,9 @@ const Table = props => {
         staffs = props.staffs.filter(
             staff =>
                 (staff.name && staff.name.toLowerCase().includes(props.criteria.toLowerCase())) ||
-                (staff.destination && staff.destination.toLowerCase().includes(props.criteria.toLowerCase()))
+                (staff.destination && staff.destination.toLowerCase().includes(props.criteria.toLowerCase())) ||
+                (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(props.criteria.toLowerCase())) ||
+                (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(props.criteria.toLowerCase()))
         )
     } else {
         staffs = props.staffs
