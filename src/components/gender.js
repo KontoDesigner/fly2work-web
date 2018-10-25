@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Gender = ({ field, form }) => (
+const Gender = ({ field, form, disabled }) => (
     <div className="gender">
         <div>
             <label htmlFor="gender">Man</label>
 
             <label>
                 <input
+                    disabled={disabled}
                     onChange={event => form.setFieldValue(field.name, event.currentTarget.value)}
                     checked={field.value === 'M'}
                     type="radio"
@@ -22,6 +23,7 @@ const Gender = ({ field, form }) => (
 
             <label>
                 <input
+                    disabled={disabled}
                     onChange={event => form.setFieldValue(field.name, event.currentTarget.value)}
                     checked={field.value === 'W'}
                     type="radio"

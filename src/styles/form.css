@@ -3,6 +3,16 @@
     height: 48px;
 }
 
+.checkbox-inline.disabled, .checkbox.disabled label, .radio-inline.disabled, .radio.disabled label, fieldset[disabled] .checkbox-inline, fieldset[disabled] .checkbox label, fieldset[disabled] .radio-inline, fieldset[disabled] .radio label, fieldset[disabled] input[type=checkbox], fieldset[disabled] input[type=radio], input[type=checkbox].disabled, input[type=checkbox][disabled], input[type=radio].disabled, input[type=radio][disabled]
+{
+    cursor: not-allowed!important;
+}
+
+.disabled
+{
+    cursor: not-allowed!important;
+}
+
 form > .row > div
 {
     min-height:90px;
@@ -17,6 +27,11 @@ textarea.form-control
 {
     cursor:pointer;
     line-height: 48px;
+}
+
+.form-item.disabled > .checkbox-label
+{
+    cursor:not-allowed!important;
 }
 
 input[type=checkbox]

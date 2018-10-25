@@ -44,7 +44,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="sourceMarket">Source Market</label>
                                 <Field
                                     disabled={props.disabled}
@@ -74,7 +74,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="hotelNeeded">Hotel Needed</label>
                                 <Field disabled={props.disabled} name={'hotelNeeded'} component={Checkbox} />
                                 {errors.hotelNeeded && touched.hotelNeeded && <div className="message">{errors.hotelNeeded}</div>}
@@ -98,7 +98,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="role">Role</label>
                                 <Field
                                     disabled={props.disabled}
@@ -112,7 +112,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="destination">Destination</label>
                                 <Field
                                     disabled={props.disabled}
@@ -141,7 +141,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="departureAirport">Departure Airport</label>
                                 <Field
                                     disabled={props.disabled}
@@ -155,7 +155,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="arrivalAirport">Arrival Airport</label>
                                 <Field
                                     disabled={props.disabled}
@@ -169,7 +169,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="typeOfFlight">Type Of Flight</label>
                                 <Field
                                     disabled={props.disabled}
@@ -183,7 +183,7 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="status">Status</label>
                                 <Field
                                     disabled={props.disabled}
