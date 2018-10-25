@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
+import Moment from 'react-moment'
 
 const Table = props => {
     let staffs = []
@@ -33,7 +34,7 @@ const Table = props => {
                                     <td className="link">{staff.name}</td>
                                     <td className="link">{staff.destination}</td>
                                     <td className="link">{staff.sourceMarket}</td>
-                                    <td className="link">{staff.dateOfFlight}</td>
+                                    <td className="link">{staff.dateOfFlight && <Moment format="YYYY-MM-DD">{staff.dateOfFlight}</Moment>}</td>
                                 </tr>
                             ))}
                         </tbody>
