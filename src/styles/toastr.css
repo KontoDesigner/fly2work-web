@@ -1,3 +1,13 @@
+.redux-toastr .toastr
+{
+    margin:0;
+}
+
+.redux-toastr .toastr
+{
+    border-radius:0
+}
+
 .redux-toastr .toastr .rrt-left-container {
     display: none;
 }
@@ -43,5 +53,6 @@
 
 .redux-toastr .top-center, .redux-toastr .bottom-center
 {
-	left:0;
+    left:0;
+    padding:0;
 }
