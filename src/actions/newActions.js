@@ -33,7 +33,7 @@ export function updateStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.post(statuses.New, staff)
+            const res = await RestClient.post('staff', staff)
 
             if (res && res.ok === true) {
                 console.log('Staff has been updated')
