@@ -3,6 +3,7 @@ import React from 'react'
 const Checkbox = ({ field, form, disabled }) => (
     <label className="checkbox-label">
         <input
+            checked={field.value}
             disabled={disabled}
             type="checkbox"
             name={field.name}

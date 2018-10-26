@@ -16,7 +16,7 @@ const Form = props => {
             onSubmit={(values, actions) => {
                 props.handleStaff(values)
             }}
-            render={({ errors, touched, setFieldTouched }) => (
+            render={({ errors, touched, setFieldTouched, values }) => (
                 <FormikForm>
                     <Row>
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
@@ -81,21 +81,22 @@ const Form = props => {
                             </div>
                         </Col>
 
-                        <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
-                                <label htmlFor="hotelStart">Hotel Start</label>
-                                <Field disabled={props.disabled} name={'hotelStart'} component={DatePicker} setFieldTouched={setFieldTouched} />
-                                {errors.hotelStart && touched.hotelStart && <div className="message">{errors.hotelStart}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="6" md="12" sm="12" xs="12">
-                            <div className="form-item">
-                                <label htmlFor="hotelEnd">Hotel End</label>
-                                <Field disabled={props.disabled} name={'hotelEnd'} component={DatePicker} setFieldTouched={setFieldTouched} />
-                                {errors.hotelEnd && touched.hotelEnd && <div className="message">{errors.hotelEnd}</div>}
-                            </div>
-                        </Col>
+                        {values.hotelNeeded === true && [
+                            <Col key={0} xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="hotelStart">Hotel Start</label>
+                                    <Field disabled={props.disabled} name={'hotelStart'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                    {errors.hotelStart && touched.hotelStart && <div className="message">{errors.hotelStart}</div>}
+                                </div>
+                            </Col>,
+                            <Col key={1} xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="hotelEnd">Hotel End</label>
+                                    <Field disabled={props.disabled} name={'hotelEnd'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                    {errors.hotelEnd && touched.hotelEnd && <div className="message">{errors.hotelEnd}</div>}
+                                </div>
+                            </Col>
+                        ]}
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
