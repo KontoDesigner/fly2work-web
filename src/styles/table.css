@@ -2,11 +2,24 @@ table {
     text-align: initial;
 }
 
-.tui-text-content tr:nth-child(even)
-{
+.tui-text-content tr:nth-child(even) {
     background: #fff;
 }
 
 .tui-text-content tr:nth-child(odd) {
     background: #f3f0ec;
+}
+
+.tui-text-content svg {
+    margin-right: 5px;
+}
+
+.tui-text-content th {
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
