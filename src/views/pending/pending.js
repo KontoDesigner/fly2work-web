@@ -37,7 +37,7 @@ class Pending extends Component {
     render() {
         return (
             <div>
-                <h2>Pending</h2>
+                <h2>{statuses.Pending}</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>

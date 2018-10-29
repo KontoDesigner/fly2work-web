@@ -37,7 +37,7 @@ class Submitted extends Component {
     render() {
         return (
             <div>
-                <h2>Submitted</h2>
+                <h2>{statuses.Submitted}</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>
