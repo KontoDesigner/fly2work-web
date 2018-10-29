@@ -1,73 +1,72 @@
-.form-control
-{
+.form-control {
     height: 48px;
 }
 
-.checkbox-inline.disabled, .checkbox.disabled label, .radio-inline.disabled, .radio.disabled label, fieldset[disabled] .checkbox-inline, fieldset[disabled] .checkbox label, fieldset[disabled] .radio-inline, fieldset[disabled] .radio label, fieldset[disabled] input[type=checkbox], fieldset[disabled] input[type=radio], input[type=checkbox].disabled, input[type=checkbox][disabled], input[type=radio].disabled, input[type=radio][disabled]
-{
-    cursor: not-allowed!important;
+.checkbox-inline.disabled,
+.checkbox.disabled label,
+.radio-inline.disabled,
+.radio.disabled label,
+fieldset[disabled] .checkbox-inline,
+fieldset[disabled] .checkbox label,
+fieldset[disabled] .radio-inline,
+fieldset[disabled] .radio label,
+fieldset[disabled] input[type='checkbox'],
+fieldset[disabled] input[type='radio'],
+input[type='checkbox'].disabled,
+input[type='checkbox'][disabled],
+input[type='radio'].disabled,
+input[type='radio'][disabled] {
+    cursor: not-allowed !important;
 }
 
-.disabled
-{
-    cursor: not-allowed!important;
+.disabled {
+    cursor: not-allowed !important;
 }
 
-form > .row > div
-{
-    min-height:90px;
+form > .row > div {
+    min-height: 90px;
 }
 
-textarea.form-control
-{
-    border-radius:3px;
+textarea.form-control {
+    border-radius: 3px;
 }
 
-.form-item > .checkbox-label
-{
-    cursor:pointer;
+.form-item > .checkbox-label {
+    cursor: pointer;
     line-height: 48px;
 }
 
-.form-item.disabled > .checkbox-label
-{
-    cursor:not-allowed!important;
+.form-item.disabled > .checkbox-label {
+    cursor: not-allowed !important;
 }
 
-input[type=checkbox]
-{
-    cursor:pointer;
+input[type='checkbox'] {
+    cursor: pointer;
 }
 
-.gender
-{
+.gender {
     text-align: left;
 }
 
-.gender > label
-{
-    display:inline-block;
+.gender > label {
+    display: inline-block;
 }
 
-.gender > div
-{
-    display:inline-block;
+.gender > div {
+    display: inline-block;
 }
 
-.gender > div:first-child
-{
-    padding-right:20px;
+.gender > div:first-child {
+    padding-right: 20px;
 }
 
-.gender input[type=radio]
-{
-    margin-top:10px;
-    cursor:pointer;
+.gender input[type='radio'] {
+    margin-top: 10px;
+    cursor: pointer;
 }
 
-.message
-{
-    color: #fff!important;
+.message {
+    color: #fff !important;
     background: #bc373b;
     border-radius: 3px;
     padding: 10px;
@@ -75,5 +74,40 @@ input[type=checkbox]
     font-size: 1.9rem;
     margin-top: 5px;
     border: 1px solid #781619;
-    margin-bottom:15px;
+    margin-bottom: 15px;
+}
+
+.form-item input[type='date'],
+.form-item input[type='email'],
+.form-item input[type='number'],
+.form-item input[type='password'],
+.form-item input[type='search'],
+.form-item input[type='select'],
+.form-item input[type='tel'],
+.form-item input[type='text'],
+.form-item input[type='url'] {
+    border-color: #777;
+}
+
+.select > div {
+    border-color: #777;
+}
+
+.creatable > div {
+    border-color: #777;
+}
+
+.form-control
+{
+    border-color: #777;
+}
+
+input[type=checkbox]
+{
+    border-color: #777;
+}
+
+input[type=radio]
+{
+    border-color: #777;
 }

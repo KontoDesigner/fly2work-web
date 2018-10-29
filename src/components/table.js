@@ -11,7 +11,8 @@ const Table = props => {
                 (staff.name && staff.name.toLowerCase().includes(props.criteria.toLowerCase())) ||
                 (staff.destination && staff.destination.toLowerCase().includes(props.criteria.toLowerCase())) ||
                 (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(props.criteria.toLowerCase())) ||
-                (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(props.criteria.toLowerCase()))
+                (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(props.criteria.toLowerCase())) ||
+                (staff.sourceMarket && staff.status.toLowerCase().includes(props.criteria.toLowerCase()))
         )
     } else {
         staffs = props.staffs
@@ -28,6 +29,7 @@ const Table = props => {
                                 <th>Destination</th>
                                 <th>Source Market</th>
                                 <th>Date Of Flight</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +39,7 @@ const Table = props => {
                                     <td className="link">{staff.destination}</td>
                                     <td className="link">{staff.sourceMarket}</td>
                                     <td className="link">{staff.dateOfFlight && <Moment format="YYYY-MM-DD">{staff.dateOfFlight}</Moment>}</td>
+                                    <td className="link">{staff.status}</td>
                                 </tr>
                             ))}
                         </tbody>

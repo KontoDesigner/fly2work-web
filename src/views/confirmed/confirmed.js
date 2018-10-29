@@ -22,7 +22,7 @@ class Confirmed extends Component {
         this.setState({ criteria: this.state.search })
     }
 
-    debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 750)
+    debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 500)
 
     async componentDidMount() {
         AppService.setTitle(statuses.Confirmed)

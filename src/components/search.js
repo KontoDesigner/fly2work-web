@@ -7,7 +7,7 @@ const styles = {
         textAlign: 'center',
         color: '#fff',
         padding: '10px',
-        fontSize: '1.5em',
+        fontSize: '1.25em',
         fontWeight: 700,
         marginBottom: '15px',
         width: '100%',
