@@ -4,8 +4,30 @@ import Moment from 'react-moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import lodash from 'lodash'
+import Search from './search'
 
 library.add(faCaretDown, faCaretUp)
+
+function compareValues(key, order = true) {
+    return function(a, b) {
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+            // property doesn't exist on either object
+            return 0
+        }
+
+        const varA = typeof a[key] === 'string' ? a[key].toUpperCase() : a[key]
+        const varB = typeof b[key] === 'string' ? b[key].toUpperCase() : b[key]
+
+        let comparison = 0
+        if (varA > varB) {
+            comparison = 1
+        } else if (varA < varB) {
+            comparison = -1
+        }
+        return order === false ? comparison * -1 : comparison
+    }
+}
 
 class Table extends Component {
     constructor(props) {
@@ -13,9 +35,23 @@ class Table extends Component {
 
         this.state = {
             sortOrder: true,
-            sortColumn: ''
+            sortColumn: props.columns[0].valueKey,
+            search: '',
+            criteria: ''
         }
     }
+
+    handleSearch = event => {
+        this.setState({ search: event.target.value })
+
+        this.debouncedHandleCriteria()
+    }
+
+    handleCriteria = () => {
+        this.setState({ criteria: this.state.search })
+    }
+
+    debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 500)
 
     renderHeader(column) {
         if (this.state.sortColumn === column.valueKey) {
@@ -51,41 +87,47 @@ class Table extends Component {
     render() {
         let staffs = []
 
-        if (this.props.criteria !== '') {
-            staffs = this.props.filter(this.props.staffs, this.props.criteria)
+        if (this.state.criteria !== '') {
+            staffs = this.props.filter(this.props.staffs, this.state.criteria)
         } else {
             staffs = this.props.staffs
         }
 
+        staffs.sort(compareValues(this.state.sortColumn, this.state.sortOrder))
+
         return (
-            <Row>
-                <Col>
-                    <div className="tui-text-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    {this.props.columns.map((column, index) => (
-                                        <th onClick={() => this.headerOnClick(column)} key={index}>
-                                            {this.renderHeader(column)}
-                                        </th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {staffs.map(staff => (
-                                    <tr key={staff.id} onClick={() => this.props.handleClick(staff.id)}>
+            <div>
+                <Search search={this.state.search} handleSearch={this.handleSearch} />
+
+                <Row>
+                    <Col>
+                        <div className="tui-text-content">
+                            <table>
+                                <thead>
+                                    <tr>
                                         {this.props.columns.map((column, index) => (
-                                            <td className="link" key={index}>
-                                                {this.renderBody(staff, column)}
-                                            </td>
+                                            <th onClick={() => this.headerOnClick(column)} key={index}>
+                                                {this.renderHeader(column)}
+                                            </th>
                                         ))}
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </Col>
-            </Row>
+                                </thead>
+                                <tbody>
+                                    {staffs.map(staff => (
+                                        <tr key={staff.id} onClick={() => this.props.handleClick(staff.id)}>
+                                            {this.props.columns.map((column, index) => (
+                                                <td className="link" key={index}>
+                                                    {this.renderBody(staff, column)}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
         )
     }
 }

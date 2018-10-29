@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Search from '../../components/search'
 import Table from '../../components/table'
 import * as pendingActions from '../../actions/pendingActions'
 import * as AppService from '../../services/appService'
-import lodash from 'lodash'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 
 const columns = [
@@ -26,31 +24,10 @@ const filter = (staffs, criteria) => {
 }
 
 class Pending extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            search: '',
-            criteria: ''
-        }
-    }
-
-    handleCriteria = () => {
-        this.setState({ criteria: this.state.search })
-    }
-
-    debouncedHandleCriteria = lodash.debounce(this.handleCriteria, 500)
-
     async componentDidMount() {
         AppService.setTitle(statuses.Pending)
 
         this.props.pendingActions.getStaffs()
-    }
-
-    handleSearch = event => {
-        this.setState({ search: event.target.value })
-
-        this.debouncedHandleCriteria()
     }
 
     handleClick = id => {
@@ -62,9 +39,7 @@ class Pending extends Component {
             <div>
                 <h2>Pending</h2>
 
-                <Search search={this.state.search} handleSearch={this.handleSearch} />
-
-                <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} columns={columns} filter={filter} />
+                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>
         )
     }
