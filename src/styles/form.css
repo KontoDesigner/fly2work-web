@@ -86,30 +86,30 @@ input[type='checkbox'] {
 .form-item input[type='tel'],
 .form-item input[type='text'],
 .form-item input[type='url'] {
-    border-color: #777;
+    border-color: #888;
 }
 
 .select > div {
-    border-color: #777;
+    border-color: #888;
 }
 
 .creatable > div {
-    border-color: #777;
+    border-color: #888;
 }
 
 .form-control
 {
-    border-color: #777;
+    border-color: #888;
 }
 
 input[type=checkbox]
 {
-    border-color: #777;
+    border-color: #888;
 }
 
 input[type=radio]
 {
-    border-color: #777;
+    border-color: #888;
 }
 
 .form-control, output

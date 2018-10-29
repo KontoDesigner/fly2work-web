@@ -3,6 +3,15 @@ import { Row, Col } from 'reactstrap'
 import Moment from 'react-moment'
 
 class Table extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            sortOrder: 0,
+            sortColumn: ''
+        }
+    }
+
     renderColumn(staff, column) {
         switch (column.dataType) {
             case 'DATETIME':
@@ -16,14 +25,7 @@ class Table extends Component {
         let staffs = []
 
         if (this.props.criteria !== '') {
-            staffs = this.props.staffs.filter(
-                staff =>
-                    (staff.name && staff.name.toLowerCase().includes(this.props.criteria.toLowerCase())) ||
-                    (staff.destination && staff.destination.toLowerCase().includes(this.props.criteria.toLowerCase())) ||
-                    (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(this.props.criteria.toLowerCase())) ||
-                    (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(this.props.criteria.toLowerCase())) ||
-                    (staff.sourceMarket && staff.status.toLowerCase().includes(this.props.criteria.toLowerCase()))
-            )
+            staffs = this.props.filter(this.props.staffs, this.props.criteria)
         } else {
             staffs = this.props.staffs
         }

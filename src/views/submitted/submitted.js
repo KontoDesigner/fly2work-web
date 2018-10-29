@@ -15,6 +15,16 @@ const columns = [
     { labelKey: 'DateOfFlight', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
 ]
 
+const filter = (staffs, criteria) => {
+    return staffs.filter(
+        staff =>
+            (staff.name && staff.name.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(criteria.toLowerCase()))
+    )
+}
+
 class Submitted extends Component {
     constructor(props) {
         super(props)
@@ -54,7 +64,7 @@ class Submitted extends Component {
 
                 <Search search={this.state.search} handleSearch={this.handleSearch} />
 
-                <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} columns={columns} />
+                <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>
         )
     }
