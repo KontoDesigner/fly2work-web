@@ -66,10 +66,7 @@ class Edit extends Component {
 
 function mapStateToProps(state) {
     return {
-        flights: state.geography.flights,
         sourceMarkets: state.geography.sourceMarkets,
-        seasons: state.geography.seasons,
-        flightStatuses: state.geography.flightStatuses,
         roles: state.geography.roles,
         destinations: state.geography.destinations,
         statuses: state.geography.statuses.map(s => ({

@@ -18,7 +18,9 @@ const DatePicker = ({ field, form, setFieldTouched, disabled }) => {
     }
 
     const val =
-        field.value.length > 10 && moment(field.value, moment.ISO_8601, true).isValid() ? moment(field.value).format('YYYY-MM-DD') : field.value
+        field.value && field.value.length > 10 && moment(field.value, moment.ISO_8601, true).isValid()
+            ? moment(field.value).format('YYYY-MM-DD')
+            : field.value
 
     return (
         <Datetime
