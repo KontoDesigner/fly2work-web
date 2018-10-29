@@ -52,6 +52,8 @@ const Form = props => {
                                     component={Select}
                                     options={props.sourceMarkets}
                                     setFieldTouched={setFieldTouched}
+                                    valueKey={'id'}
+                                    labelKey={'name'}
                                 />
                                 {errors.sourceMarket && touched.sourceMarket && <div className="message">{errors.sourceMarket}</div>}
                             </div>
@@ -107,6 +109,8 @@ const Form = props => {
                                     component={Select}
                                     options={props.roles}
                                     setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
                                 />
                                 {errors.role && touched.role && <div className="message">{errors.role}</div>}
                             </div>
@@ -121,6 +125,8 @@ const Form = props => {
                                     component={Select}
                                     options={props.destinations}
                                     setFieldTouched={setFieldTouched}
+                                    valueKey={'destination'}
+                                    labelKey={'destination'}
                                 />
                                 {errors.destination && touched.destination && <div className="message">{errors.destination}</div>}
                             </div>
@@ -172,14 +178,8 @@ const Form = props => {
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="typeOfFlight">Type Of Flight</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'typeOfFlight'}
-                                    component={Select}
-                                    options={props.flights}
-                                    setFieldTouched={setFieldTouched}
-                                />
-                                {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
+                                <Field disabled={props.disabled} className="form-control" type="text" name="typeOfFlight" />
+                                <ErrorMessage className="message" name="typeOfFlight" component="div" />
                             </div>
                         </Col>
 
@@ -192,6 +192,8 @@ const Form = props => {
                                     component={Select}
                                     options={props.statuses}
                                     setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
                                 />
                                 {errors.status && touched.status && <div className="message">{errors.status}</div>}
                             </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactSelect from 'react-select'
 
-const MultiSelect = ({ options, field, form, setFieldTouched, disabled }) => (
+const MultiSelect = ({ options, field, form, setFieldTouched, disabled, valueKey, labelKey }) => (
     <ReactSelect
         disabled={disabled}
         options={options}
@@ -10,6 +10,8 @@ const MultiSelect = ({ options, field, form, setFieldTouched, disabled }) => (
         onChange={option => form.setFieldValue(field.name, option)}
         onBlur={() => setFieldTouched(field.name, ' ')}
         isMulti
+        getOptionLabel={option => option[labelKey]}
+        getOptionValue={option => option[valueKey]}
     />
 )
 
