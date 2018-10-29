@@ -111,3 +111,8 @@ input[type=radio]
 {
     border-color: #777;
 }
+
+.form-control, output
+{
+    color:#444;
+}

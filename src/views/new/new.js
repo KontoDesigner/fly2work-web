@@ -8,6 +8,13 @@ import * as AppService from '../../services/appService'
 import lodash from 'lodash'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 
+const columns = [
+    { labelKey: 'Name', valueKey: 'name' },
+    { labelKey: 'Destination', valueKey: 'destination' },
+    { labelKey: 'SourceMarket', valueKey: 'sourceMarket' },
+    { labelKey: 'DateOfFlight', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
+]
+
 class New extends Component {
     constructor(props) {
         super(props)
@@ -47,7 +54,7 @@ class New extends Component {
 
                 <Search search={this.state.search} handleSearch={this.handleSearch} />
 
-                <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} />
+                <Table staffs={this.props.staffs} criteria={this.state.criteria} handleClick={this.handleClick} columns={columns} />
             </div>
         )
     }
