@@ -7,8 +7,15 @@ import Creatable from './creatable'
 import Gender from './gender'
 import { Row, Col, Button } from 'reactstrap'
 import formValidation from './formValidation'
+import * as RestClient from '../infrastructure/restClient'
+import moment from 'moment'
+import config from '../infrastructure/config'
 
 const Form = props => {
+    const downloadPdf = () => {
+        RestClient.download('pdf', [props.staff], `${config.name} - ${props.staff.id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`)
+    }
+
     return (
         <Formik
             initialValues={props.staff}
@@ -210,9 +217,13 @@ const Form = props => {
 
                     {!props.disabled && (
                         <Row className="divider-up">
-                            <Col xl="12" lg="612" md="12" sm="12" xs="12">
-                                <Button className="btn btn-primary" type="submit" color="success">
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                                <Button className="btn btn-primary" type="submit">
                                     Submit
+                                </Button>
+
+                                <Button onClick={downloadPdf} className="btn btn-function" type="button">
+                                    PDF
                                 </Button>
                             </Col>
                         </Row>

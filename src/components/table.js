@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Button } from 'reactstrap'
 import Moment from 'react-moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
 import lodash from 'lodash'
 import Search from './search'
+import * as RestClient from '../infrastructure/restClient'
+import moment from 'moment'
+import config from '../infrastructure/config'
 
 library.add(faCaretDown, faCaretUp)
 
@@ -84,6 +87,15 @@ class Table extends Component {
         this.setState({ sortColumn: column.valueKey, sortOrder: true })
     }
 
+    downloadPdf = () => {
+        const fileName =
+            this.props.staffs.length === 1
+                ? `${config.name} - ${this.props.staffs[0].id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`
+                : `${config.name} - ${this.props.staffs.length} ${this.props.staffs[0].status} Requests - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`
+
+        RestClient.download('pdf', this.props.staffs, fileName)
+    }
+
     render() {
         let staffs = []
 
@@ -126,6 +138,12 @@ class Table extends Component {
                             </table>
                         </div>
                     </Col>
+                </Row>
+
+                <Row>
+                    <Button onClick={this.downloadPdf} className="btn btn-function" type="button">
+                        PDF
+                    </Button>
                 </Row>
             </div>
         )

@@ -8,8 +8,8 @@ import * as AppService from '../../services/appService'
 const columns = [
     { labelKey: 'Name', valueKey: 'name' },
     { labelKey: 'Destination', valueKey: 'destination' },
-    { labelKey: 'SourceMarket', valueKey: 'sourceMarket' },
-    { labelKey: 'DateOfFlight', valueKey: 'dateOfFlight', dataType: 'DATETIME' },
+    { labelKey: 'Source Market', valueKey: 'sourceMarket' },
+    { labelKey: 'Date Of Flight', valueKey: 'dateOfFlight', dataType: 'DATETIME' },
     { labelKey: 'Status', valueKey: 'status' }
 ]
 

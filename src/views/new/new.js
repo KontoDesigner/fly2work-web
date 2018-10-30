@@ -9,8 +9,8 @@ import { Statuses as statuses } from '../../constants/geographyConstants'
 const columns = [
     { labelKey: 'Name', valueKey: 'name' },
     { labelKey: 'Destination', valueKey: 'destination' },
-    { labelKey: 'SourceMarket', valueKey: 'sourceMarket' },
-    { labelKey: 'DateOfFlight', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
+    { labelKey: 'Source Market', valueKey: 'sourceMarket' },
+    { labelKey: 'Date Of Flight', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
 ]
 
 const filter = (staffs, criteria) => {
