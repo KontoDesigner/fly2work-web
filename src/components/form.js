@@ -218,7 +218,7 @@ const Form = props => {
                     {!props.disabled && (
                         <Row className="divider-up">
                             <Col xl="12" lg="12" md="12" sm="12" xs="12">
-                                <Button className="btn btn-primary" type="submit">
+                                <Button style={{ marginRight: '15px' }} className="btn btn-primary" type="submit">
                                     Submit
                                 </Button>
 
