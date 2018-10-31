@@ -13,7 +13,7 @@ import config from '../infrastructure/config'
 
 const Form = props => {
     const downloadPdf = () => {
-        RestClient.download('pdf', [props.staff], `${config.name} - ${props.staff.id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`)
+        RestClient.download('pdf', props.staff, `${config.name} - ${props.staff.id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`)
     }
 
     return (

@@ -87,13 +87,8 @@ class Table extends Component {
         this.setState({ sortColumn: column.valueKey, sortOrder: true })
     }
 
-    downloadPdf = () => {
-        const fileName =
-            this.props.staffs.length === 1
-                ? `${config.name} - ${this.props.staffs[0].id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`
-                : `${config.name} - ${this.props.staffs.length} ${this.props.staffs[0].status} Requests - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`
-
-        RestClient.download('pdf', this.props.staffs, fileName)
+    downloadPdf = staff => {
+        RestClient.download('pdf', staff, `${config.name} - ${staff.id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`)
     }
 
     render() {
@@ -136,7 +131,7 @@ class Table extends Component {
                                             ))}
 
                                             <td>
-                                                <Button onClick={() => this.downloadPdf()} className="btn btn-function btn-sm" type="button">
+                                                <Button onClick={() => this.downloadPdf(staff)} className="btn btn-function btn-sm" type="button">
                                                     PDF
                                                 </Button>
                                             </td>
