@@ -122,6 +122,8 @@ class Table extends Component {
                                                 {this.renderHeader(column)}
                                             </th>
                                         ))}
+
+                                        <th style={{ width: '1px' }} />
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -132,18 +134,18 @@ class Table extends Component {
                                                     {this.renderBody(staff, column)}
                                                 </td>
                                             ))}
+
+                                            <td>
+                                                <Button onClick={() => this.downloadPdf()} className="btn btn-function btn-sm" type="button">
+                                                    PDF
+                                                </Button>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
                     </Col>
-                </Row>
-
-                <Row>
-                    <Button onClick={this.downloadPdf} className="btn btn-function" type="button">
-                        PDF
-                    </Button>
                 </Row>
             </div>
         )
