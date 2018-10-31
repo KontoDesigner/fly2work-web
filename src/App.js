@@ -49,7 +49,7 @@ class App extends Component {
                         progressBar
                     />
 
-                    <Loader ajaxCallsInProgress={this.props.ajaxCallsInProgress} />
+                    <Loader isOpen={this.props.isOpen} ajaxCallsInProgress={this.props.ajaxCallsInProgress} />
 
                     {this.state.loaded && (
                         <div id="outer-container" style={{ height: '100%' }}>

@@ -29,6 +29,11 @@ body {
   margin-right:300px;
 }
 
+.loader-open
+{
+  margin-left:300px;
+}
+
 .placeholder-white::placeholder {
   color: #fff;
 }
