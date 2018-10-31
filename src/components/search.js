@@ -9,7 +9,7 @@ const styles = {
         padding: '10px',
         fontSize: '1.25em',
         fontWeight: 700,
-        marginBottom: '15px',
+        marginBottom: '20px',
         width: '100%',
         placeholderTextColor: '#fff',
         placeholder: '#fff',
