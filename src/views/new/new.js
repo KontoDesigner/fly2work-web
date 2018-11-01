@@ -30,8 +30,10 @@ class New extends Component {
         this.props.newActions.getStaffs()
     }
 
-    handleClick = id => {
-        this.props.history.push(`/new/${id}`)
+    handleClick = (e, id) => {
+        if (e.target.nodeName !== 'BUTTON') {
+            this.props.history.push(`/new/${id}`)
+        }
     }
 
     render() {

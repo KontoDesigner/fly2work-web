@@ -31,8 +31,10 @@ class Overview extends Component {
         this.props.overviewActions.getStaffs()
     }
 
-    handleClick = id => {
-        this.props.history.push(`/overview/${id}`)
+    handleClick = (e, id) => {
+        if (e.target.nodeName !== 'BUTTON') {
+            this.props.history.push(`/overview/${id}`)
+        }
     }
 
     render() {

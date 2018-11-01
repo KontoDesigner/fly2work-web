@@ -30,8 +30,10 @@ class Pending extends Component {
         this.props.pendingActions.getStaffs()
     }
 
-    handleClick = id => {
-        this.props.history.push(`/pending/${id}`)
+    handleClick = (e, id) => {
+        if (e.target.nodeName !== 'BUTTON') {
+            this.props.history.push(`/pending/${id}`)
+        }
     }
 
     render() {

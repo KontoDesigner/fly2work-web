@@ -30,8 +30,10 @@ class Submitted extends Component {
         this.props.submittedActions.getStaffs()
     }
 
-    handleClick = id => {
-        this.props.history.push(`/submitted/${id}`)
+    handleClick = (e, id) => {
+        if (e.target.nodeName !== 'BUTTON') {
+            this.props.history.push(`/submitted/${id}`)
+        }
     }
 
     render() {

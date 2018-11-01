@@ -123,7 +123,7 @@ class Table extends Component {
                                 </thead>
                                 <tbody>
                                     {staffs.map(staff => (
-                                        <tr key={staff.id} onClick={() => this.props.handleClick(staff.id)}>
+                                        <tr key={staff.id} onClick={e => this.props.handleClick(e, staff.id)}>
                                             {this.props.columns.map((column, index) => (
                                                 <td className="link" key={index}>
                                                     {this.renderBody(staff, column)}

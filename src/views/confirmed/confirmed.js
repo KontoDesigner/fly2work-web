@@ -30,8 +30,10 @@ class Confirmed extends Component {
         this.props.confirmedActions.getStaffs()
     }
 
-    handleClick = id => {
-        this.props.history.push(`/confirmed/${id}`)
+    handleClick = (e, id) => {
+        if (e.target.nodeName !== 'BUTTON') {
+            this.props.history.push(`/confirmed/${id}`)
+        }
     }
 
     render() {
