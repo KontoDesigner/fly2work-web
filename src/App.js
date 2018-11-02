@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as geographyActions from './actions/geographyActions'
 import * as menuActions from './actions/menuActions'
+import * as userActions from './actions/userActions'
 import './styles/site.css'
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
         const _this = this
 
         return Promise.all([
+            this.props.userActions.getUser(),
             this.props.geographyActions.getSourceMarkets(),
             this.props.geographyActions.getRoles(),
             this.props.geographyActions.getDestinations(),
@@ -79,7 +81,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         geographyActions: bindActionCreators(geographyActions, dispatch),
-        menuActions: bindActionCreators(menuActions, dispatch)
+        menuActions: bindActionCreators(menuActions, dispatch),
+        userActions: bindActionCreators(userActions, dispatch)
     }
 }
 
