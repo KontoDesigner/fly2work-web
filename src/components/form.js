@@ -6,10 +6,12 @@ import Checkbox from './checkbox'
 import Creatable from './creatable'
 import Gender from './gender'
 import { Row, Col, Button } from 'reactstrap'
-import formValidation from './formValidation'
+import bsValidation from './bsValidation'
+import bttValidation from './bttValidation'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
 import config from '../infrastructure/config'
+import { UserTypes as userTypes } from '../constants/userConstants'
 
 const Form = props => {
     const downloadPdf = () => {
@@ -19,7 +21,7 @@ const Form = props => {
     return (
         <Formik
             initialValues={props.staff}
-            validationSchema={formValidation}
+            validationSchema={props.user.userType === userTypes.BS ? bsValidation : bttValidation}
             onSubmit={(values, actions) => {
                 props.handleStaff(values)
             }}
@@ -205,6 +207,16 @@ const Form = props => {
                                 {errors.status && touched.status && <div className="message">{errors.status}</div>}
                             </div>
                         </Col>
+
+                        {props.user.userType === userTypes.BTT && (
+                            <Col xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="test">Test</label>
+                                    <Field disabled={props.disabled} className="form-control" type="text" name="test" />
+                                    <ErrorMessage className="message" name="test" component="div" />
+                                </div>
+                            </Col>
+                        )}
 
                         <Col xl="12" lg="612" md="12" sm="12" xs="12">
                             <div className="form-item">

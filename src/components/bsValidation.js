@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const formValidation = Yup.object().shape({
+const bsValidation = Yup.object().shape({
     id: Yup.string()
         .nullable(true)
         .required('Id is required'),
@@ -76,4 +76,4 @@ const formValidation = Yup.object().shape({
         })
 })
 
-export default formValidation
+export default bsValidation
