@@ -12,6 +12,7 @@ import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
 import config from '../infrastructure/config'
 import { UserTypes as userTypes } from '../constants/userConstants'
+import Attachments from './attachments'
 
 const Form = props => {
     const downloadPdf = () => {
@@ -384,8 +385,14 @@ const Form = props => {
                         </Col>
                     </Row>
 
+                    <Row style={{ marginTop: '15px' }}>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                            <Attachments staff={props.staff} />
+                        </Col>
+                    </Row>
+
                     {!props.disabled && (
-                        <Row className="divider-up">
+                        <Row style={{ marginTop: '8px' }}>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12">
                                 <Button style={{ marginRight: '15px' }} className="btn btn-primary" type="submit">
                                     Submit

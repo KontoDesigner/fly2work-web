@@ -62,3 +62,33 @@ export async function download(url, data, fileName, useBaseUrl = true) {
         console.warn(err)
     }
 }
+
+export async function upload(url, file, data = [], useBaseUrl = true) {
+    try {
+        //File
+        var formData = new FormData()
+        formData.append('file', file)
+
+        // formData.append('test', 'test')
+        // formData.append('file', new Blob(['test payload'], { type: 'text/csv' }))
+
+        //Data
+        for (var item of data) {
+            formData.append(item.key, item.value)
+        }
+
+        const baseUrl = useBaseUrl === true ? config.api : ''
+
+        console.log(`[UPLOAD] ${baseUrl + url}`, formData)
+
+        // const settings = { headers: { 'Content-Type': 'multipart/form-data' } }
+
+        const response = await axios.post(baseUrl + url, formData)
+
+        return response.data
+    } catch (err) {
+        toastr.error('', `An unexpected error has occured: ${err}.`)
+
+        console.warn(err)
+    }
+}
