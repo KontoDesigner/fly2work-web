@@ -86,6 +86,91 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="role">Role</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'role'}
+                                    component={Select}
+                                    options={props.roles}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
+                                />
+                                {errors.role && touched.role && <div className="message">{errors.role}</div>}
+                            </div>
+                        </Col>
+
+                        {values.role === 'Concept' && (
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="roleConcept">Concept (R)</label>
+                                    <Field disabled={props.disabled} className="form-control" type="text" name="roleConcept" />
+                                    <ErrorMessage className="message" name="roleConcept" component="div" />
+                                </div>
+                            </Col>
+                        )}
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="destination">Destination</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'destination'}
+                                    component={Select}
+                                    options={props.destinations}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'destination'}
+                                    labelKey={'destination'}
+                                />
+                                {errors.destination && touched.destination && <div className="message">{errors.destination}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className="form-item">
+                                <label htmlFor="phone">Phone</label>
+                                <Field disabled={props.disabled} className="form-control" type="text" name="phone" />
+                                <ErrorMessage className="message" name="phone" component="div" />
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="departureAirport">Departure Airport</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'departureAirport'}
+                                    component={Creatable}
+                                    setFieldTouched={setFieldTouched}
+                                    noOptionsMessage="Type to create.."
+                                />
+                                {errors.departureAirport && touched.departureAirport && <div className="message">{errors.departureAirport}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="arrivalAirport">Arrival Airport</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'arrivalAirport'}
+                                    component={Creatable}
+                                    setFieldTouched={setFieldTouched}
+                                    noOptionsMessage="Type to create.."
+                                />
+                                {errors.arrivalAirport && touched.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className="form-item">
+                                <Field disabled={props.disabled} name={'gender'} component={Gender} />
+                                {errors.gender && touched.gender && <div className="message">{errors.gender}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="hotelNeeded">Hotel Needed</label>
                                 <Field disabled={props.disabled} name={'hotelNeeded'} component={Checkbox} />
                                 {errors.hotelNeeded && touched.hotelNeeded && <div className="message">{errors.hotelNeeded}</div>}
@@ -166,107 +251,6 @@ const Form = props => {
                                 <label htmlFor="railFly">Rail & Fly</label>
                                 <Field disabled={props.disabled} name={'railFly'} component={Checkbox} />
                                 {errors.railFly && touched.railFly && <div className="message">{errors.railFly}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="role">Role</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'role'}
-                                    component={Select}
-                                    options={props.roles}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'value'}
-                                    labelKey={'label'}
-                                />
-                                {errors.role && touched.role && <div className="message">{errors.role}</div>}
-                            </div>
-                        </Col>
-
-                        {values.role === 'Concept' && (
-                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
-                                    <label htmlFor="roleConcept">Concept (R)</label>
-                                    <Field disabled={props.disabled} className="form-control" type="text" name="roleConcept" />
-                                    <ErrorMessage className="message" name="roleConcept" component="div" />
-                                </div>
-                            </Col>
-                        )}
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="destination">Destination</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'destination'}
-                                    component={Select}
-                                    options={props.destinations}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'destination'}
-                                    labelKey={'destination'}
-                                />
-                                {errors.destination && touched.destination && <div className="message">{errors.destination}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className="form-item">
-                                <Field disabled={props.disabled} name={'gender'} component={Gender} />
-                                {errors.gender && touched.gender && <div className="message">{errors.gender}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className="form-item">
-                                <label htmlFor="phone">Phone</label>
-                                <Field disabled={props.disabled} className="form-control" type="text" name="phone" />
-                                <ErrorMessage className="message" name="phone" component="div" />
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="departureAirport">Departure Airport</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'departureAirport'}
-                                    component={Creatable}
-                                    setFieldTouched={setFieldTouched}
-                                    noOptionsMessage="Type to create.."
-                                />
-                                {errors.departureAirport && touched.departureAirport && <div className="message">{errors.departureAirport}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="arrivalAirport">Arrival Airport</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'arrivalAirport'}
-                                    component={Creatable}
-                                    setFieldTouched={setFieldTouched}
-                                    noOptionsMessage="Type to create.."
-                                />
-                                {errors.arrivalAirport && touched.arrivalAirport && <div className="message">{errors.arrivalAirport}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="status">Status</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'status'}
-                                    component={Select}
-                                    options={props.statuses}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'value'}
-                                    labelKey={'label'}
-                                />
-                                {errors.status && touched.status && <div className="message">{errors.status}</div>}
                             </div>
                         </Col>
 
@@ -374,6 +358,22 @@ const Form = props => {
                                 </Col>
                             </div>
                         )}
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="status">Status</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'status'}
+                                    component={Select}
+                                    options={props.statuses}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
+                                />
+                                {errors.status && touched.status && <div className="message">{errors.status}</div>}
+                            </div>
+                        </Col>
 
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             <div className="form-item">

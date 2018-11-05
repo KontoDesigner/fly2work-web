@@ -57,7 +57,7 @@ export async function download(url, data, fileName, useBaseUrl = true) {
 
         return downloadjs(response.data, fileName)
     } catch (err) {
-        toastr.error('Error', `An unexpected error has occured: ${err}.`)
+        toastr.error('', `An unexpected error has occured: ${err}.`)
 
         console.warn(err)
     }
