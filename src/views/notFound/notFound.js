@@ -1,7 +1,7 @@
 import React from 'react'
 
 const NotFound = props => {
-  return <div>NOT FOUND!</div>
+    return <h2>Page not found</h2>
 }
 
 export default NotFound

@@ -18,5 +18,5 @@ export var Statuses = keyMirror({
 })
 
 export var GetStatuses = () => {
-    return [Statuses.Submitted, Statuses.Pending, Statuses.Confirmed, Statuses.Overview]
+    return [Statuses.Submitted, Statuses.Pending, Statuses.Confirmed]
 }

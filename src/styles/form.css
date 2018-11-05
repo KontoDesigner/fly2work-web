@@ -23,8 +23,8 @@ input[type='radio'][disabled] {
     cursor: not-allowed !important;
 }
 
-form > .row > div {
-    min-height: 90px;
+form > .row > div, .inner-form > div {
+    min-height: 100px;
 }
 
 textarea.form-control {
