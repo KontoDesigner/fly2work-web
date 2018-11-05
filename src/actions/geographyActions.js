@@ -96,29 +96,6 @@ export function getFlightStatuses() {
     }
 }
 
-export function getRolesSuccess(roles) {
-    return {
-        type: types.GET_ROLES_SUCCESS,
-        data: { roles }
-    }
-}
-
-export function getRoles() {
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const roles = await RestClient.get(`${BASE}/roles`)
-
-            dispatch(getRolesSuccess(roles))
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
 export function getDestinationsSuccess(destinations) {
     return {
         type: types.GET_DESTINATIONS_SUCCESS,

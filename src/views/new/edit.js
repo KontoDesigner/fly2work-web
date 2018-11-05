@@ -69,6 +69,7 @@ class Edit extends Component {
                     destinations={this.props.destinations}
                     statuses={this.props.statuses}
                     user={this.props.user}
+                    typeOfFlights={this.props.typeOfFlights}
                 />
             </div>
         ) : (
@@ -86,7 +87,8 @@ function mapStateToProps(state) {
             value: s,
             label: s
         })),
-        user: state.user
+        user: state.user,
+        typeOfFlights: state.geography.typeOfFlights
     }
 }
 

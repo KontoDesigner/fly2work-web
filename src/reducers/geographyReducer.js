@@ -6,9 +6,20 @@ var defaultState = {
     sourceMarkets: null,
     seasons: null,
     flightStatuses: null,
-    roles: null,
     destinations: null,
-    statuses: getStatuses()
+    statuses: getStatuses(),
+    typeOfFlights: [
+        { value: 'End of season', label: 'End of season' },
+        { value: 'Start of season', label: 'Start of season' },
+        { value: 'Holiday', label: 'Holiday' },
+        { value: 'Emergency', label: 'Emergency' },
+        { value: 'Visa', label: 'Visa' },
+        { value: 'Training', label: 'Training' },
+        { value: 'Resignation', label: 'Resignation' },
+        { value: 'Conference', label: 'Conference' },
+        { value: 'Concept training', label: 'Concept training' }
+    ],
+    roles: [{ value: 'Mainline', label: 'Mainline' }, { value: 'Concept', label: 'Concept' }]
 }
 
 export default function geographyReducer(state = defaultState, action) {

@@ -29,7 +29,6 @@ class App extends Component {
         return Promise.all([
             this.props.userActions.getUser(),
             this.props.geographyActions.getSourceMarkets(),
-            this.props.geographyActions.getRoles(),
             this.props.geographyActions.getDestinations(),
             this.props.menuActions.getStaffCount()
         ]).then(function() {

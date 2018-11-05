@@ -6,8 +6,8 @@ import Checkbox from './checkbox'
 import Creatable from './creatable'
 import Gender from './gender'
 import { Row, Col, Button } from 'reactstrap'
-import bsValidation from './bsValidation'
-import bttValidation from './bttValidation'
+import bsValidation from '../validations/bsValidation'
+import bttValidation from '../validations/bttValidation'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
 import config from '../infrastructure/config'
@@ -95,19 +95,79 @@ const Form = props => {
                         {values.hotelNeeded === true && [
                             <Col key={0} xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="hotelStart">Hotel Start</label>
-                                    <Field disabled={props.disabled} name={'hotelStart'} component={DatePicker} setFieldTouched={setFieldTouched} />
-                                    {errors.hotelStart && touched.hotelStart && <div className="message">{errors.hotelStart}</div>}
+                                    <label htmlFor="hotelNeededHotelStart">Hotel Start (HN)</label>
+                                    <Field
+                                        disabled={props.disabled}
+                                        name={'hotelNeededHotelStart'}
+                                        component={DatePicker}
+                                        setFieldTouched={setFieldTouched}
+                                    />
+                                    {errors.hotelNeededHotelStart &&
+                                        touched.hotelNeededHotelStart && <div className="message">{errors.hotelNeededHotelStart}</div>}
                                 </div>
                             </Col>,
                             <Col key={1} xl="4" lg="6" md="12" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="hotelEnd">Hotel End</label>
-                                    <Field disabled={props.disabled} name={'hotelEnd'} component={DatePicker} setFieldTouched={setFieldTouched} />
-                                    {errors.hotelEnd && touched.hotelEnd && <div className="message">{errors.hotelEnd}</div>}
+                                    <label htmlFor="hotelNeededHotelEnd">Hotel End (HN)</label>
+                                    <Field
+                                        disabled={props.disabled}
+                                        name={'hotelNeededHotelEnd'}
+                                        component={DatePicker}
+                                        setFieldTouched={setFieldTouched}
+                                    />
+                                    {errors.hotelNeededHotelEnd &&
+                                        touched.hotelNeededHotelEnd && <div className="message">{errors.hotelNeededHotelEnd}</div>}
                                 </div>
                             </Col>
                         ]}
+
+                        <Col xl="4" lg="6" md="12" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="bookReturnFlight">Book Return Flight</label>
+                                <Field disabled={props.disabled} name={'bookReturnFlight'} component={Checkbox} />
+                                {errors.bookReturnFlight && touched.bookReturnFlight && <div className="message">{errors.bookReturnFlight}</div>}
+                            </div>
+                        </Col>
+
+                        {values.bookReturnFlight === true && [
+                            <Col key={0} xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="bookReturnFlightDateOfFlight">Date Of Flight (BRF)</label>
+                                    <Field
+                                        disabled={props.disabled}
+                                        name={'bookReturnFlightDateOfFlight'}
+                                        component={DatePicker}
+                                        setFieldTouched={setFieldTouched}
+                                    />
+                                    {errors.bookReturnFlightDateOfFlight &&
+                                        touched.bookReturnFlightDateOfFlight && <div className="message">{errors.bookReturnFlightDateOfFlight}</div>}
+                                </div>
+                            </Col>,
+
+                            <Col key={1} xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="bookReturnFlightDepartureAirport">Departure Airport (BRF)</label>
+                                    <Field disabled={props.disabled} className="form-control" type="text" name="bookReturnFlightDepartureAirport" />
+                                    <ErrorMessage className="message" name="bookReturnFlightDepartureAirport" component="div" />
+                                </div>
+                            </Col>,
+
+                            <Col key={2} xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="bookReturnFlightArrivalAirport">Arrival Airport (BRF)</label>
+                                    <Field disabled={props.disabled} className="form-control" type="text" name="bookReturnFlightArrivalAirport" />
+                                    <ErrorMessage className="message" name="bookReturnFlightArrivalAirport" component="div" />
+                                </div>
+                            </Col>
+                        ]}
+
+                        <Col xl="4" lg="6" md="12" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="railFly">Rail&Fly</label>
+                                <Field disabled={props.disabled} name={'railFly'} component={Checkbox} />
+                                {errors.railFly && touched.railFly && <div className="message">{errors.railFly}</div>}
+                            </div>
+                        </Col>
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
@@ -124,6 +184,16 @@ const Form = props => {
                                 {errors.role && touched.role && <div className="message">{errors.role}</div>}
                             </div>
                         </Col>
+
+                        {values.role === 'Concept' && (
+                            <Col xl="4" lg="6" md="12" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="roleConcept">Concept (R)</label>
+                                    <Field disabled={props.disabled} className="form-control" type="text" name="roleConcept" />
+                                    <ErrorMessage className="message" name="roleConcept" component="div" />
+                                </div>
+                            </Col>
+                        )}
 
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
@@ -187,8 +257,16 @@ const Form = props => {
                         <Col xl="4" lg="6" md="12" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="typeOfFlight">Type Of Flight</label>
-                                <Field disabled={props.disabled} className="form-control" type="text" name="typeOfFlight" />
-                                <ErrorMessage className="message" name="typeOfFlight" component="div" />
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'typeOfFlight'}
+                                    component={Select}
+                                    options={props.typeOfFlights}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
+                                />
+                                {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
                             </div>
                         </Col>
 
