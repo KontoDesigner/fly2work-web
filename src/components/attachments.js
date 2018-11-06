@@ -63,8 +63,6 @@ class Attachments extends Component {
     render() {
         return (
             <div className="tui-text-content">
-                <label htmlFor="attachments">Attachments</label>
-
                 <input
                     className="hidden"
                     ref={ref => {
@@ -104,7 +102,7 @@ class Attachments extends Component {
                                     </td>
 
                                     <td onClick={() => this.download(attachment)} className="link">
-                                        {attachment.created && <Moment format="YYYY-MM-DD mm:HH">{attachment.created}</Moment>}
+                                        {attachment.created && <Moment format="YYYY-MM-DD HH:mm">{attachment.created}</Moment>}
                                     </td>
 
                                     <td onClick={() => this.download(attachment)} className="link">

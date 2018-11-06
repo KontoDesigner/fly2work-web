@@ -397,7 +397,7 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    <Row style={{ marginTop: '15px' }}>
+                    <Row style={{ marginTop: '25px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             <Attachments staff={props.staff} />
                         </Col>
