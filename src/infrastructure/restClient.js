@@ -69,9 +69,6 @@ export async function upload(url, file, data = [], useBaseUrl = true) {
         var formData = new FormData()
         formData.append('file', file)
 
-        // formData.append('test', 'test')
-        // formData.append('file', new Blob(['test payload'], { type: 'text/csv' }))
-
         //Data
         for (var item of data) {
             formData.append(item.key, item.value)
