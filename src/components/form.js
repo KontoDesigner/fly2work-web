@@ -281,7 +281,7 @@ const Form = props => {
                             <div className="inner-form">
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
                                     <div className="hr">
-                                        <span className="hr-title">BT</span>
+                                        <span className="hr-title">BTT</span>
                                     </div>
                                 </Col>
 
