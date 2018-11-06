@@ -164,6 +164,22 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="typeOfFlight">Type Of Flight</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'typeOfFlight'}
+                                    component={Select}
+                                    options={props.typeOfFlights}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
+                                />
+                                {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <Field disabled={props.disabled} name={'gender'} component={Gender} />
                                 {errors.gender && touched.gender && <div className="message">{errors.gender}</div>}
@@ -283,22 +299,6 @@ const Form = props => {
                                             setFieldTouched={setFieldTouched}
                                         />
                                         {errors.arrivalTime && touched.arrivalTime && <div className="message">{errors.arrivalTime}</div>}
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="typeOfFlight">Type Of Flight</label>
-                                        <Field
-                                            disabled={props.disabled}
-                                            name={'typeOfFlight'}
-                                            component={Select}
-                                            options={props.typeOfFlights}
-                                            setFieldTouched={setFieldTouched}
-                                            valueKey={'value'}
-                                            labelKey={'label'}
-                                        />
-                                        {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
                                     </div>
                                 </Col>
 

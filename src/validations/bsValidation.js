@@ -1,6 +1,9 @@
 import * as Yup from 'yup'
 
 const bsValidation = Yup.object().shape({
+    typeOfFlight: Yup.string()
+        .nullable(true)
+        .required('Type of flight is required'),
     id: Yup.string()
         .nullable(true)
         .required('Id is required'),
