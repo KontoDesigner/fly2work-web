@@ -23,7 +23,8 @@ input[type='radio'][disabled] {
     cursor: not-allowed !important;
 }
 
-form > .row > div, .inner-form > div {
+form > .row > div,
+.inner-form > div {
     min-height: 95px;
 }
 
@@ -97,22 +98,37 @@ input[type='checkbox'] {
     border-color: #777;
 }
 
-.form-control
-{
+.form-control {
     border-color: #777;
 }
 
-input[type=checkbox]
-{
+input[type='checkbox'] {
     border-color: #777;
 }
 
-input[type=radio]
-{
+input[type='radio'] {
     border-color: #777;
 }
 
-.form-control, output
-{
-    color:#444;
+.form-control,
+output {
+    color: #444;
+}
+
+div.hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: center;
+    height: 0px;
+    line-height: 0px;
+}
+
+.hr-title {
+    background-color: #708ba1;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.5em;
+    padding: 0 15px;
 }

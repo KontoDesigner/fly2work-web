@@ -29,6 +29,12 @@ const Form = props => {
             render={({ errors, touched, setFieldTouched, values }) => (
                 <FormikForm>
                     <Row>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                            <div className="hr">
+                                <span className="hr-title">BS</span>
+                            </div>
+                        </Col>
+
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <label htmlFor="id">Id</label>
@@ -273,6 +279,12 @@ const Form = props => {
 
                         {props.user.userType === userTypes.BTT && (
                             <div className="inner-form">
+                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
+                                    <div className="hr">
+                                        <span className="hr-title">BT</span>
+                                    </div>
+                                </Col>
+
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
                                         <label htmlFor="flightNumber">Flight Number</label>
