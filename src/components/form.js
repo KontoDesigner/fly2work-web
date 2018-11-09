@@ -401,7 +401,7 @@ const Form = props => {
                     </Row>
 
                     <Row style={{ marginTop: '25px' }}>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                             <Attachments staff={props.staff} handleStaffAttachments={props.handleStaffAttachments} disabled={props.disabled} />
                         </Col>
                     </Row>
