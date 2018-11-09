@@ -10,13 +10,16 @@ import bsValidation from '../validations/bsValidation'
 import bttValidation from '../validations/bttValidation'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
-import config from '../infrastructure/config'
 import { UserTypes as userTypes } from '../constants/userConstants'
 import Attachments from './attachments'
 
 const Form = props => {
     const downloadPdf = () => {
-        RestClient.download('pdf', props.staff, `${config.name} - ${props.staff.id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`)
+        RestClient.download('pdf', props.staff, `${props.staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
+    }
+
+    const downloadExcel = () => {
+        RestClient.download('excel', props.staff, `${props.staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
     }
 
     return (
@@ -29,12 +32,6 @@ const Form = props => {
             render={({ errors, touched, setFieldTouched, values }) => (
                 <FormikForm>
                     <Row>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                            <div className="hr">
-                                <span className="hr-title">BS</span>
-                            </div>
-                        </Col>
-
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <label htmlFor="id">Id</label>
@@ -106,16 +103,6 @@ const Form = props => {
                                 {errors.role && touched.role && <div className="message">{errors.role}</div>}
                             </div>
                         </Col>
-
-                        {values.role === 'Concept' && (
-                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
-                                    <label htmlFor="roleConcept">Concept (R)</label>
-                                    <Field disabled={props.disabled} className="form-control" type="text" name="roleConcept" />
-                                    <ErrorMessage className="message" name="roleConcept" component="div" />
-                                </div>
-                            </Col>
-                        )}
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
@@ -282,7 +269,7 @@ const Form = props => {
 
                         {props.user.userType === userTypes.BTT && (
                             <div className="inner-form">
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
+                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
                                     <div className="hr">
                                         <span className="hr-title">BTT</span>
                                     </div>
@@ -406,19 +393,23 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    {!props.disabled && (
-                        <Row style={{ marginTop: '8px' }}>
-                            <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                    <Row style={{ marginTop: '8px' }}>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                            {!props.disabled && (
                                 <Button style={{ marginRight: '15px' }} className="btn btn-primary" type="submit">
                                     Submit
                                 </Button>
+                            )}
 
-                                <Button onClick={downloadPdf} className="btn btn-function" type="button">
-                                    PDF
-                                </Button>
-                            </Col>
-                        </Row>
-                    )}
+                            <Button style={{ marginRight: '15px' }} onClick={downloadPdf} className="btn btn-function" type="button">
+                                PDF
+                            </Button>
+
+                            <Button onClick={downloadExcel} className="btn btn-function" type="button">
+                                XLSX
+                            </Button>
+                        </Col>
+                    </Row>
                 </FormikForm>
             )}
         />

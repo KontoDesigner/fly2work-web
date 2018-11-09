@@ -15,7 +15,7 @@ export function getUser() {
         try {
             const user = {
                 id: 1,
-                userType: userTypes.BS
+                userType: userTypes.BTT
             }
 
             dispatch(getUserSuccess(user))

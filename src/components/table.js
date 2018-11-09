@@ -8,7 +8,6 @@ import lodash from 'lodash'
 import Search from './search'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
-import config from '../infrastructure/config'
 
 library.add(faCaretDown, faCaretUp)
 
@@ -88,7 +87,11 @@ class Table extends Component {
     }
 
     downloadPdf = staff => {
-        RestClient.download('pdf', staff, `${config.name} - ${staff.id} - ${moment().format('YYYY/MM/DD HH:mm')}.pdf`)
+        RestClient.download('pdf', staff, `${staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
+    }
+
+    downloadExcel = staff => {
+        RestClient.download('excel', staff, `${staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
     }
 
     render() {
@@ -130,9 +133,17 @@ class Table extends Component {
                                                 </td>
                                             ))}
 
-                                            <td>
-                                                <Button onClick={() => this.downloadPdf(staff)} className="btn btn-function btn-sm" type="button">
+                                            <td style={{ whiteSpace: 'nowrap' }}>
+                                                <Button
+                                                    style={{ marginRight: '10px' }}
+                                                    onClick={() => this.downloadPdf(staff)}
+                                                    className="btn btn-function btn-sm"
+                                                    type="button">
                                                     PDF
+                                                </Button>
+
+                                                <Button onClick={() => this.downloadExcel(staff)} className="btn btn-function btn-sm" type="button">
+                                                    XLSX
                                                 </Button>
                                             </td>
                                         </tr>
