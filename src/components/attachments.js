@@ -35,16 +35,24 @@ class Attachments extends Component {
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (res.ok === true) {
+            let attachments = Object.assign([], this.props.staff.attachments)
+
+            attachments.push(res.attachment)
+
+            this.props.handleStaffAttachments(attachments)
+
             toastr.success('', 'Successfully uploaded file', res)
         } else {
             toastr.error('', 'Could not upload file')
         }
+
+        this.downloadBtn.value = ''
     }
 
-    delete = async id => {
+    delete = async index => {
         const req = {
             staffId: this.props.staff.id,
-            id: id
+            id: this.props.staff.attachments[index].id
         }
 
         this.props.ajaxStatusActions.beginAjaxCall()
@@ -54,6 +62,12 @@ class Attachments extends Component {
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (res.ok === true) {
+            let attachments = Object.assign([], this.props.staff.attachments)
+
+            attachments.splice(index, 1)
+
+            this.props.handleStaffAttachments(attachments)
+
             toastr.success('', 'Successfully deleted file', res)
         } else {
             toastr.error('', 'Could not delete file')
@@ -82,6 +96,7 @@ class Attachments extends Component {
                             <th>Size</th>
                             <th style={{ width: '1px', padding: '12px 24px 11px 24px' }}>
                                 <Button
+                                    disabled={this.props.disabled}
                                     style={{ width: '145px' }}
                                     onClick={() => {
                                         this.downloadBtn.click()
@@ -95,7 +110,7 @@ class Attachments extends Component {
                     </thead>
                     <tbody>
                         {this.props.staff.attachments &&
-                            this.props.staff.attachments.map(attachment => (
+                            this.props.staff.attachments.map((attachment, index) => (
                                 <tr key={attachment.id}>
                                     <td onClick={() => this.download(attachment)} className="link">
                                         {attachment.name}
@@ -110,7 +125,11 @@ class Attachments extends Component {
                                     </td>
 
                                     <td>
-                                        <Button onClick={() => this.delete(attachment.id)} className="btn btn-sales btn-sm" type="button">
+                                        <Button
+                                            onClick={() => this.delete(index)}
+                                            className="btn btn-sales btn-sm"
+                                            type="button"
+                                            disabled={this.props.disabled}>
                                             DELETE
                                         </Button>
                                     </td>

@@ -42,11 +42,19 @@ class Edit extends Component {
     }
 
     handleStaff = staff => {
+        staff.attachments = this.state.staff.attachments
+
         this.setState({ staff })
 
         this.props.newActions.updateStaff(staff)
+    }
 
-        this.props.newActions.getStaffs()
+    handleStaffAttachments = attachments => {
+        let staff = Object.assign({}, this.state.staff)
+
+        staff.attachments = attachments
+
+        this.setState({ staff })
     }
 
     render() {
@@ -70,6 +78,7 @@ class Edit extends Component {
                     statuses={this.props.statuses}
                     user={this.props.user}
                     typeOfFlights={this.props.typeOfFlights}
+                    handleStaffAttachments={this.handleStaffAttachments}
                 />
             </div>
         ) : (

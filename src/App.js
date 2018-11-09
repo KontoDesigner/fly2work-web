@@ -42,8 +42,8 @@ class App extends Component {
                 <div style={{ height: '100%' }}>
                     <ReduxToastr
                         timeOut={5000}
-                        newestOnTop={false}
-                        preventDuplicates={false}
+                        newestOnTop={true}
+                        preventDuplicates={true}
                         position="top-center"
                         transitionIn="fadeIn"
                         transitionOut="fadeOut"

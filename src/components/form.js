@@ -210,8 +210,9 @@ const Form = props => {
                                         component={DatePicker}
                                         setFieldTouched={setFieldTouched}
                                     />
-                                    {errors.hotelNeededHotelStart &&
-                                        touched.hotelNeededHotelStart && <div className="message">{errors.hotelNeededHotelStart}</div>}
+                                    {errors.hotelNeededHotelStart && touched.hotelNeededHotelStart && (
+                                        <div className="message">{errors.hotelNeededHotelStart}</div>
+                                    )}
                                 </div>
                             </Col>,
                             <Col key={1} xl="4" lg="4" md="6" sm="12" xs="12">
@@ -223,8 +224,9 @@ const Form = props => {
                                         component={DatePicker}
                                         setFieldTouched={setFieldTouched}
                                     />
-                                    {errors.hotelNeededHotelEnd &&
-                                        touched.hotelNeededHotelEnd && <div className="message">{errors.hotelNeededHotelEnd}</div>}
+                                    {errors.hotelNeededHotelEnd && touched.hotelNeededHotelEnd && (
+                                        <div className="message">{errors.hotelNeededHotelEnd}</div>
+                                    )}
                                 </div>
                             </Col>
                         ]}
@@ -247,8 +249,9 @@ const Form = props => {
                                         component={DatePicker}
                                         setFieldTouched={setFieldTouched}
                                     />
-                                    {errors.bookReturnFlightDateOfFlight &&
-                                        touched.bookReturnFlightDateOfFlight && <div className="message">{errors.bookReturnFlightDateOfFlight}</div>}
+                                    {errors.bookReturnFlightDateOfFlight && touched.bookReturnFlightDateOfFlight && (
+                                        <div className="message">{errors.bookReturnFlightDateOfFlight}</div>
+                                    )}
                                 </div>
                             </Col>,
 
@@ -399,7 +402,7 @@ const Form = props => {
 
                     <Row style={{ marginTop: '25px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
-                            <Attachments staff={props.staff} />
+                            <Attachments staff={props.staff} handleStaffAttachments={props.handleStaffAttachments} disabled={props.disabled} />
                         </Col>
                     </Row>
 

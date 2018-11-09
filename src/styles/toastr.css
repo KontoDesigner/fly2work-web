@@ -1,6 +1,12 @@
+.redux-toastr
+{
+    font-size:15px;
+}
+
 .redux-toastr .toastr
 {
     margin:0;
+    min-height:65px;
 }
 
 .redux-toastr .toastr

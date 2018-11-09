@@ -36,15 +36,15 @@ export function updateStaff(staff) {
             const res = await RestClient.post('staff', staff)
 
             if (res && res.ok === true) {
-                console.log('Staff has been updated')
+                console.log('Request has been updated', res)
 
-                toastr.success('', 'Staff has been updated', res)
+                toastr.success('', 'Request has been updated', res)
 
                 dispatch(getStaffCount())
             } else {
-                console.log('Could not update staff', res)
+                console.log('Could not update request', res)
 
-                toastr.error('', 'Could not update staff')
+                toastr.error('', 'Could not update request')
             }
 
             dispatch(endAjaxCall())
