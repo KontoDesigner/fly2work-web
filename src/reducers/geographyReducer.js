@@ -19,7 +19,8 @@ var defaultState = {
         { value: 'Conference', label: 'Conference' },
         { value: 'Concept training', label: 'Concept training' }
     ],
-    roles: [{ value: 'Mainline', label: 'Mainline' }, { value: 'Concept', label: 'Concept' }]
+    roles: [{ value: 'Mainline', label: 'Mainline' }, { value: 'Concept', label: 'Concept' }],
+    iataCodes: null
 }
 
 export default function geographyReducer(state = defaultState, action) {
@@ -58,6 +59,11 @@ export default function geographyReducer(state = defaultState, action) {
             return {
                 ...state,
                 destinations: action.data.destinations
+            }
+        case types.GET_IATACODES_SUCCESS:
+            return {
+                ...state,
+                iataCodes: action.data.iataCodes
             }
         default:
             return state

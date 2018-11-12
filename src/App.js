@@ -30,7 +30,8 @@ class App extends Component {
             this.props.userActions.getUser(),
             this.props.geographyActions.getSourceMarkets(),
             this.props.geographyActions.getDestinations(),
-            this.props.menuActions.getStaffCount()
+            this.props.menuActions.getStaffCount(),
+            this.props.geographyActions.getIataCodes()
         ]).then(function() {
             _this.setState({ loaded: true })
         })

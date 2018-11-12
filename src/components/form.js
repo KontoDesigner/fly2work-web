@@ -50,6 +50,14 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
+                                <label htmlFor="jobTitle">Job Title</label>
+                                <Field disabled={props.disabled} className="form-control" type="text" name="jobTitle" />
+                                <ErrorMessage className="message" name="jobTitle" component="div" />
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className="form-item">
                                 <label htmlFor="dateOfBirth">Date Of Birth</label>
                                 <Field disabled={props.disabled} name={'dateOfBirth'} component={DatePicker} setFieldTouched={setFieldTouched} />
                                 {errors.dateOfBirth && touched.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
@@ -85,22 +93,6 @@ const Form = props => {
                                 <label htmlFor="dateOfFlight">Date Of Flight</label>
                                 <Field disabled={props.disabled} name={'dateOfFlight'} component={DatePicker} setFieldTouched={setFieldTouched} />
                                 {errors.dateOfFlight && touched.dateOfFlight && <div className="message">{errors.dateOfFlight}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="role">Role</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'role'}
-                                    component={Select}
-                                    options={props.roles}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'value'}
-                                    labelKey={'label'}
-                                />
-                                {errors.role && touched.role && <div className="message">{errors.role}</div>}
                             </div>
                         </Col>
 

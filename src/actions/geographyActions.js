@@ -118,3 +118,26 @@ export function getDestinations() {
         }
     }
 }
+
+export function getIataCodesSuccess(iataCodes) {
+    return {
+        type: types.GET_IATACODES_SUCCESS,
+        data: { iataCodes }
+    }
+}
+
+export function getIataCodes() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const iataCodes = await RestClient.get(`${BASE}/iatacodes`)
+
+            dispatch(getIataCodesSuccess(iataCodes))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}

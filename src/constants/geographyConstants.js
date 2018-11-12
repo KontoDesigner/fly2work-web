@@ -7,7 +7,8 @@ export var ActionTypes = keyMirror({
     GET_SEASONS_SUCCESS: null,
     GET_FLIGHTSTATUSES_SUCCESS: null,
     GET_ROLES_SUCCESS: null,
-    GET_DESTINATIONS_SUCCESS: null
+    GET_DESTINATIONS_SUCCESS: null,
+    GET_IATACODES_SUCCESS: null
 })
 
 export var Statuses = keyMirror({
