@@ -261,6 +261,22 @@ const Form = props => {
 
                         {props.user.userType === userTypes.BTT && (
                             <div className="inner-form">
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                        <label htmlFor="iataCode">Iata Code</label>
+                                        <Field
+                                            disabled={props.disabled}
+                                            name={'iataCode'}
+                                            component={Select}
+                                            options={props.iataCodes}
+                                            setFieldTouched={setFieldTouched}
+                                            valueKey={'value'}
+                                            labelKey={'label'}
+                                        />
+                                        {errors.iataCode && touched.iataCode && <div className="message">{errors.iataCode}</div>}
+                                    </div>
+                                </Col>
+
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
                                     <div className="hr">
                                         <span className="hr-title">BTT</span>
