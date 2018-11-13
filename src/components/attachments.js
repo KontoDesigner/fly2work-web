@@ -122,15 +122,15 @@ class Attachments extends Component {
                         {this.props.staff.attachments &&
                             this.props.staff.attachments.map((attachment, index) => (
                                 <tr key={attachment.id}>
-                                    <td onClick={() => this.download(attachment)} className="link" style={styles.td}>
+                                    <td onClick={() => this.download(attachment)} className="link">
                                         {attachment.name}
                                     </td>
 
-                                    <td onClick={() => this.download(attachment)} className="link" style={styles.td}>
+                                    <td onClick={() => this.download(attachment)} className="link">
                                         {attachment.created && <Moment format="YYYY-MM-DD HH:mm">{attachment.created}</Moment>}
                                     </td>
 
-                                    <td onClick={() => this.download(attachment)} className="link" style={styles.td}>
+                                    <td onClick={() => this.download(attachment)} className="link">
                                         {attachment.size}
                                     </td>
 
