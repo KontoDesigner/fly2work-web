@@ -18,10 +18,6 @@ const Form = props => {
         RestClient.download('pdf', props.staff, `${props.staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
     }
 
-    const downloadExcel = () => {
-        RestClient.download('excel', props.staff, `${props.staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
-    }
-
     return (
         <Formik
             initialValues={props.staff}
@@ -401,7 +397,7 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    <Row style={{ marginTop: '8px' }}>
+                    <Row style={{ marginTop: '23px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             {!props.disabled && (
                                 <Button style={{ marginRight: '15px' }} className="btn btn-primary" type="submit">
@@ -409,12 +405,8 @@ const Form = props => {
                                 </Button>
                             )}
 
-                            <Button style={{ marginRight: '15px' }} onClick={downloadPdf} className="btn btn-function" type="button">
+                            <Button onClick={downloadPdf} className="btn btn-function" type="button">
                                 PDF
-                            </Button>
-
-                            <Button onClick={downloadExcel} className="btn btn-function" type="button">
-                                XLSX
                             </Button>
                         </Col>
                     </Row>

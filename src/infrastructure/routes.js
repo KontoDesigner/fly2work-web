@@ -13,28 +13,26 @@ import SubmittedEdit from '../views/submitted/edit'
 import NotFound from '../views/notFound/notFound'
 
 const Routes = props => (
-    <div className="container">
-        <Switch>
-            <Route path="/" exact component={() => <Redirect to="/new" />} />
+    <Switch>
+        <Route path="/" exact component={() => <Redirect to="/new" />} />
 
-            <Route exact path="/new" component={New} staffs={props.staffs} />
-            <Route exact path="/new/:id" render={props => <NewEdit {...props} ignoreThis={true} />} />
+        <Route exact path="/new" component={New} staffs={props.staffs} />
+        <Route exact path="/new/:id" render={props => <NewEdit {...props} ignoreThis={true} />} />
 
-            <Route exact path="/confirmed" component={Confirmed} />
-            <Route exact path="/confirmed/:id" render={props => <ConfirmedEdit {...props} ignoreThis={true} />} />
+        <Route exact path="/confirmed" component={Confirmed} />
+        <Route exact path="/confirmed/:id" render={props => <ConfirmedEdit {...props} ignoreThis={true} />} />
 
-            <Route exact path="/overview" component={Overview} />
-            <Route exact path="/overview/:id" render={props => <OverviewEdit {...props} ignoreThis={true} />} />
+        <Route exact path="/overview" component={Overview} />
+        <Route exact path="/overview/:id" render={props => <OverviewEdit {...props} ignoreThis={true} />} />
 
-            <Route exact path="/pending" component={Pending} />
-            <Route exact path="/pending/:id" render={props => <PendingEdit {...props} ignoreThis={true} />} />
+        <Route exact path="/pending" component={Pending} />
+        <Route exact path="/pending/:id" render={props => <PendingEdit {...props} ignoreThis={true} />} />
 
-            <Route exact path="/submitted" component={Submitted} />
-            <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
+        <Route exact path="/submitted" component={Submitted} />
+        <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
 
-            <Route component={NotFound} />
-        </Switch>
-    </div>
+        <Route component={NotFound} />
+    </Switch>
 )
 
 export default Routes

@@ -4,6 +4,9 @@ import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
 import * as overviewActions from '../../actions/overviewActions'
 import * as AppService from '../../services/appService'
+import * as RestClient from '../../infrastructure/restClient'
+import moment from 'moment'
+import { Button, Row } from 'reactstrap'
 
 const columns = [
     { labelKey: 'Name', valueKey: 'name' },
@@ -37,12 +40,27 @@ class Overview extends Component {
         }
     }
 
+    downloadExcel = () => {
+        RestClient.download('excel', null, `${this.props.staffs.length} requests - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
+    }
+
     render() {
         return (
             <div>
                 <h2>Overview</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
+
+                <Row>
+                    <Button
+                        disabled={!this.props.staffs || this.props.staffs.length === 0}
+                        style={{ marginTop: '15px' }}
+                        onClick={this.downloadExcel}
+                        className="btn btn-function"
+                        type="button">
+                        XLSX
+                    </Button>
+                </Row>
             </div>
         )
     }

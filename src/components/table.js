@@ -90,10 +90,6 @@ class Table extends Component {
         RestClient.download('pdf', staff, `${staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
     }
 
-    downloadExcel = staff => {
-        RestClient.download('excel', staff, `${staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
-    }
-
     render() {
         let staffs = []
 
@@ -111,7 +107,7 @@ class Table extends Component {
 
                 <Row>
                     <Col>
-                        <div className="tui-text-content">
+                        <div className="tui-text-content table-responsive">
                             <table>
                                 <thead>
                                     <tr>
@@ -133,17 +129,13 @@ class Table extends Component {
                                                 </td>
                                             ))}
 
-                                            <td style={{ whiteSpace: 'nowrap' }}>
+                                            <td>
                                                 <Button
                                                     style={{ marginRight: '10px' }}
                                                     onClick={() => this.downloadPdf(staff)}
                                                     className="btn btn-function btn-sm"
                                                     type="button">
                                                     PDF
-                                                </Button>
-
-                                                <Button onClick={() => this.downloadExcel(staff)} className="btn btn-function btn-sm" type="button">
-                                                    XLSX
                                                 </Button>
                                             </td>
                                         </tr>

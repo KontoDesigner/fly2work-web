@@ -7,6 +7,16 @@ import { toastr } from 'react-redux-toastr'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+const styles = {
+    th: {
+        cursor: 'default'
+    },
+    td: {
+        cursor: 'default',
+        textDecoration: 'none'
+    }
+}
+
 class Attachments extends Component {
     constructor(props) {
         super(props)
@@ -76,7 +86,7 @@ class Attachments extends Component {
 
     render() {
         return (
-            <div className="tui-text-content">
+            <div className="tui-text-content table-responsive">
                 <input
                     className="hidden"
                     ref={ref => {
@@ -91,10 +101,10 @@ class Attachments extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Created</th>
-                            <th>Size</th>
-                            <th style={{ width: '1px', padding: '12px 24px 11px 24px' }}>
+                            <th style={styles.th}>Name</th>
+                            <th style={styles.th}>Created</th>
+                            <th style={styles.th}>Size</th>
+                            <th style={{ ...styles.th, ...{ width: '1px', padding: '12px 24px 11px 24px' } }}>
                                 <Button
                                     disabled={this.props.disabled}
                                     style={{ width: '145px' }}
@@ -112,15 +122,15 @@ class Attachments extends Component {
                         {this.props.staff.attachments &&
                             this.props.staff.attachments.map((attachment, index) => (
                                 <tr key={attachment.id}>
-                                    <td onClick={() => this.download(attachment)} className="link">
+                                    <td onClick={() => this.download(attachment)} className="link" style={styles.td}>
                                         {attachment.name}
                                     </td>
 
-                                    <td onClick={() => this.download(attachment)} className="link">
+                                    <td onClick={() => this.download(attachment)} className="link" style={styles.td}>
                                         {attachment.created && <Moment format="YYYY-MM-DD HH:mm">{attachment.created}</Moment>}
                                     </td>
 
-                                    <td onClick={() => this.download(attachment)} className="link">
+                                    <td onClick={() => this.download(attachment)} className="link" style={styles.td}>
                                         {attachment.size}
                                     </td>
 
