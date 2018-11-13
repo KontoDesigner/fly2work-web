@@ -7,7 +7,8 @@ import * as AppService from '../../services/appService'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 
 const columns = [
-    { labelKey: 'Name', valueKey: 'name' },
+    { labelKey: 'First Name', valueKey: 'firstName' },
+    { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
     { labelKey: 'Date Of Flight', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
@@ -16,7 +17,11 @@ const columns = [
 const filter = (staffs, criteria) => {
     return staffs.filter(
         staff =>
-            (staff.name && staff.name.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.firstName && staff.firstName.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.lastName && staff.lastName.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.firstName &&
+                staff.lastName &&
+                (staff.firstName.toLowerCase() + ' ' + staff.lastName.toLowerCase()).includes(criteria.toLowerCase())) ||
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(criteria.toLowerCase()))

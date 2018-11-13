@@ -39,9 +39,17 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="name">Name</label>
-                                <Field disabled={props.disabled} className="form-control" type="text" name="name" />
-                                <ErrorMessage className="message" name="name" component="div" />
+                                <label htmlFor="firstName">First Name</label>
+                                <Field disabled={props.disabled} className="form-control" type="text" name="firstName" />
+                                <ErrorMessage className="message" name="firstName" component="div" />
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className="form-item">
+                                <label htmlFor="lastName">Last Name</label>
+                                <Field disabled={props.disabled} className="form-control" type="text" name="lastName" />
+                                <ErrorMessage className="message" name="lastName" component="div" />
                             </div>
                         </Col>
 

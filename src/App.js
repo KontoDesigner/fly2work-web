@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux'
 import * as geographyActions from './actions/geographyActions'
 import * as menuActions from './actions/menuActions'
 import * as userActions from './actions/userActions'
+import { Container } from 'reactstrap'
 import './styles/site.css'
 
 class App extends Component {
@@ -51,7 +52,7 @@ class App extends Component {
                         progressBar
                     />
 
-                    <Loader isOpen={this.props.isOpen} ajaxCallsInProgress={this.props.ajaxCallsInProgress} />
+                    <Loader loaded={this.state.loaded} isOpen={this.props.isOpen} ajaxCallsInProgress={this.props.ajaxCallsInProgress} />
 
                     {this.state.loaded && (
                         <div id="outer-container" style={{ height: '100%' }}>
@@ -59,7 +60,9 @@ class App extends Component {
 
                             <main className={this.props.isOpen ? 'page-wrap-open' : ''} id="page-wrap">
                                 <div className="App">
-                                    <Routes />
+                                    <Container>
+                                        <Routes />
+                                    </Container>
                                 </div>
                             </main>
                         </div>

@@ -3,7 +3,7 @@ import React from 'react'
 const loader = props => {
     return (
         props.ajaxCallsInProgress > 0 && (
-            <div className={props.isOpen ? 'loader-open' : ''}>
+            <div className={props.isOpen && props.loaded ? 'loader-open' : ''}>
                 <div className="disabler" />
                 <div className="scene">
                     <span className="cloud cloud--small" />
