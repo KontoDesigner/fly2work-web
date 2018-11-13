@@ -55,25 +55,17 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="dateOfBirth">Date Of Birth</label>
-                                <Field disabled={props.disabled} name={'dateOfBirth'} component={DatePicker} setFieldTouched={setFieldTouched} />
-                                {errors.dateOfBirth && touched.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
+                                <label htmlFor="phone">Phone</label>
+                                <Field disabled={props.disabled} className="form-control" type="text" name="phone" />
+                                <ErrorMessage className="message" name="phone" component="div" />
                             </div>
                         </Col>
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="sourceMarket">Source Market</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'sourceMarket'}
-                                    component={Select}
-                                    options={props.sourceMarkets}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'id'}
-                                    labelKey={'name'}
-                                />
-                                {errors.sourceMarket && touched.sourceMarket && <div className="message">{errors.sourceMarket}</div>}
+                            <div className="form-item">
+                                <label htmlFor="dateOfBirth">Date Of Birth</label>
+                                <Field disabled={props.disabled} name={'dateOfBirth'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                {errors.dateOfBirth && touched.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
                             </div>
                         </Col>
 
@@ -95,6 +87,22 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="sourceMarket">Source Market</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'sourceMarket'}
+                                    component={Select}
+                                    options={props.sourceMarkets}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'id'}
+                                    labelKey={'name'}
+                                />
+                                {errors.sourceMarket && touched.sourceMarket && <div className="message">{errors.sourceMarket}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="destination">Destination</label>
                                 <Field
                                     disabled={props.disabled}
@@ -106,14 +114,6 @@ const Form = props => {
                                     labelKey={'destination'}
                                 />
                                 {errors.destination && touched.destination && <div className="message">{errors.destination}</div>}
-                            </div>
-                        </Col>
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className="form-item">
-                                <label htmlFor="phone">Phone</label>
-                                <Field disabled={props.disabled} className="form-control" type="text" name="phone" />
-                                <ErrorMessage className="message" name="phone" component="div" />
                             </div>
                         </Col>
 
@@ -158,6 +158,22 @@ const Form = props => {
                                     labelKey={'label'}
                                 />
                                 {errors.typeOfFlight && touched.typeOfFlight && <div className="message">{errors.typeOfFlight}</div>}
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="iataCode">Iata Code</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'iataCode'}
+                                    component={Select}
+                                    options={props.iataCodes}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
+                                />
+                                {errors.iataCode && touched.iataCode && <div className="message">{errors.iataCode}</div>}
                             </div>
                         </Col>
 
@@ -282,19 +298,6 @@ const Form = props => {
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="arrivalTime">Arrival Time</label>
-                                        <Field
-                                            disabled={props.disabled}
-                                            name={'arrivalTime'}
-                                            component={DatePicker}
-                                            setFieldTouched={setFieldTouched}
-                                        />
-                                        {errors.arrivalTime && touched.arrivalTime && <div className="message">{errors.arrivalTime}</div>}
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
                                         <label htmlFor="paymentMethod">Payment Method</label>
                                         <Field disabled={props.disabled} className="form-control" type="text" name="paymentMethod" />
                                         <ErrorMessage className="message" name="paymentMethod" component="div" />
@@ -350,18 +353,15 @@ const Form = props => {
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="iataCode">Iata Code</label>
+                                    <div className="form-item">
+                                        <label htmlFor="arrivalTime">Arrival Time</label>
                                         <Field
                                             disabled={props.disabled}
-                                            name={'iataCode'}
-                                            component={Select}
-                                            options={props.iataCodes}
+                                            name={'arrivalTime'}
+                                            component={DatePicker}
                                             setFieldTouched={setFieldTouched}
-                                            valueKey={'value'}
-                                            labelKey={'label'}
                                         />
-                                        {errors.iataCode && touched.iataCode && <div className="message">{errors.iataCode}</div>}
+                                        {errors.arrivalTime && touched.arrivalTime && <div className="message">{errors.arrivalTime}</div>}
                                     </div>
                                 </Col>
                             </div>
