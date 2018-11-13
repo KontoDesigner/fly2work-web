@@ -55,6 +55,14 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
+                                <label htmlFor="passportNumber">Passport Number</label>
+                                <Field disabled={props.disabled} className="form-control" type="text" name="passportNumber" />
+                                <ErrorMessage className="message" name="passportNumber" component="div" />
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className="form-item">
                                 <label htmlFor="jobTitle">Job Title</label>
                                 <Field disabled={props.disabled} className="form-control" type="text" name="jobTitle" />
                                 <ErrorMessage className="message" name="jobTitle" component="div" />
