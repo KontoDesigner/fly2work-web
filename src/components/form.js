@@ -12,6 +12,7 @@ import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
 import { UserTypes as userTypes } from '../constants/userConstants'
 import Attachments from './attachments'
+import lodash from 'lodash'
 
 const Form = props => {
     const downloadPdf = () => {
@@ -400,7 +401,7 @@ const Form = props => {
                     <Row style={{ marginTop: '23px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             {!props.disabled && (
-                                <Button style={{ marginRight: '15px' }} className="btn btn-primary" type="submit">
+                                <Button disabled={!lodash.isEmpty(errors)} style={{ marginRight: '15px' }} className="btn btn-primary" type="submit">
                                     Submit
                                 </Button>
                             )}
