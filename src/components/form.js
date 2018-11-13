@@ -72,7 +72,13 @@ const Form = props => {
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <label htmlFor="dateOfBirth">Date Of Birth</label>
-                                <Field disabled={props.disabled} name={'dateOfBirth'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'dateOfBirth'}
+                                    component={DatePicker}
+                                    setFieldTouched={setFieldTouched}
+                                    dateFormat={'DD/MM/YYYY'}
+                                />
                                 {errors.dateOfBirth && touched.dateOfBirth && <div className="message">{errors.dateOfBirth}</div>}
                             </div>
                         </Col>
