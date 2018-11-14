@@ -14,6 +14,16 @@ import { UserTypes as userTypes } from '../constants/userConstants'
 import Attachments from './attachments'
 import lodash from 'lodash'
 
+function parseCost(val) {
+    var parsed = parseInt(val)
+
+    if (isNaN(parsed)) {
+        return 0
+    }
+
+    return parsed
+}
+
 const Form = props => {
     const downloadPdf = () => {
         RestClient.download('pdf', props.staff, `${props.staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
@@ -363,7 +373,13 @@ const Form = props => {
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
                                         <label htmlFor="totalCost">Total Cost</label>
-                                        <Field disabled={props.disabled} className="form-control" type="text" name="totalCost" />
+                                        <Field
+                                            disabled={true}
+                                            className="form-control"
+                                            type="text"
+                                            name="totalCost"
+                                            value={parseCost(values.flightCost) + parseCost(values.xbagCost) + parseCost(values.hotelCost)}
+                                        />
                                         <ErrorMessage className="message" name="totalCost" component="div" />
                                     </div>
                                 </Col>
