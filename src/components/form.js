@@ -145,6 +145,7 @@ const Form = props => {
                                 <Field
                                     disabled={props.disabled}
                                     name={'departureAirport'}
+                                    placeholder={'Please give 3 options'}
                                     component={Creatable}
                                     setFieldTouched={setFieldTouched}
                                     noOptionsMessage="Type to create.."
@@ -159,6 +160,7 @@ const Form = props => {
                                 <Field
                                     disabled={props.disabled}
                                     name={'arrivalAirport'}
+                                    placeholder={'Please give 3 options'}
                                     component={Creatable}
                                     setFieldTouched={setFieldTouched}
                                     noOptionsMessage="Type to create.."
