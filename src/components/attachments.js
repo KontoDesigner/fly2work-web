@@ -102,6 +102,8 @@ class Attachments extends Component {
                     <thead>
                         <tr>
                             <th style={styles.th}>Name</th>
+                            <th style={styles.th}>Created By</th>
+                            <th style={styles.th}>Group</th>
                             <th style={styles.th}>Created</th>
                             <th style={styles.th}>Size</th>
                             <th style={{ ...styles.th, ...{ width: '1px', padding: '12px 24px 11px 24px' } }}>
@@ -124,6 +126,14 @@ class Attachments extends Component {
                                 <tr key={attachment.id}>
                                     <td onClick={() => this.download(attachment)} className="link">
                                         {attachment.name}
+                                    </td>
+
+                                    <td onClick={() => this.download(attachment)} className="link">
+                                        {attachment.createdBy}
+                                    </td>
+
+                                    <td onClick={() => this.download(attachment)} className="link">
+                                        {attachment.group}
                                     </td>
 
                                     <td onClick={() => this.download(attachment)} className="link">

@@ -12,6 +12,7 @@ import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
 import { UserTypes as userTypes } from '../constants/userConstants'
 import Attachments from './attachments'
+import Comments from './comments'
 import lodash from 'lodash'
 
 function parseCost(val) {
@@ -36,8 +37,17 @@ const Form = props => {
             onSubmit={(values, actions) => {
                 props.handleStaff(values)
             }}
-            render={({ errors, touched, setFieldTouched, values }) => (
+            render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                 <FormikForm>
+                    form: {values.comments.length}
+                    staff: {props.staff.comments.length}
+                    <Row>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                            <div className="hr">
+                                <span className="hr-title">BS</span>
+                            </div>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
@@ -439,22 +449,31 @@ const Form = props => {
                                 {errors.status && touched.status && <div className="message">{errors.status}</div>}
                             </div>
                         </Col>
-
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12">
-                            <div className="form-item">
-                                <label htmlFor="comment">Comment</label>
-                                <Field disabled={props.disabled} className="form-control" component="textarea" rows="5" name="comment" />
-                                <ErrorMessage className="message" name="comment" component="div" />
+                    </Row>
+                    <Row>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
+                            <div className="hr">
+                                <span className="hr-title">Comments</span>
                             </div>
                         </Col>
                     </Row>
-
-                    <Row style={{ marginTop: '25px' }}>
+                    <Row>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                            <Comments setFieldValue={setFieldValue} comments={values.comments} disabled={props.disabled} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px', marginTop: '17px' }}>
+                            <div className="hr">
+                                <span className="hr-title">Attachments</span>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                             <Attachments staff={props.staff} handleStaffAttachments={props.handleStaffAttachments} disabled={props.disabled} />
                         </Col>
                     </Row>
-
                     <Row style={{ marginTop: '23px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             {!props.disabled && (
