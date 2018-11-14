@@ -29,7 +29,7 @@ class Edit extends Component {
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
-            AppService.setTitle(`Overview - ${staff.name}`)
+            AppService.setTitle(`Overview - ${staff.firstName} ${staff.lastName}`)
         } else {
             AppService.setTitle('Staff not found')
         }
@@ -44,7 +44,9 @@ class Edit extends Component {
 
         return this.state.staff ? (
             <div>
-                <h2>{this.state.staff.name}</h2>
+                <h2>
+                    {this.state.staff.firstName} {this.state.staff.lastName}
+                </h2>
 
                 <Form
                     disabled={true}

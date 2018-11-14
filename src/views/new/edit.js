@@ -31,7 +31,7 @@ class Edit extends Component {
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
-            AppService.setTitle(`${statuses.New} - ${staff.name}`)
+            AppService.setTitle(`${statuses.New} - ${staff.firstName} ${staff.lastName}`)
 
             staff.status = null
         } else {
@@ -64,7 +64,9 @@ class Edit extends Component {
 
         return this.state.staff ? (
             <div>
-                <h2>{this.state.staff.name}</h2>
+                <h2>
+                    {this.state.staff.firstName} {this.state.staff.lastName}
+                </h2>
 
                 <Form
                     staff={this.state.staff}

@@ -26,7 +26,7 @@ function parseCost(val) {
 
 const Form = props => {
     const downloadPdf = () => {
-        RestClient.download('pdf', props.staff, `${props.staff.name} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
+        RestClient.download('pdf', props.staff, `${props.staff.firstName} ${props.staff.lastName} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
     }
 
     return (
@@ -394,14 +394,31 @@ const Form = props => {
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="arrivalTime">Arrival Time</label>
+                                        <label htmlFor="flightDepartureTime">Flight Departure Time</label>
                                         <Field
                                             disabled={props.disabled}
-                                            name={'arrivalTime'}
+                                            name={'flightDepartureTime'}
                                             component={DatePicker}
                                             setFieldTouched={setFieldTouched}
                                         />
-                                        {errors.arrivalTime && touched.arrivalTime && <div className="message">{errors.arrivalTime}</div>}
+                                        {errors.flightDepartureTime && touched.flightDepartureTime && (
+                                            <div className="message">{errors.flightDepartureTime}</div>
+                                        )}
+                                    </div>
+                                </Col>
+
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label htmlFor="flightArrivalTime">Flight Arrival Time</label>
+                                        <Field
+                                            disabled={props.disabled}
+                                            name={'flightArrivalTime'}
+                                            component={DatePicker}
+                                            setFieldTouched={setFieldTouched}
+                                        />
+                                        {errors.flightArrivalTime && touched.flightArrivalTime && (
+                                            <div className="message">{errors.flightArrivalTime}</div>
+                                        )}
                                     </div>
                                 </Col>
                             </div>
