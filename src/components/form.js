@@ -93,7 +93,7 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="positionStart">Position Start</label>
+                                <label htmlFor="positionStart">Planned Assignment Start Date</label>
                                 <Field disabled={props.disabled} name={'positionStart'} component={DatePicker} setFieldTouched={setFieldTouched} />
                                 {errors.positionStart && touched.positionStart && <div className="message">{errors.positionStart}</div>}
                             </div>
