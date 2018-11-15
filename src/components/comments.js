@@ -87,7 +87,7 @@ const Comments = props => {
                                     rows="3"
                                     name={`comments[${index}].text`}
                                 />
-                                <ErrorMessage className="message" name={`comments[${index}].text`} component="div" />
+                                <ErrorMessage style={{ marginBottom: '0' }} className="message" name={`comments[${index}].text`} component="div" />
 
                                 {!comment.id && (
                                     <Button

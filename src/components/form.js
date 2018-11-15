@@ -39,8 +39,6 @@ const Form = props => {
             }}
             render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                 <FormikForm>
-                    form: {values.comments.length}
-                    staff: {props.staff.comments.length}
                     <Row>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                             <div className="hr">
