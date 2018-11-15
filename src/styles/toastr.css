@@ -6,7 +6,7 @@
 .redux-toastr .toastr
 {
     margin:0;
-    min-height:65px!important;
+    min-height:55px!important;
 }
 
 .redux-toastr .toastr
@@ -53,7 +53,7 @@
 
 .redux-toastr .toastr .rrt-middle-container .rrt-text {
     font-weight: 800;
-	font-size: 2em;
+	font-size: 1.5em;
 	margin-left:0;
 }
 

@@ -78,12 +78,21 @@ const Comments = props => {
                         ),
 
                         <tr key={`1-${index}`}>
-                            <td colSpan={4}>
+                            <td style={comment.id ? { padding: '0' } : {}} colSpan={4}>
+                                {!comment.id && (
+                                    <label style={{ color: '#555' }} htmlFor={`comments[${index}].text`}>
+                                        Comment
+                                    </label>
+                                )}
                                 <Field
                                     disabled={props.disabled || comment.id}
                                     className="form-control"
                                     component="textarea"
-                                    style={{ resize: 'vertical', minHeight: '37px' }}
+                                    style={
+                                        comment.id
+                                            ? { overflowX: 'auto', resize: 'vertical', minHeight: '37px', border: '0', boxShadow: 'none' }
+                                            : { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' }
+                                    }
                                     rows="3"
                                     name={`comments[${index}].text`}
                                 />
