@@ -20,7 +20,8 @@ var defaultState = {
         { value: 'Concept training', label: 'Concept training' }
     ],
     roles: [{ value: 'Mainline', label: 'Mainline' }, { value: 'Concept', label: 'Concept' }],
-    iataCodes: null
+    iataCodes: null,
+    travelTypes: [{ value: 'Charter', label: 'Charter' }, { value: 'Scheduled', label: 'Scheduled' }]
 }
 
 export default function geographyReducer(state = defaultState, action) {

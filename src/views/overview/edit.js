@@ -61,6 +61,7 @@ class Edit extends Component {
                     user={this.props.user}
                     typeOfFlights={this.props.typeOfFlights}
                     iataCodes={this.props.iataCodes}
+                    travelTypes={this.props.travelTypes}
                 />
             </div>
         ) : (
@@ -80,7 +81,8 @@ function mapStateToProps(state) {
         })),
         user: state.user,
         typeOfFlights: state.geography.typeOfFlights,
-        iataCodes: state.geography.iataCodes
+        iataCodes: state.geography.iataCodes,
+        travelTypes: state.geography.travelTypes
     }
 }
 

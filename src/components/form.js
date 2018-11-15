@@ -339,6 +339,22 @@ const Form = props => {
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                        <label htmlFor="travelType">Travel Type</label>
+                                        <Field
+                                            disabled={props.disabled}
+                                            name={'travelType'}
+                                            component={Select}
+                                            options={props.travelTypes}
+                                            setFieldTouched={setFieldTouched}
+                                            valueKey={'value'}
+                                            labelKey={'label'}
+                                        />
+                                        {errors.travelType && touched.travelType && <div className="message">{errors.travelType}</div>}
+                                    </div>
+                                </Col>
+
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
                                         <label htmlFor="paymentMethod">Payment Method</label>
                                         <Field disabled={props.disabled} className="form-control" type="text" name="paymentMethod" />
