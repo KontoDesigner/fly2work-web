@@ -12,7 +12,7 @@ const styles = {
         textDecoration: 'none'
     },
     field: { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' },
-    text: { backgroundColor: '#eee', padding: '18px 24px', whiteSpace: 'pre-wrap' },
+    text: { backgroundColor: '#eee', padding: '18px 24px', whiteSpace: 'pre-wrap', color: '#333' },
     errorMessage: { marginBottom: '0' },
     button: { marginTop: '10px' },
     label: { color: '#555' }
