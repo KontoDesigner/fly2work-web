@@ -10,7 +10,12 @@ const styles = {
     td: {
         cursor: 'default',
         textDecoration: 'none'
-    }
+    },
+    field: { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' },
+    text: { backgroundColor: '#eee', padding: '18px 24px', whiteSpace: 'pre-wrap' },
+    errorMessage: { marginBottom: '0' },
+    button: { marginTop: '10px' },
+    label: { color: '#555' }
 }
 
 const Comments = props => {
@@ -80,30 +85,27 @@ const Comments = props => {
                         <tr key={`1-${index}`}>
                             <td style={comment.id ? { padding: '0' } : {}} colSpan={4}>
                                 {!comment.id && (
-                                    <label style={{ color: '#555' }} htmlFor={`comments[${index}].text`}>
+                                    <label style={styles.label} htmlFor={`comments[${index}].text`}>
                                         Comment
                                     </label>
                                 )}
-                                <Field
-                                    disabled={props.disabled || comment.id}
-                                    className="form-control"
-                                    component="textarea"
-                                    style={
-                                        comment.id
-                                            ? { overflowX: 'auto', resize: 'vertical', minHeight: '37px', border: '0', boxShadow: 'none' }
-                                            : { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' }
-                                    }
-                                    rows="3"
-                                    name={`comments[${index}].text`}
-                                />
-                                <ErrorMessage style={{ marginBottom: '0' }} className="message" name={`comments[${index}].text`} component="div" />
+
+                                {!comment.id ? (
+                                    <Field
+                                        disabled={props.disabled || comment.id}
+                                        className="form-control"
+                                        component="textarea"
+                                        style={styles.field}
+                                        rows="3"
+                                        name={`comments[${index}].text`}
+                                    />
+                                ) : (
+                                    <div style={styles.text}>{comment.text}</div>
+                                )}
+                                <ErrorMessage style={styles.errorMessage} className="message" name={`comments[${index}].text`} component="div" />
 
                                 {!comment.id && (
-                                    <Button
-                                        style={{ marginTop: '10px' }}
-                                        onClick={() => remove(index)}
-                                        className="btn btn-sales btn-sm"
-                                        type="button">
+                                    <Button style={styles.button} onClick={() => remove(index)} className="btn btn-sales btn-sm" type="button">
                                         REMOVE
                                     </Button>
                                 )}
