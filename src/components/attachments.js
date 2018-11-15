@@ -29,7 +29,7 @@ class Attachments extends Component {
 
         const req = {
             staffId: this.props.staff.id,
-            id: attachment.id
+            attachmentId: attachment.id
         }
 
         await RestClient.download('attachment/download', req, attachment.name)
@@ -62,7 +62,7 @@ class Attachments extends Component {
     delete = async index => {
         const req = {
             staffId: this.props.staff.id,
-            id: this.props.staff.attachments[index].id
+            attachmentId: this.props.staff.attachments[index].id
         }
 
         this.props.ajaxStatusActions.beginAjaxCall()
