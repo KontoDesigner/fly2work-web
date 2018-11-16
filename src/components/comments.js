@@ -14,8 +14,8 @@ const styles = {
     field: { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' },
     text: { backgroundColor: '#eee', padding: '18px 24px', whiteSpace: 'pre-wrap', color: '#333' },
     errorMessage: { marginBottom: '0' },
-    button: { marginTop: '10px' },
-    label: { color: '#555' }
+    button: { marginTop: '18px' },
+    label: { color: '#444' }
 }
 
 const Comments = props => {

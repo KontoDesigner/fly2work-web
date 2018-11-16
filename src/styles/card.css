@@ -1,0 +1,26 @@
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+
+.card-header {
+    background: #092a5e;
+    color: #fff;
+    padding: 18px 24px;
+    margin-bottom: 0;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    border: 1px solid #e7e3db;
+    border-top:0px;
+}
