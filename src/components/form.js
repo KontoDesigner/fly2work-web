@@ -421,6 +421,7 @@ const Form = props => {
                             <Row>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                     <Flights
+                                        disabled={props.disabled}
                                         flights={values.flights}
                                         errors={errors}
                                         touched={touched}

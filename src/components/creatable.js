@@ -18,7 +18,7 @@ const Creatable = ({ field, form, setFieldTouched, noOptionsMessage, disabled, p
 
     return (
         <CreatableSelect
-            className={'creatable'}
+            className={`creatable ${disabled === true ? 'disabled' : ''}`}
             isDisabled={disabled}
             isMulti
             name={field.name}

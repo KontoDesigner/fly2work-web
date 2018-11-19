@@ -12,3 +12,23 @@
 {
     background-color: #aaa!important;
 }
+
+.creatable.disabled > div
+{
+    background-color: #aaa!important;
+}
+
+.creatable.disabled > div > div:first-child > div:last-child
+{
+    margin-left:-10px!important;
+}
+
+.creatable.disabled > div > div:last-child > span
+{
+    opacity: 0.25!important;
+}
+
+.select.disabled > div > div:last-child > span
+{
+    opacity: 0.25!important;
+}

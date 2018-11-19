@@ -6,9 +6,10 @@ import { Button } from 'reactstrap'
 
 const styles = {
     label: { color: '#444' },
-    cardBody: { background: '#f3f0ec', padding: '18px 12px' },
+    cardBody: { background: '#f3f0ec', padding: '18px 12px 12px 12px' },
     cardHeader: { fontWeight: 'bold' },
-    addButton: { marginRight: '10px' }
+    addButton: { marginRight: '10px', marginTop: '6px', marginBottom: '6px' },
+    removeButton: { marginTop: '6px', marginBottom: '6px' }
 }
 
 function parseCost(val) {
@@ -166,7 +167,7 @@ const Flights = props => {
                         </div>
 
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
-                            {index === props.flights.length - 1 && index < 2 && (
+                            {index === props.flights.length - 1 && index < 2 && !props.disabled && (
                                 <Button
                                     style={styles.addButton}
                                     onClick={() => add()}
@@ -176,8 +177,8 @@ const Flights = props => {
                                 </Button>
                             )}
 
-                            {index !== 0 && index === props.flights.length - 1 && (
-                                <Button onClick={() => remove(index)} className="btn btn-sales btn-sm" type="button">
+                            {index !== 0 && index === props.flights.length - 1 && !props.disabled && (
+                                <Button styles={styles.removeButton} onClick={() => remove(index)} className="btn btn-sales btn-sm" type="button">
                                     REMOVE
                                 </Button>
                             )}
