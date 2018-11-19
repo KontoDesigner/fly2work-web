@@ -158,31 +158,31 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                    <label htmlFor="departureAirport">Departure Airport</label>
+                                    <label htmlFor="departureAirports">Departure Airports</label>
                                     <Field
                                         disabled={props.disabled}
-                                        name={'departureAirport'}
+                                        name={'departureAirports'}
                                         placeholder={'Please give 3 options'}
                                         component={Creatable}
                                         setFieldTouched={setFieldTouched}
                                         noOptionsMessage="Type to create.."
                                     />
-                                    <ErrorMessage className="message" name="departureAirport" component="div" />
+                                    <ErrorMessage className="message" name="departureAirports" component="div" />
                                 </div>
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                    <label htmlFor="arrivalAirport">Arrival Airport</label>
+                                    <label htmlFor="arrivalAirports">Arrival Airports</label>
                                     <Field
                                         disabled={props.disabled}
-                                        name={'arrivalAirport'}
+                                        name={'arrivalAirports'}
                                         placeholder={'Please give 3 options'}
                                         component={Creatable}
                                         setFieldTouched={setFieldTouched}
                                         noOptionsMessage="Type to create.."
                                     />
-                                    <ErrorMessage className="message" name="arrivalAirport" component="div" />
+                                    <ErrorMessage className="message" name="arrivalAirports" component="div" />
                                 </div>
                             </Col>
 
