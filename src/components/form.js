@@ -13,7 +13,7 @@ import moment from 'moment'
 import { UserTypes as userTypes } from '../constants/userConstants'
 import Attachments from './attachments'
 import Comments from './comments'
-import lodash from 'lodash'
+// import lodash from 'lodash'
 import Flights from './flights'
 
 const Form = props => {
@@ -29,6 +29,8 @@ const Form = props => {
                 props.handleStaff(values)
             }}
             render={({ errors, touched, setFieldTouched, values, setFieldValue }) => {
+                console.log('errors', errors)
+
                 return (
                     <FormikForm>
                         <Row>
@@ -42,7 +44,7 @@ const Form = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="id">Id</label>
-                                    <Field disabled={props.disabled} className="form-control" type="text" name="id" />
+                                    <Field disabled={true} className="form-control" type="text" name="id" />
                                     <ErrorMessage className="message" name="id" component="div" />
                                 </div>
                             </Col>
@@ -442,7 +444,7 @@ const Form = props => {
                             <Col xl="12" lg="12" md="12" sm="12" xs="12">
                                 {!props.disabled && (
                                     <Button
-                                        disabled={!lodash.isEmpty(errors)}
+                                        // disabled={!lodash.isEmpty(errors)}
                                         style={{ marginRight: '15px' }}
                                         className="btn btn-primary"
                                         type="submit">
