@@ -1,6 +1,6 @@
 .select.disabled > div > div:first-child > div:last-child
 {
-    margin-left:-10px!important;
+    visibility: hidden;
 }
 
 .select.disabled > div > div:first-child > div:first-child
@@ -20,7 +20,7 @@
 
 .creatable.disabled > div > div:first-child > div:last-child
 {
-    margin-left:-10px!important;
+    visibility: hidden;
 }
 
 .creatable.disabled > div > div:last-child > span
@@ -31,4 +31,9 @@
 .select.disabled > div > div:last-child > span
 {
     opacity: 0.25!important;
+}
+
+.select.disabled > div > div > div
+{
+    opacity: 0.75;
 }
