@@ -405,7 +405,6 @@ const Form = props => {
                                         errors={errors}
                                         touched={touched}
                                         setFieldTouched={setFieldTouched}
-                                        values={values}
                                         setFieldValue={setFieldValue}
                                     />
                                 </Col>

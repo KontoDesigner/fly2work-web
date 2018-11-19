@@ -154,17 +154,13 @@ const Flights = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label style={styles.label} htmlFor={`flights[${index}].totalCost`}>
-                                        Total Cost
-                                    </label>
+                                    <label style={styles.label}>Total Cost</label>
                                     <Field
                                         disabled={true}
                                         className="form-control"
                                         type="text"
-                                        name={`flights[${index}].totalCost`}
                                         value={parseCost(flight.flightCost) + parseCost(flight.xbagCost) + parseCost(flight.hotelCost)}
                                     />
-                                    <ErrorMessage className="message" name={`flights[${index}].totalCost`} component="div" />
                                 </div>
                             </Col>
                         </div>
