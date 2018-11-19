@@ -3,7 +3,7 @@ import ReactSelect from 'react-select'
 
 const Select = ({ options, field, form, setFieldTouched, disabled, valueKey, labelKey }) => (
     <ReactSelect
-        className={'select'}
+        className={`select ${disabled === true ? 'disabled' : ''}`}
         isDisabled={disabled}
         options={options}
         name={field.name}

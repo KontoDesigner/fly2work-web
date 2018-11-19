@@ -1,0 +1,14 @@
+.select.disabled > div > div:first-child > div:last-child
+{
+    margin-left:-10px!important;
+}
+
+.select.disabled > div > div:first-child > div:first-child
+{
+    color:#444!important;
+}
+
+.select.disabled > div
+{
+    background-color: #aaa!important;
+}
