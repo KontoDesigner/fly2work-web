@@ -2,6 +2,7 @@ import axios from 'axios'
 import config from './config'
 import { toastr } from 'react-redux-toastr'
 import downloadjs from 'downloadjs'
+import { adalApiFetch } from './adalConfig'
 
 export async function get(url, useBaseUrl = true) {
     try {
@@ -9,7 +10,11 @@ export async function get(url, useBaseUrl = true) {
 
         console.log(`[GET] ${baseUrl + url}`)
 
-        const response = await axios.get(baseUrl + url)
+        const axiosInstance = axios.create({
+            baseURL: baseUrl
+        })
+
+        const response = await adalApiFetch(axiosInstance, baseUrl + url, {})
 
         console.log(`[RESPONSE] ${JSON.stringify(response.data)}`)
 
@@ -29,7 +34,21 @@ export async function post(url, data, useBaseUrl = true) {
 
         console.log(`[POST] ${baseUrl + url} ${JSON.stringify(data)}`)
 
-        const response = await axios.post(baseUrl + url, data)
+        const axiosInstance = axios.create({
+            baseURL: baseUrl
+        })
+
+        const settings = {
+            headers: {
+                Accept: 'Application/json',
+                'Content-Type': 'application/json; charset=utf-8',
+                Authorization: ''
+            },
+            data: JSON.stringify(data),
+            method: 'POST'
+        }
+
+        const response = await adalApiFetch(axiosInstance, baseUrl + url, settings)
 
         console.log(`[RESPONSE] ${JSON.stringify(response.data)}`)
 
@@ -49,11 +68,21 @@ export async function download(url, data, fileName, useBaseUrl = true) {
 
         console.log(`[DOWNLOAD] ${baseUrl + url}`, data)
 
+        const axiosInstance = axios.create({
+            baseURL: baseUrl
+        })
+
         const settings = {
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                Authorization: ''
+            },
+            data: data ? JSON.stringify(data) : {},
+            method: 'POST',
             responseType: 'blob'
         }
 
-        const response = await axios.post(baseUrl + url, data, settings)
+        const response = await adalApiFetch(axiosInstance, baseUrl + url, settings)
 
         return downloadjs(response.data, fileName)
     } catch (err) {
@@ -78,9 +107,21 @@ export async function upload(url, file, data = [], useBaseUrl = true) {
 
         console.log(`[UPLOAD] ${baseUrl + url}`, formData)
 
-        // const settings = { headers: { 'Content-Type': 'multipart/form-data' } }
+        const axiosInstance = axios.create({
+            baseURL: baseUrl
+        })
 
-        const response = await axios.post(baseUrl + url, formData)
+        const settings = {
+            method: 'POST',
+            data: formData,
+            config: {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        }
+
+        const response = await adalApiFetch(axiosInstance, baseUrl + url, settings)
 
         return response.data
     } catch (err) {
