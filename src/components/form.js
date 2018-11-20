@@ -18,7 +18,11 @@ import Flights from './flights'
 
 const Form = props => {
     const downloadPdf = () => {
-        RestClient.download('pdf', props.staff, `${props.staff.firstName} ${props.staff.lastName} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
+        RestClient.download(
+            `pdf/${props.staff.id}`,
+            props.staff,
+            `${props.staff.firstName} ${props.staff.lastName} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`
+        )
     }
 
     return (
