@@ -28,7 +28,7 @@ const Form = props => {
     return (
         <Formik
             initialValues={props.staff}
-            validationSchema={props.userRoles.includes(userRoles.BTT) ? bsValidation : bttValidation}
+            validationSchema={props.userRoles.includes(userRoles.BTT) ? bttValidation : bsValidation}
             onSubmit={(values, actions) => {
                 props.handleStaff(values)
             }}
@@ -403,18 +403,16 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    {props.userRoles.includes(userRoles.BTT) && (
-                        <Row style={{ marginBottom: '20px' }}>
+                    {props.userRoles.includes(userRoles.BTT) && [
+                        <Row key={0} style={{ marginBottom: '20px' }}>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <div className="hr">
                                     <span className="hr-title">Flights</span>
                                 </div>
                             </Col>
-                        </Row>
-                    )}
+                        </Row>,
 
-                    {props.userRoles.includes(userRoles.BTT) && (
-                        <Row>
+                        <Row key={1}>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <Flights
                                     disabled={props.disabled}
@@ -426,7 +424,7 @@ const Form = props => {
                                 />
                             </Col>
                         </Row>
-                    )}
+                    ]}
 
                     <Row>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
