@@ -135,10 +135,10 @@ div.hr {
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
 {
-    background-color: #aaa;
+    background-color: #ccc;
 }
 
 input:disabled
 {
-    background-color: #aaa!important;
+    background-color: #ccc!important;
 }

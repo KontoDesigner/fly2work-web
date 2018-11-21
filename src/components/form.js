@@ -10,7 +10,7 @@ import bsValidation from '../validations/bsValidation'
 import bttValidation from '../validations/bttValidation'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
-import { UserTypes as userTypes } from '../constants/userConstants'
+import { UserRoles as userRoles } from '../constants/userConstants'
 import Attachments from './attachments'
 import Comments from './comments'
 // import lodash from 'lodash'
@@ -28,7 +28,7 @@ const Form = props => {
     return (
         <Formik
             initialValues={props.staff}
-            validationSchema={props.user.userType === userTypes.BS ? bsValidation : bttValidation}
+            validationSchema={props.userRoles.includes(userRoles.BTT) ? bsValidation : bttValidation}
             onSubmit={(values, actions) => {
                 props.handleStaff(values)
             }}
@@ -328,7 +328,7 @@ const Form = props => {
                             </div>
                         </Col>
 
-                        {props.user.userType === userTypes.BTT && (
+                        {props.userRoles.includes(userRoles.BTT) && (
                             <div className="inner-form">
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
                                     <div className="hr">
@@ -403,7 +403,7 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    {props.user.userType === userTypes.BTT && (
+                    {props.userRoles.includes(userRoles.BTT) && (
                         <Row style={{ marginBottom: '20px' }}>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <div className="hr">
@@ -413,7 +413,7 @@ const Form = props => {
                         </Row>
                     )}
 
-                    {props.user.userType === userTypes.BTT && (
+                    {props.userRoles.includes(userRoles.BTT) && (
                         <Row>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <Flights

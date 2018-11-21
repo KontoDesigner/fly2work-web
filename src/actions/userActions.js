@@ -1,24 +1,22 @@
-import { ActionTypes as types, UserTypes as userTypes } from '../constants/userConstants'
+import { ActionTypes as types } from '../constants/userConstants'
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions'
+import * as RestClient from '../infrastructure/restClient'
 
-export function getUserSuccess(user) {
+export function getUserRolesSuccess(userRoles) {
     return {
-        type: types.GET_USER_SUCCESS,
-        data: { user }
+        type: types.GET_USERROLES_SUCCESS,
+        data: { userRoles }
     }
 }
 
-export function getUser() {
+export function getUserRoles() {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const user = {
-                id: 1,
-                userType: userTypes.BTT
-            }
+            const userRoles = await RestClient.get('user/getuserroles')
 
-            dispatch(getUserSuccess(user))
+            dispatch(getUserRolesSuccess(userRoles))
         } catch (error) {
             dispatch(ajaxCallError(error))
 

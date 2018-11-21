@@ -10,12 +10,12 @@
 
 .select.disabled > div
 {
-    background-color: #aaa!important;
+    background-color: #ccc!important;
 }
 
 .creatable.disabled > div
 {
-    background-color: #aaa!important;
+    background-color: #ccc!important;
 }
 
 .creatable.disabled > div > div:first-child > div:last-child

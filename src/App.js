@@ -28,7 +28,7 @@ class App extends Component {
         const _this = this
 
         return Promise.all([
-            this.props.userActions.getUser(),
+            this.props.userActions.getUserRoles(),
             this.props.geographyActions.getSourceMarkets(),
             this.props.geographyActions.getDestinations(),
             this.props.menuActions.getStaffCount(),

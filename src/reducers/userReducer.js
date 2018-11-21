@@ -1,13 +1,16 @@
 import { ActionTypes as types } from '../constants/userConstants'
 
 var defaultState = {
-    user: null
+    userRoles: []
 }
 
 export default function userReducer(state = defaultState, action) {
     switch (action.type) {
-        case types.GET_USER_SUCCESS:
-            return action.data.user
+        case types.GET_USERROLES_SUCCESS:
+            return {
+                ...state,
+                userRoles: action.data.userRoles
+            }
         default:
             return state
     }

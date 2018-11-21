@@ -1,10 +1,10 @@
 import keyMirror from 'keymirror'
 
 export var ActionTypes = keyMirror({
-    GET_USER_SUCCESS: null
+    GET_USERROLES_SUCCESS: null
 })
 
-export var UserTypes = keyMirror({
+export var UserRoles = keyMirror({
     BS: null,
     BTT: null
 })
