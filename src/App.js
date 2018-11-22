@@ -61,7 +61,7 @@ class App extends Component {
                             <main className={this.props.isOpen ? 'page-wrap-open' : ''} id="page-wrap">
                                 <div className="App">
                                     <Container>
-                                        <Routes />
+                                        <Routes userRoles={this.props.userRoles} />
                                     </Container>
                                 </div>
                             </main>
@@ -77,7 +77,8 @@ function mapStateToProps(state) {
     return {
         isOpen: state.menu.isOpen,
         staffCount: state.menu.staffCount,
-        ajaxCallsInProgress: state.ajaxCallsInProgress
+        ajaxCallsInProgress: state.ajaxCallsInProgress,
+        userRoles: state.user.userRoles
     }
 }
 

@@ -11,28 +11,42 @@ import PendingEdit from '../views/pending/edit'
 import Submitted from '../views/submitted/submitted'
 import SubmittedEdit from '../views/submitted/edit'
 import NotFound from '../views/notFound/notFound'
+import Unauthorized from '../views/unauthorized/unauthorized'
+import { UserRoles as userRoles } from '../constants/userConstants'
 
-const Routes = props => (
-    <Switch>
-        <Route path="/" exact component={() => <Redirect to="/new" />} />
+const Routes = props => {
+    const authorized = props.userRoles.includes(userRoles.BS) || props.userRoles.includes(userRoles.BTT)
 
-        <Route exact path="/new" component={New} staffs={props.staffs} />
-        <Route exact path="/new/:id" render={props => <NewEdit {...props} ignoreThis={true} />} />
+    if (authorized) {
+        return (
+            <Switch>
+                <Route path="/" exact component={() => <Redirect to="/new" />} />
 
-        <Route exact path="/confirmed" component={Confirmed} />
-        <Route exact path="/confirmed/:id" render={props => <ConfirmedEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/new" component={New} staffs={props.staffs} />
+                <Route exact path="/new/:id" render={props => <NewEdit {...props} ignoreThis={true} />} />
 
-        <Route exact path="/overview" component={Overview} />
-        <Route exact path="/overview/:id" render={props => <OverviewEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/confirmed" component={Confirmed} />
+                <Route exact path="/confirmed/:id" render={props => <ConfirmedEdit {...props} ignoreThis={true} />} />
 
-        <Route exact path="/pending" component={Pending} />
-        <Route exact path="/pending/:id" render={props => <PendingEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/overview" component={Overview} />
+                <Route exact path="/overview/:id" render={props => <OverviewEdit {...props} ignoreThis={true} />} />
 
-        <Route exact path="/submitted" component={Submitted} />
-        <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/pending" component={Pending} />
+                <Route exact path="/pending/:id" render={props => <PendingEdit {...props} ignoreThis={true} />} />
 
-        <Route component={NotFound} />
-    </Switch>
-)
+                <Route exact path="/submitted" component={Submitted} />
+                <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
+
+                <Route component={NotFound} />
+            </Switch>
+        )
+    } else {
+        return (
+            <Switch>
+                <Route component={Unauthorized} />
+            </Switch>
+        )
+    }
+}
 
 export default Routes
