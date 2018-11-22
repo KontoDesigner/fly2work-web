@@ -15,7 +15,7 @@ import Unauthorized from '../views/unauthorized/unauthorized'
 import { UserRoles as userRoles } from '../constants/userConstants'
 
 const Routes = props => {
-    const authorized = props.userRoles.includes(userRoles.BS) || props.userRoles.includes(userRoles.BTT)
+    const authorized = props.userRoles && (props.userRoles.includes(userRoles.BS) || props.userRoles.includes(userRoles.BTT))
 
     if (authorized) {
         return (
