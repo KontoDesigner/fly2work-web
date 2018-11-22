@@ -35,4 +35,16 @@ export function Staff() {
 
     this.comments = []
     this.attachments = []
+    this.flights = [new Flight()]
+}
+
+function Flight() {
+    this.departureAirport = ''
+    this.arrivalAirport = ''
+    this.flightNumber = ''
+    this.flightArrivalTime = ''
+    this.flightDepartureTime = ''
+    this.hotelCost = 0
+    this.flightCost = 0
+    this.xbagCost = 0
 }

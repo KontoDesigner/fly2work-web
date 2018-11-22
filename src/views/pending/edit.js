@@ -63,7 +63,7 @@ class Edit extends Component {
         return this.state.staff ? (
             <div>
                 <h2>
-                    {this.state.staff.firstName} ${this.state.staff.lastName}
+                    {this.state.staff.firstName} {this.state.staff.lastName}
                 </h2>
 
                 <Form

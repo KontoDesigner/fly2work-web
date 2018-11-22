@@ -102,7 +102,7 @@ class Attachments extends Component {
                     <thead>
                         <tr>
                             <th style={styles.th}>Name</th>
-                            <th style={styles.th}>Created By</th>
+                            <th style={styles.th}>Uploaded By</th>
                             <th style={styles.th}>Group</th>
                             <th style={styles.th}>Created</th>
                             <th style={styles.th}>Size</th>

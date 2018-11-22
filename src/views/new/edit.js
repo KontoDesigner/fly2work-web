@@ -88,9 +88,13 @@ class Edit extends Component {
 
         return this.state.staff ? (
             <div>
-                <h2>
-                    {this.state.staff.firstName} {this.state.staff.lastName}
-                </h2>
+                {this.state.add === true ? (
+                    <h2>Add</h2>
+                ) : (
+                    <h2>
+                        {this.state.staff.firstName} {this.state.staff.lastName}
+                    </h2>
+                )}
 
                 <Form
                     add={this.state.add}

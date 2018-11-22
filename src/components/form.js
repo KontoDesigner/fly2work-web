@@ -25,17 +25,19 @@ const Form = props => {
         )
     }
 
+    const BTT = props.userRoles.includes(userRoles.BTT)
+
     return (
         <Formik
             initialValues={props.staff}
-            validationSchema={props.userRoles.includes(userRoles.BTT) ? bttValidation : bsValidation}
+            validationSchema={BTT === true ? bttValidation : bsValidation}
             onSubmit={(values, actions) => {
                 props.handleStaff(values)
             }}
             render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                 <FormikForm>
                     <Row>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
                             <div className="hr">
                                 <span className="hr-title">BS</span>
                             </div>
@@ -332,103 +334,75 @@ const Form = props => {
                             </div>
                         </Col>
 
-                        {props.userRoles.includes(userRoles.BTT) && (
-                            <div className="inner-form">
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
-                                    <div className="hr">
-                                        <span className="hr-title">BTT</span>
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="bookingReference">Booking Reference</label>
-                                        <Field disabled={props.disabled} className="form-control" type="text" name="bookingReference" />
-                                        <ErrorMessage className="message" name="bookingReference" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="travelType">Travel Type</label>
-                                        <Field
-                                            disabled={props.disabled}
-                                            name={'travelType'}
-                                            component={Select}
-                                            options={props.travelTypes}
-                                            setFieldTouched={setFieldTouched}
-                                            valueKey={'value'}
-                                            labelKey={'label'}
-                                        />
-                                        <ErrorMessage className="message" name="travelType" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="paymentMethod">Payment Method</label>
-                                        <Field disabled={props.disabled} className="form-control" type="text" name="paymentMethod" />
-                                        <ErrorMessage className="message" name="paymentMethod" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="xbag">Xbag</label>
-                                        <Field disabled={props.disabled} className="form-control" type="text" name="xbag" />
-                                        <ErrorMessage className="message" name="xbag" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="costCentre">Cost Centre</label>
-                                        <Field disabled={props.disabled} className="form-control" type="text" name="costCentre" />
-                                        <ErrorMessage className="message" name="costCentre" component="div" />
-                                    </div>
-                                </Col>
-                            </div>
-                        )}
-
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="status">Status</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'status'}
-                                    component={Select}
-                                    options={props.statuses}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'value'}
-                                    labelKey={'label'}
-                                />
-                                <ErrorMessage className="message" name="status" component="div" />
-                            </div>
-                        </Col>
-                    </Row>
-
-                    {props.userRoles.includes(userRoles.BTT) && [
-                        <Row key={0} style={{ marginBottom: '20px' }}>
-                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                        <div className="inner-form">
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
                                 <div className="hr">
-                                    <span className="hr-title">Flights</span>
+                                    <span className="hr-title">BTT</span>
                                 </div>
                             </Col>
-                        </Row>,
 
-                        <Row key={1}>
-                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                <Flights
-                                    disabled={props.disabled}
-                                    flights={values.flights}
-                                    errors={errors}
-                                    touched={touched}
-                                    setFieldTouched={setFieldTouched}
-                                    setFieldValue={setFieldValue}
-                                />
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="bookingReference">Booking Reference</label>
+                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="bookingReference" />
+                                    <ErrorMessage className="message" name="bookingReference" component="div" />
+                                </div>
                             </Col>
-                        </Row>
-                    ]}
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                    <label htmlFor="travelType">Travel Type</label>
+                                    <Field
+                                        disabled={props.disabled || BTT === false}
+                                        name={'travelType'}
+                                        component={Select}
+                                        options={props.travelTypes}
+                                        setFieldTouched={setFieldTouched}
+                                        valueKey={'value'}
+                                        labelKey={'label'}
+                                    />
+                                    <ErrorMessage className="message" name="travelType" component="div" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="paymentMethod">Payment Method</label>
+                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="paymentMethod" />
+                                    <ErrorMessage className="message" name="paymentMethod" component="div" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="xbag">Xbag</label>
+                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="xbag" />
+                                    <ErrorMessage className="message" name="xbag" component="div" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="costCentre">Cost Centre</label>
+                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="costCentre" />
+                                    <ErrorMessage className="message" name="costCentre" component="div" />
+                                </div>
+                            </Col>
+                        </div>
+                    </Row>
+
+                    <Row style={{ marginTop: '15px' }}>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                            <Flights
+                                disabled={props.disabled || BTT === false}
+                                flights={values.flights}
+                                errors={errors}
+                                touched={touched}
+                                setFieldTouched={setFieldTouched}
+                                setFieldValue={setFieldValue}
+                            />
+                        </Col>
+                    </Row>
 
                     <Row>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
@@ -465,7 +439,25 @@ const Form = props => {
                         </Row>
                     ]}
 
-                    <Row style={{ marginTop: '23px' }}>
+                    <Row style={{ marginTop: '22px', marginBottom: '10px' }}>
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="status">Status</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'status'}
+                                    component={Select}
+                                    options={props.statuses}
+                                    setFieldTouched={setFieldTouched}
+                                    valueKey={'value'}
+                                    labelKey={'label'}
+                                />
+                                <ErrorMessage className="message" name="status" component="div" />
+                            </div>
+                        </Col>
+                    </Row>
+
+                    <Row>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             {!props.disabled && (
                                 <Button
