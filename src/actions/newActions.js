@@ -33,6 +33,8 @@ export function updateStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
+            staff.false = true
+
             const res = await RestClient.post('staff', staff)
 
             if (res && res.ok === true) {
@@ -53,5 +55,45 @@ export function updateStaff(staff) {
 
             throw error
         }
+    }
+}
+
+export function insertStaff(staff) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            staff.add = true
+
+            const res = await RestClient.post('staff', staff)
+
+            if (res && res.ok === true) {
+                console.log('Request has been added', res)
+
+                toastr.success('', 'Request has been added', res)
+
+                dispatch(getStaffCount())
+
+                dispatch(endAjaxCall())
+
+                return true
+            } else {
+                console.log('Could not add request', res)
+
+                if (res.alreadyExists) {
+                    toastr.error('', `Request with id: '${staff.id}' already exists`)
+                } else {
+                    toastr.error('', 'Could not add request')
+                }
+            }
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+
+        return false
     }
 }

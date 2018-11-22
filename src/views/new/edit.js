@@ -7,6 +7,7 @@ import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as newActions from '../../actions/newActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
+import { Staff } from '../../constants/newConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -18,12 +19,13 @@ class Edit extends Component {
 
         this.state = {
             id: params.id,
+            add: params.id === 'add',
             staff: null,
             loaded: false
         }
     }
 
-    async componentWillMount() {
+    getStaff = async () => {
         this.props.ajaxStatusActions.beginAjaxCall()
 
         const staff = await RestClient.get(`staff/${statuses.New}/${this.state.id}`)
@@ -41,12 +43,34 @@ class Edit extends Component {
         this.setState({ staff, loaded: true })
     }
 
-    handleStaff = staff => {
+    async componentWillMount() {
+        if (this.state.add) {
+            AppService.setTitle(`${statuses.New} - Add`)
+
+            const staff = new Staff()
+
+            this.setState({ staff, loaded: true })
+        } else {
+            this.getStaff()
+        }
+    }
+
+    handleStaff = async staff => {
         staff.attachments = this.state.staff.attachments
 
         this.setState({ staff })
 
-        this.props.newActions.updateStaff(staff)
+        if (this.state.add === true) {
+            const success = await this.props.newActions.insertStaff(staff)
+
+            if (success) {
+                this.props.history.push({
+                    pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+                })
+            }
+        } else {
+            this.props.newActions.updateStaff(staff)
+        }
     }
 
     handleStaffAttachments = attachments => {
@@ -69,6 +93,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    add={this.state.add}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}

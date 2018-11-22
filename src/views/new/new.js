@@ -5,6 +5,8 @@ import Table from '../../components/table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
 import { Statuses as statuses } from '../../constants/geographyConstants'
+import { Button, Row } from 'reactstrap'
+import { UserRoles as userRoles } from '../../constants/userConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -47,6 +49,18 @@ class New extends Component {
                 <h2>{statuses.New}</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
+
+                {this.props.userRoles.includes(userRoles.BS) && (
+                    <Row>
+                        <Button
+                            style={{ marginTop: '15px' }}
+                            onClick={() => this.props.history.push('/new/add')}
+                            className="btn btn-function"
+                            type="button">
+                            ADD
+                        </Button>
+                    </Row>
+                )}
             </div>
         )
     }
@@ -54,7 +68,8 @@ class New extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffs: state.new.staffs
+        staffs: state.new.staffs,
+        userRoles: state.user.userRoles
     }
 }
 

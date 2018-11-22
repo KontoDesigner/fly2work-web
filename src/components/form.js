@@ -45,7 +45,7 @@ const Form = props => {
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <label htmlFor="id">Id</label>
-                                <Field disabled={true} className="form-control" type="text" name="id" />
+                                <Field disabled={props.add !== true} className="form-control" type="text" name="id" />
                                 <ErrorMessage className="message" name="id" component="div" />
                             </div>
                         </Col>
@@ -54,7 +54,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="firstName">First Name</label>
                                 <Field
-                                    disabled={props.disabled || (values.firstName && values.firstName !== '')}
+                                    disabled={(props.disabled || (values.firstName && values.firstName !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="firstName"
@@ -67,7 +67,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="lastName">Last Name</label>
                                 <Field
-                                    disabled={props.disabled || (values.lastName && values.lastName !== '')}
+                                    disabled={(props.disabled || (values.lastName && values.lastName !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="lastName"
@@ -88,7 +88,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="jobTitle">Job Title</label>
                                 <Field
-                                    disabled={props.disabled || (values.jobTitle && values.jobTitle !== '')}
+                                    disabled={(props.disabled || (values.jobTitle && values.jobTitle !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="jobTitle"
@@ -101,7 +101,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="phone">Phone</label>
                                 <Field
-                                    disabled={props.disabled || (values.phone && values.phone !== '')}
+                                    disabled={(props.disabled || (values.phone && values.phone !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="phone"
@@ -114,7 +114,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="dateOfBirth">Date Of Birth</label>
                                 <Field
-                                    disabled={props.disabled || (values.dateOfBirth && values.dateOfBirth !== '')}
+                                    disabled={(props.disabled || (values.dateOfBirth && values.dateOfBirth !== '')) && props.add !== true}
                                     name={'dateOfBirth'}
                                     component={DatePicker}
                                     setFieldTouched={setFieldTouched}
@@ -128,7 +128,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="positionStart">Planned Assignment Start Date</label>
                                 <Field
-                                    disabled={props.disabled || (values.positionStart && values.positionStart !== '')}
+                                    disabled={(props.disabled || (values.positionStart && values.positionStart !== '')) && props.add !== true}
                                     name={'positionStart'}
                                     component={DatePicker}
                                     setFieldTouched={setFieldTouched}
@@ -149,7 +149,7 @@ const Form = props => {
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="sourceMarket">Source Market</label>
                                 <Field
-                                    disabled={props.disabled || (values.sourceMarket && values.sourceMarket !== '')}
+                                    disabled={(props.disabled || (values.sourceMarket && values.sourceMarket !== '')) && props.add !== true}
                                     name={'sourceMarket'}
                                     component={Select}
                                     options={props.sourceMarkets}
@@ -165,7 +165,7 @@ const Form = props => {
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="destination">Destination</label>
                                 <Field
-                                    disabled={props.disabled || (values.destination && values.destination !== '')}
+                                    disabled={(props.disabled || (values.destination && values.destination !== '')) && props.add !== true}
                                     name={'destination'}
                                     component={Select}
                                     options={props.destinations}
@@ -227,7 +227,7 @@ const Form = props => {
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="iataCode">Iata Code</label>
                                 <Field
-                                    disabled={props.disabled || (values.iataCode && values.iataCode !== '')}
+                                    disabled={(props.disabled || (values.iataCode && values.iataCode !== '')) && props.add !== true}
                                     name={'iataCode'}
                                     component={Select}
                                     options={props.iataCodes}
@@ -241,7 +241,11 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <Field disabled={props.disabled || (values.gender && values.gender !== '')} name={'gender'} component={Gender} />
+                                <Field
+                                    disabled={(props.disabled || (values.gender && values.gender !== '')) && props.add !== true}
+                                    name={'gender'}
+                                    component={Gender}
+                                />
                                 <ErrorMessage className="message" name="gender" component="div" />
                             </div>
                         </Col>
@@ -440,19 +444,26 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    <Row>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px', marginTop: '17px' }}>
-                            <div className="hr">
-                                <span className="hr-title">Attachments</span>
-                            </div>
-                        </Col>
-                    </Row>
+                    {props.add !== true && [
+                        <Row key={0}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px', marginTop: '17px' }}>
+                                <div className="hr">
+                                    <span className="hr-title">Attachments</span>
+                                </div>
+                            </Col>
+                        </Row>,
 
-                    <Row>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                            <Attachments staff={props.staff} handleStaffAttachments={props.handleStaffAttachments} disabled={props.disabled} />
-                        </Col>
-                    </Row>
+                        <Row key={1}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                <Attachments
+                                    staff={props.staff}
+                                    staffId={values.id}
+                                    handleStaffAttachments={props.handleStaffAttachments}
+                                    disabled={props.disabled}
+                                />
+                            </Col>
+                        </Row>
+                    ]}
 
                     <Row style={{ marginTop: '23px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">

@@ -28,7 +28,7 @@ class Attachments extends Component {
         this.props.ajaxStatusActions.beginAjaxCall()
 
         const req = {
-            staffId: this.props.staff.id,
+            staffId: this.props.staffId,
             attachmentId: attachment.id
         }
 
@@ -40,7 +40,7 @@ class Attachments extends Component {
     upload = async file => {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const res = await RestClient.upload('attachment/upload', file, [{ key: 'staffId', value: this.props.staff.id }])
+        const res = await RestClient.upload('attachment/upload', file, [{ key: 'staffId', value: this.props.staffId }])
 
         this.props.ajaxStatusActions.endAjaxCall()
 
@@ -61,7 +61,7 @@ class Attachments extends Component {
 
     delete = async index => {
         const req = {
-            staffId: this.props.staff.id,
+            staffId: this.props.staffId,
             attachmentId: this.props.staff.attachments[index].id
         }
 
