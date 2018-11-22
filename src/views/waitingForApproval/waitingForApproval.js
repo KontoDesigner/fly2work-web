@@ -2,70 +2,50 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
-import * as overviewActions from '../../actions/overviewActions'
+import * as waitingForApprovalActions from '../../actions/waitingForApprovalActions'
 import * as AppService from '../../services/appService'
-import * as RestClient from '../../infrastructure/restClient'
-import moment from 'moment'
-import { Button, Row } from 'reactstrap'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
-    { labelKey: 'Date Of Flight', valueKey: 'dateOfFlight', dataType: 'DATETIME' },
-    { labelKey: 'Status', valueKey: 'status' }
+    { labelKey: 'Date Of Flight', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
 ]
 
 const filter = (staffs, criteria) => {
     return staffs.filter(
         staff =>
             (staff.firstName && staff.firstName.toLowerCase().includes(criteria.toLowerCase())) ||
-            (staff.lastName && staff.lastName.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.firstName &&
                 staff.lastName &&
                 (staff.firstName.toLowerCase() + ' ' + staff.lastName.toLowerCase()).includes(criteria.toLowerCase())) ||
+            (staff.lastName && staff.lastName.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
-            (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(criteria.toLowerCase())) ||
-            (staff.status && staff.status.toLowerCase().includes(criteria.toLowerCase()))
+            (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(criteria.toLowerCase()))
     )
 }
 
-class Overview extends Component {
+class WaitingForApproval extends Component {
     async componentDidMount() {
-        AppService.setTitle('Overview')
+        AppService.setTitle('Waiting For Approval')
 
-        this.props.overviewActions.getStaffs()
+        this.props.waitingForApprovalActions.getStaffs()
     }
 
     handleClick = (e, id) => {
         if (e.target.nodeName !== 'BUTTON') {
-            this.props.history.push(`/overview/${id}`)
+            this.props.history.push(`/waitingforapproval/${id}`)
         }
-    }
-
-    downloadExcel = () => {
-        RestClient.download('excel', null, `${this.props.staffs.length} requests - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
     }
 
     render() {
         return (
             <div>
-                <h2>Overview</h2>
+                <h2>Waiting For Approval</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
-
-                <Row>
-                    <Button
-                        disabled={!this.props.staffs || this.props.staffs.length === 0}
-                        style={{ marginTop: '20px' }}
-                        onClick={this.downloadExcel}
-                        className="btn btn-function"
-                        type="button">
-                        XLSX
-                    </Button>
-                </Row>
             </div>
         )
     }
@@ -73,17 +53,17 @@ class Overview extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffs: state.overview.staffs
+        staffs: state.waitingForApproval.staffs
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        overviewActions: bindActionCreators(overviewActions, dispatch)
+        waitingForApprovalActions: bindActionCreators(waitingForApprovalActions, dispatch)
     }
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Overview)
+)(WaitingForApproval)

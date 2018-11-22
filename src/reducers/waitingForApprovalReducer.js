@@ -1,10 +1,10 @@
-import { ActionTypes as types } from '../constants/submittedConstants'
+import { ActionTypes as types } from '../constants/waitingForApprovalConstants'
 
 var defaultState = {
     staffs: []
 }
 
-export default function submittedReducer(state = defaultState, action) {
+export default function waitingForApprovalReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_STAFFS_SUCCESS:
             return {

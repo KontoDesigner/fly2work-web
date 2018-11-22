@@ -15,9 +15,10 @@ export var Statuses = keyMirror({
     New: null,
     Submitted: null,
     Pending: null,
-    Confirmed: null
+    Confirmed: null,
+    WaitingForApproval: null
 })
 
 export var GetStatuses = () => {
-    return [Statuses.Submitted, Statuses.Pending, Statuses.Confirmed]
+    return [Statuses.Submitted, Statuses.Pending, Statuses.Confirmed, Statuses.WaitingForApproval]
 }

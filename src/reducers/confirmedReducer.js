@@ -4,7 +4,7 @@ var defaultState = {
     staffs: []
 }
 
-export default function nameReducer(state = defaultState, action) {
+export default function confirmedReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_STAFFS_SUCCESS:
             return {

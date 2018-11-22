@@ -10,6 +10,8 @@ import Pending from '../views/pending/pending'
 import PendingEdit from '../views/pending/edit'
 import Submitted from '../views/submitted/submitted'
 import SubmittedEdit from '../views/submitted/edit'
+import WaitingForApproval from '../views/waitingForApproval/waitingForApproval'
+import WaitingForApprovalEdit from '../views/waitingForApproval/edit'
 import NotFound from '../views/notFound/notFound'
 import Unauthorized from '../views/unauthorized/unauthorized'
 import { UserRoles as userRoles } from '../constants/userConstants'
@@ -36,6 +38,9 @@ const Routes = props => {
 
                 <Route exact path="/submitted" component={Submitted} />
                 <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
+
+                <Route exact path="/waitingForApproval" component={WaitingForApproval} />
+                <Route exact path="/waitingForApproval/:id" render={props => <WaitingForApprovalEdit {...props} ignoreThis={true} />} />
 
                 <Route component={NotFound} />
             </Switch>

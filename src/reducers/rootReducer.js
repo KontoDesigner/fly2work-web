@@ -9,6 +9,7 @@ import overviewReducer from './overviewReducer'
 import pendingReducer from './pendingReducer'
 import submittedReducer from './submittedReducer'
 import userReducer from './userReducer'
+import waitingForApprovalReducer from './waitingForApprovalReducer'
 
 export default combineReducers({
     ajaxCallsInProgress,
@@ -20,5 +21,6 @@ export default combineReducers({
     overview: overviewReducer,
     pending: pendingReducer,
     submitted: submittedReducer,
-    user: userReducer
+    user: userReducer,
+    waitingForApproval: waitingForApprovalReducer
 })

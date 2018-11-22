@@ -53,7 +53,7 @@ class New extends Component {
                 {this.props.userRoles.includes(userRoles.BS) && (
                     <Row>
                         <Button
-                            style={{ marginTop: '15px' }}
+                            style={{ marginTop: '20px' }}
                             onClick={() => this.props.history.push('/new/add')}
                             className="btn btn-function"
                             type="button">

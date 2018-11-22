@@ -18,6 +18,10 @@ const Menu = props => {
                     New <span className="text-danger">({props.staffCount.new})</span>
                 </Link>
 
+                <Link className="menu-item" to="/waitingForApproval">
+                    WFA <span className="text-danger">({props.staffCount.waitingForApproval})</span>
+                </Link>
+
                 <Link className="menu-item" to="/submitted">
                     Submitted <span className="text-danger">({props.staffCount.submitted})</span>
                 </Link>
