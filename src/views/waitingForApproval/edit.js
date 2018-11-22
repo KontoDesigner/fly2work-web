@@ -6,7 +6,7 @@ import Form from '../../components/form'
 import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as waitingForApprovalActions from '../../actions/waitingForApprovalActions'
-import { Statuses as statuses } from '../../constants/geographyConstants'
+import { UserRoles as userRoles } from '../../constants/userConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/${statuses.WaitingForApproval}/${this.state.id}`)
+        const staff = await RestClient.get(`staff/getbyidandgreenlight/${this.state.id}/${false}`)
 
         this.props.ajaxStatusActions.endAjaxCall()
 
@@ -45,6 +45,12 @@ class Edit extends Component {
         this.setState({ staff })
 
         this.props.waitingForApprovalActions.updateStaff(staff)
+
+        if (staff.greenLight === true) {
+            this.props.history.push({
+                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+            })
+        }
     }
 
     handleStaffAttachments = attachments => {
@@ -60,6 +66,8 @@ class Edit extends Component {
             return ''
         }
 
+        const BTT = this.props.userRoles.includes(userRoles.BTT)
+
         return this.state.staff ? (
             <div>
                 <h2>
@@ -67,6 +75,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    disabled={!BTT}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}

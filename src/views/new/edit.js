@@ -69,7 +69,11 @@ class Edit extends Component {
                 })
             }
         } else {
-            this.props.newActions.updateStaff(staff)
+            await this.props.newActions.updateStaff(staff)
+
+            this.props.history.push({
+                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+            })
         }
     }
 

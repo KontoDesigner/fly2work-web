@@ -8,6 +8,7 @@ import lodash from 'lodash'
 import Search from './search'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
+import { Statuses as statuses } from '../constants/geographyConstants'
 
 library.add(faCaretDown, faCaretUp)
 
@@ -70,6 +71,10 @@ class Table extends Component {
     }
 
     renderBody(staff, column) {
+        if (staff.greenLight === false && staff.status !== statuses.New && column.valueKey === 'status') {
+            return 'Waiting For Approval'
+        }
+
         switch (column.dataType) {
             case 'DATETIME':
                 return staff[column.valueKey] && <Moment format="YYYY-MM-DD">{staff[column.valueKey]}</Moment>

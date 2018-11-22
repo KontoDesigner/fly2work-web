@@ -39,14 +39,16 @@ class Edit extends Component {
         this.setState({ staff, loaded: true })
     }
 
-    handleStaff = staff => {
+    handleStaff = async staff => {
         staff.attachments = this.state.staff.attachments
 
         this.setState({ staff })
 
-        this.props.submittedActions.updateStaff(staff)
+        await this.props.submittedActions.updateStaff(staff)
 
-        this.props.submittedActions.getStaffs()
+        this.props.history.push({
+            pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+        })
     }
 
     handleStaffAttachments = attachments => {

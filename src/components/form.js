@@ -388,6 +388,27 @@ const Form = props => {
                                     <ErrorMessage className="message" name="costCentre" component="div" />
                                 </div>
                             </Col>
+
+                            {BTT === true && props.staff.greenLight !== null && (
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                        <label htmlFor="greenLight">Green Light</label>
+                                        <Field
+                                            disabled={props.disabled || props.staff.greenLight === true}
+                                            name={'greenLight'}
+                                            component={Checkbox}
+                                            title={
+                                                props.staff.greenLightUpdatedBy && props.staff.greenLightUpdated
+                                                    ? `Updated: ${moment(props.staff.greenLightUpdated).format('YYYY-MM-DD HH:mm')} By: ${
+                                                          props.staff.greenLightUpdatedBy
+                                                      }`
+                                                    : ''
+                                            }
+                                        />
+                                        <ErrorMessage className="message" name="greenLight" component="div" />
+                                    </div>
+                                </Col>
+                            )}
                         </div>
                     </Row>
 

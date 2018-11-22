@@ -32,6 +32,7 @@ export function Staff() {
     this.bookReturnFlightArrivalAirport = ''
     this.iataCode = ''
     this.typeOfFlight = ''
+    this.greenLight = null
 
     this.comments = []
     this.attachments = []

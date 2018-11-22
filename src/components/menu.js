@@ -18,7 +18,7 @@ const Menu = props => {
                     New <span className="text-danger">({props.staffCount.new})</span>
                 </Link>
 
-                <Link className="menu-item" to="/waitingForApproval">
+                <Link className="menu-item" to="/waitingforapproval">
                     WFA <span className="text-danger">({props.staffCount.waitingForApproval})</span>
                 </Link>
 

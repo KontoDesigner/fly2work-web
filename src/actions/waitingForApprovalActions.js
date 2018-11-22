@@ -2,7 +2,6 @@ import { ActionTypes as types } from '../constants/waitingForApprovalConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
-import { Statuses as statuses } from '../constants/geographyConstants'
 import { getStaffCount } from '../actions/menuActions'
 
 export function getStaffsSuccess(staffs) {
@@ -17,7 +16,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`staff/getbystatus/${statuses.WaitingForApproval}`)
+            const staffs = await RestClient.get(`staff/getbygreenlight/${false}`)
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {
