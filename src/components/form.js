@@ -343,7 +343,7 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="railFly">Rail & Fly (Germany Only)</label>
+                                <label htmlFor="railFly">Rail & Fly (Only In Germany)</label>
                                 <Field disabled={props.disabled} name={'railFly'} component={Checkbox} />
                                 <ErrorMessage className="message" name="railFly" component="div" />
                             </div>
