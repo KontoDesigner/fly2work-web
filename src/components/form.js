@@ -56,7 +56,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="firstName">First Name</label>
                                 <Field
-                                    disabled={(props.disabled || (values.firstName && values.firstName !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.firstName && props.staff.firstName !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="firstName"
@@ -67,12 +67,25 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="lastName">Last Name</label>
+                                <label htmlFor="lastName">Sur Name</label>
                                 <Field
-                                    disabled={(props.disabled || (values.lastName && values.lastName !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.lastName && props.staff.lastName !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="lastName"
+                                />
+                                <ErrorMessage className="message" name="lastName" component="div" />
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className="form-item">
+                                <label htmlFor="lastName2">2nd Sur Name</label>
+                                <Field
+                                    disabled={(props.disabled || (props.staff.lastName2 && props.staff.lastName2 !== '')) && props.add !== true}
+                                    className="form-control"
+                                    type="text"
+                                    name="lastName2"
                                 />
                                 <ErrorMessage className="message" name="lastName" component="div" />
                             </div>
@@ -90,7 +103,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="jobTitle">Job Title</label>
                                 <Field
-                                    disabled={(props.disabled || (values.jobTitle && values.jobTitle !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.jobTitle && props.staff.jobTitle !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="jobTitle"
@@ -103,7 +116,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="phone">Phone</label>
                                 <Field
-                                    disabled={(props.disabled || (values.phone && values.phone !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.phone && props.staff.phone !== '')) && props.add !== true}
                                     className="form-control"
                                     type="text"
                                     name="phone"
@@ -116,7 +129,7 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="dateOfBirth">Date Of Birth</label>
                                 <Field
-                                    disabled={(props.disabled || (values.dateOfBirth && values.dateOfBirth !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.dateOfBirth && props.staff.dateOfBirth !== '')) && props.add !== true}
                                     name={'dateOfBirth'}
                                     component={DatePicker}
                                     setFieldTouched={setFieldTouched}
@@ -130,7 +143,9 @@ const Form = props => {
                             <div className="form-item">
                                 <label htmlFor="positionStart">Planned Assignment Start Date</label>
                                 <Field
-                                    disabled={(props.disabled || (values.positionStart && values.positionStart !== '')) && props.add !== true}
+                                    disabled={
+                                        (props.disabled || (props.staff.positionStart && props.staff.positionStart !== '')) && props.add !== true
+                                    }
                                     name={'positionStart'}
                                     component={DatePicker}
                                     setFieldTouched={setFieldTouched}
@@ -151,7 +166,7 @@ const Form = props => {
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="sourceMarket">Source Market</label>
                                 <Field
-                                    disabled={(props.disabled || (values.sourceMarket && values.sourceMarket !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.sourceMarket && props.staff.sourceMarket !== '')) && props.add !== true}
                                     name={'sourceMarket'}
                                     component={Select}
                                     options={props.sourceMarkets}
@@ -167,7 +182,7 @@ const Form = props => {
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="destination">Destination</label>
                                 <Field
-                                    disabled={(props.disabled || (values.destination && values.destination !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.destination && props.staff.destination !== '')) && props.add !== true}
                                     name={'destination'}
                                     component={Select}
                                     options={props.destinations}
@@ -229,7 +244,7 @@ const Form = props => {
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="iataCode">Iata Code</label>
                                 <Field
-                                    disabled={(props.disabled || (values.iataCode && values.iataCode !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.iataCode && props.staff.iataCode !== '')) && props.add !== true}
                                     name={'iataCode'}
                                     component={Select}
                                     options={props.iataCodes}
@@ -244,7 +259,7 @@ const Form = props => {
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <Field
-                                    disabled={(props.disabled || (values.gender && values.gender !== '')) && props.add !== true}
+                                    disabled={(props.disabled || (props.staff.gender && props.staff.gender !== '')) && props.add !== true}
                                     name={'gender'}
                                     component={Gender}
                                 />

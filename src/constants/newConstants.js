@@ -8,6 +8,7 @@ export function Staff() {
     this.id = ''
     this.firstName = ''
     this.lastName = ''
+    this.lastName2 = ''
     this.passportNumber = ''
     this.dateOfBirth = ''
     this.sourceMarket = ''
