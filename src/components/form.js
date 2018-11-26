@@ -257,6 +257,20 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="emails">Emails For Notification</label>
+                                <Field
+                                    disabled={props.disabled}
+                                    name={'emails'}
+                                    component={Creatable}
+                                    setFieldTouched={setFieldTouched}
+                                    noOptionsMessage="Type to create.."
+                                />
+                                <ErrorMessage className="message" name="emails" component="div" />
+                            </div>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
                                 <Field
                                     disabled={(props.disabled || (props.staff.gender && props.staff.gender !== '')) && props.add !== true}
@@ -475,7 +489,7 @@ const Form = props => {
                         </Row>
                     ]}
 
-                    {BTT === false && (
+                    {props.hideStatus !== true && (
                         <Row style={{ marginTop: '20px' }}>
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>

@@ -49,6 +49,8 @@ class Edit extends Component {
 
             const staff = new Staff()
 
+            staff.status = statuses.Submitted
+
             this.setState({ staff, loaded: true })
         } else {
             this.getStaff()
@@ -101,6 +103,7 @@ class Edit extends Component {
                 )}
 
                 <Form
+                    hideStatus={true}
                     add={this.state.add}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}

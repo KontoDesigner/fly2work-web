@@ -46,7 +46,7 @@ class Overview extends Component {
     }
 
     downloadExcel = () => {
-        RestClient.download('excel', null, `${this.props.staffs.length} requests - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
+        RestClient.download('excel', null, `${this.props.staffs.length} request(s) - ${moment().format('YYYY-MM-DD HH:mm')}.xlsx`)
     }
 
     render() {

@@ -38,6 +38,7 @@ export function Staff() {
     this.comments = []
     this.attachments = []
     this.flights = [new Flight()]
+    this.emails = []
 }
 
 function Flight() {
