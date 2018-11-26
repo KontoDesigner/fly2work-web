@@ -7,7 +7,6 @@ import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as confirmedActions from '../../actions/confirmedActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
-import { UserRoles as userRoles } from '../../constants/userConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -65,8 +64,6 @@ class Edit extends Component {
             return ''
         }
 
-        const BTT = this.props.userRoles.includes(userRoles.BTT)
-
         return this.state.staff ? (
             <div>
                 <h2>
@@ -74,7 +71,6 @@ class Edit extends Component {
                 </h2>
 
                 <Form
-                    disabled={!BTT}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}
