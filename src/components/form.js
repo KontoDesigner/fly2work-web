@@ -257,10 +257,10 @@ const Form = props => {
                         </Col>
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="emails">Emails For Notification</label>
+                            <div className={props.disabled || props.add !== true ? 'form-item disabled' : 'form-item'}>
+                                <label htmlFor="emails">Additional Emails For Notification</label>
                                 <Field
-                                    disabled={props.disabled}
+                                    disabled={props.disabled || props.add !== true}
                                     name={'emails'}
                                     component={Creatable}
                                     setFieldTouched={setFieldTouched}
