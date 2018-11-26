@@ -35,7 +35,7 @@ class Edit extends Component {
         if (staff) {
             AppService.setTitle(`${statuses.New} - ${staff.firstName} ${staff.lastName}`)
 
-            staff.status = null
+            staff.status = statuses.Submitted
         } else {
             AppService.setTitle('Staff not found')
         }

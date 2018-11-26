@@ -87,7 +87,7 @@ const Form = props => {
                                     type="text"
                                     name="lastName2"
                                 />
-                                <ErrorMessage className="message" name="lastName" component="div" />
+                                <ErrorMessage className="message" name="lastName2" component="div" />
                             </div>
                         </Col>
 
@@ -475,25 +475,27 @@ const Form = props => {
                         </Row>
                     ]}
 
-                    <Row style={{ marginTop: '22px', marginBottom: '10px' }}>
-                        <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                            <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="status">Status</label>
-                                <Field
-                                    disabled={props.disabled}
-                                    name={'status'}
-                                    component={Select}
-                                    options={props.statuses}
-                                    setFieldTouched={setFieldTouched}
-                                    valueKey={'value'}
-                                    labelKey={'label'}
-                                />
-                                <ErrorMessage className="message" name="status" component="div" />
-                            </div>
-                        </Col>
-                    </Row>
+                    {BTT === false && (
+                        <Row style={{ marginTop: '20px' }}>
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                    <label htmlFor="status">Status</label>
+                                    <Field
+                                        disabled={props.disabled}
+                                        name={'status'}
+                                        component={Select}
+                                        options={props.statuses}
+                                        setFieldTouched={setFieldTouched}
+                                        valueKey={'value'}
+                                        labelKey={'label'}
+                                    />
+                                    <ErrorMessage className="message" name="status" component="div" />
+                                </div>
+                            </Col>
+                        </Row>
+                    )}
 
-                    <Row>
+                    <Row style={{ marginTop: '20px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             {!props.disabled && (
                                 <Button
