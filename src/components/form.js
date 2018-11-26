@@ -491,7 +491,7 @@ const Form = props => {
 
                     {props.hideStatus !== true && (
                         <Row style={{ marginTop: '20px' }}>
-                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                     <label htmlFor="status">Status</label>
                                     <Field
@@ -509,7 +509,7 @@ const Form = props => {
                         </Row>
                     )}
 
-                    <Row style={{ marginTop: '20px' }}>
+                    <Row style={{ marginTop: '25px' }}>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12">
                             {!props.disabled && (
                                 <Button
