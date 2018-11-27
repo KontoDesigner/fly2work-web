@@ -46,7 +46,11 @@ export function updateStaff(staff) {
             } else {
                 console.log('Could not update request', res)
 
-                toastr.error('', 'Could not update request')
+                if (res && res.error) {
+                    toastr.error('', res.error)
+                } else {
+                    toastr.error('', 'Could not update request')
+                }
             }
 
             dispatch(endAjaxCall())
@@ -80,8 +84,8 @@ export function insertStaff(staff) {
             } else {
                 console.log('Could not add request', res)
 
-                if (res.alreadyExists) {
-                    toastr.error('', `Request with id: '${staff.id}' already exists`)
+                if (res && res.error) {
+                    toastr.error('', res.error)
                 } else {
                     toastr.error('', 'Could not add request')
                 }

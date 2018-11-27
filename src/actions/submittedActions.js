@@ -44,7 +44,11 @@ export function updateStaff(staff) {
             } else {
                 console.log('Could not update request', res)
 
-                toastr.error('', 'Could not update request')
+                if (res && res.error) {
+                    toastr.error('', res.error)
+                } else {
+                    toastr.error('', 'Could not update request')
+                }
             }
 
             dispatch(endAjaxCall())
