@@ -418,6 +418,22 @@ const Form = props => {
                                 </div>
                             </Col>
 
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
+                                    <label htmlFor="currency">Currency</label>
+                                    <Field
+                                        disabled={props.disabled || BTT === false}
+                                        name={'currency'}
+                                        component={Select}
+                                        options={props.currencies}
+                                        setFieldTouched={setFieldTouched}
+                                        valueKey={'value'}
+                                        labelKey={'label'}
+                                    />
+                                    <ErrorMessage className="message" name="currency" component="div" />
+                                </div>
+                            </Col>
+
                             {BTT === true && props.staff.greenLight !== null && (
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className={props.disabled ? 'form-item disabled' : 'form-item'}>

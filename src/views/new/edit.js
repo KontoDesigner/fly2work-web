@@ -119,6 +119,7 @@ class Edit extends Component {
                     handleStaffAttachments={this.handleStaffAttachments}
                     iataCodes={this.props.iataCodes}
                     travelTypes={this.props.travelTypes}
+                    currencies={this.props.currencies}
                 />
             </div>
         ) : (
@@ -139,7 +140,11 @@ function mapStateToProps(state) {
         userRoles: state.user.userRoles,
         typeOfFlights: state.geography.typeOfFlights,
         iataCodes: state.geography.iataCodes,
-        travelTypes: state.geography.travelTypes
+        travelTypes: state.geography.travelTypes,
+        currencies: state.geography.currencies.map(s => ({
+            value: s,
+            label: s
+        }))
     }
 }
 
