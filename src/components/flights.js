@@ -78,6 +78,8 @@ const Flights = props => {
                                         name={`flights[${index}].flightDepartureTime`}
                                         component={DatePicker}
                                         setFieldTouched={props.setFieldTouched}
+                                        dateFormat={false}
+                                        timeFormat={'HH:mm'}
                                     />
                                     <ErrorMessage className="message" name={`flights[${index}].flightDepartureTime`} component="div" />
                                 </div>
@@ -93,6 +95,8 @@ const Flights = props => {
                                         name={`flights[${index}].flightArrivalTime`}
                                         component={DatePicker}
                                         setFieldTouched={props.setFieldTouched}
+                                        dateFormat={false}
+                                        timeFormat={'HH:mm'}
                                     />
                                     <ErrorMessage className="message" name={`flights[${index}].flightArrivalTime`} component="div" />
                                 </div>
@@ -120,6 +124,21 @@ const Flights = props => {
                                     </label>
                                     <Field disabled={props.disabled} className="form-control" type="text" name={`flights[${index}].arrivalAirport`} />
                                     <ErrorMessage className="message" name={`flights[${index}].arrivalAirport`} component="div" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label style={styles.label} htmlFor={`flights[${index}].dateOfFlight`}>
+                                        Date Of Flight
+                                    </label>
+                                    <Field
+                                        disabled={props.disabled}
+                                        name={`flights[${index}].dateOfFlight`}
+                                        component={DatePicker}
+                                        setFieldTouched={props.setFieldTouched}
+                                    />
+                                    <ErrorMessage className="message" name={`flights[${index}].dateOfFlight`} component="div" />
                                 </div>
                             </Col>
 

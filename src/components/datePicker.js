@@ -2,7 +2,7 @@ import Datetime from 'react-datetime'
 import React from 'react'
 import moment from 'moment'
 
-const DatePicker = ({ field, form, setFieldTouched, disabled, dateFormat = 'YYYY-MM-DD' }) => {
+const DatePicker = ({ field, form, setFieldTouched, disabled, dateFormat = 'YYYY-MM-DD', timeFormat = false }) => {
     const onChange = date => {
         //Picker
         if (date._d) {
@@ -19,18 +19,18 @@ const DatePicker = ({ field, form, setFieldTouched, disabled, dateFormat = 'YYYY
 
     const val =
         field.value && field.value.length > 10 && moment(field.value, moment.ISO_8601, true).isValid()
-            ? moment(field.value).format(dateFormat)
+            ? moment(field.value).format(timeFormat === false ? dateFormat : timeFormat)
             : field.value
 
     return (
         <Datetime
             value={val}
             onChange={onChange}
-            timeFormat={false}
+            timeFormat={timeFormat}
             dateFormat={dateFormat}
             closeOnSelect
-            utc={true}
-            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: disabled }}
+            utc={false}
+            inputProps={{ placeholder: timeFormat !== false ? timeFormat : dateFormat, disabled: disabled }}
             onBlur={() => setFieldTouched(field.name, ' ')}
         />
     )
