@@ -7,7 +7,6 @@ import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as newActions from '../../actions/newActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
-import { Staff } from '../../constants/newConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -43,15 +42,27 @@ class Edit extends Component {
         this.setState({ staff, loaded: true })
     }
 
-    async componentWillMount() {
-        if (this.state.add) {
+    getModel = async () => {
+        this.props.ajaxStatusActions.beginAjaxCall()
+
+        const staff = await RestClient.get('staff/model')
+
+        this.props.ajaxStatusActions.endAjaxCall()
+
+        if (staff) {
             AppService.setTitle(`${statuses.New} - Add`)
 
-            const staff = new Staff()
-
             staff.status = statuses.Submitted
+        } else {
+            AppService.setTitle(`${statuses.New} - Could not retrieve model`)
+        }
 
-            this.setState({ staff, loaded: true })
+        this.setState({ staff, loaded: true })
+    }
+
+    async componentWillMount() {
+        if (this.state.add) {
+            this.getModel()
         } else {
             this.getStaff()
         }
