@@ -39,12 +39,12 @@ class Edit extends Component {
         this.setState({ staff, loaded: true })
     }
 
-    handleStaff = staff => {
+    handleStaff = async staff => {
         staff.attachments = this.state.staff.attachments
 
         this.setState({ staff })
 
-        this.props.pendingHRActions.updateStaff(staff)
+        await this.props.pendingHRActions.updateStaff(staff)
 
         if (staff.greenLight === true) {
             this.props.history.push({

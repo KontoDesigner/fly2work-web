@@ -442,12 +442,12 @@ const Form = props => {
                                 </div>
                             </Col>
 
-                            {BTT === true && props.staff.greenLight !== null && (
+                            {props.staff.greenLight !== null && (
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                         <label htmlFor="greenLight">Green Light</label>
                                         <Field
-                                            disabled={props.disabled || props.staff.greenLight === true}
+                                            disabled={props.disabled || props.staff.greenLight === true || BTT === false}
                                             name={'greenLight'}
                                             component={Checkbox}
                                             title={
