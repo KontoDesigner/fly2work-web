@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
-import * as pendingActions from '../../actions/pendingActions'
+import * as pendingHRActions from '../../actions/pendingHRActions'
 import * as AppService from '../../services/appService'
-import { Statuses as statuses } from '../../constants/geographyConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -18,33 +17,33 @@ const filter = (staffs, criteria) => {
     return staffs.filter(
         staff =>
             (staff.firstName && staff.firstName.toLowerCase().includes(criteria.toLowerCase())) ||
-            (staff.lastName && staff.lastName.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.firstName &&
                 staff.lastName &&
                 (staff.firstName.toLowerCase() + ' ' + staff.lastName.toLowerCase()).includes(criteria.toLowerCase())) ||
+            (staff.lastName && staff.lastName.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(criteria.toLowerCase()))
     )
 }
 
-class Pending extends Component {
+class PendingHR extends Component {
     async componentDidMount() {
-        AppService.setTitle(statuses.Pending)
+        AppService.setTitle('Pending HR')
 
-        this.props.pendingActions.getStaffs()
+        this.props.pendingHRActions.getStaffs()
     }
 
     handleClick = (e, id) => {
         if (e.target.nodeName !== 'BUTTON') {
-            this.props.history.push(`/pending/${id}`)
+            this.props.history.push(`/pendinghr/${id}`)
         }
     }
 
     render() {
         return (
             <div>
-                <h2>{statuses.Pending}</h2>
+                <h2>Pending HR</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>
@@ -54,17 +53,17 @@ class Pending extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffs: state.pending.staffs
+        staffs: state.pendingHR.staffs
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        pendingActions: bindActionCreators(pendingActions, dispatch)
+        pendingHRActions: bindActionCreators(pendingHRActions, dispatch)
     }
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Pending)
+)(PendingHR)

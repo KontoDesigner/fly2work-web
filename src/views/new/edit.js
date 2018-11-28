@@ -37,7 +37,7 @@ class Edit extends Component {
 
             staff.status = statuses.Submitted
         } else {
-            AppService.setTitle('Staff not found')
+            AppService.setTitle(`${statuses.New} - Request not found`)
         }
 
         this.setState({ staff, loaded: true })
@@ -125,7 +125,7 @@ class Edit extends Component {
                 />
             </div>
         ) : (
-            <h2>Staff not found</h2>
+            <h2>Request not found</h2>
         )
     }
 }

@@ -1,10 +1,10 @@
-import { ActionTypes as types } from '../constants/pendingConstants'
+import { ActionTypes as types } from '../constants/pendingHRConstants'
 
 var defaultState = {
     staffs: []
 }
 
-export default function pendingReducer(state = defaultState, action) {
+export default function pendingHRReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_STAFFS_SUCCESS:
             return {

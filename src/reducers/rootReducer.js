@@ -6,10 +6,10 @@ import menuReducer from './menuReducer'
 import newReducer from './newReducer'
 import confirmedReducer from './confirmedReducer'
 import overviewReducer from './overviewReducer'
-import pendingReducer from './pendingReducer'
+import pendingBTTReducer from './pendingBTTReducer'
 import submittedReducer from './submittedReducer'
 import userReducer from './userReducer'
-import waitingForApprovalReducer from './waitingForApprovalReducer'
+import pendingHRReducer from './pendingHRReducer'
 
 export default combineReducers({
     ajaxCallsInProgress,
@@ -19,8 +19,8 @@ export default combineReducers({
     new: newReducer,
     confirmed: confirmedReducer,
     overview: overviewReducer,
-    pending: pendingReducer,
+    pendingBTT: pendingBTTReducer,
     submitted: submittedReducer,
     user: userReducer,
-    waitingForApproval: waitingForApprovalReducer
+    pendingHR: pendingHRReducer
 })

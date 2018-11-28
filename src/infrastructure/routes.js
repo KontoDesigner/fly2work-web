@@ -6,12 +6,12 @@ import Confirmed from '../views/confirmed/confirmed'
 import ConfirmedEdit from '../views/confirmed/edit'
 import Overview from '../views/overview/overview'
 import OverviewEdit from '../views/overview/edit'
-import Pending from '../views/pending/pending'
-import PendingEdit from '../views/pending/edit'
+import PendingBTT from '../views/pendingBTT/pendingBTT'
+import PendingBTTEdit from '../views/pendingBTT/edit'
 import Submitted from '../views/submitted/submitted'
 import SubmittedEdit from '../views/submitted/edit'
-import WaitingForApproval from '../views/waitingForApproval/waitingForApproval'
-import WaitingForApprovalEdit from '../views/waitingForApproval/edit'
+import PendingHR from '../views/pendingHR/pendingHR'
+import PendingHREdit from '../views/pendingHR/edit'
 import NotFound from '../views/notFound/notFound'
 import Unauthorized from '../views/unauthorized/unauthorized'
 import { UserRoles as userRoles } from '../constants/userConstants'
@@ -33,14 +33,14 @@ const Routes = props => {
                 <Route exact path="/overview" component={Overview} />
                 <Route exact path="/overview/:id" render={props => <OverviewEdit {...props} ignoreThis={true} />} />
 
-                <Route exact path="/pending" component={Pending} />
-                <Route exact path="/pending/:id" render={props => <PendingEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/pendingbtt" component={PendingBTT} />
+                <Route exact path="/pendingbtt/:id" render={props => <PendingBTTEdit {...props} ignoreThis={true} />} />
 
                 <Route exact path="/submitted" component={Submitted} />
                 <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
 
-                <Route exact path="/waitingForApproval" component={WaitingForApproval} />
-                <Route exact path="/waitingForApproval/:id" render={props => <WaitingForApprovalEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/pendinghr" component={PendingHR} />
+                <Route exact path="/pendinghr/:id" render={props => <PendingHREdit {...props} ignoreThis={true} />} />
 
                 <Route component={NotFound} />
             </Switch>

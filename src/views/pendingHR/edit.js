@@ -5,8 +5,8 @@ import * as AppService from '../../services/appService'
 import Form from '../../components/form'
 import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
-import * as pendingActions from '../../actions/pendingActions'
-import { Statuses as statuses } from '../../constants/geographyConstants'
+import * as pendingHRActions from '../../actions/pendingHRActions'
+import { UserRoles as userRoles } from '../../constants/userConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -26,29 +26,31 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/${statuses.Pending}/${this.state.id}`)
+        const staff = await RestClient.get(`staff/getbyidandgreenlight/${this.state.id}/${false}`)
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
-            AppService.setTitle(`${statuses.Pending} - ${staff.firstName} ${staff.lastName}`)
+            AppService.setTitle(`Pending HR - ${staff.firstName} ${staff.lastName}`)
         } else {
-            AppService.setTitle('Staff not found')
+            AppService.setTitle('Pending HR - Request not found')
         }
 
         this.setState({ staff, loaded: true })
     }
 
-    handleStaff = async staff => {
+    handleStaff = staff => {
         staff.attachments = this.state.staff.attachments
 
         this.setState({ staff })
 
-        await this.props.pendingActions.updateStaff(staff)
+        this.props.pendingHRActions.updateStaff(staff)
 
-        this.props.history.push({
-            pathname: `/${staff.status.toLowerCase()}/${staff.id}`
-        })
+        if (staff.greenLight === true) {
+            this.props.history.push({
+                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+            })
+        }
     }
 
     handleStaffAttachments = attachments => {
@@ -64,6 +66,8 @@ class Edit extends Component {
             return ''
         }
 
+        const BTT = this.props.userRoles.includes(userRoles.BTT)
+
         return this.state.staff ? (
             <div>
                 <h2>
@@ -71,6 +75,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    disabled={!BTT}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}
@@ -90,7 +95,7 @@ class Edit extends Component {
                 />
             </div>
         ) : (
-            <h2>Staff not found</h2>
+            <h2>Request not found</h2>
         )
     }
 }
@@ -116,7 +121,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch),
-        pendingActions: bindActionCreators(pendingActions, dispatch)
+        pendingHRActions: bindActionCreators(pendingHRActions, dispatch)
     }
 }
 

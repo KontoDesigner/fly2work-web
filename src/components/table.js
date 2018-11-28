@@ -72,7 +72,7 @@ class Table extends Component {
 
     renderBody(staff, column) {
         if (staff.greenLight === false && staff.status !== statuses.New && column.valueKey === 'status') {
-            return 'Waiting For Approval'
+            return 'Pending HR'
         }
 
         switch (column.dataType) {

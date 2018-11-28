@@ -1,4 +1,4 @@
-import { ActionTypes as types } from '../constants/waitingForApprovalConstants'
+import { ActionTypes as types } from '../constants/pendingHRConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
