@@ -18,15 +18,6 @@ export var Statuses = keyMirror({
     Confirmed: null
 })
 
-export var Currencies = keyMirror({
-    EUR: null,
-    GBP: null
-})
-
 export var GetStatuses = () => {
     return [Statuses.Submitted, Statuses.Pending, Statuses.Confirmed]
-}
-
-export var GetCurrencies = () => {
-    return [Currencies.EUR, Currencies.GBP]
 }

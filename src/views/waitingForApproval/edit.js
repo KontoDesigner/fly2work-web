@@ -91,6 +91,7 @@ class Edit extends Component {
                     iataCodes={this.props.iataCodes}
                     travelTypes={this.props.travelTypes}
                     currencies={this.props.currencies}
+                    paymentMethods={this.props.paymentMethods}
                 />
             </div>
         ) : (
@@ -112,10 +113,8 @@ function mapStateToProps(state) {
         typeOfFlights: state.geography.typeOfFlights,
         iataCodes: state.geography.iataCodes,
         travelTypes: state.geography.travelTypes,
-        currencies: state.geography.currencies.map(s => ({
-            value: s,
-            label: s
-        }))
+        currencies: state.geography.currencies,
+        paymentMethods: state.geography.paymentMethods
     }
 }
 

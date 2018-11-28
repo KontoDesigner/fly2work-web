@@ -395,9 +395,17 @@ const Form = props => {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
+                                <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                     <label htmlFor="paymentMethod">Payment Method</label>
-                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="paymentMethod" />
+                                    <Field
+                                        disabled={props.disabled || BTT === false}
+                                        name={'paymentMethod'}
+                                        component={Select}
+                                        options={props.paymentMethods}
+                                        setFieldTouched={setFieldTouched}
+                                        valueKey={'value'}
+                                        labelKey={'label'}
+                                    />
                                     <ErrorMessage className="message" name="paymentMethod" component="div" />
                                 </div>
                             </Col>
