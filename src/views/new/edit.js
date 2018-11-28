@@ -103,6 +103,7 @@ class Edit extends Component {
                 )}
 
                 <Form
+                    enableEmails={true}
                     hideStatus={true}
                     add={this.state.add}
                     staff={this.state.staff}
