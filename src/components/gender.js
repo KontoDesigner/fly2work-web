@@ -19,7 +19,9 @@ const Gender = ({ field, form, disabled }) => (
         </div>
 
         <div>
-            <label htmlFor="gender">Woman</label>
+            <label htmlFor="gender">
+                Woman <span className="text-danger">*</span>
+            </label>
 
             <label>
                 <input

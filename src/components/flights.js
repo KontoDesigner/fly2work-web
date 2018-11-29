@@ -61,7 +61,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].flightNumber`}>
-                                        Flight Number
+                                        Flight Number <span className="text-danger">*</span>
                                     </label>
                                     <Field disabled={props.disabled} className="form-control" type="text" name={`flights[${index}].flightNumber`} />
                                     <ErrorMessage className="message" name={`flights[${index}].flightNumber`} component="div" />
@@ -71,7 +71,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].flightDepartureTime`}>
-                                        Flight Departure Time
+                                        Flight Departure Time <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={props.disabled}
@@ -88,7 +88,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].flightArrivalTime`}>
-                                        Flight Arrival Time
+                                        Flight Arrival Time <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={props.disabled}
@@ -105,7 +105,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].departureAirport`}>
-                                        Departure Airport
+                                        Departure Airport <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={props.disabled}
@@ -120,7 +120,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].arrivalAirport`}>
-                                        Arrival Airport
+                                        Arrival Airport <span className="text-danger">*</span>
                                     </label>
                                     <Field disabled={props.disabled} className="form-control" type="text" name={`flights[${index}].arrivalAirport`} />
                                     <ErrorMessage className="message" name={`flights[${index}].arrivalAirport`} component="div" />
@@ -130,7 +130,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].dateOfFlight`}>
-                                        Date Of Flight
+                                        Date Of Flight <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={props.disabled}
@@ -145,7 +145,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].flightCost`}>
-                                        Flight Cost
+                                        Flight Cost <span className="text-danger">*</span>
                                     </label>
                                     <Field disabled={props.disabled} className="form-control" type="text" name={`flights[${index}].flightCost`} />
                                     <ErrorMessage className="message" name={`flights[${index}].flightCost`} component="div" />
@@ -155,7 +155,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].xbagCost`}>
-                                        Xbag Cost
+                                        Xbag Cost <span className="text-danger">*</span>
                                     </label>
                                     <Field disabled={props.disabled} className="form-control" type="text" name={`flights[${index}].xbagCost`} />
                                     <ErrorMessage className="message" name={`flights[${index}].xbagCost`} component="div" />
@@ -165,7 +165,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].hotelCost`}>
-                                        Hotel Cost
+                                        Hotel Cost <span className="text-danger">*</span>
                                     </label>
                                     <Field disabled={props.disabled} className="form-control" type="text" name={`flights[${index}].hotelCost`} />
                                     <ErrorMessage className="message" name={`flights[${index}].hotelCost`} component="div" />

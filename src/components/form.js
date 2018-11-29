@@ -46,7 +46,9 @@ const Form = props => {
                     <Row>
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="id">Id</label>
+                                <label htmlFor="id">
+                                    Id <span className="text-danger">*</span>
+                                </label>
                                 <Field disabled={props.add !== true} className="form-control" type="text" name="id" />
                                 <ErrorMessage className="message" name="id" component="div" />
                             </div>
@@ -54,7 +56,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="firstName">First Name</label>
+                                <label htmlFor="firstName">
+                                    First Name <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.firstName && props.staff.firstName !== '')) && props.add !== true}
                                     className="form-control"
@@ -67,7 +71,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="lastName">Sur Name</label>
+                                <label htmlFor="lastName">
+                                    Sur Name <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.lastName && props.staff.lastName !== '')) && props.add !== true}
                                     className="form-control"
@@ -93,7 +99,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="passportNumber">Passport Number</label>
+                                <label htmlFor="passportNumber">
+                                    Passport Number <span className="text-danger">*</span>
+                                </label>
                                 <Field disabled={props.disabled} className="form-control" type="text" name="passportNumber" />
                                 <ErrorMessage className="message" name="passportNumber" component="div" />
                             </div>
@@ -101,7 +109,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="jobTitle">Job Title</label>
+                                <label htmlFor="jobTitle">
+                                    Job Title <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.jobTitle && props.staff.jobTitle !== '')) && props.add !== true}
                                     className="form-control"
@@ -114,7 +124,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="phone">Phone</label>
+                                <label htmlFor="phone">
+                                    Phone <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.phone && props.staff.phone !== '')) && props.add !== true}
                                     className="form-control"
@@ -127,7 +139,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="dateOfBirth">Date Of Birth</label>
+                                <label htmlFor="dateOfBirth">
+                                    Date Of Birth <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.dateOfBirth && props.staff.dateOfBirth !== '')) && props.add !== true}
                                     name={'dateOfBirth'}
@@ -156,7 +170,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="dateOfFlight">Date Of Flight</label>
+                                <label htmlFor="dateOfFlight">
+                                    Date Of Flight <span className="text-danger">*</span>
+                                </label>
                                 <Field disabled={props.disabled} name={'dateOfFlight'} component={DatePicker} setFieldTouched={setFieldTouched} />
                                 <ErrorMessage className="message" name="dateOfFlight" component="div" />
                             </div>
@@ -164,7 +180,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="sourceMarket">Source Market</label>
+                                <label htmlFor="sourceMarket">
+                                    Source Market <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.sourceMarket && props.staff.sourceMarket !== '')) && props.add !== true}
                                     name={'sourceMarket'}
@@ -180,7 +198,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="destination">Destination</label>
+                                <label htmlFor="destination">
+                                    Destination <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.destination && props.staff.destination !== '')) && props.add !== true}
                                     name={'destination'}
@@ -196,7 +216,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="departureAirports">Departure Airports</label>
+                                <label htmlFor="departureAirports">
+                                    Departure Airports <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={props.disabled}
                                     name={'departureAirports'}
@@ -211,7 +233,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="arrivalAirports">Arrival Airports</label>
+                                <label htmlFor="arrivalAirports">
+                                    Arrival Airports <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={props.disabled}
                                     name={'arrivalAirports'}
@@ -226,7 +250,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="typeOfFlight">Type Of Flight</label>
+                                <label htmlFor="typeOfFlight">
+                                    Type Of Flight <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={props.disabled}
                                     name={'typeOfFlight'}
@@ -242,7 +268,9 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                <label htmlFor="iataCode">Iata Code</label>
+                                <label htmlFor="iataCode">
+                                    Iata Code <span className="text-danger">*</span>
+                                </label>
                                 <Field
                                     disabled={(props.disabled || (props.staff.iataCode && props.staff.iataCode !== '')) && props.add !== true}
                                     name={'iataCode'}
@@ -372,7 +400,9 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="bookingReference">Booking Reference</label>
+                                    <label htmlFor="bookingReference">
+                                        Booking Reference <span className="text-danger">*</span>
+                                    </label>
                                     <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="bookingReference" />
                                     <ErrorMessage className="message" name="bookingReference" component="div" />
                                 </div>
@@ -380,7 +410,9 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                    <label htmlFor="travelType">Travel Type</label>
+                                    <label htmlFor="travelType">
+                                        Travel Type <span className="text-danger">*</span>
+                                    </label>
                                     <Field
                                         disabled={props.disabled || BTT === false}
                                         name={'travelType'}
@@ -396,7 +428,9 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                    <label htmlFor="paymentMethod">Payment Method</label>
+                                    <label htmlFor="paymentMethod">
+                                        Payment Method <span className="text-danger">*</span>
+                                    </label>
                                     <Field
                                         disabled={props.disabled || BTT === false}
                                         name={'paymentMethod'}
@@ -412,7 +446,9 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="xbag">Xbag</label>
+                                    <label htmlFor="xbag">
+                                        Xbag <span className="text-danger">*</span>
+                                    </label>
                                     <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="xbag" />
                                     <ErrorMessage className="message" name="xbag" component="div" />
                                 </div>
@@ -420,7 +456,9 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="costCentre">Cost Centre</label>
+                                    <label htmlFor="costCentre">
+                                        Cost Centre <span className="text-danger">*</span>
+                                    </label>
                                     <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="costCentre" />
                                     <ErrorMessage className="message" name="costCentre" component="div" />
                                 </div>
@@ -428,7 +466,9 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
-                                    <label htmlFor="currency">Currency</label>
+                                    <label htmlFor="currency">
+                                        Currency <span className="text-danger">*</span>
+                                    </label>
                                     <Field
                                         disabled={props.disabled || BTT === false}
                                         name={'currency'}
