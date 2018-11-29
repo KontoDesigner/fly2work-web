@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button } from 'reactstrap'
 import Moment from 'react-moment'
-import { Field, ErrorMessage } from 'formik'
+import * as RestClient from '../infrastructure/restClient'
+import * as ajaxStatusActions from '../actions/ajaxStatusActions'
+import { toastr } from 'react-redux-toastr'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 const styles = {
     th: {
@@ -14,108 +18,138 @@ const styles = {
     field: { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' },
     text: { backgroundColor: '#eee', padding: '18px 24px', whiteSpace: 'pre-wrap', color: '#333' },
     errorMessage: { marginBottom: '0' },
-    button: { marginTop: '18px' },
-    label: { color: '#444' }
+    label: { color: '#444' },
+    addButton: { marginRight: '15px', marginTop: '15px' },
+    textArea: { overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' }
 }
 
-const Comments = props => {
-    const add = () => {
-        let comments = Object.assign([], props.comments)
+class Comments extends Component {
+    constructor(props) {
+        super(props)
 
-        const comment = {
-            id: null,
-            text: '',
-            createdBy: null,
-            group: null,
-            created: null
+        this.state = {
+            text: ''
+        }
+    }
+
+    handleText = e => {
+        this.setState({ text: e.target.value })
+    }
+
+    add = async () => {
+        this.props.ajaxStatusActions.beginAjaxCall()
+
+        const req = {
+            staffId: this.props.staff.id,
+            comment: {
+                text: this.state.text
+            }
         }
 
-        comments.push(comment)
+        const res = await RestClient.post('comment/insert', req)
 
-        props.setFieldValue('comments', comments)
+        this.props.ajaxStatusActions.endAjaxCall()
+
+        if (res.ok === true) {
+            this.setState({ text: '' })
+
+            let comments = Object.assign([], this.props.comments)
+
+            comments.push(res.comment)
+
+            this.props.setFieldValue('comments', comments)
+
+            toastr.success('', 'Successfully added comment', res)
+        } else {
+            if (res && res.errors) {
+                toastr.error('', `Could not add comment - ${res.errors.join(', ')}`)
+            } else {
+                toastr.error('', 'Could not add comment')
+            }
+        }
     }
 
-    const remove = async index => {
-        let comments = Object.assign([], props.comments)
+    render() {
+        const comments = this.props.comments
+            ? this.props.comments.sort(function(a, b) {
+                  return new Date(b.created) - new Date(a.created)
+              })
+            : []
 
-        comments.splice(index, 1)
+        return (
+            <div className="tui-text-content table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style={styles.th}>Created By</th>
+                            <th style={styles.th}>Group</th>
+                            <th style={styles.th}>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {comments.map((comment, index) => [
+                            comment.id && (
+                                <tr key={`0-${index}`}>
+                                    <td style={styles.td} className="link">
+                                        {comment.createdBy}
+                                    </td>
 
-        props.setFieldValue('comments', comments)
-    }
+                                    <td style={styles.td} className="link">
+                                        {comment.group}
+                                    </td>
 
-    const comments = props.comments
-        ? props.comments.sort(function(a, b) {
-              return new Date(b.created) - new Date(a.created)
-          })
-        : []
+                                    <td colSpan={2} style={styles.td} className="link">
+                                        {comment.created && <Moment format="YYYY-MM-DD HH:mm">{comment.created}</Moment>}
+                                    </td>
+                                </tr>
+                            ),
 
-    return (
-        <div className="tui-text-content table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th style={styles.th}>Created By</th>
-                        <th style={styles.th}>Group</th>
-                        <th style={styles.th}>Created</th>
-                        <th style={{ ...styles.th, ...{ width: '1px', padding: '12px 24px 11px 24px', whiteSpace: 'nowrap' } }}>
-                            <Button disabled={props.disabled} onClick={() => add()} className="btn btn-default ghost-white btn-sm" type="button">
-                                Add
-                            </Button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {comments.map((comment, index) => [
-                        comment.id && (
-                            <tr key={`0-${index}`}>
-                                <td style={styles.td} className="link">
-                                    {comment.createdBy}
-                                </td>
-
-                                <td style={styles.td} className="link">
-                                    {comment.group}
-                                </td>
-
-                                <td colSpan={2} style={styles.td} className="link">
-                                    {comment.created && <Moment format="YYYY-MM-DD HH:mm">{comment.created}</Moment>}
+                            <tr key={`1-${index}`}>
+                                <td style={{ padding: '0' }} colSpan={4}>
+                                    <div style={styles.text}>{comment.text}</div>
                                 </td>
                             </tr>
-                        ),
+                        ])}
 
-                        <tr key={`1-${index}`}>
-                            <td style={comment.id ? { padding: '0' } : {}} colSpan={4}>
-                                {!comment.id && (
-                                    <label style={styles.label} htmlFor={`comments[${index}].text`}>
-                                        Comment
-                                    </label>
-                                )}
+                        <tr>
+                            <td colSpan={4}>
+                                <label style={styles.label} htmlFor={'comment'}>
+                                    Comment
+                                </label>
 
-                                {!comment.id ? (
-                                    <Field
-                                        disabled={props.disabled || comment.id}
-                                        className="form-control"
-                                        component="textarea"
-                                        style={styles.field}
-                                        rows="3"
-                                        name={`comments[${index}].text`}
-                                    />
-                                ) : (
-                                    <div style={styles.text}>{comment.text}</div>
-                                )}
-                                <ErrorMessage style={styles.errorMessage} className="message" name={`comments[${index}].text`} component="div" />
+                                <textarea
+                                    value={this.state.text}
+                                    onChange={this.handleText}
+                                    name="comment"
+                                    className="form-control"
+                                    rows="3"
+                                    style={styles.textArea}
+                                />
 
-                                {!comment.id && (
-                                    <Button style={styles.button} onClick={() => remove(index)} className="btn btn-sales btn-sm" type="button">
-                                        REMOVE
-                                    </Button>
-                                )}
+                                <Button
+                                    key={0}
+                                    style={styles.addButton}
+                                    onClick={e => this.add(e)}
+                                    className="btn btn-function btn btn-secondary btn-sm"
+                                    type="button">
+                                    ADD
+                                </Button>
                             </td>
                         </tr>
-                    ])}
-                </tbody>
-            </table>
-        </div>
-    )
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
 }
 
-export default Comments
+function mapDispatchToProps(dispatch) {
+    return {
+        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch)
+    }
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Comments)

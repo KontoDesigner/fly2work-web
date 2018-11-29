@@ -518,22 +518,22 @@ const Form = props => {
                         </Col>
                     </Row>
 
-                    <Row>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
-                            <div className="hr">
-                                <span className="hr-title">Comments</span>
-                            </div>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                            <Comments setFieldValue={setFieldValue} comments={values.comments} disabled={props.disabled} />
-                        </Col>
-                    </Row>
-
                     {props.add !== true && [
                         <Row key={0}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
+                                <div className="hr">
+                                    <span className="hr-title">Comments</span>
+                                </div>
+                            </Col>
+                        </Row>,
+
+                        <Row key={1}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                <Comments staff={props.staff} setFieldValue={setFieldValue} comments={values.comments} disabled={props.disabled} />
+                            </Col>
+                        </Row>,
+
+                        <Row key={2}>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px', marginTop: '17px' }}>
                                 <div className="hr">
                                     <span className="hr-title">Attachments</span>
@@ -541,14 +541,9 @@ const Form = props => {
                             </Col>
                         </Row>,
 
-                        <Row key={1}>
+                        <Row key={3}>
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                <Attachments
-                                    staff={props.staff}
-                                    staffId={values.id}
-                                    handleStaffAttachments={props.handleStaffAttachments}
-                                    disabled={props.disabled}
-                                />
+                                <Attachments staff={props.staff} handleStaffAttachments={props.handleStaffAttachments} disabled={props.disabled} />
                             </Col>
                         </Row>
                     ]}
