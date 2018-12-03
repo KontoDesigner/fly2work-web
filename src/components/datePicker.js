@@ -6,7 +6,7 @@ const DatePicker = ({ field, form, setFieldTouched, disabled, dateFormat = 'YYYY
     const onChange = date => {
         //Picker
         if (date._d) {
-            return form.setFieldValue(field.name, date._d)
+            return form.setFieldValue(field.name, moment(date._d).format(timeFormat === false ? dateFormat : timeFormat))
         }
 
         //Manual
