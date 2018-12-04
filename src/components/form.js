@@ -446,11 +446,11 @@ const Form = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="xbag">
-                                        Xbag <span className="text-danger">*</span>
+                                    <label htmlFor="luggage">
+                                        Luggage <span className="text-danger">*</span>
                                     </label>
-                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="xbag" />
-                                    <ErrorMessage className="message" name="xbag" component="div" />
+                                    <Field disabled={props.disabled || BTT === false} className="form-control" type="text" name="luggage" />
+                                    <ErrorMessage className="message" name="luggage" component="div" />
                                 </div>
                             </Col>
 
