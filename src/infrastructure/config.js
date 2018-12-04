@@ -7,12 +7,12 @@ function getApi() {
         base = 'http://localhost:5000/'
     }
     //UAT
-    else if (hostName === 'ctx-web-uat.tuinordic.net' || hostName === 'ctx-web.uat.tuinordic.net') {
-        base = 'https://ctx-api-uat.tuinordic.net/'
+    else if (hostName === 'fly2work-web-uat.tuinordic.net' || hostName === 'fly2work-web.uat.tuinordic.net') {
+        base = 'https://fly2work-api-uat.tuinordic.net/'
     }
     //PROD
-    else if (hostName === 'ctx-web.tuinordic.net') {
-        base = 'https://ctx-api.tuinordic.net/'
+    else if (hostName === 'fly2work-web.tuinordic.net') {
+        base = 'https://fly2work-api.tuinordic.net/'
     } else {
         console.warn(`could not identify hostname: ${hostName}.`)
     }

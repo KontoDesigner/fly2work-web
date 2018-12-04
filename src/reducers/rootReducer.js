@@ -6,7 +6,7 @@ import menuReducer from './menuReducer'
 import newReducer from './newReducer'
 import confirmedReducer from './confirmedReducer'
 import overviewReducer from './overviewReducer'
-import pendingBTTReducer from './pendingBTTReducer'
+import pendingDESReducer from './pendingDESReducer'
 import submittedReducer from './submittedReducer'
 import userReducer from './userReducer'
 import pendingHRReducer from './pendingHRReducer'
@@ -19,7 +19,7 @@ export default combineReducers({
     new: newReducer,
     confirmed: confirmedReducer,
     overview: overviewReducer,
-    pendingBTT: pendingBTTReducer,
+    pendingDES: pendingDESReducer,
     submitted: submittedReducer,
     user: userReducer,
     pendingHR: pendingHRReducer

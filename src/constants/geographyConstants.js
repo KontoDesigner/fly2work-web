@@ -14,10 +14,10 @@ export var ActionTypes = keyMirror({
 export var Statuses = keyMirror({
     New: null,
     Submitted: null,
-    PendingBTT: null,
+    PendingDES: null,
     Confirmed: null
 })
 
 export var GetStatuses = () => {
-    return [Statuses.Submitted, Statuses.PendingBTT, Statuses.Confirmed]
+    return [Statuses.Submitted, Statuses.PendingDES, Statuses.Confirmed]
 }

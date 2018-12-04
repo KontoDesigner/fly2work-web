@@ -1,10 +1,10 @@
-import { ActionTypes as types } from '../constants/pendingBTTConstants'
+import { ActionTypes as types } from '../constants/pendingDESConstants'
 
 var defaultState = {
     staffs: []
 }
 
-export default function pendingBTTReducer(state = defaultState, action) {
+export default function pendingDESReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_STAFFS_SUCCESS:
             return {

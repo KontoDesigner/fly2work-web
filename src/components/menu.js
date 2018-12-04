@@ -26,8 +26,8 @@ const Menu = props => {
                     Submitted <span className="text-danger">({props.staffCount.submitted})</span>
                 </Link>
 
-                <Link className="menu-item" to="/pendingbtt">
-                    Pending BTT <span className="text-danger">({props.staffCount.pendingBTT})</span>
+                <Link className="menu-item" to="/pendingdes">
+                    Pending DES <span className="text-danger">({props.staffCount.pendingDES})</span>
                 </Link>
 
                 <Link className="menu-item" to="/confirmed">
