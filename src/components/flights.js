@@ -52,7 +52,7 @@ const Flights = props => {
     return (
         <div>
             {props.flights.map((flight, index) => (
-                <Card style={{ marginBottom: '20px' }} key={index}>
+                <Card style={index === props.flights.length - 1 ? { marginBottom: '0' } : { marginBottom: '20px' }} key={index}>
                     <CardHeader style={styles.cardHeader}>
                         <span>#{index + 1} Flight</span>
                     </CardHeader>

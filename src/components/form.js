@@ -540,7 +540,7 @@ const Form = props => {
 
                     {props.add !== true && [
                         <Row key={0}>
-                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px', marginTop: '20px' }}>
                                 <div className="hr">
                                     <span className="hr-title">Comments</span>
                                 </div>
