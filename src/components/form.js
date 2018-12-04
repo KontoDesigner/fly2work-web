@@ -155,16 +155,18 @@ const Form = props => {
 
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className="form-item">
-                                <label htmlFor="positionStart">Planned Assignment Start Date</label>
+                                <label htmlFor="plannedAssignmentStartDate">Planned Assignment Start Date</label>
                                 <Field
                                     disabled={
-                                        (props.disabled || (props.staff.positionStart && props.staff.positionStart !== '')) && props.add !== true
+                                        (props.disabled ||
+                                            (props.staff.plannedAssignmentStartDate && props.staff.plannedAssignmentStartDate !== '')) &&
+                                        props.add !== true
                                     }
-                                    name={'positionStart'}
+                                    name={'plannedAssignmentStartDate'}
                                     component={DatePicker}
                                     setFieldTouched={setFieldTouched}
                                 />
-                                <ErrorMessage className="message" name="positionStart" component="div" />
+                                <ErrorMessage className="message" name="plannedAssignmentStartDate" component="div" />
                             </div>
                         </Col>
 
