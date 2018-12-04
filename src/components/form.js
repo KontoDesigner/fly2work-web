@@ -319,33 +319,6 @@ const Form = props => {
                             </div>
                         </Col>
 
-                        {values.hotelNeeded === true && [
-                            <Col key={0} xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
-                                    <label htmlFor="hotelNeededHotelStart">Hotel Start (HN)</label>
-                                    <Field
-                                        disabled={props.disabled}
-                                        name={'hotelNeededHotelStart'}
-                                        component={DatePicker}
-                                        setFieldTouched={setFieldTouched}
-                                    />
-                                    <ErrorMessage className="message" name="hotelNeededHotelStart" component="div" />
-                                </div>
-                            </Col>,
-                            <Col key={1} xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
-                                    <label htmlFor="hotelNeededHotelEnd">Hotel End (HN)</label>
-                                    <Field
-                                        disabled={props.disabled}
-                                        name={'hotelNeededHotelEnd'}
-                                        component={DatePicker}
-                                        setFieldTouched={setFieldTouched}
-                                    />
-                                    <ErrorMessage className="message" name="hotelNeededHotelEnd" component="div" />
-                                </div>
-                            </Col>
-                        ]}
-
                         <Col xl="4" lg="4" md="6" sm="12" xs="12">
                             <div className={props.disabled ? 'form-item disabled' : 'form-item'}>
                                 <label htmlFor="bookReturnFlight">Book Return Flight</label>
@@ -483,6 +456,51 @@ const Form = props => {
                                     <ErrorMessage className="message" name="currency" component="div" />
                                 </div>
                             </Col>
+
+                            {values.hotelNeeded === true && [
+                                <Col key={0} xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label htmlFor="hotelNeededHotelName">
+                                            Hotel Name (HN) <span className="text-danger">*</span>
+                                        </label>
+                                        <Field
+                                            disabled={props.disabled || BTT === false}
+                                            className="form-control"
+                                            type="text"
+                                            name="hotelNeededHotelName"
+                                        />
+                                        <ErrorMessage className="message" name="hotelNeededHotelName" component="div" />
+                                    </div>
+                                </Col>,
+                                <Col key={1} xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label htmlFor="hotelNeededHotelStart">
+                                            Hotel Start (HN) <span className="text-danger">*</span>
+                                        </label>
+                                        <Field
+                                            disabled={props.disabled || BTT === false}
+                                            name={'hotelNeededHotelStart'}
+                                            component={DatePicker}
+                                            setFieldTouched={setFieldTouched}
+                                        />
+                                        <ErrorMessage className="message" name="hotelNeededHotelStart" component="div" />
+                                    </div>
+                                </Col>,
+                                <Col key={2} xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label htmlFor="hotelNeededHotelEnd">
+                                            Hotel End (HN) <span className="text-danger">*</span>
+                                        </label>
+                                        <Field
+                                            disabled={props.disabled || BTT === false}
+                                            name={'hotelNeededHotelEnd'}
+                                            component={DatePicker}
+                                            setFieldTouched={setFieldTouched}
+                                        />
+                                        <ErrorMessage className="message" name="hotelNeededHotelEnd" component="div" />
+                                    </div>
+                                </Col>
+                            ]}
 
                             {props.staff.greenLight !== null && (
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
