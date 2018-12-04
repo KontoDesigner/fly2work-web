@@ -34,7 +34,7 @@ class Edit extends Component {
         if (staff) {
             AppService.setTitle(`${statuses.New} - ${staff.firstName} ${staff.lastName}`)
 
-            staff.status = statuses.Submitted
+            staff.status = statuses.PendingBTT
         } else {
             AppService.setTitle(`${statuses.New} - Request not found`)
         }
@@ -52,7 +52,7 @@ class Edit extends Component {
         if (staff) {
             AppService.setTitle(`${statuses.New} - Add`)
 
-            staff.status = statuses.Submitted
+            staff.status = statuses.PendingBTT
         } else {
             AppService.setTitle(`${statuses.New} - Could not retrieve model`)
         }

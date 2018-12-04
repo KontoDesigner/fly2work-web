@@ -19,11 +19,11 @@ const Menu = props => {
                 </Link>
 
                 <Link className="menu-item" to="/pendinghr">
-                    PENDING HR <span className="text-danger">({props.staffCount.pendingHR})</span>
+                    Pending HR <span className="text-danger">({props.staffCount.pendingHR})</span>
                 </Link>
 
-                <Link className="menu-item" to="/submitted">
-                    Submitted <span className="text-danger">({props.staffCount.submitted})</span>
+                <Link className="menu-item" to="/pendingbtt">
+                    Pending BTT <span className="text-danger">({props.staffCount.pendingBTT})</span>
                 </Link>
 
                 <Link className="menu-item" to="/pendingdes">

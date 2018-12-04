@@ -5,7 +5,7 @@ import * as AppService from '../../services/appService'
 import Form from '../../components/form'
 import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
-import * as submittedActions from '../../actions/submittedActions'
+import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 
 class Edit extends Component {
@@ -26,14 +26,14 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/${statuses.Submitted}/${this.state.id}`)
+        const staff = await RestClient.get(`staff/${statuses.PendingBTT}/${this.state.id}`)
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
-            AppService.setTitle(`${statuses.Submitted} - ${staff.firstName} ${staff.lastName}`)
+            AppService.setTitle(`${statuses.PendingBTT} - ${staff.firstName} ${staff.lastName}`)
         } else {
-            AppService.setTitle(`${statuses.Submitted} - Request not found`)
+            AppService.setTitle(`${statuses.PendingBTT} - Request not found`)
         }
 
         this.setState({ staff, loaded: true })
@@ -44,7 +44,7 @@ class Edit extends Component {
 
         this.setState({ staff })
 
-        await this.props.submittedActions.updateStaff(staff)
+        await this.props.pendingBTTActions.updateStaff(staff)
 
         this.props.history.push({
             pathname: `/${staff.status.toLowerCase()}/${staff.id}`
@@ -116,7 +116,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch),
-        submittedActions: bindActionCreators(submittedActions, dispatch)
+        pendingBTTActions: bindActionCreators(pendingBTTActions, dispatch)
     }
 }
 

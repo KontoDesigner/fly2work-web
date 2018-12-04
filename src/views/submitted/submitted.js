@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
-import * as submittedActions from '../../actions/submittedActions'
+import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import * as AppService from '../../services/appService'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 
@@ -28,23 +28,23 @@ const filter = (staffs, criteria) => {
     )
 }
 
-class Submitted extends Component {
+class PendingBTT extends Component {
     async componentDidMount() {
-        AppService.setTitle(statuses.Submitted)
+        AppService.setTitle(statuses.PendingBTT)
 
-        this.props.submittedActions.getStaffs()
+        this.props.pendingBTTActions.getStaffs()
     }
 
     handleClick = (e, id) => {
         if (e.target.nodeName !== 'BUTTON') {
-            this.props.history.push(`/submitted/${id}`)
+            this.props.history.push(`/pendingbtt/${id}`)
         }
     }
 
     render() {
         return (
             <div>
-                <h2>{statuses.Submitted}</h2>
+                <h2>{statuses.PendingBTT}</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>
@@ -54,17 +54,17 @@ class Submitted extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffs: state.submitted.staffs
+        staffs: state.pendingBTT.staffs
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        submittedActions: bindActionCreators(submittedActions, dispatch)
+        pendingBTTActions: bindActionCreators(pendingBTTActions, dispatch)
     }
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Submitted)
+)(PendingBTT)

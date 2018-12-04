@@ -8,8 +8,8 @@ import Overview from '../views/overview/overview'
 import OverviewEdit from '../views/overview/edit'
 import PendingDES from '../views/pendingDES/pendingDES'
 import PendingDESEdit from '../views/pendingDES/edit'
-import Submitted from '../views/submitted/submitted'
-import SubmittedEdit from '../views/submitted/edit'
+import PendingBTT from '../views/pendingBTT/pendingBTT'
+import PendingBTTEdit from '../views/pendingBTT/edit'
 import PendingHR from '../views/pendingHR/pendingHR'
 import PendingHREdit from '../views/pendingHR/edit'
 import NotFound from '../views/notFound/notFound'
@@ -36,8 +36,8 @@ const Routes = props => {
                 <Route exact path="/pendingdes" component={PendingDES} />
                 <Route exact path="/pendingdes/:id" render={props => <PendingDESEdit {...props} ignoreThis={true} />} />
 
-                <Route exact path="/submitted" component={Submitted} />
-                <Route exact path="/submitted/:id" render={props => <SubmittedEdit {...props} ignoreThis={true} />} />
+                <Route exact path="/pendingbtt" component={PendingBTT} />
+                <Route exact path="/pendingbtt/:id" render={props => <PendingBTTEdit {...props} ignoreThis={true} />} />
 
                 <Route exact path="/pendinghr" component={PendingHR} />
                 <Route exact path="/pendinghr/:id" render={props => <PendingHREdit {...props} ignoreThis={true} />} />

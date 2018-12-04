@@ -1,4 +1,4 @@
-import { ActionTypes as types } from '../constants/submittedConstants'
+import { ActionTypes as types } from '../constants/pendingBTTConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import * as RestClient from '../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
@@ -17,7 +17,7 @@ export function getStaffs() {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await RestClient.get(`staff/getbystatus/${statuses.Submitted}`)
+            const staffs = await RestClient.get(`staff/getbystatus/${statuses.PendingBTT}`)
 
             dispatch(getStaffsSuccess(staffs))
         } catch (error) {
