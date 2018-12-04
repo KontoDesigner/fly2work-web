@@ -18,12 +18,12 @@ const Menu = props => {
                     New <span className="text-danger">({props.staffCount.new})</span>
                 </Link>
 
-                <Link className="menu-item" to="/pendinghr">
-                    Pending HR <span className="text-danger">({props.staffCount.pendingHR})</span>
-                </Link>
-
                 <Link className="menu-item" to="/pendingbtt">
                     Pending BTT <span className="text-danger">({props.staffCount.pendingBTT})</span>
+                </Link>
+
+                <Link className="menu-item" to="/pendinghr">
+                    Pending HR <span className="text-danger">({props.staffCount.pendingHR})</span>
                 </Link>
 
                 <Link className="menu-item" to="/pendingdes">
