@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
 import * as pendingDESActions from '../../actions/pendingDESActions'
 import * as AppService from '../../services/appService'
-import { Statuses as statuses } from '../../constants/geographyConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -30,7 +29,7 @@ const filter = (staffs, criteria) => {
 
 class PendingDES extends Component {
     async componentDidMount() {
-        AppService.setTitle(statuses.PendingDES)
+        AppService.setTitle('Pending DES')
 
         this.props.pendingDESActions.getStaffs()
     }
@@ -44,7 +43,7 @@ class PendingDES extends Component {
     render() {
         return (
             <div>
-                <h2>{statuses.PendingDES}</h2>
+                <h2>Pending DES</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>

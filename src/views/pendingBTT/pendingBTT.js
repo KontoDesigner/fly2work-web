@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
 import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import * as AppService from '../../services/appService'
-import { Statuses as statuses } from '../../constants/geographyConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -30,7 +29,7 @@ const filter = (staffs, criteria) => {
 
 class PendingBTT extends Component {
     async componentDidMount() {
-        AppService.setTitle(statuses.PendingBTT)
+        AppService.setTitle('Pending BTT')
 
         this.props.pendingBTTActions.getStaffs()
     }
@@ -44,7 +43,7 @@ class PendingBTT extends Component {
     render() {
         return (
             <div>
-                <h2>{statuses.PendingBTT}</h2>
+                <h2>Pending BTT</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
             </div>
