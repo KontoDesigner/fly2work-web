@@ -36,6 +36,30 @@ const Form = props => {
             }}
             render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                 <FormikForm>
+                    {props.staff.createdBy && props.staff.createdByEmail && (
+                        <Row style={{ marginBottom: '8px' }}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
+                                <div className="hr">
+                                    <span className="hr-title">Requested by</span>
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="createdBy">Name</label>
+                                    <Field disabled={true} className="form-control" type="text" name="createdBy" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="createdByEmail">Email</label>
+                                    <Field disabled={true} className="form-control" type="text" name="createdByEmail" />
+                                </div>
+                            </Col>
+                        </Row>
+                    )}
+
                     <Row>
                         <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
                             <div className="hr">
