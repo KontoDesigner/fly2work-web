@@ -101,12 +101,10 @@ class Table extends Component {
     }
 
     render() {
-        let staffs = []
+        let staffs = Object.assign([], this.props.staffs)
 
         if (this.state.criteria !== '') {
-            staffs = this.props.filter(this.props.staffs, this.state.criteria)
-        } else {
-            staffs = this.props.staffs
+            staffs = this.props.filter(staffs, this.state.criteria)
         }
 
         staffs.sort(compareValues(this.state.sortColumn, this.state.sortOrder))

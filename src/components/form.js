@@ -57,6 +57,13 @@ const Form = props => {
                                     <Field disabled={true} className="form-control" type="text" name="createdByEmail" />
                                 </div>
                             </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="created">Date</label>
+                                    <Field disabled={true} className="form-control" type="text" name="created" />
+                                </div>
+                            </Col>
                         </Row>
                     )}
 
