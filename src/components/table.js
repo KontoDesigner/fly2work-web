@@ -14,13 +14,16 @@ library.add(faCaretDown, faCaretUp)
 
 function compareValues(key, order = true) {
     return function(a, b) {
-        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-            // property doesn't exist on either object
-            return 0
-        }
+        // if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        //     // property doesn't exist on either object
+        //     return 0
+        // }
 
-        const varA = typeof a[key] === 'string' ? a[key].toUpperCase() : a[key]
-        const varB = typeof b[key] === 'string' ? b[key].toUpperCase() : b[key]
+        const aValue = lodash.get(a, key, '')
+        const bValue = lodash.get(b, key, '')
+
+        const varA = typeof aValue === 'string' ? aValue.toUpperCase() : aValue
+        const varB = typeof bValue === 'string' ? bValue.toUpperCase() : bValue
 
         let comparison = 0
         if (varA > varB) {
@@ -31,23 +34,6 @@ function compareValues(key, order = true) {
         return order === false ? comparison * -1 : comparison
     }
 }
-
-// function fetchFromObject(obj, prop) {
-//     //property not found
-//     if (typeof obj === 'undefined') return false
-
-//     //index of next property split
-//     var _index = prop.indexOf('.')
-
-//     //property split found; recursive call
-//     if (_index > -1) {
-//         //get object at property (before split), pass on remainder
-//         return fetchFromObject(obj[prop.substring(0, _index)], prop.substr(_index + 1))
-//     }
-
-//     //no split; get property
-//     return obj[prop]
-// }
 
 class Table extends Component {
     constructor(props) {
