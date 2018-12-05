@@ -13,7 +13,7 @@ const columns = [
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
-    { labelKey: 'Confirmed Date Of Flight', valueKey: 'flights[0].dateOfFlight', dataType: 'DATETIME' },
+    { labelKey: 'Confirmed Flight Date', valueKey: 'flights[0].dateOfFlight', dataType: 'DATETIME' },
     { labelKey: 'Status', valueKey: 'status' }
 ]
 
