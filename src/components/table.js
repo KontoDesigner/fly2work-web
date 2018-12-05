@@ -32,6 +32,23 @@ function compareValues(key, order = true) {
     }
 }
 
+// function fetchFromObject(obj, prop) {
+//     //property not found
+//     if (typeof obj === 'undefined') return false
+
+//     //index of next property split
+//     var _index = prop.indexOf('.')
+
+//     //property split found; recursive call
+//     if (_index > -1) {
+//         //get object at property (before split), pass on remainder
+//         return fetchFromObject(obj[prop.substring(0, _index)], prop.substr(_index + 1))
+//     }
+
+//     //no split; get property
+//     return obj[prop]
+// }
+
 class Table extends Component {
     constructor(props) {
         super(props)
@@ -75,11 +92,13 @@ class Table extends Component {
             return 'Pending HR'
         }
 
+        const value = lodash.get(staff, column.valueKey, '')
+
         switch (column.dataType) {
             case 'DATETIME':
-                return staff[column.valueKey] && <Moment format="YYYY-MM-DD">{staff[column.valueKey]}</Moment>
+                return value && <Moment format="YYYY-MM-DD">{value}</Moment>
             default:
-                return staff[column.valueKey]
+                return value
         }
     }
 
