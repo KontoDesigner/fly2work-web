@@ -175,7 +175,12 @@ const Form = props => {
                                 <label htmlFor="dateOfFlight">
                                     Date Of Flight <span className="text-danger">*</span>
                                 </label>
-                                <Field disabled={props.disabled} name={'dateOfFlight'} component={DatePicker} setFieldTouched={setFieldTouched} />
+                                <Field
+                                    disabled={props.disabled || values.greenLight === true}
+                                    name={'dateOfFlight'}
+                                    component={DatePicker}
+                                    setFieldTouched={setFieldTouched}
+                                />
                                 <ErrorMessage className="message" name="dateOfFlight" component="div" />
                             </div>
                         </Col>
