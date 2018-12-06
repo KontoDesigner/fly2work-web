@@ -130,7 +130,7 @@ const Flights = props => {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].dateOfFlight`}>
-                                        Date Of Flight <span className="text-danger">*</span>
+                                        Confirmed Flight Date <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={props.disabled}

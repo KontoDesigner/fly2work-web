@@ -242,7 +242,7 @@ class Form extends Component {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="dateOfFlight">
-                                        Date Of Flight <span className="text-danger">*</span>
+                                        Preferred Flight Date <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={this.props.disabled || values.greenLight === true}
