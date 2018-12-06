@@ -129,16 +129,16 @@ const Flights = props => {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label style={styles.label} htmlFor={`flights[${index}].dateOfFlight`}>
+                                    <label style={styles.label} htmlFor={`flights[${index}].confirmedFlightDate`}>
                                         Confirmed Flight Date <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={props.disabled}
-                                        name={`flights[${index}].dateOfFlight`}
+                                        name={`flights[${index}].confirmedFlightDate`}
                                         component={DatePicker}
                                         setFieldTouched={props.setFieldTouched}
                                     />
-                                    <ErrorMessage className="message" name={`flights[${index}].dateOfFlight`} component="div" />
+                                    <ErrorMessage className="message" name={`flights[${index}].confirmedFlightDate`} component="div" />
                                 </div>
                             </Col>
 

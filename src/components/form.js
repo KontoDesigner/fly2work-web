@@ -241,16 +241,16 @@ class Form extends Component {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="dateOfFlight">
+                                    <label htmlFor="preferredFlightDate">
                                         Preferred Flight Date <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={this.props.disabled || values.greenLight === true}
-                                        name={'dateOfFlight'}
+                                        name={'preferredFlightDate'}
                                         component={DatePicker}
                                         setFieldTouched={setFieldTouched}
                                     />
-                                    <ErrorMessage className="message" name="dateOfFlight" component="div" />
+                                    <ErrorMessage className="message" name="preferredFlightDate" component="div" />
                                 </div>
                             </Col>
 

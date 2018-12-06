@@ -10,7 +10,7 @@ const columns = [
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
-    { labelKey: 'Preferred Flight Date', valueKey: 'dateOfFlight', dataType: 'DATETIME' }
+    { labelKey: 'Preferred Flight Date', valueKey: 'preferredFlightDate', dataType: 'DATETIME' }
 ]
 
 const filter = (staffs, criteria) => {
@@ -23,7 +23,7 @@ const filter = (staffs, criteria) => {
                 (staff.firstName.toLowerCase() + ' ' + staff.lastName.toLowerCase()).includes(criteria.toLowerCase())) ||
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
-            (staff.dateOfFlight && staff.dateOfFlight.toLowerCase().includes(criteria.toLowerCase()))
+            (staff.preferredFlightDate && staff.preferredFlightDate.toLowerCase().includes(criteria.toLowerCase()))
     )
 }
 
