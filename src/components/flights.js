@@ -142,6 +142,51 @@ const Flights = props => {
                                 </div>
                             </Col>
 
+                            {props.values.hotelNeeded === true && [
+                                <Col key={0} xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label style={styles.label} htmlFor={`flights[${index}].hotelNeededHotelName`}>
+                                            Hotel Name (HN) <span className="text-danger">*</span>
+                                        </label>
+                                        <Field
+                                            disabled={props.disabled}
+                                            className="form-control"
+                                            type="text"
+                                            name={`flights[${index}].hotelNeededHotelName`}
+                                        />
+                                        <ErrorMessage className="message" name={`flights[${index}].hotelNeededHotelName`} component="div" />
+                                    </div>
+                                </Col>,
+                                <Col key={1} xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label style={styles.label} htmlFor={`flights[${index}].hotelNeededHotelStart`}>
+                                            Hotel Start (HN) <span className="text-danger">*</span>
+                                        </label>
+                                        <Field
+                                            disabled={props.disabled}
+                                            name={`flights[${index}].hotelNeededHotelStart`}
+                                            component={DatePicker}
+                                            setFieldTouched={props.setFieldTouched}
+                                        />
+                                        <ErrorMessage className="message" name={`flights[${index}].hotelNeededHotelStart`} component="div" />
+                                    </div>
+                                </Col>,
+                                <Col key={2} xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label style={styles.label} htmlFor={`flights[${index}].hotelNeededHotelEnd`}>
+                                            Hotel End (HN) <span className="text-danger">*</span>
+                                        </label>
+                                        <Field
+                                            disabled={props.disabled}
+                                            name={`flights[${index}].hotelNeededHotelEnd`}
+                                            component={DatePicker}
+                                            setFieldTouched={props.setFieldTouched}
+                                        />
+                                        <ErrorMessage className="message" name={`flights[${index}].hotelNeededHotelEnd`} component="div" />
+                                    </div>
+                                </Col>
+                            ]}
+
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label style={styles.label} htmlFor={`flights[${index}].flightCost`}>

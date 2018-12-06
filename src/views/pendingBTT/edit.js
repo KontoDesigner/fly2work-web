@@ -7,6 +7,7 @@ import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
+import * as helpers from '../../infrastructure/helpers'
 
 class Edit extends Component {
     constructor(props) {
@@ -34,20 +35,12 @@ class Edit extends Component {
         if (staff) {
             AppService.setTitle(`${statuses.PendingBTT} - ${staff.firstName} ${staff.lastName}`)
 
-            this.populateInitialValues(initialValues, staff)
+            helpers.populateInitialValues(initialValues, staff)
         } else {
             AppService.setTitle(`${statuses.PendingBTT} - Request not found`)
         }
 
         this.setState({ staff, loaded: true })
-    }
-
-    populateInitialValues = (initialValues, staff) => {
-        Object.keys(initialValues).forEach(function(key) {
-            if (!staff.hasOwnProperty(key) || staff[key] === undefined || staff[key] === null) {
-                staff[key] = initialValues[key]
-            }
-        })
     }
 
     handleStaff = async staff => {

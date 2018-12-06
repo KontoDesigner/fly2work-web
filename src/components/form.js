@@ -581,51 +581,6 @@ class Form extends Component {
                                     </div>
                                 </Col>
 
-                                {values.hotelNeeded === true && [
-                                    <Col key={0} xl="4" lg="4" md="6" sm="12" xs="12">
-                                        <div className="form-item">
-                                            <label htmlFor="hotelNeededHotelName">
-                                                Hotel Name (HN) <span className="text-danger">*</span>
-                                            </label>
-                                            <Field
-                                                disabled={this.props.disabled || BTT === false}
-                                                className="form-control"
-                                                type="text"
-                                                name="hotelNeededHotelName"
-                                            />
-                                            <ErrorMessage className="message" name="hotelNeededHotelName" component="div" />
-                                        </div>
-                                    </Col>,
-                                    <Col key={1} xl="4" lg="4" md="6" sm="12" xs="12">
-                                        <div className="form-item">
-                                            <label htmlFor="hotelNeededHotelStart">
-                                                Hotel Start (HN) <span className="text-danger">*</span>
-                                            </label>
-                                            <Field
-                                                disabled={this.props.disabled || BTT === false}
-                                                name={'hotelNeededHotelStart'}
-                                                component={DatePicker}
-                                                setFieldTouched={setFieldTouched}
-                                            />
-                                            <ErrorMessage className="message" name="hotelNeededHotelStart" component="div" />
-                                        </div>
-                                    </Col>,
-                                    <Col key={2} xl="4" lg="4" md="6" sm="12" xs="12">
-                                        <div className="form-item">
-                                            <label htmlFor="hotelNeededHotelEnd">
-                                                Hotel End (HN) <span className="text-danger">*</span>
-                                            </label>
-                                            <Field
-                                                disabled={this.props.disabled || BTT === false}
-                                                name={'hotelNeededHotelEnd'}
-                                                component={DatePicker}
-                                                setFieldTouched={setFieldTouched}
-                                            />
-                                            <ErrorMessage className="message" name="hotelNeededHotelEnd" component="div" />
-                                        </div>
-                                    </Col>
-                                ]}
-
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
                                         <label htmlFor="railFlyRequestedAndBooked">Rail & Fly Requested And Booked</label>
@@ -675,6 +630,7 @@ class Form extends Component {
                                     touched={touched}
                                     setFieldTouched={setFieldTouched}
                                     setFieldValue={setFieldValue}
+                                    values={values}
                                 />
                             </Col>
                         </Row>

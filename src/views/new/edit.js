@@ -7,6 +7,7 @@ import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as newActions from '../../actions/newActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
+import * as helpers from '../../infrastructure/helpers'
 
 class Edit extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Edit extends Component {
         if (staff) {
             AppService.setTitle(`${statuses.New} - ${staff.firstName} ${staff.lastName}`)
 
-            this.populateInitialValues(initialValues, staff)
+            helpers.populateInitialValues(initialValues, staff)
 
             staff.status = statuses.PendingBTT
         } else {
@@ -43,14 +44,6 @@ class Edit extends Component {
         }
 
         this.setState({ staff, loaded: true })
-    }
-
-    populateInitialValues = (initialValues, staff) => {
-        Object.keys(initialValues).forEach(function(key) {
-            if (!staff.hasOwnProperty(key) || staff[key] === undefined || staff[key] === null) {
-                staff[key] = initialValues[key]
-            }
-        })
     }
 
     getModel = async () => {

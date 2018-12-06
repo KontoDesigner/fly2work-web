@@ -5,6 +5,7 @@ import * as AppService from '../../services/appService'
 import Form from '../../components/form'
 import * as RestClient from '../../infrastructure/restClient'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
+import * as helpers from '../../infrastructure/helpers'
 
 class Edit extends Component {
     constructor(props) {
@@ -24,12 +25,15 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/getbyid/${this.state.id}`)
+        var staff = await RestClient.get(`staff/getbyid/${this.state.id}`)
+        const initialValues = await RestClient.get('staff/model')
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
             AppService.setTitle(`Overview - ${staff.firstName} ${staff.lastName}`)
+
+            helpers.populateInitialValues(initialValues, staff)
         } else {
             AppService.setTitle('Overview - Request not found')
         }
