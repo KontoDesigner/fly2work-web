@@ -45,20 +45,6 @@ class Form extends Component {
 
         const BTT = this.props.userRoles.includes(userRoles.BTT)
 
-        // const validate = values => {
-        //     try {
-        //         if (BTT === false || (this.props.staff.status === statuses.PendingBTT && values.status === statuses.PendingDES)) {
-        //             validateYupSchema(values, bsValidation, true)
-        //         } else {
-        //             validateYupSchema(values, bttValidation, true)
-        //         }
-        //     } catch (err) {
-        //         return yupToFormErrors(err)
-        //     }
-
-        //     return {}
-        // }
-
         return (
             <Formik
                 initialValues={this.props.staff}
@@ -270,7 +256,13 @@ class Form extends Component {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <div
+                                    className={
+                                        (this.props.disabled || (this.props.staff.sourceMarket && this.props.staff.sourceMarket !== '')) &&
+                                        this.props.add !== true
+                                            ? 'form-item disabled'
+                                            : 'form-item'
+                                    }>
                                     <label htmlFor="sourceMarket">
                                         Source Market <span className="text-danger">*</span>
                                     </label>
@@ -291,7 +283,13 @@ class Form extends Component {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <div
+                                    className={
+                                        (this.props.disabled || (this.props.staff.destination && this.props.staff.destination !== '')) &&
+                                        this.props.add !== true
+                                            ? 'form-item disabled'
+                                            : 'form-item'
+                                    }>
                                     <label htmlFor="destination">
                                         Destination <span className="text-danger">*</span>
                                     </label>
@@ -364,7 +362,13 @@ class Form extends Component {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                <div
+                                    className={
+                                        (this.props.disabled || (this.props.staff.iataCode && this.props.staff.iataCode !== '')) &&
+                                        this.props.add !== true
+                                            ? 'form-item disabled'
+                                            : 'form-item'
+                                    }>
                                     <label htmlFor="iataCode">
                                         Iata Code <span className="text-danger">*</span>
                                     </label>
@@ -385,7 +389,7 @@ class Form extends Component {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className={this.props.disabled || this.props.add !== true ? 'form-item disabled' : 'form-item'}>
+                                <div className={this.props.disabled || this.props.enableEmails !== true ? 'form-item disabled' : 'form-item'}>
                                     <label htmlFor="emails">Additional Emails For Notification</label>
                                     <Field
                                         disabled={this.props.disabled || this.props.enableEmails !== true}
@@ -500,7 +504,7 @@ class Form extends Component {
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
                                         <label htmlFor="travelType">
                                             Travel Type <span className="text-danger">*</span>
                                         </label>
@@ -518,7 +522,7 @@ class Form extends Component {
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
                                         <label htmlFor="paymentMethod">
                                             Payment Method <span className="text-danger">*</span>
                                         </label>
@@ -561,7 +565,7 @@ class Form extends Component {
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
                                         <label htmlFor="currency">
                                             Currency <span className="text-danger">*</span>
                                         </label>
@@ -623,9 +627,26 @@ class Form extends Component {
                                     </Col>
                                 ]}
 
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
+                                        <label htmlFor="railFlyRequestedAndBooked">Rail & Fly Requested And Booked</label>
+                                        <Field
+                                            disabled={this.props.disabled || BTT === false}
+                                            name={'railFlyRequestedAndBooked'}
+                                            component={Checkbox}
+                                        />
+                                        <ErrorMessage className="message" name="railFlyRequestedAndBooked" component="div" />
+                                    </div>
+                                </Col>
+
                                 {this.props.staff.greenLight !== null && (
                                     <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                        <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                        <div
+                                            className={
+                                                this.props.disabled || this.props.staff.greenLight === true || BTT === false
+                                                    ? 'form-item disabled'
+                                                    : 'form-item'
+                                            }>
                                             <label htmlFor="greenLight">Green Light</label>
                                             <Field
                                                 disabled={this.props.disabled || this.props.staff.greenLight === true || BTT === false}
