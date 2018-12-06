@@ -74,19 +74,27 @@ class Edit extends Component {
         this.setState({ staff })
 
         if (this.state.add === true) {
-            const success = await this.props.newActions.insertStaff(staff)
+            const res = await this.props.newActions.insertStaff(staff)
 
-            if (success) {
+            if (res && res.ok) {
+                if (res.greenLight === false) {
+                    this.props.history.push({
+                        pathname: `/pendinghr/${staff.id}`
+                    })
+                } else {
+                    this.props.history.push({
+                        pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+                    })
+                }
+            }
+        } else {
+            const res = await this.props.newActions.updateStaff(staff)
+
+            if (res && res.ok === true) {
                 this.props.history.push({
                     pathname: `/${staff.status.toLowerCase()}/${staff.id}`
                 })
             }
-        } else {
-            await this.props.newActions.updateStaff(staff)
-
-            this.props.history.push({
-                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
-            })
         }
     }
 

@@ -51,6 +51,8 @@ export function updateStaff(staff) {
             }
 
             dispatch(endAjaxCall())
+
+            return res
         } catch (error) {
             dispatch(ajaxCallError(error))
 

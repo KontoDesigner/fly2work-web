@@ -91,7 +91,7 @@ input[type='checkbox'] {
 }
 
 .select > div {
-    border-color: #777;
+    border-color: #777!important;
 }
 
 .creatable > div {

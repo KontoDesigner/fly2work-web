@@ -52,10 +52,50 @@ export function updateStaff(staff) {
             }
 
             dispatch(endAjaxCall())
+
+            return res
         } catch (error) {
             dispatch(ajaxCallError(error))
 
             throw error
         }
+    }
+}
+
+export function declineStaff(req) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const res = await RestClient.post('staff/decline', req)
+
+            if (res && res.ok === true) {
+                console.log('Request has been declined', res)
+
+                toastr.success('', 'Request has been declined', res)
+
+                dispatch(getStaffCount())
+
+                dispatch(endAjaxCall())
+
+                return true
+            } else {
+                console.log('Could not decline request', res)
+
+                if (res && res.errors) {
+                    toastr.error('', `Could not decline request - ${res.errors.join(', ')}`)
+                } else {
+                    toastr.error('', 'Could not decline request')
+                }
+            }
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+
+        return false
     }
 }

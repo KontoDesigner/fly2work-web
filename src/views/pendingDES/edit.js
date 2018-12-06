@@ -44,11 +44,13 @@ class Edit extends Component {
 
         this.setState({ staff })
 
-        await this.props.pendingDESActions.updateStaff(staff)
+        const res = await this.props.pendingDESActions.updateStaff(staff)
 
-        this.props.history.push({
-            pathname: `/${staff.status.toLowerCase()}/${staff.id}`
-        })
+        if (res && res.ok === true) {
+            this.props.history.push({
+                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+            })
+        }
     }
 
     handleStaffAttachments = attachments => {

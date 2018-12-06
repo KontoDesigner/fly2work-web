@@ -44,9 +44,9 @@ class Edit extends Component {
 
         this.setState({ staff })
 
-        await this.props.pendingHRActions.updateStaff(staff)
+        const res = await this.props.pendingHRActions.updateStaff(staff)
 
-        if (staff.greenLight === true) {
+        if (res && res.ok === true && staff.greenLight === true) {
             this.props.history.push({
                 pathname: `/${staff.status.toLowerCase()}/${staff.id}`
             })

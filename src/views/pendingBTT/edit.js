@@ -44,11 +44,13 @@ class Edit extends Component {
 
         this.setState({ staff })
 
-        await this.props.pendingBTTActions.updateStaff(staff)
+        const res = await this.props.pendingBTTActions.updateStaff(staff)
 
-        this.props.history.push({
-            pathname: `/${staff.status.toLowerCase()}/${staff.id}`
-        })
+        if (res && res.ok === true) {
+            this.props.history.push({
+                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+            })
+        }
     }
 
     handleStaffAttachments = attachments => {
@@ -71,6 +73,8 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    declineStaff={this.props.pendingBTTActions.declineStaff}
+                    history={this.props.history}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}

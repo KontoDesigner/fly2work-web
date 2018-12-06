@@ -33,8 +33,6 @@ export function updateStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
-            staff.false = true
-
             const res = await RestClient.post('staff', staff)
 
             if (res && res.ok === true) {
@@ -54,6 +52,8 @@ export function updateStaff(staff) {
             }
 
             dispatch(endAjaxCall())
+
+            return res
         } catch (error) {
             dispatch(ajaxCallError(error))
 
@@ -79,8 +79,6 @@ export function insertStaff(staff) {
                 dispatch(getStaffCount())
 
                 dispatch(endAjaxCall())
-
-                return true
             } else {
                 console.log('Could not add request', res)
 
@@ -92,12 +90,12 @@ export function insertStaff(staff) {
             }
 
             dispatch(endAjaxCall())
+
+            return res
         } catch (error) {
             dispatch(ajaxCallError(error))
 
             throw error
         }
-
-        return false
     }
 }
