@@ -738,7 +738,7 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                {this.props.staff.status === statuses.PendingBTT && (
+                                {BTT === true && this.props.staff.status === statuses.PendingBTT && (
                                     <Button onClick={this.toggleDeclineModal} style={{ marginRight: '15px' }} className="btn btn-sales" type="button">
                                         Decline
                                     </Button>
