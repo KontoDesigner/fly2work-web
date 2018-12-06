@@ -48,7 +48,6 @@ class Form extends Component {
         return (
             <Formik
                 initialValues={this.props.staff}
-                //validate={validate}
                 validationSchema={BTT === true ? bttValidation : bsValidation}
                 validateOnChange={false}
                 onSubmit={values => {

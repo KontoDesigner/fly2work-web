@@ -26,17 +26,28 @@ class Edit extends Component {
     async componentWillMount() {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/${statuses.PendingDES}/${this.state.id}`)
+        var staff = await RestClient.get(`staff/${statuses.PendingDES}/${this.state.id}`)
+        const initialValues = await RestClient.get('staff/model')
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
             AppService.setTitle(`Pending DES - ${staff.firstName} ${staff.lastName}`)
+
+            this.populateInitialValues(initialValues, staff)
         } else {
             AppService.setTitle('Pending DES - Request not found')
         }
 
         this.setState({ staff, loaded: true })
+    }
+
+    populateInitialValues = (initialValues, staff) => {
+        Object.keys(initialValues).forEach(function(key) {
+            if (!staff.hasOwnProperty(key) || staff[key] === undefined || staff[key] === null) {
+                staff[key] = initialValues[key]
+            }
+        })
     }
 
     handleStaff = async staff => {

@@ -27,12 +27,15 @@ class Edit extends Component {
     getStaff = async () => {
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const staff = await RestClient.get(`staff/${statuses.New}/${this.state.id}`)
+        var staff = await RestClient.get(`staff/${statuses.New}/${this.state.id}`)
+        const initialValues = await RestClient.get('staff/model')
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (staff) {
             AppService.setTitle(`${statuses.New} - ${staff.firstName} ${staff.lastName}`)
+
+            this.populateInitialValues(initialValues, staff)
 
             staff.status = statuses.PendingBTT
         } else {
@@ -40,6 +43,14 @@ class Edit extends Component {
         }
 
         this.setState({ staff, loaded: true })
+    }
+
+    populateInitialValues = (initialValues, staff) => {
+        Object.keys(initialValues).forEach(function(key) {
+            if (!staff.hasOwnProperty(key) || staff[key] === undefined || staff[key] === null) {
+                staff[key] = initialValues[key]
+            }
+        })
     }
 
     getModel = async () => {
