@@ -38,33 +38,31 @@ class DeclineModal extends Component {
 
     render() {
         return (
-            <div>
-                <Modal isOpen={this.props.open} toggle={this.props.toggle}>
-                    <ModalHeader toggle={this.props.toggle}>Decline</ModalHeader>
-                    <ModalBody>
-                        <label style={styles.label} htmlFor={'comment'}>
-                            Comment
-                        </label>
+            <Modal isOpen={this.props.open} toggle={this.props.toggle}>
+                <ModalHeader toggle={this.props.toggle}>Decline</ModalHeader>
+                <ModalBody>
+                    <label style={styles.label} htmlFor={'comment'}>
+                        Comment
+                    </label>
 
-                        <textarea
-                            value={this.state.text}
-                            onChange={this.handleText}
-                            name="comment"
-                            className="form-control"
-                            rows="3"
-                            style={styles.textArea}
-                        />
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button className="btn-sm" color="secondary" onClick={this.decline}>
-                            Decline
-                        </Button>
-                        <Button style={styles.cancelBtn} onClick={this.props.toggle} className="btn btn-default ghost-white btn-sm" type="button">
-                            Cancel
-                        </Button>
-                    </ModalFooter>
-                </Modal>
-            </div>
+                    <textarea
+                        value={this.state.text}
+                        onChange={this.handleText}
+                        name="comment"
+                        className="form-control"
+                        rows="3"
+                        style={styles.textArea}
+                    />
+                </ModalBody>
+                <ModalFooter>
+                    <Button className="btn-sm" color="secondary" onClick={this.decline}>
+                        Decline
+                    </Button>
+                    <Button style={styles.cancelBtn} onClick={this.props.toggle} className="btn btn-default ghost-white btn-sm" type="button">
+                        Cancel
+                    </Button>
+                </ModalFooter>
+            </Modal>
         )
     }
 }

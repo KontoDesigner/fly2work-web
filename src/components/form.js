@@ -16,21 +16,30 @@ import Comments from './comments'
 import Flights from './flights'
 import { Statuses as statuses } from '../constants/geographyConstants'
 import DeclineModal from './declineModal'
+import AuditModal from './auditModal'
 
 class Form extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            declineModal: false
+            declineModal: false,
+            auditModal: false
         }
 
         this.toggleDeclineModal = this.toggleDeclineModal.bind(this)
+        this.toggleAuditModal = this.toggleAuditModal.bind(this)
     }
 
     toggleDeclineModal() {
         this.setState({
             declineModal: !this.state.declineModal
+        })
+    }
+
+    toggleAuditModal() {
+        this.setState({
+            auditModal: !this.state.auditModal
         })
     }
 
@@ -723,8 +732,12 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                <Button onClick={downloadPdf} className="btn btn-function" type="button">
+                                <Button style={{ marginRight: '15px' }} onClick={downloadPdf} className="btn btn-function" type="button">
                                     PDF
+                                </Button>
+
+                                <Button onClick={this.toggleAuditModal} className="btn btn-function" type="button">
+                                    History
                                 </Button>
                             </Col>
                         </Row>
@@ -736,6 +749,8 @@ class Form extends Component {
                             staff={this.props.staff}
                             open={this.state.declineModal}
                         />
+
+                        <AuditModal toggle={this.toggleAuditModal} open={this.state.auditModal} audit={this.props.staff.audit} />
                     </FormikForm>
                 )}
             />

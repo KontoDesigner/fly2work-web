@@ -57,6 +57,11 @@ h1 {
   border-bottom-right-radius: 10px;
 }
 
+.bm-menu-wrap
+{
+  z-index: 1049!important;
+}
+
 .side-button.active {
   background: #c94e50;
   color: #fffce1;
