@@ -50,13 +50,7 @@ class New extends Component {
             <div>
                 <h2>{statuses.New}</h2>
 
-                <Table
-                    confirmStaff={BTT === true ? this.props.newActions.confirmStaff : null}
-                    staffs={this.props.staffs}
-                    handleClick={this.handleClick}
-                    columns={columns}
-                    filter={filter}
-                />
+                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
 
                 {!BTT && (
                     <Row>

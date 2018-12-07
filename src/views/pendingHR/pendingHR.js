@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import Table from '../../components/table'
 import * as pendingHRActions from '../../actions/pendingHRActions'
 import * as AppService from '../../services/appService'
+import { UserRoles as userRoles } from '../../constants/userConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -41,11 +42,19 @@ class PendingHR extends Component {
     }
 
     render() {
+        const BTT = this.props.userRoles.includes(userRoles.BTT)
+
         return (
             <div>
                 <h2>Pending HR</h2>
 
-                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
+                <Table
+                    confirmGreenLight={BTT === true ? this.props.pendingHRActions.confirmGreenLight : null}
+                    staffs={this.props.staffs}
+                    handleClick={this.handleClick}
+                    columns={columns}
+                    filter={filter}
+                />
             </div>
         )
     }
@@ -53,7 +62,8 @@ class PendingHR extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffs: state.pendingHR.staffs
+        staffs: state.pendingHR.staffs,
+        userRoles: state.user.userRoles
     }
 }
 

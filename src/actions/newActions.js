@@ -62,45 +62,6 @@ export function updateStaff(staff) {
     }
 }
 
-export function confirmStaff(id) {
-    const req = {
-        id: id
-    }
-
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const res = await RestClient.post('staff/confirm', req)
-
-            if (res && res.ok === true) {
-                console.log('Request has been confirmed', res)
-
-                toastr.success('', 'Request has been confirmed', res)
-
-                dispatch(getStaffs())
-                dispatch(getStaffCount())
-            } else {
-                console.log('Could not update request', res)
-
-                if (res && res.error) {
-                    toastr.error('', res.error)
-                } else {
-                    toastr.error('', 'Could not confirm request')
-                }
-            }
-
-            dispatch(endAjaxCall())
-
-            return res
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
 export function insertStaff(staff) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())

@@ -18,11 +18,6 @@ const styles = {
 
 function compareValues(key, order = true) {
     return function(a, b) {
-        // if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        //     // property doesn't exist on either object
-        //     return 0
-        // }
-
         const aValue = lodash.get(a, key, '')
         const bValue = lodash.get(b, key, '')
 
@@ -129,7 +124,7 @@ class Table extends Component {
                                             </th>
                                         ))}
 
-                                        {this.props.confirmStaff && <th style={styles.thBtn} />}
+                                        {this.props.confirmGreenLight && <th style={styles.thBtn} />}
 
                                         <th style={styles.thBtn} />
                                     </tr>
@@ -143,10 +138,10 @@ class Table extends Component {
                                                 </td>
                                             ))}
 
-                                            {this.props.confirmStaff && (
+                                            {this.props.confirmGreenLight && (
                                                 <td>
                                                     <Button
-                                                        onClick={() => this.props.confirmStaff(staff.id)}
+                                                        onClick={() => this.props.confirmGreenLight(staff.id)}
                                                         className="btn btn-primary btn-sm"
                                                         type="button">
                                                         CONFIRM

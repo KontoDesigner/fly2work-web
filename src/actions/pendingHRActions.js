@@ -60,3 +60,42 @@ export function updateStaff(staff) {
         }
     }
 }
+
+export function confirmGreenLight(id) {
+    const req = {
+        id: id
+    }
+
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const res = await RestClient.post('staff/confirmgreenlight', req)
+
+            if (res && res.ok === true) {
+                console.log('Request has been approved', res)
+
+                toastr.success('', 'Request has been approved', res)
+
+                dispatch(getStaffs())
+                dispatch(getStaffCount())
+            } else {
+                console.log('Could not approve request', res)
+
+                if (res && res.error) {
+                    toastr.error('', res.error)
+                } else {
+                    toastr.error('', 'Could not approve request')
+                }
+            }
+
+            dispatch(endAjaxCall())
+
+            return res
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
