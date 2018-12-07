@@ -44,13 +44,21 @@ class New extends Component {
     }
 
     render() {
+        const BTT = this.props.userRoles.includes(userRoles.BTT)
+
         return (
             <div>
                 <h2>{statuses.New}</h2>
 
-                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
+                <Table
+                    confirmStaff={BTT === true ? this.props.newActions.confirmStaff : null}
+                    staffs={this.props.staffs}
+                    handleClick={this.handleClick}
+                    columns={columns}
+                    filter={filter}
+                />
 
-                {this.props.userRoles.includes(userRoles.BS) && (
+                {!BTT && (
                     <Row>
                         <Button
                             style={{ marginTop: '20px' }}

@@ -12,6 +12,10 @@ import { Statuses as statuses } from '../constants/geographyConstants'
 
 library.add(faCaretDown, faCaretUp)
 
+const styles = {
+    thBtn: { width: '1px' }
+}
+
 function compareValues(key, order = true) {
     return function(a, b) {
         // if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
@@ -125,7 +129,9 @@ class Table extends Component {
                                             </th>
                                         ))}
 
-                                        <th style={{ width: '1px' }} />
+                                        {this.props.confirmStaff && <th style={styles.thBtn} />}
+
+                                        <th style={styles.thBtn} />
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,12 +143,19 @@ class Table extends Component {
                                                 </td>
                                             ))}
 
+                                            {this.props.confirmStaff && (
+                                                <td>
+                                                    <Button
+                                                        onClick={() => this.props.confirmStaff(staff.id)}
+                                                        className="btn btn-primary btn-sm"
+                                                        type="button">
+                                                        CONFIRM
+                                                    </Button>
+                                                </td>
+                                            )}
+
                                             <td>
-                                                <Button
-                                                    style={{ marginRight: '10px' }}
-                                                    onClick={() => this.downloadPdf(staff)}
-                                                    className="btn btn-function btn-sm"
-                                                    type="button">
+                                                <Button onClick={() => this.downloadPdf(staff)} className="btn btn-function btn-sm" type="button">
                                                     PDF
                                                 </Button>
                                             </td>
