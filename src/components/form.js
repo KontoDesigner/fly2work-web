@@ -106,6 +106,23 @@ class Form extends Component {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
+                                    <label htmlFor="id">
+                                        Gender <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                        disabled={
+                                            (this.props.disabled || (this.props.staff.gender && this.props.staff.gender !== '')) &&
+                                            this.props.add !== true
+                                        }
+                                        name={'gender'}
+                                        component={Gender}
+                                    />
+                                    <ErrorMessage className="message" name="gender" component="div" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
                                     <label htmlFor="firstName">
                                         First Name <span className="text-danger">*</span>
                                     </label>
@@ -158,29 +175,20 @@ class Form extends Component {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="passportNumber">
-                                        Passport Number <span className="text-danger">*</span>
-                                    </label>
-                                    <Field disabled={this.props.disabled} className="form-control" type="text" name="passportNumber" />
-                                    <ErrorMessage className="message" name="passportNumber" component="div" />
-                                </div>
-                            </Col>
-
-                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
-                                    <label htmlFor="jobTitle">
-                                        Job Title <span className="text-danger">*</span>
+                                    <label htmlFor="dateOfBirth">
+                                        Date Of Birth <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={
-                                            (this.props.disabled || (this.props.staff.jobTitle && this.props.staff.jobTitle !== '')) &&
+                                            (this.props.disabled || (this.props.staff.dateOfBirth && this.props.staff.dateOfBirth !== '')) &&
                                             this.props.add !== true
                                         }
-                                        className="form-control"
-                                        type="text"
-                                        name="jobTitle"
+                                        name={'dateOfBirth'}
+                                        component={DatePicker}
+                                        setFieldTouched={setFieldTouched}
+                                        dateFormat={'DD/MM/YYYY'}
                                     />
-                                    <ErrorMessage className="message" name="jobTitle" component="div" />
+                                    <ErrorMessage className="message" name="dateOfBirth" component="div" />
                                 </div>
                             </Col>
 
@@ -204,20 +212,29 @@ class Form extends Component {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="dateOfBirth">
-                                        Date Of Birth <span className="text-danger">*</span>
+                                    <label htmlFor="passportNumber">
+                                        Passport Number <span className="text-danger">*</span>
+                                    </label>
+                                    <Field disabled={this.props.disabled} className="form-control" type="text" name="passportNumber" />
+                                    <ErrorMessage className="message" name="passportNumber" component="div" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="jobTitle">
+                                        Job Title <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                         disabled={
-                                            (this.props.disabled || (this.props.staff.dateOfBirth && this.props.staff.dateOfBirth !== '')) &&
+                                            (this.props.disabled || (this.props.staff.jobTitle && this.props.staff.jobTitle !== '')) &&
                                             this.props.add !== true
                                         }
-                                        name={'dateOfBirth'}
-                                        component={DatePicker}
-                                        setFieldTouched={setFieldTouched}
-                                        dateFormat={'DD/MM/YYYY'}
+                                        className="form-control"
+                                        type="text"
+                                        name="jobTitle"
                                     />
-                                    <ErrorMessage className="message" name="dateOfBirth" component="div" />
+                                    <ErrorMessage className="message" name="jobTitle" component="div" />
                                 </div>
                             </Col>
 
@@ -398,20 +415,6 @@ class Form extends Component {
                                         noOptionsMessage="Type to create.."
                                     />
                                     <ErrorMessage className="message" name="emails" component="div" />
-                                </div>
-                            </Col>
-
-                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className="form-item">
-                                    <Field
-                                        disabled={
-                                            (this.props.disabled || (this.props.staff.gender && this.props.staff.gender !== '')) &&
-                                            this.props.add !== true
-                                        }
-                                        name={'gender'}
-                                        component={Gender}
-                                    />
-                                    <ErrorMessage className="message" name="gender" component="div" />
                                 </div>
                             </Col>
 
