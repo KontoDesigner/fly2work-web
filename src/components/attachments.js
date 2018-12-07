@@ -38,6 +38,11 @@ class Attachments extends Component {
     }
 
     upload = async file => {
+        //INTERNET EXPLORER
+        if (file === null) {
+            return
+        }
+
         this.props.ajaxStatusActions.beginAjaxCall()
 
         const res = await RestClient.upload('attachment/upload', file, [{ key: 'staffId', value: this.props.staff.id }])

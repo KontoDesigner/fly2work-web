@@ -16,7 +16,7 @@ a:hover, a:focus {
   color: #c94e50;
 }
 
-main {
+.main {
   height: 100%;
   padding: 2em;
   overflow: auto;
@@ -63,7 +63,7 @@ h1 {
 }
 
 @media screen and (max-width: 40em) {
-  main {
+  .main {
     font-size: 80%;
   }
   h1 {

@@ -58,13 +58,13 @@ class App extends Component {
                         <div id="outer-container" style={{ height: '100%' }}>
                             <Menu isOpen={this.props.isOpen} handleIsOpen={this.props.menuActions.handleIsOpen} staffCount={this.props.staffCount} />
 
-                            <main className={this.props.isOpen ? 'page-wrap-open' : ''} id="page-wrap">
+                            <div className={this.props.isOpen ? 'main page-wrap-open' : 'main'} id="page-wrap">
                                 <div className="App">
                                     <Container>
                                         <Routes userRoles={this.props.userRoles} />
                                     </Container>
                                 </div>
-                            </main>
+                            </div>
                         </div>
                     )}
                 </div>
