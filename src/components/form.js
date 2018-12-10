@@ -124,6 +124,7 @@ class Form extends Component {
                                             this.props.add !== true
                                         }
                                         name={'gender'}
+                                        setFieldTouched={setFieldTouched}
                                         component={Gender}
                                     />
                                     <ErrorMessage className="message" name="gender" component="div" />

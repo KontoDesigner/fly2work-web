@@ -12,11 +12,12 @@ const styles = {
     }
 }
 
-const Gender = ({ field, form, disabled }) => (
+const Gender = ({ field, form, disabled, setFieldTouched }) => (
     <div>
         <label style={styles.label}>
             Man
             <input
+                onBlur={() => setFieldTouched(field.name, ' ')}
                 style={styles.input}
                 disabled={disabled}
                 onChange={event => form.setFieldValue(field.name, event.currentTarget.value)}
@@ -31,6 +32,7 @@ const Gender = ({ field, form, disabled }) => (
         <label style={styles.label}>
             Woman
             <input
+                onBlur={() => setFieldTouched(field.name, ' ')}
                 style={styles.input}
                 disabled={disabled}
                 onChange={event => form.setFieldValue(field.name, event.currentTarget.value)}
