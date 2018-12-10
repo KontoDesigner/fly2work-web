@@ -64,7 +64,7 @@ class Form extends Component {
                 }}
                 render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                     <FormikForm>
-                        {this.props.staff.createdBy && this.props.staff.createdByEmail && (
+                        {this.props.staff.requestedBy && (
                             <Row style={{ marginBottom: '8px' }}>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
                                     <div className="hr">
@@ -74,15 +74,15 @@ class Form extends Component {
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="createdBy">Name</label>
-                                        <Field disabled={true} className="form-control" type="text" name="createdBy" />
+                                        <label htmlFor="requestedBy.name">Name</label>
+                                        <Field disabled={true} className="form-control" type="text" name="requestedBy.name" />
                                     </div>
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="createdByEmail">Email</label>
-                                        <Field disabled={true} className="form-control" type="text" name="createdByEmail" />
+                                        <label htmlFor="requestedBy.email">Email</label>
+                                        <Field disabled={true} className="form-control" type="text" name="requestedBy.email" />
                                     </div>
                                 </Col>
 
