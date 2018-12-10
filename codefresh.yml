@@ -16,4 +16,4 @@ steps:
         image: web-docker.tuinordic.com/horde-codefresh-deploy:latest
         environment:
             - TEAM=delivery
-            - SCOPES=uat
+            - SCOPES=uat,prod
