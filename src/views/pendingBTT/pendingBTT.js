@@ -6,6 +6,7 @@ import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import * as AppService from '../../services/appService'
 
 const columns = [
+    { labelKey: 'Created', valueKey: 'created', format: 'YYYY-MM-DD HH:mm' },
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
@@ -23,7 +24,8 @@ const filter = (staffs, criteria) => {
                 (staff.firstName.toLowerCase() + ' ' + staff.lastName.toLowerCase()).includes(criteria.toLowerCase())) ||
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
-            (staff.preferredFlightDate && staff.preferredFlightDate.toLowerCase().includes(criteria.toLowerCase()))
+            ((staff.preferredFlightDate && staff.preferredFlightDate.toLowerCase().includes(criteria.toLowerCase())) ||
+                (staff.created && staff.created.toLowerCase().includes(criteria.toLowerCase())))
     )
 }
 

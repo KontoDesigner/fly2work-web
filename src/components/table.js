@@ -81,7 +81,7 @@ class Table extends Component {
 
         switch (column.dataType) {
             case 'DATETIME':
-                return value && <Moment format="YYYY-MM-DD">{value}</Moment>
+                return value && <Moment format={column.format ? column.format : 'YYYY-MM-DD'}>{value}</Moment>
             default:
                 return value
         }
