@@ -737,9 +737,11 @@ class Form extends Component {
                                     PDF
                                 </Button>
 
-                                <Button onClick={this.toggleAuditModal} className="btn btn-function" type="button">
-                                    History
-                                </Button>
+                                {this.props.add !== true && this.props.staff.audit && this.props.staff.audit.length > 0 && (
+                                    <Button onClick={this.toggleAuditModal} className="btn btn-function" type="button">
+                                        History
+                                    </Button>
+                                )}
                             </Col>
                         </Row>
 
