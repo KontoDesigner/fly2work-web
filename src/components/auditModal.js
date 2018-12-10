@@ -23,6 +23,7 @@ const AuditModal = props => {
                         <thead>
                             <tr>
                                 <th style={styles.th}>Updated By</th>
+                                <th style={styles.th}>Group</th>
                                 <th style={styles.th}>Status From</th>
                                 <th style={styles.th}>Status To</th>
                                 <th style={styles.th}>Green Light From</th>
@@ -35,6 +36,10 @@ const AuditModal = props => {
                                 <tr key={index}>
                                     <td style={styles.td} className="link">
                                         {a.updatedBy}
+                                    </td>
+
+                                    <td style={styles.td} className="link">
+                                        {a.group}
                                     </td>
 
                                     <td style={styles.td} className="link">
