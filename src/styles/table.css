@@ -24,12 +24,18 @@ table {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.tui-text-content table
-{
-    margin-bottom:0;
+.tui-text-content table {
+    margin-bottom: 0;
 }
 
-table
-{
+table {
     border-collapse: initial;
+}
+
+table .bg-danger {
+    background: #f7d7da!important;
+}
+
+table .bg-warning {
+    background: #FFF3CD!important;
 }

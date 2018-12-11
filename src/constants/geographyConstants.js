@@ -18,6 +18,15 @@ export var Statuses = keyMirror({
     Confirmed: null
 })
 
+export var ConfirmedStatuses = keyMirror({
+    Cancelled: null,
+    Modified: null
+})
+
 export var GetStatuses = () => {
     return [Statuses.PendingBTT, Statuses.PendingDES, Statuses.Confirmed]
+}
+
+export var GetConfirmedStatuses = () => {
+    return [ConfirmedStatuses.Cancelled, ConfirmedStatuses.Modified]
 }

@@ -126,7 +126,7 @@ html [type='button'] {
 }
 
 .modal-body {
-    background-color: #e7e3db;
+    background-color: #718BA0;
 }
 
 h5.modal-title {
@@ -135,4 +135,10 @@ h5.modal-title {
 
 .modal-footer {
     padding: 13px 15px;
+    border-top:0;
+}
+
+.modal label
+{
+    color:#fff!important;
 }

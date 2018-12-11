@@ -17,7 +17,7 @@ const AuditModal = props => {
     return (
         <Modal size={'lg'} isOpen={props.open} toggle={props.toggle}>
             <ModalHeader toggle={props.toggle}>Status History</ModalHeader>
-            <ModalBody style={{ padding: '0px' }}>
+            <ModalBody>
                 <div className="tui-text-content table-responsive">
                     <table>
                         <thead>

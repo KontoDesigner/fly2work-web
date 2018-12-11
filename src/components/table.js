@@ -8,7 +8,8 @@ import lodash from 'lodash'
 import Search from './search'
 import * as RestClient from '../infrastructure/restClient'
 import moment from 'moment'
-import { Statuses as statuses } from '../constants/geographyConstants'
+import { Statuses as statuses, ConfirmedStatuses as confirmedStatuses } from '../constants/geographyConstants'
+import classnames from 'classnames'
 
 library.add(faCaretDown, faCaretUp)
 
@@ -131,7 +132,13 @@ class Table extends Component {
                                 </thead>
                                 <tbody>
                                     {staffs.map(staff => (
-                                        <tr key={staff.id} onClick={e => this.props.handleClick(e, staff.id)}>
+                                        <tr
+                                            key={staff.id}
+                                            onClick={e => this.props.handleClick(e, staff.id)}
+                                            className={classnames({
+                                                'bg-warning': staff.confirmedStatus === confirmedStatuses.Modified,
+                                                'bg-danger': staff.confirmedStatus === confirmedStatuses.Cancelled
+                                            })}>
                                             {this.props.columns.map((column, index) => (
                                                 <td className="link" key={index}>
                                                     {this.renderBody(staff, column)}

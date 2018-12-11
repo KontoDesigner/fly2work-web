@@ -1,4 +1,4 @@
-import { ActionTypes as types, GetStatuses as getStatuses } from '../constants/geographyConstants'
+import { ActionTypes as types, GetStatuses as getStatuses, GetConfirmedStatuses as getConfirmedStatuses } from '../constants/geographyConstants'
 
 var defaultState = {
     flights: null,
@@ -23,7 +23,8 @@ var defaultState = {
     iataCodes: null,
     travelTypes: [{ value: 'Charter', label: 'Charter' }, { value: 'Scheduled', label: 'Scheduled' }],
     currencies: [{ value: 'EUR', label: 'EUR' }, { value: 'GBP', label: 'GBP' }],
-    paymentMethods: [{ value: 'CC', label: 'CC' }, { value: 'Charter', label: 'Charter' }, { value: 'Clarity', label: 'Clarity' }]
+    paymentMethods: [{ value: 'CC', label: 'CC' }, { value: 'Charter', label: 'Charter' }, { value: 'Clarity', label: 'Clarity' }],
+    confirmedStatuses: getConfirmedStatuses()
 }
 
 export default function geographyReducer(state = defaultState, action) {

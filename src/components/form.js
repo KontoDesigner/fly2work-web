@@ -703,7 +703,9 @@ class Form extends Component {
                             <Row style={{ marginTop: '20px' }}>
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                     <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="status">Status</label>
+                                        <label htmlFor="status">
+                                            Status <span className="text-danger">*</span>
+                                        </label>
                                         <Field
                                             disabled={this.props.disabled}
                                             name={'status'}
@@ -716,6 +718,25 @@ class Form extends Component {
                                         <ErrorMessage className="message" name="status" component="div" />
                                     </div>
                                 </Col>
+
+                                {this.props.confirmedStatuses && values.status === statuses.Confirmed && (
+                                    <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                        <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                            <label htmlFor="status">Confirmed Status</label>
+                                            <Field
+                                                disabled={this.props.disabled || this.props.staff.status !== statuses.PendingBTT}
+                                                name={'confirmedStatus'}
+                                                component={Select}
+                                                options={this.props.confirmedStatuses}
+                                                setFieldTouched={setFieldTouched}
+                                                valueKey={'value'}
+                                                labelKey={'label'}
+                                                isClearable={true}
+                                            />
+                                            <ErrorMessage className="message" name="status" component="div" />
+                                        </div>
+                                    </Col>
+                                )}
                             </Row>
                         )}
 
