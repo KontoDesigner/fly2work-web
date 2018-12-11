@@ -44,7 +44,7 @@ class New extends Component {
     }
 
     render() {
-        const BTT = this.props.userRoles.includes(userRoles.BTT)
+        const BS = this.props.userRoles.includes(userRoles.BS)
 
         return (
             <div>
@@ -52,7 +52,7 @@ class New extends Component {
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
 
-                {!BTT && (
+                {BS && (
                     <Row>
                         <Button
                             style={{ marginTop: '20px' }}
