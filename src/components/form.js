@@ -648,6 +648,33 @@ class Form extends Component {
                             </Col>
                         </Row>
 
+                        {this.props.add === true && [
+                            <Row key={0}>
+                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '0px', marginTop: '20px' }}>
+                                    <div className="hr">
+                                        <span className="hr-title">Comments</span>
+                                    </div>
+                                </Col>
+                            </Row>,
+                            <Row key={1}>
+                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                    <div className="form-item">
+                                        <label htmlFor="comment">Comment</label>
+                                        <Field
+                                            disabled={this.props.disabled}
+                                            className="form-control"
+                                            type="text"
+                                            name="comment"
+                                            component="textarea"
+                                            rows="3"
+                                            style={{ overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' }}
+                                        />
+                                        <ErrorMessage className="message" name="comment" component="div" />
+                                    </div>
+                                </Col>
+                            </Row>
+                        ]}
+
                         {this.props.add !== true && [
                             <Row key={0}>
                                 <Col
@@ -748,7 +775,7 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                {BTT === true && this.props.staff.status === statuses.PendingBTT && (
+                                {BTT === true && this.props.staff.status === statuses.PendingBTT && this.props.add !== true && (
                                     <Button onClick={this.toggleDeclineModal} style={{ marginRight: '15px' }} className="btn btn-sales" type="button">
                                         Decline
                                     </Button>
