@@ -737,7 +737,11 @@ class Form extends Component {
                                             disabled={this.props.disabled}
                                             name={'status'}
                                             component={Select}
-                                            options={this.props.statuses}
+                                            options={
+                                                !BTT && !this.props.disabled && this.props.staff.status !== statuses.Confirmed
+                                                    ? this.props.bsStatuses
+                                                    : this.props.statuses
+                                            }
                                             setFieldTouched={setFieldTouched}
                                             valueKey={'value'}
                                             labelKey={'label'}

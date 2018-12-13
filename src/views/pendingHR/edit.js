@@ -89,6 +89,7 @@ class Edit extends Component {
                     roles={this.props.roles}
                     destinations={this.props.destinations}
                     statuses={this.props.statuses}
+                    bsStatuses={this.props.bsStatuses}
                     userRoles={this.props.userRoles}
                     typeOfFlights={this.props.typeOfFlights}
                     handleStaffAttachments={this.handleStaffAttachments}
@@ -110,6 +111,10 @@ function mapStateToProps(state) {
         roles: state.geography.roles,
         destinations: state.geography.destinations,
         statuses: state.geography.statuses.map(s => ({
+            value: s,
+            label: s
+        })),
+        bsStatuses: state.geography.bsStatuses.map(s => ({
             value: s,
             label: s
         })),

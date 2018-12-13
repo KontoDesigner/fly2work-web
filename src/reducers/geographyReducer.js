@@ -1,4 +1,9 @@
-import { ActionTypes as types, GetStatuses as getStatuses, GetConfirmedStatuses as getConfirmedStatuses } from '../constants/geographyConstants'
+import {
+    ActionTypes as types,
+    GetStatuses as getStatuses,
+    GetConfirmedStatuses as getConfirmedStatuses,
+    GetBSStatuses as getBSStatuses
+} from '../constants/geographyConstants'
 
 var defaultState = {
     flights: null,
@@ -8,6 +13,7 @@ var defaultState = {
     flightStatuses: null,
     destinations: null,
     statuses: getStatuses(),
+    bsStatuses: getBSStatuses(),
     typeOfFlights: [
         { value: 'End of season', label: 'End of season' },
         { value: 'Start of season', label: 'Start of season' },

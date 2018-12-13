@@ -23,6 +23,10 @@ export var ConfirmedStatuses = keyMirror({
     Modified: null
 })
 
+export var GetBSStatuses = () => {
+    return [Statuses.PendingBTT, Statuses.PendingDES]
+}
+
 export var GetStatuses = () => {
     return [Statuses.PendingBTT, Statuses.PendingDES, Statuses.Confirmed]
 }
