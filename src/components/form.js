@@ -744,10 +744,15 @@ class Form extends Component {
 
                                 {this.props.confirmedStatuses && values.status === statuses.Confirmed && (
                                     <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                        <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
+                                        <div
+                                            className={
+                                                this.props.disabled || this.props.staff.status !== statuses.PendingBTT
+                                                    ? 'form-item disabled'
+                                                    : 'form-item'
+                                            }>
                                             <label htmlFor="status">Confirmed Status</label>
                                             <Field
-                                                disabled={this.props.disabled || this.props.staff.status !== statuses.PendingBTT}
+                                                disabled={this.props.disabled || BTT === false}
                                                 name={'confirmedStatus'}
                                                 component={Select}
                                                 options={this.props.confirmedStatuses}
