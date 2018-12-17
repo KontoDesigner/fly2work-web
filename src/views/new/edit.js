@@ -8,6 +8,7 @@ import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import * as newActions from '../../actions/newActions'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 import * as helpers from '../../infrastructure/helpers'
+import { UserRoles as userRoles } from '../../constants/userConstants'
 
 class Edit extends Component {
     constructor(props) {
@@ -115,6 +116,8 @@ class Edit extends Component {
             return ''
         }
 
+        const HR = this.props.userRoles.includes(userRoles.HR)
+
         return this.state.staff ? (
             <div>
                 {this.state.add === true ? (
@@ -126,6 +129,7 @@ class Edit extends Component {
                 )}
 
                 <Form
+                    disabled={HR === true}
                     enableEmails={true}
                     hideStatus={true}
                     add={this.state.add}

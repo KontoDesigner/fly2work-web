@@ -53,6 +53,7 @@ class Form extends Component {
         }
 
         const BTT = this.props.userRoles.includes(userRoles.BTT)
+        const HR = this.props.userRoles.includes(userRoles.HR)
 
         return (
             <Formik
@@ -608,15 +609,10 @@ class Form extends Component {
 
                                 {this.props.staff.greenLight !== null && (
                                     <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                        <div
-                                            className={
-                                                this.props.disabled || this.props.staff.greenLight === true || BTT === false
-                                                    ? 'form-item disabled'
-                                                    : 'form-item'
-                                            }>
+                                        <div className={'form-item disabled'}>
                                             <label htmlFor="greenLight">Green Light</label>
                                             <Field
-                                                disabled={this.props.disabled || this.props.staff.greenLight === true || BTT === false}
+                                                disabled={true}
                                                 name={'greenLight'}
                                                 component={Checkbox}
                                                 title={
@@ -717,11 +713,7 @@ class Form extends Component {
 
                             <Row key={3}>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                    <Attachments
-                                        staff={this.props.staff}
-                                        handleStaffAttachments={this.props.handleStaffAttachments}
-                                        disabled={this.props.disabled}
-                                    />
+                                    <Attachments staff={this.props.staff} handleStaffAttachments={this.props.handleStaffAttachments} />
                                 </Col>
                             </Row>
                         ]}
@@ -782,6 +774,16 @@ class Form extends Component {
                                 {BTT === true && this.props.staff.status === statuses.PendingBTT && this.props.add !== true && (
                                     <Button onClick={this.toggleDeclineModal} style={{ marginRight: '15px' }} className="btn btn-sales" type="button">
                                         Decline
+                                    </Button>
+                                )}
+
+                                {HR === true && this.props.staff.greenLight === false && this.props.staff.status !== statuses.New && (
+                                    <Button
+                                        onClick={this.props.confirmGreenLight}
+                                        style={{ marginRight: '15px' }}
+                                        className="btn btn-primary"
+                                        type="button">
+                                        Confirm
                                     </Button>
                                 )}
 

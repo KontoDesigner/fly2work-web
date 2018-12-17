@@ -42,14 +42,14 @@ class PendingHR extends Component {
     }
 
     render() {
-        const BTT = this.props.userRoles.includes(userRoles.BTT)
+        const HR = this.props.userRoles.includes(userRoles.HR)
 
         return (
             <div>
                 <h2>Pending HR</h2>
 
                 <Table
-                    confirmGreenLight={BTT === true ? this.props.pendingHRActions.confirmGreenLight : null}
+                    confirmGreenLight={HR === true ? this.props.pendingHRActions.confirmGreenLight : null}
                     staffs={this.props.staffs}
                     handleClick={this.handleClick}
                     columns={columns}

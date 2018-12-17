@@ -113,7 +113,6 @@ class Attachments extends Component {
                             <th style={styles.th}>Size</th>
                             <th style={{ ...styles.th, ...{ width: '1px', padding: '12px 24px 11px 24px' } }}>
                                 <Button
-                                    disabled={this.props.disabled}
                                     style={{ width: '145px' }}
                                     onClick={() => {
                                         this.downloadBtn.click()
@@ -150,11 +149,7 @@ class Attachments extends Component {
                                     </td>
 
                                     <td>
-                                        <Button
-                                            onClick={() => this.delete(index)}
-                                            className="btn btn-sales btn-sm"
-                                            type="button"
-                                            disabled={this.props.disabled}>
+                                        <Button onClick={() => this.delete(index)} className="btn btn-sales btn-sm" type="button">
                                             DELETE
                                         </Button>
                                     </td>

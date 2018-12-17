@@ -6,5 +6,6 @@ export var ActionTypes = keyMirror({
 
 export var UserRoles = keyMirror({
     BS: null,
-    BTT: null
+    BTT: null,
+    HR: null
 })

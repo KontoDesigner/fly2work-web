@@ -65,12 +65,23 @@ class Edit extends Component {
         this.setState({ staff })
     }
 
+    confirmGreenLight = async () => {
+        const res = await this.props.pendingHRActions.confirmGreenLight(this.state.staff.id)
+
+        if (res && res.ok === true) {
+            this.props.history.push({
+                pathname: `/${this.state.staff.status.toLowerCase()}/${this.state.staff.id}`
+            })
+        }
+    }
+
     render() {
         if (!this.state.loaded) {
             return ''
         }
 
         const BTT = this.props.userRoles.includes(userRoles.BTT)
+        const HR = this.props.userRoles.includes(userRoles.HR)
 
         return this.state.staff ? (
             <div>
@@ -79,7 +90,8 @@ class Edit extends Component {
                 </h2>
 
                 <Form
-                    disabled={!BTT}
+                    confirmGreenLight={HR === true ? this.confirmGreenLight : null}
+                    disabled={BTT === false || HR === true}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}
