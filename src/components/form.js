@@ -777,11 +777,18 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                {BTT === true && this.props.staff.status === statuses.PendingBTT && this.props.add !== true && (
-                                    <Button onClick={this.toggleDeclineModal} style={{ marginRight: '15px' }} className="btn btn-sales" type="button">
-                                        Decline
-                                    </Button>
-                                )}
+                                {BTT === true &&
+                                    this.props.staff.status === statuses.PendingBTT &&
+                                    this.props.add !== true &&
+                                    this.props.staff.greenLight !== false && (
+                                        <Button
+                                            onClick={this.toggleDeclineModal}
+                                            style={{ marginRight: '15px' }}
+                                            className="btn btn-sales"
+                                            type="button">
+                                            Decline
+                                        </Button>
+                                    )}
 
                                 {HR === true && this.props.staff.greenLight === false && this.props.staff.status !== statuses.New && (
                                     <Button
