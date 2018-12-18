@@ -32,8 +32,6 @@ const Flights = props => {
     }
 
     const add = () => {
-        console.log(props.initialValues)
-
         let flights = Object.assign([], props.flights)
 
         flights.push(props.initialValues.flights[0])
