@@ -43,7 +43,11 @@ const Flights = props => {
             flightCost: 0,
             xbagCost: 0,
             hotelCost: 0,
-            totalCost: 0
+            totalCost: 0,
+            confirmedFlightDate: '',
+            hotelNeededHotelName: '',
+            hotelNeededHotelStart: '',
+            hotelNeededHotelEnd: ''
         })
 
         props.setFieldValue('flights', flights)
