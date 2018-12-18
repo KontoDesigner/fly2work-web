@@ -9,6 +9,7 @@ import overviewReducer from './overviewReducer'
 import pendingDESReducer from './pendingDESReducer'
 import pendingBTTReducer from './pendingBTTReducer'
 import userReducer from './userReducer'
+import maintenanceReducer from './maintenanceReducer'
 import pendingHRReducer from './pendingHRReducer'
 
 export default combineReducers({
@@ -22,5 +23,6 @@ export default combineReducers({
     pendingDES: pendingDESReducer,
     pendingBTT: pendingBTTReducer,
     user: userReducer,
+    maintenance: maintenanceReducer,
     pendingHR: pendingHRReducer
 })

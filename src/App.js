@@ -10,7 +10,9 @@ import { bindActionCreators } from 'redux'
 import * as geographyActions from './actions/geographyActions'
 import * as menuActions from './actions/menuActions'
 import * as userActions from './actions/userActions'
+import * as maintenanceActions from './actions/maintenanceActions'
 import { Container } from 'reactstrap'
+import Maintenance from './views/maintenance/maintenance'
 import './styles/site.css'
 
 class App extends Component {
@@ -25,17 +27,21 @@ class App extends Component {
     async componentWillMount() {
         AppService.setTitle()
 
-        const _this = this
+        const maintenance = await this.props.maintenanceActions.getMaintenance()
 
-        return Promise.all([
-            this.props.userActions.getUser(),
-            this.props.geographyActions.getSourceMarkets(),
-            this.props.geographyActions.getDestinations(),
-            this.props.menuActions.getStaffCount(),
-            this.props.geographyActions.getIataCodes()
-        ]).then(function() {
-            _this.setState({ loaded: true })
-        })
+        if (maintenance !== true) {
+            const _this = this
+
+            return Promise.all([
+                this.props.userActions.getUser(),
+                this.props.geographyActions.getSourceMarkets(),
+                this.props.geographyActions.getDestinations(),
+                this.props.menuActions.getStaffCount(),
+                this.props.geographyActions.getIataCodes()
+            ]).then(function() {
+                _this.setState({ loaded: true })
+            })
+        }
     }
 
     render() {
@@ -53,6 +59,8 @@ class App extends Component {
                     />
 
                     <Loader loaded={this.state.loaded} isOpen={this.props.isOpen} ajaxCallsInProgress={this.props.ajaxCallsInProgress} />
+
+                    {this.props.maintenance === true && <Maintenance />}
 
                     {this.state.loaded && (
                         <div id="outer-container" style={{ height: '100%' }}>
@@ -78,7 +86,8 @@ function mapStateToProps(state) {
         isOpen: state.menu.isOpen,
         staffCount: state.menu.staffCount,
         ajaxCallsInProgress: state.ajaxCallsInProgress,
-        userRoles: state.user.userRoles
+        userRoles: state.user.userRoles,
+        maintenance: state.maintenance
     }
 }
 
@@ -86,7 +95,8 @@ function mapDispatchToProps(dispatch) {
     return {
         geographyActions: bindActionCreators(geographyActions, dispatch),
         menuActions: bindActionCreators(menuActions, dispatch),
-        userActions: bindActionCreators(userActions, dispatch)
+        userActions: bindActionCreators(userActions, dispatch),
+        maintenanceActions: bindActionCreators(maintenanceActions, dispatch)
     }
 }
 
