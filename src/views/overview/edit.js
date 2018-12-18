@@ -18,7 +18,8 @@ class Edit extends Component {
         this.state = {
             id: params.id,
             staff: null,
-            loaded: false
+            loaded: false,
+            initialValues: null
         }
     }
 
@@ -38,7 +39,7 @@ class Edit extends Component {
             AppService.setTitle('Overview - Request not found')
         }
 
-        this.setState({ staff, loaded: true })
+        this.setState({ staff, initialValues, loaded: true })
     }
 
     handleStaffAttachments = attachments => {
@@ -61,6 +62,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    initialValues={this.state.initialValues}
                     disabled={true}
                     staff={this.state.staff}
                     flights={this.props.flights}

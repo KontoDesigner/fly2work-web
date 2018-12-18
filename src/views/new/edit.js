@@ -22,7 +22,8 @@ class Edit extends Component {
             id: params.id,
             add: params.id === 'add',
             staff: null,
-            loaded: false
+            loaded: false,
+            initialValues: null
         }
     }
 
@@ -44,13 +45,14 @@ class Edit extends Component {
             AppService.setTitle(`${statuses.New} - Request not found`)
         }
 
-        this.setState({ staff, loaded: true })
+        this.setState({ staff, initialValues, loaded: true })
     }
 
     getModel = async () => {
         this.props.ajaxStatusActions.beginAjaxCall()
 
         const staff = await RestClient.get('staff/model')
+        const initialValues = await RestClient.get('staff/model')
 
         this.props.ajaxStatusActions.endAjaxCall()
 
@@ -62,7 +64,7 @@ class Edit extends Component {
             AppService.setTitle(`${statuses.New} - Could not retrieve model`)
         }
 
-        this.setState({ staff, loaded: true })
+        this.setState({ staff, initialValues, loaded: true })
     }
 
     async componentWillMount() {
@@ -129,6 +131,7 @@ class Edit extends Component {
                 )}
 
                 <Form
+                    initialValues={this.state.initialValues}
                     disabled={HR === true}
                     enableEmails={true}
                     hideStatus={true}

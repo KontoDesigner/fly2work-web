@@ -20,7 +20,8 @@ class Edit extends Component {
         this.state = {
             id: params.id,
             staff: null,
-            loaded: false
+            loaded: false,
+            initialValues: null
         }
     }
 
@@ -40,7 +41,7 @@ class Edit extends Component {
             AppService.setTitle('Pending HR - Request not found')
         }
 
-        this.setState({ staff, loaded: true })
+        this.setState({ staff, initialValues, loaded: true })
     }
 
     handleStaff = async staff => {
@@ -90,6 +91,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    initialValues={this.state.initialValues}
                     confirmGreenLight={HR === true ? this.confirmGreenLight : null}
                     disabled={BTT === false || HR === true}
                     staff={this.state.staff}

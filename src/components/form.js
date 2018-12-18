@@ -634,6 +634,7 @@ class Form extends Component {
                             <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <Flights
                                     disabled={this.props.disabled || BTT === false}
+                                    initialValues={this.props.initialValues}
                                     flights={values.flights}
                                     errors={errors}
                                     touched={touched}

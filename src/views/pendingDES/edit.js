@@ -21,7 +21,8 @@ class Edit extends Component {
         this.state = {
             id: params.id,
             staff: null,
-            loaded: false
+            loaded: false,
+            initialValues: null
         }
     }
 
@@ -41,7 +42,7 @@ class Edit extends Component {
             AppService.setTitle('Pending DES - Request not found')
         }
 
-        this.setState({ staff, loaded: true })
+        this.setState({ staff, initialValues, loaded: true })
     }
 
     handleStaff = async staff => {
@@ -80,6 +81,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    initialValues={this.state.initialValues}
                     disabled={HR === true}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
