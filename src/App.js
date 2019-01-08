@@ -27,7 +27,7 @@ class App extends Component {
     async componentWillMount() {
         AppService.setTitle()
 
-        const maintenance = await this.props.maintenanceActions.getMaintenance()
+        const maintenance = false //await this.props.maintenanceActions.getMaintenance()
 
         if (maintenance !== true) {
             const _this = this
