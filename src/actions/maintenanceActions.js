@@ -14,7 +14,7 @@ export function getMaintenance() {
         dispatch(beginAjaxCall())
 
         try {
-            const maintenance = await RestClient.get('maintenance')
+            const maintenance = await RestClient.get('maint')
 
             dispatch(getMaintenanceSuccess(maintenance))
         } catch (error) {
