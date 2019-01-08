@@ -24,7 +24,7 @@ const Maintenance = props => {
                     width="480"
                     height="330"
                     frameBorder="0"
-                    class="giphy-embed"
+                    className="giphy-embed"
                     allowFullScreen
                 />
             </div>
