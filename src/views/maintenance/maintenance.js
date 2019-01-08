@@ -16,18 +16,6 @@ const Maintenance = props => {
             <h2 style={styles.title}>OOPSIE WOOPSIE!!</h2>
 
             <p>Uwu We made a funky wucky!! A wittle funny boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!</p>
-
-            <div style={styles.imgContainer}>
-                <iframe
-                    title="monkey"
-                    src="https://giphy.com/embed/mDOwJTgHHo9IA"
-                    width="480"
-                    height="330"
-                    frameBorder="0"
-                    className="giphy-embed"
-                    allowFullScreen
-                />
-            </div>
         </div>
     )
 }
