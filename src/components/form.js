@@ -69,27 +69,27 @@ class Form extends Component {
                             <Row style={{ marginBottom: '8px' }}>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
                                     <div className="hr">
-                                        <span className="hr-title">Requested by</span>
+                                        <span className="hr-title">Request Information</span>
                                     </div>
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="requestedBy.name">Name</label>
+                                        <label htmlFor="requestedBy.name">Requested By Name</label>
                                         <Field disabled={true} className="form-control" type="text" name="requestedBy.name" />
                                     </div>
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="requestedBy.email">Email</label>
+                                        <label htmlFor="requestedBy.email">Requested By Email</label>
                                         <Field disabled={true} className="form-control" type="text" name="requestedBy.email" />
                                     </div>
                                 </Col>
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="created">Date</label>
+                                        <label htmlFor="created">Date Requested</label>
                                         <Field disabled={true} className="form-control" type="text" name="created" />
                                     </div>
                                 </Col>
