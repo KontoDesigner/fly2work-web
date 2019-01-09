@@ -65,7 +65,7 @@ class Form extends Component {
                 }}
                 render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                     <FormikForm>
-                        {this.props.staff.requestedBy && (
+                        {this.props.add !== true && (
                             <Row style={{ marginBottom: '8px' }}>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
                                     <div className="hr">
