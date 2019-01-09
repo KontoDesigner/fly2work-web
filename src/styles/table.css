@@ -33,9 +33,13 @@ table {
 }
 
 table .bg-danger {
-    background: #f7d7da!important;
+    background: #f7d7da !important;
 }
 
 table .bg-warning {
-    background: #FFF3CD!important;
+    background: #fff3cd !important;
+}
+
+table .bg-success {
+    background: #D4EDDA !important;
 }

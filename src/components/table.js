@@ -137,7 +137,8 @@ class Table extends Component {
                                             onClick={e => this.props.handleClick(e, staff.id)}
                                             className={classnames({
                                                 'bg-warning': staff.confirmedStatus === confirmedStatuses.Modified,
-                                                'bg-danger': staff.confirmedStatus === confirmedStatuses.Cancelled
+                                                'bg-danger': staff.confirmedStatus === confirmedStatuses.Cancelled,
+                                                'bg-success': staff.status === statuses.Confirmed && !staff.confirmedStatus
                                             })}>
                                             {this.props.columns.map((column, index) => (
                                                 <td className="link" key={index}>
