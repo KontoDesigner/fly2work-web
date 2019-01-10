@@ -98,9 +98,15 @@ class Edit extends Component {
             const res = await this.props.newActions.updateStaff(staff)
 
             if (res && res.ok === true) {
-                this.props.history.push({
-                    pathname: `/${staff.status.toLowerCase()}/${staff.id}`
-                })
+                if (res.greenLight === false) {
+                    this.props.history.push({
+                        pathname: `/pendinghr/${staff.id}`
+                    })
+                } else {
+                    this.props.history.push({
+                        pathname: `/${staff.status.toLowerCase()}/${staff.id}`
+                    })
+                }
             }
         }
     }
