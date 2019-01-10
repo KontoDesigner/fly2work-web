@@ -75,7 +75,7 @@ class Table extends Component {
 
     renderBody(staff, column) {
         if (staff.greenLight === false && staff.status !== statuses.New && column.valueKey === 'status') {
-            return 'Pending HR'
+            return 'PendingHR'
         }
 
         const value = lodash.get(staff, column.valueKey, '')
@@ -107,7 +107,11 @@ class Table extends Component {
             staffs = this.props.filter(staffs, this.state.criteria)
         }
 
-        staffs.sort(compareValues(this.state.sortColumn, this.state.sortOrder))
+        if (this.props.compareValues) {
+            staffs.sort(this.props.compareValues(this.state.sortColumn, this.state.sortOrder))
+        } else {
+            staffs.sort(compareValues(this.state.sortColumn, this.state.sortOrder))
+        }
 
         return (
             <div>

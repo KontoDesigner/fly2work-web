@@ -7,6 +7,8 @@ import * as AppService from '../../services/appService'
 import * as RestClient from '../../infrastructure/restClient'
 import moment from 'moment'
 import { Button, Row } from 'reactstrap'
+import lodash from 'lodash'
+import { Statuses as statuses } from '../../constants/geographyConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -35,6 +37,38 @@ const filter = (staffs, criteria) => {
     )
 }
 
+const compareValues = (key, order = true) => {
+    return function(a, b) {
+        let aValue = lodash.get(a, key, '')
+        let bValue = lodash.get(b, key, '')
+
+        if (key === 'status') {
+            const aGreenLight = lodash.get(a, 'greenLight', '')
+
+            if (aGreenLight === false && aValue !== statuses.New) {
+                aValue = 'PendingHR'
+            }
+
+            const bGreenLight = lodash.get(b, 'greenLight', '')
+
+            if (bGreenLight === false && bValue !== statuses.New) {
+                bValue = 'PendingHR'
+            }
+        }
+
+        const varA = typeof aValue === 'string' ? aValue.toUpperCase() : aValue
+        const varB = typeof bValue === 'string' ? bValue.toUpperCase() : bValue
+
+        let comparison = 0
+        if (varA > varB) {
+            comparison = 1
+        } else if (varA < varB) {
+            comparison = -1
+        }
+        return order === false ? comparison * -1 : comparison
+    }
+}
+
 class Overview extends Component {
     async componentDidMount() {
         AppService.setTitle('Overview')
@@ -57,7 +91,7 @@ class Overview extends Component {
             <div>
                 <h2>Overview</h2>
 
-                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
+                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} compareValues={compareValues} />
 
                 <Row>
                     <Button
