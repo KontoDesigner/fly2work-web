@@ -91,6 +91,7 @@ class Edit extends Component {
                 </h2>
 
                 <Form
+                    hideSubmit={true}
                     initialValues={this.state.initialValues}
                     confirmGreenLight={HR === true ? this.confirmGreenLight : null}
                     disabled={BTT === false || HR === true}
