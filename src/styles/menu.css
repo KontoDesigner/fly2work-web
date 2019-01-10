@@ -64,6 +64,13 @@ h1 {
     z-index: 1049 !important;
 }
 
+@media (max-width: 991px) {
+    .bm-menu-wrap {
+        width: 100% !important;
+        background: rgb(36, 41, 46)!important;
+    }
+}
+
 .side-button.active {
     background: #c94e50;
     color: #fffce1;
@@ -127,13 +134,12 @@ h1 {
     cursor: pointer;
 }
 
-.bm-item
-{
-  text-decoration: initial!important;
+.bm-item {
+    text-decoration: initial !important;
 }
 
 .bm-item.active {
-    color: #219ed9!important;
+    color: #219ed9 !important;
 }
 
 #slide .bm-cross,
