@@ -82,7 +82,7 @@ class Table extends Component {
 
         switch (column.dataType) {
             case 'DATETIME':
-                return value && <Moment format={column.format ? column.format : 'YYYY-MM-DD'}>{value}</Moment>
+                return value && <Moment format={column.format ? column.format : 'DD/MM/YYYY'}>{value}</Moment>
             default:
                 return value
         }
@@ -97,7 +97,7 @@ class Table extends Component {
     }
 
     downloadPdf = staff => {
-        RestClient.download(`pdf/${staff.id}`, staff, `${staff.firstName} ${staff.lastName} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`)
+        RestClient.download(`pdf/${staff.id}`, staff, `${staff.firstName} ${staff.lastName} - ${moment().format('DD/MM/YYYY HH:mm')}.pdf`)
     }
 
     render() {

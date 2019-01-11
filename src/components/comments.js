@@ -99,7 +99,7 @@ class Comments extends Component {
                                     </td>
 
                                     <td colSpan={2} style={styles.td} className="link">
-                                        {comment.created && <Moment format="YYYY-MM-DD HH:mm">{comment.created}</Moment>}
+                                        {comment.created && <Moment format="DD/MM/YYYY HH:mm">{comment.created}</Moment>}
                                     </td>
                                 </tr>
                             ),

@@ -2,7 +2,7 @@ import Datetime from 'react-datetime'
 import React from 'react'
 import moment from 'moment'
 
-const DatePicker = ({ field, form, setFieldTouched, disabled, dateFormat = 'YYYY-MM-DD', timeFormat = false }) => {
+const DatePicker = ({ field, form, setFieldTouched, disabled, dateFormat = 'DD/MM/YYYY', timeFormat = false }) => {
     const onChange = date => {
         //Picker
         if (date._d) {

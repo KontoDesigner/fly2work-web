@@ -63,7 +63,7 @@ const AuditModal = props => {
                                     </td>
 
                                     <td colSpan={2} style={styles.td} className="link">
-                                        {a.date && <Moment format="YYYY-MM-DD HH:mm">{a.date}</Moment>}
+                                        {a.date && <Moment format="DD/MM/YYYY HH:mm">{a.date}</Moment>}
                                     </td>
                                 </tr>
                             ))}

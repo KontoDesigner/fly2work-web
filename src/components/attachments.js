@@ -141,7 +141,7 @@ class Attachments extends Component {
                                     </td>
 
                                     <td onClick={() => this.download(attachment)} className="link">
-                                        {attachment.created && <Moment format="YYYY-MM-DD HH:mm">{attachment.created}</Moment>}
+                                        {attachment.created && <Moment format="DD/MM/YYYY HH:mm">{attachment.created}</Moment>}
                                     </td>
 
                                     <td onClick={() => this.download(attachment)} className="link">

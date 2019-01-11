@@ -48,7 +48,7 @@ class Form extends Component {
             RestClient.download(
                 `pdf/${this.props.staff.id}`,
                 this.props.staff,
-                `${this.props.staff.firstName} ${this.props.staff.lastName} - ${moment().format('YYYY-MM-DD HH:mm')}.pdf`
+                `${this.props.staff.firstName} ${this.props.staff.lastName} - ${moment().format('DD/MM/YYYY HH:mm')}.pdf`
             )
         }
 
@@ -617,7 +617,7 @@ class Form extends Component {
                                                 component={Checkbox}
                                                 title={
                                                     this.props.staff.greenLightUpdatedBy && this.props.staff.greenLightUpdated
-                                                        ? `Updated: ${moment(this.props.staff.greenLightUpdated).format('YYYY-MM-DD HH:mm')} By: ${
+                                                        ? `Updated: ${moment(this.props.staff.greenLightUpdated).format('DD/MM/YYYY HH:mm')} By: ${
                                                               this.props.staff.greenLightUpdatedBy
                                                           }`
                                                         : ''
