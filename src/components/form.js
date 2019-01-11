@@ -192,7 +192,8 @@ class Form extends Component {
                                     <Field
                                         disabled={
                                             (this.props.disabled || (this.props.staff.dateOfBirth && this.props.staff.dateOfBirth !== '')) &&
-                                            this.props.add !== true
+                                            this.props.add !== true &&
+                                            moment(this.props.staff.dateOfBirth, 'DD/MM/YYYY', true).isValid()
                                         }
                                         name={'dateOfBirth'}
                                         component={DatePicker}
@@ -257,7 +258,8 @@ class Form extends Component {
                                             (this.props.disabled ||
                                                 (this.props.staff.plannedAssignmentStartDate &&
                                                     this.props.staff.plannedAssignmentStartDate !== '')) &&
-                                            this.props.add !== true
+                                            this.props.add !== true &&
+                                            moment(this.props.staff.plannedAssignmentStartDate, 'DD/MM/YYYY', true).isValid()
                                         }
                                         name={'plannedAssignmentStartDate'}
                                         component={DatePicker}
