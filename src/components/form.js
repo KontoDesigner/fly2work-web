@@ -18,6 +18,26 @@ import { Statuses as statuses } from '../constants/geographyConstants'
 import DeclineModal from './declineModal'
 import AuditModal from './auditModal'
 
+function parseCost(val) {
+    var parsed = parseInt(val)
+
+    if (isNaN(parsed)) {
+        return 0
+    }
+
+    return parsed
+}
+
+function getTotalCost(flights) {
+    let totalCost = 0
+
+    for (const flight of flights) {
+        totalCost = totalCost + (parseCost(flight.flightCost) + parseCost(flight.xbagCost) + parseCost(flight.hotelCost))
+    }
+
+    return totalCost
+}
+
 class Form extends Component {
     constructor(props) {
         super(props)
@@ -67,7 +87,7 @@ class Form extends Component {
                     <FormikForm>
                         {this.props.add !== true && (
                             <Row style={{ marginBottom: '8px' }}>
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
+                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
                                     <div className="hr">
                                         <span className="hr-title">Request Information</span>
                                     </div>
@@ -97,7 +117,7 @@ class Form extends Component {
                         )}
 
                         <Row>
-                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginTop: '-15px' }}>
+                            <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
                                 <div className="hr">
                                     <span className="hr-title">BS</span>
                                 </div>
@@ -497,85 +517,9 @@ class Form extends Component {
                             </Col>
 
                             <div className="inner-form">
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '15px' }}>
+                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '10px' }}>
                                     <div className="hr">
                                         <span className="hr-title">BTT</span>
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="bookingReference">
-                                            Booking Reference <span className="text-danger">*</span>
-                                        </label>
-                                        <Field
-                                            disabled={this.props.disabled || BTT === false}
-                                            className="form-control"
-                                            type="text"
-                                            name="bookingReference"
-                                        />
-                                        <ErrorMessage className="message" name="bookingReference" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="travelType">
-                                            Travel Type <span className="text-danger">*</span>
-                                        </label>
-                                        <Field
-                                            disabled={this.props.disabled || BTT === false}
-                                            name={'travelType'}
-                                            component={Select}
-                                            options={this.props.travelTypes}
-                                            setFieldTouched={setFieldTouched}
-                                            valueKey={'value'}
-                                            labelKey={'label'}
-                                        />
-                                        <ErrorMessage className="message" name="travelType" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="paymentMethod">
-                                            Payment Method <span className="text-danger">*</span>
-                                        </label>
-                                        <Field
-                                            disabled={this.props.disabled || BTT === false}
-                                            name={'paymentMethod'}
-                                            component={Select}
-                                            options={this.props.paymentMethods}
-                                            setFieldTouched={setFieldTouched}
-                                            valueKey={'value'}
-                                            labelKey={'label'}
-                                        />
-                                        <ErrorMessage className="message" name="paymentMethod" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="luggage">
-                                            Luggage <span className="text-danger">*</span>
-                                        </label>
-                                        <Field disabled={this.props.disabled || BTT === false} className="form-control" type="text" name="luggage" />
-                                        <ErrorMessage className="message" name="luggage" component="div" />
-                                    </div>
-                                </Col>
-
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className="form-item">
-                                        <label htmlFor="costCentre">
-                                            Cost Centre <span className="text-danger">*</span>
-                                        </label>
-                                        <Field
-                                            disabled={this.props.disabled || BTT === false}
-                                            className="form-control"
-                                            type="text"
-                                            name="costCentre"
-                                        />
-                                        <ErrorMessage className="message" name="costCentre" component="div" />
                                     </div>
                                 </Col>
 
@@ -597,20 +541,8 @@ class Form extends Component {
                                     </div>
                                 </Col>
 
-                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                    <div className={this.props.disabled || BTT === false ? 'form-item disabled' : 'form-item'}>
-                                        <label htmlFor="railFlyRequestedAndBooked">Rail & Fly Requested And Booked</label>
-                                        <Field
-                                            disabled={this.props.disabled || BTT === false}
-                                            name={'railFlyRequestedAndBooked'}
-                                            component={Checkbox}
-                                        />
-                                        <ErrorMessage className="message" name="railFlyRequestedAndBooked" component="div" />
-                                    </div>
-                                </Col>
-
                                 {this.props.staff.greenLight !== null && (
-                                    <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                         <div className={'form-item disabled'}>
                                             <label htmlFor="greenLight">Green Light</label>
                                             <Field
@@ -643,13 +575,31 @@ class Form extends Component {
                                     setFieldTouched={setFieldTouched}
                                     setFieldValue={setFieldValue}
                                     values={values}
+                                    parseCost={parseCost}
+                                    travelTypes={this.props.travelTypes}
+                                    paymentMethods={this.props.paymentMethods}
                                 />
+                            </Col>
+                        </Row>
+
+                        <Row style={{ marginTop: '30px' }}>
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                <div className="form-item">
+                                    <label>Total Cost</label>
+                                    <Field disabled={true} className="form-control" type="text" value={getTotalCost(values.flights)} />
+                                </div>
                             </Col>
                         </Row>
 
                         {this.props.add === true && [
                             <Row key={0}>
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '0px', marginTop: '20px' }}>
+                                <Col
+                                    xl="12"
+                                    lg="12"
+                                    md="12"
+                                    sm="12"
+                                    xs="12"
+                                    style={{ minHeight: 'initial', marginBottom: '10px', marginTop: '15px' }}>
                                     <div className="hr">
                                         <span className="hr-title">Comments</span>
                                     </div>

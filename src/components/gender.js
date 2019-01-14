@@ -21,9 +21,9 @@ const Gender = ({ field, form, disabled, setFieldTouched }) => (
                 style={styles.input}
                 disabled={disabled}
                 onChange={event => form.setFieldValue(field.name, event.currentTarget.value)}
-                checked={field.value === 'M'}
+                checked={field.value === 'MALE'}
                 type="radio"
-                value="M"
+                value="MALE"
                 name="gender"
                 id="papa"
             />
@@ -36,9 +36,9 @@ const Gender = ({ field, form, disabled, setFieldTouched }) => (
                 style={styles.input}
                 disabled={disabled}
                 onChange={event => form.setFieldValue(field.name, event.currentTarget.value)}
-                checked={field.value === 'W'}
+                checked={field.value === 'FEMALE'}
                 type="radio"
-                value="W"
+                value="FEMALE"
                 name="gender"
                 id="mama"
             />

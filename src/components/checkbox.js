@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Checkbox = ({ field, form, disabled, title = '' }) => (
-    <label className="checkbox-label">
+    <label className="checkbox-label" style={{ margin: '0' }}>
         <input
             checked={field.value}
             disabled={disabled}
