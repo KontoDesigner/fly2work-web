@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Row, Col, Button } from 'reactstrap'
-import Moment from 'react-moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
@@ -83,9 +82,13 @@ class Table extends Component {
 
         const value = lodash.get(staff, column.valueKey, '')
 
+        if (value === undefined || value === null || value === '') {
+            return ''
+        }
+
         switch (column.dataType) {
             case 'DATETIME':
-                return value && <Moment format={column.format ? column.format : 'DD/MM/YYYY'}>{value}</Moment>
+                return moment(new Date(value)).format(column.format ? column.format : 'DD/MM/YYYY')
             default:
                 return value
         }
