@@ -22,8 +22,11 @@ function compareValues(key, order = true) {
         const aValue = lodash.get(a, key, '')
         const bValue = lodash.get(b, key, '')
 
-        const varA = typeof aValue === 'string' ? aValue.toUpperCase() : aValue
-        const varB = typeof bValue === 'string' ? bValue.toUpperCase() : bValue
+        let varA = typeof aValue === 'string' ? aValue.toUpperCase() : aValue
+        let varB = typeof bValue === 'string' ? bValue.toUpperCase() : bValue
+
+        varA = varA ? varA : ''
+        varB = varB ? varB : ''
 
         let comparison = 0
         if (varA > varB) {

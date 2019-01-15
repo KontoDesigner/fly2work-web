@@ -7,6 +7,7 @@ import * as AppService from '../../services/appService'
 
 const columns = [
     { labelKey: 'Created', valueKey: 'created', format: 'DD/MM/YYYY HH:mm' },
+    { labelKey: 'Green Light Approved', valueKey: 'greenLightUpdated', format: 'DD/MM/YYYY HH:mm' },
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
