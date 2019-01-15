@@ -3,6 +3,15 @@ import { push as ReactBurgerMenu } from 'react-burger-menu'
 import { NavLink as Link } from 'react-router-dom'
 import config from '../infrastructure/config'
 
+const logOut = () => {
+    localStorage.clear()
+
+    const tenantId = 'e3e1f65b-b973-440d-b61c-bc895fc98e28'
+    const redirect = window.location
+
+    window.location.assign(`https://login.microsoftonline.com/${tenantId}/oauth2/logout?post_logout_redirect_uri=${redirect}`)
+}
+
 const Menu = props => {
     return (
         <div id="push">
@@ -40,6 +49,10 @@ const Menu = props => {
 
                 <div onClick={() => props.handleIsOpen(false)}>
                     <span className="text-danger">Close</span>
+                </div>
+
+                <div onClick={() => logOut()}>
+                    <span className="text-warning">LOG OUT</span>
                 </div>
             </ReactBurgerMenu>
         </div>
