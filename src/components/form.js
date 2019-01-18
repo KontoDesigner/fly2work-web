@@ -244,9 +244,7 @@ class Form extends Component {
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
-                                    <label htmlFor="passportNumber">
-                                        Passport Number <span className="text-danger">*</span>
-                                    </label>
+                                    <label htmlFor="passportNumber">Passport Number</label>
                                     <Field disabled={this.props.disabled} className="form-control" type="text" name="passportNumber" />
                                     <ErrorMessage className="message" name="passportNumber" component="div" />
                                 </div>
