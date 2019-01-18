@@ -549,9 +549,7 @@ class Form extends Component {
                                                 component={Checkbox}
                                                 title={
                                                     this.props.staff.greenLightUpdatedBy && this.props.staff.greenLightUpdated
-                                                        ? `Updated: ${moment(this.props.staff.greenLightUpdated).format('DD/MM/YYYY HH:mm')} By: ${
-                                                              this.props.staff.greenLightUpdatedBy
-                                                          }`
+                                                        ? `Updated ${this.props.staff.greenLightUpdated} By ${this.props.staff.greenLightUpdatedBy}`
                                                         : ''
                                                 }
                                             />
