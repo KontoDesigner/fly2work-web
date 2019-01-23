@@ -47,12 +47,12 @@ const Menu = props => {
                     Overview <span className="text-danger">({props.staffCount.overview})</span>
                 </Link>
 
-                <div onClick={() => props.handleIsOpen(false)}>
-                    <span className="text-danger">Close</span>
-                </div>
-
                 <div onClick={() => logOut()}>
                     <span className="text-warning">LOG OUT</span>
+                </div>
+
+                <div onClick={() => props.handleIsOpen(false)}>
+                    <span className="text-danger">Close</span>
                 </div>
             </ReactBurgerMenu>
         </div>
