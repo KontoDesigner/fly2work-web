@@ -75,6 +75,8 @@ class Form extends Component {
         const BTT = this.props.userRoles.includes(userRoles.BTT)
         const HR = this.props.userRoles.includes(userRoles.HR)
 
+        const created = this.props.staff.created ? moment(this.props.staff.created).format('DD/MM/YYYY HH:mm') : ''
+
         return (
             <Formik
                 initialValues={this.props.staff}
@@ -110,7 +112,7 @@ class Form extends Component {
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
                                         <label htmlFor="created">Date Requested</label>
-                                        <Field disabled={true} className="form-control" type="text" name="created" />
+                                        <Field value={created} disabled={true} className="form-control" type="text" name="created" />
                                     </div>
                                 </Col>
                             </Row>
