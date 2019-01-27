@@ -137,6 +137,7 @@ class Edit extends Component {
                 )}
 
                 <Form
+                    hideDecline={true}
                     initialValues={this.state.initialValues}
                     disabled={HR === true}
                     enableEmails={true}

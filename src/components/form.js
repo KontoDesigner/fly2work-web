@@ -115,6 +115,13 @@ class Form extends Component {
                                         <Field value={created} disabled={true} className="form-control" type="text" name="created" />
                                     </div>
                                 </Col>
+
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label htmlFor="created">Direction</label>
+                                        <Field disabled={true} className="form-control" type="text" name="direction" />
+                                    </div>
+                                </Col>
                             </Row>
                         )}
 
@@ -730,6 +737,7 @@ class Form extends Component {
                                 {BTT === true &&
                                     this.props.staff.status === statuses.PendingBTT &&
                                     this.props.add !== true &&
+                                    this.props.hideDecline !== true &&
                                     this.props.staff.greenLight !== false && (
                                         <Button
                                             onClick={this.toggleDeclineModal}
