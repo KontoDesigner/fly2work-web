@@ -87,8 +87,8 @@ class Table extends Component {
         }
 
         switch (column.dataType) {
-            // case 'DATETIME':
-            //     return moment(new Date(value)).format(column.format ? column.format : 'DD/MM/YYYY')
+            case 'DATETIME':
+                return moment(value).format(column.format ? column.format : 'DD/MM/YYYY')
             default:
                 return value
         }

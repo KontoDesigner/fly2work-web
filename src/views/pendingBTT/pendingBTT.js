@@ -6,13 +6,13 @@ import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import * as AppService from '../../services/appService'
 
 const columns = [
-    { labelKey: 'Created', valueKey: 'created', format: 'DD/MM/YYYY HH:mm' },
-    { labelKey: 'Green Light Approved', valueKey: 'greenLightUpdated', format: 'DD/MM/YYYY HH:mm' },
+    { labelKey: 'Created', valueKey: 'created', dataType: 'DATETIME', format: 'DD/MM/YYYY HH:mm' },
+    { labelKey: 'Green Light Approved', valueKey: 'greenLightUpdated' },
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
-    { labelKey: 'Preferred Flight Date', valueKey: 'preferredFlightDate', dataType: 'DATETIME' }
+    { labelKey: 'Preferred Flight Date', valueKey: 'preferredFlightDate' }
 ]
 
 const filter = (staffs, criteria) => {
