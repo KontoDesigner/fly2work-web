@@ -119,7 +119,7 @@ class Form extends Component {
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
                                         <label htmlFor="created">Staff Id</label>
-                                        <Field disabled={true} className="form-control" type="text" name="originalStaffid" />
+                                        <Field disabled={true} className="form-control" type="text" name="originalStaffId" />
                                     </div>
                                 </Col>
 
