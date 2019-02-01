@@ -222,9 +222,11 @@ const Flights = props => {
                                         disabled={true}
                                         className="form-control"
                                         type="text"
-                                        value={
-                                            props.parseCost(flight.flightCost) + props.parseCost(flight.xbagCost) + props.parseCost(flight.hotelCost)
-                                        }
+                                        value={(
+                                            props.parseCost(flight.flightCost) +
+                                            props.parseCost(flight.xbagCost) +
+                                            props.parseCost(flight.hotelCost)
+                                        ).toFixed(2)}
                                     />
                                 </div>
                             </Col>

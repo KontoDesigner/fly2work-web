@@ -19,7 +19,7 @@ import DeclineModal from './declineModal'
 import AuditModal from './auditModal'
 
 function parseCost(val) {
-    var parsed = parseInt(val)
+    var parsed = parseFloat(val)
 
     if (isNaN(parsed)) {
         return 0
@@ -35,7 +35,7 @@ function getTotalCost(flights) {
         totalCost = totalCost + (parseCost(flight.flightCost) + parseCost(flight.xbagCost) + parseCost(flight.hotelCost))
     }
 
-    return totalCost
+    return totalCost.toFixed(2)
 }
 
 class Form extends Component {
