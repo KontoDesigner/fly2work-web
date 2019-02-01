@@ -223,9 +223,9 @@ const Flights = props => {
                                         className="form-control"
                                         type="text"
                                         value={(
-                                            props.parseCost(flight.flightCost) +
-                                            props.parseCost(flight.xbagCost) +
-                                            props.parseCost(flight.hotelCost)
+                                            props.parseCost(flight.flightCost ? flight.flightCost.replace(',', '.') : 0) +
+                                            props.parseCost(flight.xbagCost ? flight.xbagCost.replace(',', '.') : 0) +
+                                            props.parseCost(flight.hotelCost ? flight.hotelCost.replace(',', '.') : 0)
                                         ).toFixed(2)}
                                     />
                                 </div>
