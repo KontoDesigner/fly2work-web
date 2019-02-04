@@ -781,9 +781,11 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                <Button style={{ marginRight: '15px' }} onClick={downloadPdf} className="btn btn-function" type="button">
-                                    PDF
-                                </Button>
+                                {this.props.add !== true && (
+                                    <Button style={{ marginRight: '15px' }} onClick={downloadPdf} className="btn btn-function" type="button">
+                                        PDF
+                                    </Button>
+                                )}
 
                                 {this.props.add !== true && this.props.staff.audit && this.props.staff.audit.length > 0 && (
                                     <Button onClick={this.toggleAuditModal} className="btn btn-function" type="button">
