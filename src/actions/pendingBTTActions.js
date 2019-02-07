@@ -99,3 +99,41 @@ export function declineStaff(req) {
         return false
     }
 }
+
+export function deleteStaff(req) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const res = await RestClient.post('staff/delete', req)
+
+            if (res && res.ok === true) {
+                console.log('Request has been deleted', res)
+
+                toastr.success('', 'Request has been deleted', res)
+
+                dispatch(getStaffCount())
+
+                dispatch(endAjaxCall())
+
+                return true
+            } else {
+                console.log('Could not delete request', res)
+
+                if (res && res.errors) {
+                    toastr.error('', `Could not delete request - ${res.errors.join(', ')}`)
+                } else {
+                    toastr.error('', 'Could not delete request')
+                }
+            }
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+
+        return false
+    }
+}

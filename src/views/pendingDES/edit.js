@@ -82,7 +82,10 @@ class Edit extends Component {
 
                 <Form
                     initialValues={this.state.initialValues}
+                    deleteStaff={this.props.pendingDESActions.deleteStaff}
                     disabled={HR === true}
+                    showDelete={true}
+                    history={this.props.history}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}

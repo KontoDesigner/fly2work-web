@@ -17,6 +17,7 @@ import Flights from './flights'
 import { Statuses as statuses } from '../constants/geographyConstants'
 import DeclineModal from './declineModal'
 import AuditModal from './auditModal'
+import DeleteModal from './deleteModal'
 
 function parseCost(val) {
     var parsed = parseFloat(val)
@@ -48,11 +49,13 @@ class Form extends Component {
 
         this.state = {
             declineModal: false,
-            auditModal: false
+            auditModal: false,
+            deleteModal: false
         }
 
         this.toggleDeclineModal = this.toggleDeclineModal.bind(this)
         this.toggleAuditModal = this.toggleAuditModal.bind(this)
+        this.toggleDeleteModal = this.toggleDeleteModal.bind(this)
     }
 
     toggleDeclineModal() {
@@ -64,6 +67,12 @@ class Form extends Component {
     toggleAuditModal() {
         this.setState({
             auditModal: !this.state.auditModal
+        })
+    }
+
+    toggleDeleteModal() {
+        this.setState({
+            deleteModal: !this.state.deleteModal
         })
     }
 
@@ -765,7 +774,7 @@ class Form extends Component {
                                         <Button
                                             onClick={this.toggleDeclineModal}
                                             style={{ marginRight: '15px' }}
-                                            className="btn btn-sales"
+                                            className="btn btn-warning"
                                             type="button">
                                             Decline
                                         </Button>
@@ -792,6 +801,16 @@ class Form extends Component {
                                         History
                                     </Button>
                                 )}
+
+                                {this.props.add !== true && BTT === true && this.props.showDelete === true && (
+                                    <Button
+                                        style={{ marginRight: '15px', float: 'right' }}
+                                        onClick={this.toggleDeleteModal}
+                                        className="btn btn-sales"
+                                        type="button">
+                                        Delete
+                                    </Button>
+                                )}
                             </Col>
                         </Row>
 
@@ -804,6 +823,14 @@ class Form extends Component {
                         />
 
                         <AuditModal toggle={this.toggleAuditModal} open={this.state.auditModal} audit={this.props.staff.audit} />
+
+                        <DeleteModal
+                            history={this.props.history}
+                            deleteStaff={this.props.deleteStaff}
+                            toggle={this.toggleDeleteModal}
+                            staff={this.props.staff}
+                            open={this.state.deleteModal}
+                        />
                     </FormikForm>
                 )}
             />

@@ -84,6 +84,8 @@ class Edit extends Component {
                     initialValues={this.state.initialValues}
                     disabled={HR === true}
                     declineStaff={this.props.pendingBTTActions.declineStaff}
+                    showDelete={true}
+                    deleteStaff={this.props.pendingBTTActions.deleteStaff}
                     history={this.props.history}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}

@@ -94,6 +94,9 @@ class Edit extends Component {
                     hideSubmit={true}
                     initialValues={this.state.initialValues}
                     confirmGreenLight={HR === true ? this.confirmGreenLight : null}
+                    showDelete={true}
+                    history={this.props.history}
+                    deleteStaff={this.props.pendingHRActions.deleteStaff}
                     disabled={BTT === false || HR === true}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
