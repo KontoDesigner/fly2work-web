@@ -18,8 +18,18 @@ const styles = {
 
 function compareValues(key, order = true) {
     return function(a, b) {
-        const aValue = lodash.get(a, key, '')
-        const bValue = lodash.get(b, key, '')
+        let aValue = lodash.get(a, key, '')
+        let bValue = lodash.get(b, key, '')
+
+        if (key === 'flights[0].confirmedFlightDate' || key === 'preferredFlightDate') {
+            if (aValue && aValue !== '') {
+                aValue = moment(aValue, 'DD/MM/YYYY', true)
+            }
+
+            if (bValue && bValue !== '') {
+                bValue = moment(bValue, 'DD/MM/YYYY', true)
+            }
+        }
 
         let varA = typeof aValue === 'string' ? aValue.toUpperCase() : aValue
         let varB = typeof bValue === 'string' ? bValue.toUpperCase() : bValue

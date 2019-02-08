@@ -56,6 +56,16 @@ const compareValues = (key, order = true) => {
             }
         }
 
+        if (key === 'flights[0].confirmedFlightDate' || key === 'preferredFlightDate') {
+            if (aValue && aValue !== '') {
+                aValue = moment(aValue, 'DD/MM/YYYY', true)
+            }
+
+            if (bValue && bValue !== '') {
+                bValue = moment(bValue, 'DD/MM/YYYY', true)
+            }
+        }
+
         let varA = typeof aValue === 'string' ? aValue.toUpperCase() : aValue
         let varB = typeof bValue === 'string' ? bValue.toUpperCase() : bValue
 
