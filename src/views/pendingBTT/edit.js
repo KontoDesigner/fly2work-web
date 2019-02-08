@@ -46,7 +46,7 @@ class Edit extends Component {
     }
 
     handleStaff = async staff => {
-        staff.attachments = this.state.staff.attachments
+        staff.attachments = null
 
         this.setState({ staff })
 
