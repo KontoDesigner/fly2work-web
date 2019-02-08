@@ -6,7 +6,7 @@ import * as overviewActions from '../../actions/overviewActions'
 import * as AppService from '../../services/appService'
 import * as RestClient from '../../infrastructure/restClient'
 import moment from 'moment'
-import { Button, Row } from 'reactstrap'
+import { Button, Row, Col } from 'reactstrap'
 import lodash from 'lodash'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 
@@ -101,20 +101,22 @@ class Overview extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ajax-status-container">
                 <h2>Overview</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} compareValues={compareValues} />
 
                 <Row>
-                    <Button
-                        disabled={!this.props.staffs || this.props.staffs.length === 0}
-                        style={{ marginTop: '20px' }}
-                        onClick={this.downloadExcel}
-                        className="btn btn-function"
-                        type="button">
-                        XLSX
-                    </Button>
+                    <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                        <Button
+                            disabled={!this.props.staffs || this.props.staffs.length === 0}
+                            style={{ marginTop: '20px' }}
+                            onClick={this.downloadExcel}
+                            className="btn btn-function"
+                            type="button">
+                            XLSX
+                        </Button>
+                    </Col>
                 </Row>
             </div>
         )

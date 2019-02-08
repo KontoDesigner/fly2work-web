@@ -42,7 +42,7 @@ class PendingDES extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ajax-status-container">
                 <h2>Pending DES</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />

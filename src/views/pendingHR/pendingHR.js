@@ -45,7 +45,7 @@ class PendingHR extends Component {
         const HR = this.props.userRoles.includes(userRoles.HR)
 
         return (
-            <div>
+            <div className="ajax-status-container">
                 <h2>Pending HR</h2>
 
                 <Table

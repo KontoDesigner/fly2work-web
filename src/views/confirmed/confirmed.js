@@ -46,7 +46,7 @@ class Confirmed extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ajax-status-container">
                 <h2>{statuses.Confirmed}</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />

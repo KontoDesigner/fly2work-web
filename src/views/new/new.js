@@ -47,7 +47,7 @@ class New extends Component {
         const BS = this.props.userRoles.includes(userRoles.BS)
 
         return (
-            <div>
+            <div className="ajax-status-container">
                 <h2>{statuses.New}</h2>
 
                 <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} />
