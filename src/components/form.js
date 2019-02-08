@@ -82,7 +82,7 @@ class Form extends Component {
         const downloadPdf = () => {
             RestClient.download(
                 `pdf/${this.props.staff.id}`,
-                this.props.staff,
+                null,
                 `${this.props.staff.firstName} ${this.props.staff.lastName} - ${moment().format('DD/MM/YYYY HH:mm')}.pdf`
             )
         }
