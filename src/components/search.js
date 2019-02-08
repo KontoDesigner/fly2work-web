@@ -22,7 +22,7 @@ const styles = {
 const Search = props => {
     return (
         <Row>
-            <Col>
+            <Col xl="12" lg="12" md="12" sm="12" xs="12">
                 <input
                     type="text"
                     value={props.search}

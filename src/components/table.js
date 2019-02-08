@@ -134,7 +134,7 @@ class Table extends Component {
                 <Search search={this.state.search} handleSearch={this.handleSearch} />
 
                 <Row>
-                    <Col>
+                    <Col xl="12" lg="12" md="12" sm="12" xs="12">
                         <div className="tui-text-content table-responsive">
                             <table>
                                 <thead>
