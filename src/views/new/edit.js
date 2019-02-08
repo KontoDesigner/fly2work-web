@@ -76,9 +76,9 @@ class Edit extends Component {
     }
 
     handleStaff = async staff => {
-        staff.attachments = null
+        const attachments = this.state.staff.attachments
 
-        this.setState({ staff })
+        staff.attachments = null
 
         if (this.state.add === true) {
             const res = await this.props.newActions.insertStaff(staff)
@@ -109,6 +109,10 @@ class Edit extends Component {
                 }
             }
         }
+
+        staff.attachments = attachments
+
+        this.setState({ staff })
     }
 
     handleStaffAttachments = attachments => {

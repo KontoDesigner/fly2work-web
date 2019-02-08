@@ -45,9 +45,9 @@ class Edit extends Component {
     }
 
     handleStaff = async staff => {
-        staff.attachments = null
+        const attachments = this.state.staff.attachments
 
-        this.setState({ staff })
+        staff.attachments = null
 
         const res = await this.props.pendingHRActions.updateStaff(staff)
 
@@ -56,6 +56,10 @@ class Edit extends Component {
                 pathname: `/${staff.status.toLowerCase()}/${staff.id}`
             })
         }
+
+        staff.attachments = attachments
+
+        this.setState({ staff })
     }
 
     handleStaffAttachments = attachments => {
