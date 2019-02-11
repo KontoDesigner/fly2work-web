@@ -31,9 +31,11 @@ const Menu = props => {
                 outerContainerId={'outer-container'}>
                 <h1>{config.name}</h1>
 
-                <div className="text-danger" style={styles.env}>
-                    {process.env.NODE_ENV}
-                </div>
+                {config.env !== 'PROD' && (
+                    <div className="text-danger" style={styles.env}>
+                        {config.env}
+                    </div>
+                )}
 
                 <Link activeClassName={'active'} className="menu-item" to="/new">
                     New <span className="text-danger">({props.staffCount.new})</span>

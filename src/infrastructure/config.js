@@ -1,28 +1,38 @@
-function getApi() {
+function getKeys() {
     const hostName = window.location.hostname
-    let base = ''
+
+    const res = {
+        api: '',
+        env: ''
+    }
 
     //LOCAL
     if (hostName === 'localhost') {
-        base = 'http://localhost:5000/'
+        res.api = 'http://localhost:5000/'
+        res.env = 'LOCALHOST'
     }
     //UAT
     else if (hostName === 'fly2work-web-uat.tuinordic.net' || hostName === 'fly2work-web.uat.tuinordic.net') {
-        base = 'https://fly2work-api-uat.tuinordic.net/'
+        res.api = 'https://fly2work-api-uat.tuinordic.net/'
+        res.env = 'UAT'
     }
     //PROD
     else if (hostName === 'fly2work-web.tuinordic.net') {
-        base = 'https://fly2work-api.tuinordic.net/'
+        res.api = 'https://fly2work-api.tuinordic.net/'
+        res.env = 'PROD'
     } else {
         console.warn(`could not identify hostname: ${hostName}.`)
     }
 
-    return base
+    return res
 }
+
+const keys = getKeys()
 
 const Config = {
     name: process.env.REACT_APP_NAME,
-    api: getApi()
+    api: keys.api,
+    env: keys.env
 }
 
 export default Config
