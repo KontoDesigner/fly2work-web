@@ -12,6 +12,14 @@ const logOut = () => {
     window.location.assign(`https://login.microsoftonline.com/${tenantId}/oauth2/logout?post_logout_redirect_uri=${redirect}`)
 }
 
+const styles = {
+    env: {
+        fontSize: '15px',
+        marginTop: '-20px',
+        marginLeft: '-13px'
+    }
+}
+
 const Menu = props => {
     return (
         <div id="push">
@@ -22,6 +30,10 @@ const Menu = props => {
                 pageWrapId={'page-wrap'}
                 outerContainerId={'outer-container'}>
                 <h1>{config.name}</h1>
+
+                <div className="text-danger" style={styles.env}>
+                    {process.env.NODE_ENV}
+                </div>
 
                 <Link activeClassName={'active'} className="menu-item" to="/new">
                     New <span className="text-danger">({props.staffCount.new})</span>
