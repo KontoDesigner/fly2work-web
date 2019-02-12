@@ -5,7 +5,7 @@ import Table from '../../components/table'
 import * as newActions from '../../actions/newActions'
 import * as AppService from '../../services/appService'
 import { Statuses as statuses } from '../../constants/geographyConstants'
-import { Button, Row } from 'reactstrap'
+import { Button, Row, Col } from 'reactstrap'
 import { UserRoles as userRoles } from '../../constants/userConstants'
 
 const columns = [
@@ -54,13 +54,15 @@ class New extends Component {
 
                 {BS && (
                     <Row>
-                        <Button
-                            style={{ marginTop: '20px' }}
-                            onClick={() => this.props.history.push('/new/add')}
-                            className="btn btn-function"
-                            type="button">
-                            ADD
-                        </Button>
+                        <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                            <Button
+                                style={{ marginTop: '20px' }}
+                                onClick={() => this.props.history.push('/new/add')}
+                                className="btn btn-function"
+                                type="button">
+                                ADD
+                            </Button>
+                        </Col>
                     </Row>
                 )}
             </div>

@@ -101,7 +101,7 @@ class Edit extends Component {
                     showDelete={true}
                     history={this.props.history}
                     deleteStaff={this.props.pendingHRActions.deleteStaff}
-                    disabled={BTT === false || HR === true}
+                    disabled={true}
                     staff={this.state.staff}
                     handleStaff={this.handleStaff}
                     flights={this.props.flights}
