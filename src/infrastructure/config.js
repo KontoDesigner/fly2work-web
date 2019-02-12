@@ -3,7 +3,8 @@ function getKeys() {
 
     const res = {
         api: '',
-        env: ''
+        env: '',
+        name: process.env.REACT_APP_NAME
     }
 
     //LOCAL
@@ -27,12 +28,4 @@ function getKeys() {
     return res
 }
 
-// const keys = getKeys()
-
-const Config = {
-    name: process.env.REACT_APP_NAME,
-    api: getKeys().api,
-    env: getKeys().env
-}
-
-export default Config
+export default getKeys()
