@@ -85,7 +85,6 @@ class Edit extends Component {
             return ''
         }
 
-        const BTT = this.props.userRoles.includes(userRoles.BTT)
         const HR = this.props.userRoles.includes(userRoles.HR)
 
         return this.state.staff ? (
