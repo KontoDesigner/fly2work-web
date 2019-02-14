@@ -9,6 +9,7 @@ import moment from 'moment'
 import { Button, Row, Col } from 'reactstrap'
 import lodash from 'lodash'
 import { Statuses as statuses } from '../../constants/geographyConstants'
+import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -95,8 +96,12 @@ class Overview extends Component {
         }
     }
 
-    downloadExcel = () => {
-        RestClient.download('excel', null, `${this.props.staffs.length} request(s) - ${moment().format('DD/MM/YYYY HH:mm')}.xlsx`)
+    downloadExcel = async () => {
+        this.props.ajaxStatusActions.beginAjaxCall()
+
+        await RestClient.download('excel', null, `${this.props.staffs.length} request(s) - ${moment().format('DD/MM/YYYY HH:mm')}.xlsx`)
+
+        this.props.ajaxStatusActions.endAjaxCall()
     }
 
     render() {
@@ -131,7 +136,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        overviewActions: bindActionCreators(overviewActions, dispatch)
+        overviewActions: bindActionCreators(overviewActions, dispatch),
+        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch)
     }
 }
 
