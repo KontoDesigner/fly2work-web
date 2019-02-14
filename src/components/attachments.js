@@ -28,7 +28,7 @@ class Attachments extends Component {
         this.props.ajaxStatusActions.beginAjaxCall()
 
         const req = {
-            staffId: this.props.staff.id,
+            staffId: this.props.staffId,
             attachmentId: attachment.id
         }
 
@@ -45,16 +45,16 @@ class Attachments extends Component {
 
         this.props.ajaxStatusActions.beginAjaxCall()
 
-        const res = await RestClient.upload('attachment/upload', file, [{ key: 'staffId', value: this.props.staff.id }])
+        const res = await RestClient.upload('attachment/upload', file, [{ key: 'staffId', value: this.props.staffId }])
 
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (res.ok === true) {
-            let attachments = Object.assign([], this.props.staff.attachments)
+            let attachments = Object.assign([], this.props.attachments)
 
             attachments.push(res.attachment)
 
-            this.props.handleStaffAttachments(attachments)
+            this.props.setFieldValue('attachments', attachments)
 
             toastr.success('', 'Successfully uploaded file', res)
         } else {
@@ -66,8 +66,8 @@ class Attachments extends Component {
 
     delete = async index => {
         const req = {
-            staffId: this.props.staff.id,
-            attachmentId: this.props.staff.attachments[index].id
+            staffId: this.props.staffId,
+            attachmentId: this.props.attachments[index].id
         }
 
         this.props.ajaxStatusActions.beginAjaxCall()
@@ -77,11 +77,11 @@ class Attachments extends Component {
         this.props.ajaxStatusActions.endAjaxCall()
 
         if (res.ok === true) {
-            let attachments = Object.assign([], this.props.staff.attachments)
+            let attachments = Object.assign([], this.props.attachments)
 
             attachments.splice(index, 1)
 
-            this.props.handleStaffAttachments(attachments)
+            this.props.setFieldValue('attachments', attachments)
 
             toastr.success('', 'Successfully deleted file', res)
         } else {
@@ -125,8 +125,8 @@ class Attachments extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.staff.attachments &&
-                            this.props.staff.attachments.map((attachment, index) => (
+                        {this.props.attachments &&
+                            this.props.attachments.map((attachment, index) => (
                                 <tr key={attachment.id}>
                                     <td onClick={() => this.download(attachment)} className="link">
                                         {attachment.name}

@@ -55,14 +55,6 @@ class Edit extends Component {
         }
     }
 
-    handleStaffAttachments = attachments => {
-        let staff = Object.assign({}, this.state.staff)
-
-        staff.attachments = attachments
-
-        this.setState({ staff })
-    }
-
     render() {
         if (!this.state.loaded) {
             return ''
@@ -95,7 +87,6 @@ class Edit extends Component {
                     bsStatuses={this.props.bsStatuses}
                     userRoles={this.props.userRoles}
                     typeOfFlights={this.props.typeOfFlights}
-                    handleStaffAttachments={this.handleStaffAttachments}
                     iataCodes={this.props.iataCodes}
                     travelTypes={this.props.travelTypes}
                     currencies={this.props.currencies}

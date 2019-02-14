@@ -44,14 +44,6 @@ class Edit extends Component {
         this.setState({ staff, initialValues, loaded: true })
     }
 
-    handleStaffAttachments = attachments => {
-        let staff = Object.assign({}, this.state.staff)
-
-        staff.attachments = attachments
-
-        this.setState({ staff })
-    }
-
     confirmGreenLight = async () => {
         const res = await this.props.pendingHRActions.confirmGreenLight(this.state.staff.id)
 
@@ -94,7 +86,6 @@ class Edit extends Component {
                     bsStatuses={this.props.bsStatuses}
                     userRoles={this.props.userRoles}
                     typeOfFlights={this.props.typeOfFlights}
-                    handleStaffAttachments={this.handleStaffAttachments}
                     iataCodes={this.props.iataCodes}
                     travelTypes={this.props.travelTypes}
                     currencies={this.props.currencies}

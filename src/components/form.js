@@ -705,7 +705,7 @@ class Form extends Component {
 
                             <Row key={3}>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                    <Attachments staff={this.props.staff} handleStaffAttachments={this.props.handleStaffAttachments} />
+                                    <Attachments setFieldValue={setFieldValue} staffId={this.props.staff.id} attachments={values.attachments} />
                                 </Col>
                             </Row>
                         ]}
