@@ -45,11 +45,7 @@ class Edit extends Component {
         this.setState({ staff, initialValues, loaded: true })
     }
 
-    handleStaff = async staff => {
-        const attachments = this.state.staff.attachments
-
-        staff.attachments = null
-
+    save = async staff => {
         const res = await this.props.confirmedActions.updateStaff(staff)
 
         if (res && res.ok === true) {
@@ -57,10 +53,6 @@ class Edit extends Component {
                 pathname: `/${staff.status.toLowerCase()}/${staff.id}`
             })
         }
-
-        staff.attachments = attachments
-
-        this.setState({ staff })
     }
 
     handleStaffAttachments = attachments => {
@@ -88,7 +80,7 @@ class Edit extends Component {
                     initialValues={this.state.initialValues}
                     disabled={HR === true}
                     staff={this.state.staff}
-                    handleStaff={this.handleStaff}
+                    save={this.save}
                     flights={this.props.flights}
                     sourceMarkets={this.props.sourceMarkets}
                     seasons={this.props.seasons}

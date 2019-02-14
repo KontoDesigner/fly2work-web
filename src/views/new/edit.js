@@ -75,11 +75,7 @@ class Edit extends Component {
         }
     }
 
-    handleStaff = async staff => {
-        const attachments = this.state.staff.attachments
-
-        staff.attachments = null
-
+    save = async staff => {
         if (this.state.add === true) {
             const res = await this.props.newActions.insertStaff(staff)
 
@@ -109,10 +105,6 @@ class Edit extends Component {
                 }
             }
         }
-
-        staff.attachments = attachments
-
-        this.setState({ staff })
     }
 
     handleStaffAttachments = attachments => {
@@ -148,7 +140,7 @@ class Edit extends Component {
                     hideStatus={true}
                     add={this.state.add}
                     staff={this.state.staff}
-                    handleStaff={this.handleStaff}
+                    save={this.save}
                     flights={this.props.flights}
                     sourceMarkets={this.props.sourceMarkets}
                     seasons={this.props.seasons}

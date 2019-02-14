@@ -98,7 +98,7 @@ class Form extends Component {
                 validationSchema={BTT === true ? bttValidation : bsValidation}
                 validateOnChange={false}
                 onSubmit={values => {
-                    this.props.handleStaff(values)
+                    this.props.save(values)
                 }}
                 render={({ errors, touched, setFieldTouched, values, setFieldValue }) => (
                     <FormikForm>

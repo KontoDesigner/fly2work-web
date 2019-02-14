@@ -44,24 +44,6 @@ class Edit extends Component {
         this.setState({ staff, initialValues, loaded: true })
     }
 
-    handleStaff = async staff => {
-        const attachments = this.state.staff.attachments
-
-        staff.attachments = null
-
-        const res = await this.props.pendingHRActions.updateStaff(staff)
-
-        if (res && res.ok === true && staff.greenLight === true) {
-            this.props.history.push({
-                pathname: `/${staff.status.toLowerCase()}/${staff.id}`
-            })
-        }
-
-        staff.attachments = attachments
-
-        this.setState({ staff })
-    }
-
     handleStaffAttachments = attachments => {
         let staff = Object.assign({}, this.state.staff)
 
@@ -102,7 +84,6 @@ class Edit extends Component {
                     deleteStaff={this.props.pendingHRActions.deleteStaff}
                     disabled={true}
                     staff={this.state.staff}
-                    handleStaff={this.handleStaff}
                     flights={this.props.flights}
                     sourceMarkets={this.props.sourceMarkets}
                     seasons={this.props.seasons}

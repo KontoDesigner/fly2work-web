@@ -32,6 +32,8 @@ export function updateStaff(staff) {
         dispatch(beginAjaxCall())
 
         try {
+            staff.attachments = null
+
             const res = await RestClient.post('staff', staff)
 
             if (res && res.ok === true) {
