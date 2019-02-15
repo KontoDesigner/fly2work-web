@@ -125,6 +125,9 @@ class Edit extends Component {
                 )}
 
                 <Form
+                    history={this.props.history}
+                    showDelete={true}
+                    deleteStaff={this.props.newActions.deleteStaff}
                     hideDecline={true}
                     initialValues={this.state.initialValues}
                     disabled={HR === true}
