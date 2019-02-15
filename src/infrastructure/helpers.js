@@ -17,3 +17,29 @@ function populateInitialFlightValues(initialValues, staff, key, i) {
         }
     })
 }
+
+export function parseCost(val) {
+    var parsed = parseFloat(val)
+
+    if (isNaN(parsed)) {
+        return 0
+    }
+
+    return parsed
+}
+
+export function getTotalCost(flights) {
+    let totalCost = 0
+
+    if (flights && flights.length > 0) {
+        for (const flight of flights) {
+            totalCost =
+                totalCost +
+                (parseCost(flight.flightCost ? flight.flightCost.replace(',', '.') : 0) +
+                    parseCost(flight.xbagCost ? flight.xbagCost.replace(',', '.') : 0) +
+                    parseCost(flight.hotelCost ? flight.hotelCost.replace(',', '.') : 0))
+        }
+    }
+
+    return totalCost.toFixed(2)
+}

@@ -18,32 +18,7 @@ import { Statuses as statuses } from '../constants/geographyConstants'
 import DeclineModal from './declineModal'
 import AuditModal from './auditModal'
 import DeleteModal from './deleteModal'
-
-function parseCost(val) {
-    var parsed = parseFloat(val)
-
-    if (isNaN(parsed)) {
-        return 0
-    }
-
-    return parsed
-}
-
-function getTotalCost(flights) {
-    let totalCost = 0
-
-    if (flights && flights.length > 0) {
-        for (const flight of flights) {
-            totalCost =
-                totalCost +
-                (parseCost(flight.flightCost ? flight.flightCost.replace(',', '.') : 0) +
-                    parseCost(flight.xbagCost ? flight.xbagCost.replace(',', '.') : 0) +
-                    parseCost(flight.hotelCost ? flight.hotelCost.replace(',', '.') : 0))
-        }
-    }
-
-    return totalCost.toFixed(2)
-}
+import * as helpers from '../infrastructure/helpers'
 
 class Form extends Component {
     constructor(props) {
@@ -614,7 +589,6 @@ class Form extends Component {
                                     setFieldTouched={setFieldTouched}
                                     setFieldValue={setFieldValue}
                                     values={values}
-                                    parseCost={parseCost}
                                     travelTypes={this.props.travelTypes}
                                     paymentMethods={this.props.paymentMethods}
                                 />
@@ -625,7 +599,7 @@ class Form extends Component {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                 <div className="form-item">
                                     <label>Total Cost</label>
-                                    <Field disabled={true} className="form-control" type="text" value={getTotalCost(values.flights)} />
+                                    <Field disabled={true} className="form-control" type="text" value={helpers.getTotalCost(values.flights)} />
                                 </div>
                             </Col>
                         </Row>

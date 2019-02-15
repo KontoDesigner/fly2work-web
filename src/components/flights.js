@@ -5,6 +5,7 @@ import DatePicker from './datePicker'
 import { Button } from 'reactstrap'
 import Select from './select'
 import Checkbox from './checkbox'
+import * as helpers from '../infrastructure/helpers'
 
 const styles = {
     label: { color: '#444' },
@@ -223,9 +224,9 @@ const Flights = props => {
                                         className="form-control"
                                         type="text"
                                         value={(
-                                            props.parseCost(flight.flightCost ? flight.flightCost.replace(',', '.') : 0) +
-                                            props.parseCost(flight.xbagCost ? flight.xbagCost.replace(',', '.') : 0) +
-                                            props.parseCost(flight.hotelCost ? flight.hotelCost.replace(',', '.') : 0)
+                                            helpers.parseCost(flight.flightCost ? flight.flightCost.replace(',', '.') : 0) +
+                                            helpers.parseCost(flight.xbagCost ? flight.xbagCost.replace(',', '.') : 0) +
+                                            helpers.parseCost(flight.hotelCost ? flight.hotelCost.replace(',', '.') : 0)
                                         ).toFixed(2)}
                                     />
                                 </div>
