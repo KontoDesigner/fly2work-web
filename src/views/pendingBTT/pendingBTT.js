@@ -26,7 +26,7 @@ const filter = (staffs, criteria) => {
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
             ((staff.preferredFlightDate && staff.preferredFlightDate.toLowerCase().includes(criteria.toLowerCase())) ||
-                (staff.created && staff.created.toLowerCase().includes(criteria.toLowerCase())))
+                (staff.sentToPendingBTT && staff.sentToPendingBTT.toLowerCase().includes(criteria.toLowerCase())))
     )
 }
 
