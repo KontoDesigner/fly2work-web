@@ -6,7 +6,7 @@ import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import * as AppService from '../../services/appService'
 
 const columns = [
-    { labelKey: 'Created', valueKey: 'sentToPendingBTT', dataType: 'DATETIME', format: 'DD/MM/YYYY HH:mm' },
+    { labelKey: 'Requested', valueKey: 'dateRequested', dataType: 'DATETIME', format: 'DD/MM/YYYY HH:mm' },
     { labelKey: 'Green Light Approved', valueKey: 'greenLightUpdated' },
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
@@ -26,7 +26,7 @@ const filter = (staffs, criteria) => {
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
             ((staff.preferredFlightDate && staff.preferredFlightDate.toLowerCase().includes(criteria.toLowerCase())) ||
-                (staff.sentToPendingBTT && staff.sentToPendingBTT.toLowerCase().includes(criteria.toLowerCase())))
+                (staff.dateRequested && staff.dateRequested.toLowerCase().includes(criteria.toLowerCase())))
     )
 }
 

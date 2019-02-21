@@ -65,7 +65,8 @@ class Form extends Component {
         const BTT = this.props.userRoles.includes(userRoles.BTT)
         const HR = this.props.userRoles.includes(userRoles.HR)
 
-        const sentToPendingBTT = this.props.staff.sentToPendingBTT ? moment(this.props.staff.sentToPendingBTT).format('DD/MM/YYYY HH:mm') : ''
+        const dateRequested = this.props.staff.dateRequested ? moment(this.props.staff.dateRequested).format('DD/MM/YYYY HH:mm') : ''
+        const created = this.props.staff.created ? moment(this.props.staff.created).format('DD/MM/YYYY HH:mm') : ''
 
         return (
             <Formik
@@ -101,14 +102,15 @@ class Form extends Component {
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="sentToPendingBTT">Date Requested</label>
-                                        <Field
-                                            value={sentToPendingBTT}
-                                            disabled={true}
-                                            className="form-control"
-                                            type="text"
-                                            name="sentToPendingBTT"
-                                        />
+                                        <label htmlFor="dateRequested">Date Requested</label>
+                                        <Field value={dateRequested} disabled={true} className="form-control" type="text" name="dateRequested" />
+                                    </div>
+                                </Col>
+
+                                <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                    <div className="form-item">
+                                        <label htmlFor="created">Date Created</label>
+                                        <Field value={created} disabled={true} className="form-control" type="text" name="created" />
                                     </div>
                                 </Col>
 
