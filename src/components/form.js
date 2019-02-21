@@ -65,7 +65,7 @@ class Form extends Component {
         const BTT = this.props.userRoles.includes(userRoles.BTT)
         const HR = this.props.userRoles.includes(userRoles.HR)
 
-        const created = this.props.staff.created ? moment(this.props.staff.created).format('DD/MM/YYYY HH:mm') : ''
+        const sentToPendingBTT = this.props.staff.sentToPendingBTT ? moment(this.props.staff.sentToPendingBTT).format('DD/MM/YYYY HH:mm') : ''
 
         return (
             <Formik
@@ -101,8 +101,14 @@ class Form extends Component {
 
                                 <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                     <div className="form-item">
-                                        <label htmlFor="created">Date Requested</label>
-                                        <Field value={created} disabled={true} className="form-control" type="text" name="created" />
+                                        <label htmlFor="sentToPendingBTT">Date Requested</label>
+                                        <Field
+                                            value={sentToPendingBTT}
+                                            disabled={true}
+                                            className="form-control"
+                                            type="text"
+                                            name="sentToPendingBTT"
+                                        />
                                     </div>
                                 </Col>
 
