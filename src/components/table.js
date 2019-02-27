@@ -98,7 +98,11 @@ class Table extends Component {
 
         switch (column.dataType) {
             case 'DATETIME':
-                return moment(value).format(column.format ? column.format : 'DD/MM/YYYY')
+                if (column.local === true) {
+                    return moment.utc(value).format(column.format ? column.format : 'DD/MM/YYYY')
+                } else {
+                    return moment(value).format(column.format ? column.format : 'DD/MM/YYYY')
+                }
             default:
                 return value
         }

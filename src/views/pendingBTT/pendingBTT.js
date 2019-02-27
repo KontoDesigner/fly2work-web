@@ -6,7 +6,7 @@ import * as pendingBTTActions from '../../actions/pendingBTTActions'
 import * as AppService from '../../services/appService'
 
 const columns = [
-    { labelKey: 'Requested', valueKey: 'dateRequested', dataType: 'DATETIME', format: 'DD/MM/YYYY HH:mm' },
+    { labelKey: 'Requested', valueKey: 'dateRequested', dataType: 'DATETIME', format: 'DD/MM/YYYY HH:mm', local: true },
     { labelKey: 'Green Light Approved', valueKey: 'greenLightUpdated' },
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
