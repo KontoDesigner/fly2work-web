@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import { Statuses as statuses } from '../constants/geographyConstants'
 
 const styles = {
     cancelBtn: { marginLeft: '10px' }
@@ -14,7 +15,7 @@ const DeleteModal = props => {
         const res = await props.deleteStaff(req)
 
         if (res === true) {
-            if (props.staff.greenLight === false) {
+            if (props.staff.greenLight === false && props.staff.status !== statuses.New) {
                 props.history.push({
                     pathname: '/pendinghr'
                 })
