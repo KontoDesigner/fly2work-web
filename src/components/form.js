@@ -64,6 +64,7 @@ class Form extends Component {
 
         const BTT = this.props.userRoles.includes(userRoles.BTT)
         const HR = this.props.userRoles.includes(userRoles.HR)
+        const BS = this.props.userRoles.includes(userRoles.BS)
 
         const dateRequested = this.props.staff.dateRequested ? moment(this.props.staff.dateRequested).format('DD/MM/YYYY HH:mm') : ''
         const created = this.props.staff.created ? moment(this.props.staff.created).format('DD/MM/YYYY HH:mm') : ''
@@ -786,7 +787,7 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                {this.props.add !== true && BTT === true && this.props.showDelete === true && (
+                                {this.props.add !== true && (BTT === true || BS === true) && this.props.showDelete === true && (
                                     <Button
                                         style={{ marginRight: '15px', float: 'right' }}
                                         onClick={this.toggleDeleteModal}
