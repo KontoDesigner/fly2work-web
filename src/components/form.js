@@ -787,7 +787,7 @@ class Form extends Component {
                                     </Button>
                                 )}
 
-                                {this.props.add !== true && (BTT === true || BS === true) && this.props.showDelete === true && (
+                                {this.props.add !== true && BTT === true && this.props.showDelete === true && (
                                     <Button
                                         style={{ marginRight: '15px', float: 'right' }}
                                         onClick={this.toggleDeleteModal}
