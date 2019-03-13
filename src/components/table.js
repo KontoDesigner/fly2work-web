@@ -117,7 +117,7 @@ class Table extends Component {
     }
 
     downloadPdf = staff => {
-        RestClient.download(`pdf/${staff.id}`, null, `${staff.firstName} ${staff.lastName} - ${moment().format('DD/MM/YYYY HH:mm')}.pdf`)
+        RestClient.download(`pdf/${staff.id}`, null, `${staff.firstName} ${staff.lastName} ${staff.iataCode} ${staff.preferredFlightDate}.pdf`)
     }
 
     render() {

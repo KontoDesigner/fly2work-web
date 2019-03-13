@@ -58,13 +58,12 @@ class Form extends Component {
             RestClient.download(
                 `pdf/${this.props.staff.id}`,
                 null,
-                `${this.props.staff.firstName} ${this.props.staff.lastName} - ${moment().format('DD/MM/YYYY HH:mm')}.pdf`
+                `${this.props.staff.firstName} ${this.props.staff.lastName} ${this.props.staff.iataCode} ${this.props.staff.preferredFlightDate}.pdf`
             )
         }
 
         const BTT = this.props.userRoles.includes(userRoles.BTT)
         const HR = this.props.userRoles.includes(userRoles.HR)
-        const BS = this.props.userRoles.includes(userRoles.BS)
 
         const dateRequested = this.props.staff.dateRequested ? moment(this.props.staff.dateRequested).format('DD/MM/YYYY HH:mm') : ''
         const created = this.props.staff.created ? moment(this.props.staff.created).format('DD/MM/YYYY HH:mm') : ''
