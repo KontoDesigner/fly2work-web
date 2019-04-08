@@ -540,8 +540,53 @@ class Form extends Component {
                                 </div>
                             </Col>
 
+                            {this.props.add === true && [
+                                <Col key={0} xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '10px' }}>
+                                    <div className="hr">
+                                        <span className="hr-title">Comments</span>
+                                    </div>
+                                </Col>,
+                                <Col key={1} xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                    <div className="form-item">
+                                        <label htmlFor="comment">Comment</label>
+                                        <Field
+                                            disabled={this.props.disabled}
+                                            className="form-control"
+                                            type="text"
+                                            name="comment"
+                                            component="textarea"
+                                            rows="3"
+                                            style={{ overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' }}
+                                        />
+                                        <ErrorMessage className="message" name="comment" component="div" />
+                                    </div>
+                                </Col>
+                            ]}
+
+                            {this.props.add !== true && [
+                                <Col key={0} xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '22px' }}>
+                                    <div className="hr">
+                                        <span className="hr-title">Comments</span>
+                                    </div>
+                                </Col>,
+                                <Col key={1} xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
+                                    <Comments
+                                        staff={this.props.staff}
+                                        setFieldValue={setFieldValue}
+                                        comments={values.comments}
+                                        disabled={this.props.disabled}
+                                    />
+                                </Col>
+                            ]}
+
                             <div className="inner-form">
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial', marginBottom: '10px' }}>
+                                <Col
+                                    xl="12"
+                                    lg="12"
+                                    md="12"
+                                    sm="12"
+                                    xs="12"
+                                    style={{ minHeight: 'initial', marginBottom: '10px', marginTop: '17px' }}>
                                     <div className="hr">
                                         <span className="hr-title">BTT</span>
                                     </div>
@@ -612,66 +657,8 @@ class Form extends Component {
                             </Col>
                         </Row>
 
-                        {this.props.add === true && [
-                            <Row key={0}>
-                                <Col
-                                    xl="12"
-                                    lg="12"
-                                    md="12"
-                                    sm="12"
-                                    xs="12"
-                                    style={{ minHeight: 'initial', marginBottom: '10px', marginTop: '15px' }}>
-                                    <div className="hr">
-                                        <span className="hr-title">Comments</span>
-                                    </div>
-                                </Col>
-                            </Row>,
-                            <Row key={1}>
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                    <div className="form-item">
-                                        <label htmlFor="comment">Comment</label>
-                                        <Field
-                                            disabled={this.props.disabled}
-                                            className="form-control"
-                                            type="text"
-                                            name="comment"
-                                            component="textarea"
-                                            rows="3"
-                                            style={{ overflowX: 'auto', resize: 'vertical', minHeight: '37px', boxShadow: 'none' }}
-                                        />
-                                        <ErrorMessage className="message" name="comment" component="div" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        ]}
-
                         {this.props.add !== true && [
                             <Row key={0}>
-                                <Col
-                                    xl="12"
-                                    lg="12"
-                                    md="12"
-                                    sm="12"
-                                    xs="12"
-                                    style={{ minHeight: 'initial', marginBottom: '22px', marginTop: '20px' }}>
-                                    <div className="hr">
-                                        <span className="hr-title">Comments</span>
-                                    </div>
-                                </Col>
-                            </Row>,
-
-                            <Row key={1}>
-                                <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
-                                    <Comments
-                                        staff={this.props.staff}
-                                        setFieldValue={setFieldValue}
-                                        comments={values.comments}
-                                        disabled={this.props.disabled}
-                                    />
-                                </Col>
-                            </Row>,
-
-                            <Row key={2}>
                                 <Col
                                     xl="12"
                                     lg="12"
@@ -685,7 +672,7 @@ class Form extends Component {
                                 </Col>
                             </Row>,
 
-                            <Row key={3}>
+                            <Row key={1}>
                                 <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ minHeight: 'initial' }}>
                                     <Attachments setFieldValue={setFieldValue} staffId={this.props.staff.id} attachments={values.attachments} />
                                 </Col>
