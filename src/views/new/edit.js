@@ -131,7 +131,6 @@ class Edit extends Component {
                     hideDecline={true}
                     initialValues={this.state.initialValues}
                     disabled={HR === true}
-                    enableEmails={true}
                     hideStatus={true}
                     add={this.state.add}
                     staff={this.state.staff}

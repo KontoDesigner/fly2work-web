@@ -466,10 +466,10 @@ class Form extends Component {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
-                                <div className={this.props.disabled || this.props.enableEmails !== true ? 'form-item disabled' : 'form-item'}>
+                                <div className={this.props.disabled ? 'form-item disabled' : 'form-item'}>
                                     <label htmlFor="emails">Additional Emails For Notification</label>
                                     <Field
-                                        disabled={this.props.disabled || this.props.enableEmails !== true}
+                                        disabled={this.props.disabled}
                                         name={'emails'}
                                         component={Creatable}
                                         setFieldTouched={setFieldTouched}
