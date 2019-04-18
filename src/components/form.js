@@ -297,9 +297,7 @@ class Form extends Component {
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div className="form-item">
                                     <label htmlFor="plannedAssignmentStartDate">
-                                        {values.plannedAssignmentStartDate === 'End of season'
-                                            ? 'Planned Assignment End Date'
-                                            : 'Planned Assignment Start Date'}
+                                        {values.typeOfFlight === 'End of season' ? 'Planned Assignment End Date' : 'Planned Assignment Start Date'}
                                     </label>
                                     <Field
                                         disabled={
