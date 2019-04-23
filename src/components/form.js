@@ -795,7 +795,12 @@ class Form extends Component {
                             open={this.state.declineModal}
                         />
 
-                        <AuditModal toggle={this.toggleAuditModal} open={this.state.auditModal} audit={this.props.staff.audit} />
+                        <AuditModal
+                            toggle={this.toggleAuditModal}
+                            open={this.state.auditModal}
+                            audit={this.props.staff.audit}
+                            sentEmails={this.props.staff.sentEmails}
+                        />
 
                         <DeleteModal
                             history={this.props.history}
