@@ -6,6 +6,7 @@ import * as ajaxStatusActions from '../actions/ajaxStatusActions'
 import { toastr } from 'react-redux-toastr'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import * as filesize from 'filesize'
 
 const styles = {
     th: {
@@ -145,7 +146,7 @@ class Attachments extends Component {
                                     </td>
 
                                     <td onClick={() => this.download(attachment)} className="link">
-                                        {attachment.size}
+                                        {filesize(attachment.size)}
                                     </td>
 
                                     <td>
