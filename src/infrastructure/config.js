@@ -12,6 +12,11 @@ function getKeys() {
         res.api = 'http://localhost:5000/'
         res.env = 'LOCALHOST'
     }
+    //DEV
+    else if (hostName === 'fly2work-web.dev.tuinordic.com') {
+        res.api = 'http://fly2work-api.dev.tuinordic.com/'
+        res.env = 'UAT'
+    }
     //UAT
     else if (hostName === 'fly2work-web-uat.tuinordic.net' || hostName === 'fly2work-web.uat.tuinordic.net') {
         res.api = 'https://fly2work-api-uat.tuinordic.net/'
