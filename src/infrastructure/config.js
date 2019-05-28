@@ -15,7 +15,7 @@ function getKeys() {
     //DEV
     else if (hostName === 'fly2work-web.dev.tuinordic.com') {
         res.api = 'http://fly2work-api.dev.tuinordic.com/'
-        res.env = 'UAT'
+        res.env = 'DEV'
     }
     //UAT
     else if (hostName === 'fly2work-web-uat.tuinordic.net' || hostName === 'fly2work-web.uat.tuinordic.net') {
