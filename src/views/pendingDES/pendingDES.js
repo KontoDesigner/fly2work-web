@@ -10,7 +10,8 @@ const columns = [
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
-    { labelKey: 'Preferred Flight Date', valueKey: 'preferredFlightDate' }
+    { labelKey: 'Preferred Flight Date', valueKey: 'preferredFlightDate' },
+    { labelKey: 'Type Of Flight', valueKey: 'typeOfFlight' }
 ]
 
 const filter = (staffs, criteria) => {

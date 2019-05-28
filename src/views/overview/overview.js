@@ -17,7 +17,8 @@ const columns = [
     { labelKey: 'Destination', valueKey: 'destination' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
     { labelKey: 'Confirmed Flight Date', valueKey: 'flights[0].confirmedFlightDate' },
-    { labelKey: 'Status', valueKey: 'status' }
+    { labelKey: 'Status', valueKey: 'status' },
+    { labelKey: 'Type Of Flight', valueKey: 'typeOfFlight' }
 ]
 
 const filter = (staffs, criteria) => {
