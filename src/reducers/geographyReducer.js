@@ -15,7 +15,7 @@ var defaultState = {
     statuses: getStatuses(),
     bsStatuses: getBSStatuses(),
     typeOfFlights: [
-        { value: 'End of season', label: 'End of season' },
+        // { value: 'End of season', label: 'End of season' },
         { value: 'Start of season', label: 'Start of season' }
         // { value: 'Holiday', label: 'Holiday' },
         // { value: 'Emergency', label: 'Emergency' },
