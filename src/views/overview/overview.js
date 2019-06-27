@@ -31,6 +31,7 @@ const filter = (staffs, criteria) => {
                 (staff.firstName.toLowerCase() + ' ' + staff.lastName.toLowerCase()).includes(criteria.toLowerCase())) ||
             (staff.destination && staff.destination.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.sourceMarket && staff.sourceMarket.toLowerCase().includes(criteria.toLowerCase())) ||
+            (staff.typeOfFlight && staff.typeOfFlight.toLowerCase().includes(criteria.toLowerCase())) ||
             (staff.flights &&
                 staff.flights.length > 0 &&
                 staff.flights[0].confirmedFlightDate &&
