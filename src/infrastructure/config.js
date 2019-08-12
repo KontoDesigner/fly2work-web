@@ -30,6 +30,8 @@ function getKeys() {
         console.warn(`could not identify hostname: ${hostName}.`)
     }
 
+    console.log('config', res)
+
     return res
 }
 
