@@ -11,6 +11,9 @@ const styles = {
     th: {
         cursor: 'default'
     },
+    thRemove: {
+        width: '1px'
+    },
     td: {
         cursor: 'default',
         textDecoration: 'none'
@@ -69,6 +72,37 @@ class Comments extends Component {
         }
     }
 
+    remove = async commentId => {
+        this.props.ajaxStatusActions.beginAjaxCall()
+
+        const req = {
+            staffId: this.props.staff.id,
+            commentId: commentId
+        }
+
+        const res = await RestClient.post('comment/delete', req)
+
+        this.props.ajaxStatusActions.endAjaxCall()
+
+        if (res.ok === true) {
+            let comments = Object.assign([], this.props.comments)
+
+            const index = comments.findIndex(c => c.id === commentId)
+
+            comments.splice(index, 1)
+
+            this.props.setFieldValue('comments', comments)
+
+            toastr.success('', 'Successfully removed comment', res)
+        } else {
+            if (res && res.errors) {
+                toastr.error('', `Could not remove comment - ${res.errors.join(', ')}`)
+            } else {
+                toastr.error('', 'Could not remove comment')
+            }
+        }
+    }
+
     render() {
         const comments = this.props.comments
             ? this.props.comments.sort(function(a, b) {
@@ -84,6 +118,7 @@ class Comments extends Component {
                             <th style={styles.th}>Created By</th>
                             <th style={styles.th}>Group</th>
                             <th style={styles.th}>Created</th>
+                            <th style={styles.th} />
                         </tr>
                     </thead>
                     <tbody>
@@ -98,9 +133,20 @@ class Comments extends Component {
                                         {comment.group}
                                     </td>
 
-                                    <td colSpan={2} style={styles.td} className="link">
+                                    <td style={styles.td} colSpan={this.props.BTT ? 1 : 2} className="link">
                                         {comment.created && <Moment format="DD/MM/YYYY HH:mm">{comment.created}</Moment>}
                                     </td>
+
+                                    {this.props.BTT && (
+                                        <td style={styles.thRemove}>
+                                            <Button
+                                                onClick={e => this.remove(comment.id)}
+                                                className="btn btn-sales btn-secondary btn-sm"
+                                                type="button">
+                                                REMOVE
+                                            </Button>
+                                        </td>
+                                    )}
                                 </tr>
                             ),
 

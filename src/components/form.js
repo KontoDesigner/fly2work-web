@@ -577,6 +577,7 @@ class Form extends Component {
                                         setFieldValue={setFieldValue}
                                         comments={values.comments}
                                         disabled={this.props.disabled}
+                                        BTT={BTT}
                                     />
                                 </Col>
                             ]}
