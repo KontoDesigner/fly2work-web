@@ -358,6 +358,13 @@ class Form extends Component {
                             </Col>
 
                             <Col xl="4" lg="4" md="6" sm="12" xs="12">
+                                <div className="form-item">
+                                    <label htmlFor="season">Season</label>
+                                    <Field disabled={true} className="form-control" type="text" name="season" />
+                                </div>
+                            </Col>
+
+                            <Col xl="4" lg="4" md="6" sm="12" xs="12">
                                 <div
                                     className={
                                         (this.props.disabled || (this.props.staff.destination && this.props.staff.destination !== '')) &&

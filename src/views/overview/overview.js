@@ -15,6 +15,7 @@ const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
+    { labelKey: 'Season', valueKey: 'season' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
     { labelKey: 'Confirmed Flight Date', valueKey: 'flights[0].confirmedFlightDate' },
     { labelKey: 'Status', valueKey: 'status' },

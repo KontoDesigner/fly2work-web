@@ -9,6 +9,7 @@ const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
     { labelKey: 'Last Name', valueKey: 'lastName' },
     { labelKey: 'Destination', valueKey: 'destination' },
+    { labelKey: 'Season', valueKey: 'season' },
     { labelKey: 'Source Market', valueKey: 'sourceMarket' },
     { labelKey: 'Preferred Flight Date', valueKey: 'preferredFlightDate' },
     { labelKey: 'Type Of Flight', valueKey: 'typeOfFlight' }
