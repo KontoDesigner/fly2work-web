@@ -17,6 +17,7 @@ var defaultState = {
     typeOfFlights: [
         { value: 'End of season', label: 'End of season' },
         { value: 'Start of season', label: 'Start of season' },
+        { value: 'SOS', label: 'SOS' },
         // { value: 'Holiday', label: 'Holiday' },
         // { value: 'Emergency', label: 'Emergency' },
         // { value: 'Visa', label: 'Visa' },
