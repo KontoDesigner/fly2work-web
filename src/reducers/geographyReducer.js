@@ -5,6 +5,27 @@ import {
     GetBSStatuses as getBSStatuses
 } from '../constants/geographyConstants'
 
+const typeOfFlights = [
+    { value: 'End of season', label: 'End of season' },
+    { value: 'Start of season', label: 'Start of season' },
+    { value: 'SOS', label: 'SOS' },
+    { value: 'Resignation', label: 'Resignation' }
+]
+
+const typeOfFlightsNew = [
+    { value: 'Training', label: 'Training' },
+    { value: 'Sick Leave', label: 'Sick Leave' },
+    { value: 'Visa', label: 'Visa' },
+    { value: 'Holiday', label: 'Holiday' }
+]
+
+const typeOfFlightsOther = [
+    { value: 'Training', label: 'Training', disabled: 'yes' },
+    { value: 'Sick Leave', label: 'Sick Leave', disabled: 'yes' },
+    { value: 'Visa', label: 'Visa', disabled: 'yes' },
+    { value: 'Holiday', label: 'Holiday', disabled: 'yes' }
+]
+
 var defaultState = {
     flights: null,
     airports: null,
@@ -14,18 +35,8 @@ var defaultState = {
     destinations: null,
     statuses: getStatuses(),
     bsStatuses: getBSStatuses(),
-    typeOfFlights: [
-        { value: 'End of season', label: 'End of season' },
-        { value: 'Start of season', label: 'Start of season' },
-        { value: 'SOS', label: 'SOS' },
-        // { value: 'Holiday', label: 'Holiday' },
-        // { value: 'Emergency', label: 'Emergency' },
-        // { value: 'Visa', label: 'Visa' },
-        // { value: 'Training', label: 'Training' },
-        { value: 'Resignation', label: 'Resignation' }
-        // { value: 'Conference', label: 'Conference' },
-        // { value: 'Concept training', label: 'Concept training' }
-    ],
+    typeOfFlights: [...typeOfFlights, ...typeOfFlightsOther],
+    typeOfFlightsNew: typeOfFlightsNew,
     roles: [{ value: 'Mainline', label: 'Mainline' }, { value: 'Concept', label: 'Concept' }],
     iataCodes: null,
     travelTypes: [{ value: 'Charter', label: 'Charter' }, { value: 'Scheduled', label: 'Scheduled' }],

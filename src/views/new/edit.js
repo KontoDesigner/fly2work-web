@@ -171,7 +171,7 @@ function mapStateToProps(state) {
             label: s
         })),
         userRoles: state.user.userRoles,
-        typeOfFlights: state.geography.typeOfFlights,
+        typeOfFlights: state.geography.typeOfFlightsNew,
         iataCodes: state.geography.iataCodes,
         travelTypes: state.geography.travelTypes,
         currencies: state.geography.currencies,

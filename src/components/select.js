@@ -13,6 +13,7 @@ const Select = ({ options, field, form, setFieldTouched, disabled, valueKey, lab
         getOptionLabel={option => option[labelKey]}
         getOptionValue={option => option[valueKey]}
         isClearable={isClearable}
+        isOptionDisabled={option => option.disabled === 'yes'}
     />
 )
 
