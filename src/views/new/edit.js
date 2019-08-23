@@ -112,6 +112,8 @@ class Edit extends Component {
             return ''
         }
 
+        const typeOfFlights = this.state.add === true ? this.props.typeOfFlightsNew : this.props.typeOfFlights
+
         const HR = this.props.userRoles.includes(userRoles.HR)
 
         return this.state.staff ? (
@@ -144,7 +146,7 @@ class Edit extends Component {
                     statuses={this.props.statuses}
                     bsStatuses={this.props.bsStatuses}
                     userRoles={this.props.userRoles}
-                    typeOfFlights={this.props.typeOfFlights}
+                    typeOfFlights={typeOfFlights}
                     iataCodes={this.props.iataCodes}
                     travelTypes={this.props.travelTypes}
                     currencies={this.props.currencies}
@@ -171,7 +173,8 @@ function mapStateToProps(state) {
             label: s
         })),
         userRoles: state.user.userRoles,
-        typeOfFlights: state.geography.typeOfFlightsNew,
+        typeOfFlights: state.geography.typeOfFlights,
+        typeOfFlightsNew: state.geography.typeOfFlightsNew,
         iataCodes: state.geography.iataCodes,
         travelTypes: state.geography.travelTypes,
         currencies: state.geography.currencies,
