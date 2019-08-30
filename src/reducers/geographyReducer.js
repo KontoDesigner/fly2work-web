@@ -8,7 +8,6 @@ import {
 const typeOfFlights = [
     { value: 'End of season', label: 'End of season' },
     { value: 'Start of season', label: 'Start of season' },
-    { value: 'SOS', label: 'SOS' },
     { value: 'Resignation', label: 'Resignation' }
 ]
 
@@ -16,6 +15,7 @@ const typeOfFlightsNew = [
     { value: 'Training', label: 'Training' },
     { value: 'Sick Leave', label: 'Sick Leave' },
     { value: 'Visa', label: 'Visa' },
+    { value: 'SOS', label: 'SOS' },
     { value: 'Holiday', label: 'Holiday' }
 ]
 
@@ -23,6 +23,7 @@ const typeOfFlightsOther = [
     { value: 'Training', label: 'Training', disabled: 'yes' },
     { value: 'Sick Leave', label: 'Sick Leave', disabled: 'yes' },
     { value: 'Visa', label: 'Visa', disabled: 'yes' },
+    { value: 'SOS', label: 'SOS', disabled: 'yes' },
     { value: 'Holiday', label: 'Holiday', disabled: 'yes' }
 ]
 
