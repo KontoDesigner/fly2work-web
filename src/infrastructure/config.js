@@ -26,6 +26,11 @@ function getKeys() {
     else if (hostName === 'fly2work-web.tuinordic.net') {
         res.api = 'https://fly2work-api.tuinordic.net/'
         res.env = 'PROD'
+    }
+    //AWS
+    else if (hostName === 'fly2work-web.tpp-project.local') {
+        res.api = 'https://fly2work-api.tpp-project.local/'
+        res.env = 'AWS'
     } else {
         console.warn(`could not identify hostname: ${hostName}.`)
     }
