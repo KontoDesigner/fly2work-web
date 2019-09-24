@@ -27,10 +27,20 @@ function getKeys() {
         res.api = 'https://fly2work-api.tuinordic.net/'
         res.env = 'PROD'
     }
-    //AWS
-    else if (hostName === 'fly2work-web.tpp-project.local') {
-        res.api = 'https://fly2work-api.tpp-project.local/'
-        res.env = 'AWS'
+    //AWS DEV
+    else if (hostName === 'fly2work-web.test.tui-dx.com') {
+        res.api = 'http://fly2work-api.test.tui-dx.com/'
+        res.env = 'DEV'
+    }
+    //AWS UAT
+    else if (hostName === 'fly2work-web.pre.tui-dx.com') {
+        res.api = 'http://fly2work-api.pre.tui-dx.com/'
+        res.env = 'UAT'
+    }
+    //AWS PROD
+    else if (hostName === 'fly2work-web.tui-dx.com') {
+        res.api = 'https://fly2work-api.tui-dx.com/'
+        res.env = 'PROD'
     } else {
         console.warn(`could not identify hostname: ${hostName}.`)
     }
