@@ -10,6 +10,7 @@ import { Button, Row, Col } from 'reactstrap'
 import lodash from 'lodash'
 import { Statuses as statuses } from '../../constants/geographyConstants'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
+import { UserRoles as userRoles } from '../../constants/userConstants'
 
 const columns = [
     { labelKey: 'First Name', valueKey: 'firstName' },
@@ -87,6 +88,14 @@ const compareValues = (key, order = true) => {
 }
 
 class Overview extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            selected: []
+        }
+    }
+
     async componentDidMount() {
         AppService.setTitle('Overview')
 
@@ -94,7 +103,7 @@ class Overview extends Component {
     }
 
     handleClick = (e, id) => {
-        if (e.target.nodeName !== 'BUTTON') {
+        if (e.target.nodeName !== 'BUTTON' && e.target.nodeName !== 'INPUT') {
             this.props.history.push(`/overview/${id}`)
         }
     }
@@ -107,12 +116,46 @@ class Overview extends Component {
         this.props.ajaxStatusActions.endAjaxCall()
     }
 
+    deleteStaffs = async () => {
+        await this.props.overviewActions.deleteStaffs(this.state.selected)
+
+        this.setState({ selected: [] })
+    }
+
+    handleSelected = (staffId, e) => {
+        let selected = [...this.state.selected]
+        const checked = e.target.checked
+
+        const index = selected.indexOf(staffId)
+
+        if (checked === true) {
+            if (index === -1) {
+                selected.push(staffId)
+            }
+        } else {
+            if (index !== -1) {
+                selected.splice(index, 1)
+            }
+        }
+
+        this.setState({ selected })
+    }
+
     render() {
+        const BTT = this.props.userRoles.includes(userRoles.BTT)
+
         return (
             <div className="ajax-status-container">
                 <h2>Overview</h2>
 
-                <Table staffs={this.props.staffs} handleClick={this.handleClick} columns={columns} filter={filter} compareValues={compareValues} />
+                <Table
+                    staffs={this.props.staffs}
+                    handleClick={this.handleClick}
+                    columns={columns}
+                    filter={filter}
+                    compareValues={compareValues}
+                    handleSelected={this.handleSelected}
+                />
 
                 <Row>
                     <Col xl="12" lg="12" md="12" sm="12" xs="12">
@@ -124,6 +167,17 @@ class Overview extends Component {
                             type="button">
                             XLSX
                         </Button>
+
+                        {BTT == true && (
+                            <Button
+                                style={{ marginLeft: '15px' }}
+                                disabled={this.state.selected.length === 0}
+                                onClick={this.deleteStaffs}
+                                className="btn btn-sales"
+                                type="button">
+                                Delete
+                            </Button>
+                        )}
                     </Col>
                 </Row>
             </div>
@@ -133,7 +187,8 @@ class Overview extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffs: state.overview.staffs
+        staffs: state.overview.staffs,
+        userRoles: state.user.userRoles
     }
 }
 

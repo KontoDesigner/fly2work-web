@@ -152,6 +152,8 @@ class Table extends Component {
                                         {this.props.confirmGreenLight && <th style={styles.thBtn} />}
 
                                         <th style={styles.thBtn} />
+
+                                        {this.props.handleSelected !== undefined && <th style={styles.thBtn}>Delete</th>}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -186,6 +188,12 @@ class Table extends Component {
                                                     PDF
                                                 </Button>
                                             </td>
+
+                                            {this.props.handleSelected !== undefined && (
+                                                <td>
+                                                    <input type="checkbox" onChange={e => this.props.handleSelected(staff.id, e)} />
+                                                </td>
+                                            )}
                                         </tr>
                                     ))}
                                 </tbody>
